@@ -80,6 +80,17 @@ Grade any LDraw file against a task:
 npx tsx grade.ts some-model.ldr --task greek-temple
 ```
 
+## Looking at the runs
+
+```sh
+python3 serve.py            # http://localhost:8787
+```
+
+The paper's runs and yours in one table, every task against every condition. Click a cell: the
+model in 3D (orbit, zoom, x-ray), its grade with the validator's and the stability reports, the
+attempt-by-attempt trace where the record has one, and the LDraw source. Standard library only;
+part geometry is fetched from the data bucket as needed and cached under `data/ldraw/`.
+
 ## Citing
 
 ```bibtex

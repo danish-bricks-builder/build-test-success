@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build, Test, Success — results</title>
+<style>
+  :root { --ink: #1b1f23; --muted: #6b7280; --line: #e3e5e8; --panel: #f6f7f8; --accent: #0d7a6f; --pass: #1a7f37; --warn: #b45309; --fail: #c0392b; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.45 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: var(--ink); background: #fff; }
+  header { display: flex; align-items: baseline; gap: 14px; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+  header h1 { font-size: 16px; margin: 0; }
+  header .muted { color: var(--muted); font-size: 12px; }
+  main { display: grid; grid-template-columns: minmax(420px, 36%) 1fr; height: calc(100vh - 42px); }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; height: auto; } }
+  #left { overflow: auto; border-right: 1px solid var(--line); padding: 10px 12px; }
+  #right { display: flex; flex-direction: column; min-width: 0; }
+  table { border-collapse: collapse; width: 100%; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+  th, td { padding: 4px 6px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+  th { color: var(--muted); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+  td:first-child, th:first-child { text-align: left; }
+  td.cell button { font: inherit; background: none; border: 1px solid transparent; border-radius: 4px; padding: 1px 5px; cursor: pointer; color: inherit; }
+  td.cell button:hover { border-color: var(--accent); }
+  td.cell button.on { background: var(--ink); color: #fff; }
+  .p { color: var(--pass); } .w { color: var(--warn); } .f { color: var(--fail); } .n { color: var(--muted); }
+  sup { color: var(--muted); font-size: 9px; }
+  .band { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .06em; padding-top: 10px; }
+  #view { position: relative; flex: 0 0 52%; min-height: 320px; background: var(--panel); border-bottom: 1px solid var(--line); }
+  #view canvas { display: block; }
+  #hud { position: absolute; top: 8px; left: 10px; font: 12px ui-monospace, Menlo, monospace; color: var(--muted); }
+  #hud b { color: var(--ink); }
+  #tools { position: absolute; top: 8px; right: 10px; display: flex; gap: 4px; }
+  #tools button, .tabs button { font: 12px -apple-system, sans-serif; background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 2px 8px; cursor: pointer; }
+  .tabs { display: flex; gap: 4px; padding: 6px 10px; border-bottom: 1px solid var(--line); }
+  .tabs button.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+  #detail { overflow: auto; padding: 10px 12px; flex: 1; }
+  pre { margin: 0; white-space: pre-wrap; font: 12px ui-monospace, Menlo, monospace; }
+  .kv { display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; font: 12px ui-monospace, Menlo, monospace; margin-bottom: 10px; }
+  .kv span:first-child { color: var(--muted); }
+  .round { border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; margin-bottom: 6px; }
+  .round .h { font: 12px ui-monospace, Menlo, monospace; margin-bottom: 4px; }
+  .empty { color: var(--muted); padding: 20px; }
+  .legend { color: var(--muted); font-size: 11px; margin-top: 10px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Build, Test, Success — results</h1>
+  <span class="muted" id="counts">loading…</span>
+  <span class="muted" style="margin-left:auto">click a cell · drag to orbit · scroll to zoom</span>
+</header>
+<main>
+  <div id="left"></div>
+  <div id="right">
+    <div id="view">
+      <div id="hud">pick a run</div>
+      <div id="tools"><button id="fit">fit</button><button id="xray">x-ray</button></div>
+    </div>
+    <div class="tabs"><button data-tab="grade" class="on">grade</button><button data-tab="trace">trace</button><button data-tab="ldraw">ldraw</button></div>
+    <div id="detail"><div class="empty">The paper's runs are on the left: every task against every condition, in the paper's notation. Your own runs (runs/) appear below them.</div></div>
+  </div>
+</main>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.185.1/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { LDrawLoader } from "three/addons/loaders/LDrawLoader.js";
+import { LDrawConditionalLineMaterial } from "three/addons/materials/LDrawConditionalLineMaterial.js";
+
+const CONDITIONS = ["raw", "raw+feedback", "env", "env+gates", "env+full"];
+const tone = (m) => (m === "✓" ? "p" : m === "∅" || m === "—" ? "n" : m === "×r" ? "w" : "f");
+
+// ── the table ────────────────────────────────────────────────────────────
+const data = await (await fetch("/api/runs")).json();
+const byCell = new Map(); // task|condition|source → runs, oldest first
+for (const r of data.runs) {
+  const k = `${r.task}|${r.condition}|${r.source}`;
+  if (!byCell.has(k)) byCell.set(k, []);
+  byCell.get(k).push(r);
+}
+for (const v of byCell.values()) v.sort((a, b) => (a.id.split("_").pop() < b.id.split("_").pop() ? -1 : 1));
+
+function table(source, conditions) {
+  let html = `<table><thead><tr><th>task</th>${conditions.map((c) => `<th>${c}</th>`).join("")}</tr></thead><tbody>`;
+  let band = "";
+  const totals = conditions.map(() => [0, 0]);
+  for (const t of data.tasks) {
+    if (t.band !== band) { band = t.band; html += `<tr><td class="band" colspan="${conditions.length + 1}">${band}</td></tr>`; }
+    html += `<tr><td>${t.id}</td>`;
+    conditions.forEach((c, i) => {
+      const runs = byCell.get(`${t.id}|${c}|${source}`);
+      if (!runs) { html += `<td class="n">—</td>`; return; }
+      const last = runs[runs.length - 1];
+      totals[i][1]++; if (last.mark === "✓") totals[i][0]++;
+      html += `<td class="cell"><button data-id="${last.id}" class="${tone(last.mark)}">${last.mark}</button>${runs.length > 1 ? `<sup title="${runs.length} runs; latest shown">×${runs.length}</sup>` : ""}</td>`;
+    });
+    html += "</tr>";
+  }
+  html += `<tr><td class="n">pass</td>${totals.map(([p, n]) => `<td class="n">${n ? `${p}/${n}` : "—"}</td>`).join("")}</tr></tbody></table>`;
+  return html;
+}
+const left = document.getElementById("left");
+const mine = data.runs.filter((r) => r.source === "mine");
+left.innerHTML =
+  `<div class="band">the paper's runs (records/)</div>${table("paper", CONDITIONS)}` +
+  `<div class="band" style="margin-top:14px">your runs (runs/)</div>${mine.length ? table("mine", ["raw", "raw+feedback"]) : `<p class="n" style="font-size:12px">none yet — python3 baseline.py --condition raw --tasks wall-doorway</p>`}` +
+  `<div class="legend">✓ every check passes · ×v parts collide or float · ×s falls over · ×f too big for the footprint · ×r another requirement missed · ∅ no model produced · — not run</div>`;
+document.getElementById("counts").textContent = `${data.runs.filter((r) => r.source === "paper").length} paper runs · ${mine.length} of yours`;
+
+// ── the 3D view ──────────────────────────────────────────────────────────
+const view = document.getElementById("view");
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+view.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xf6f7f8);
+scene.add(new THREE.HemisphereLight(0xffffff, 0xd8dde4, 2.2));
+const sun = new THREE.DirectionalLight(0xffffff, 1.2); sun.position.set(300, 500, 400); scene.add(sun);
+const camera = new THREE.PerspectiveCamera(35, 1, 1, 100000);
+const controls = new OrbitControls(camera, renderer.domElement); controls.enableDamping = true;
+const grid = new THREE.GridHelper(2000, 100, 0xcfd3d8, 0xe6e8eb); scene.add(grid);
+let model = null;
+function resize() { const w = view.clientWidth, h = view.clientHeight; renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+new ResizeObserver(resize).observe(view); resize();
+(function loop() { requestAnimationFrame(loop); controls.update(); renderer.render(scene, camera); })();
+
+function fit() {
+  if (!model) return;
+  const box = new THREE.Box3().setFromObject(model);
+  const c = box.getCenter(new THREE.Vector3()), s = box.getSize(new THREE.Vector3());
+  const d = Math.max(s.x, s.y, s.z, 40) * 1.9;
+  camera.position.set(c.x + d * 0.8, c.y + d * 0.6, c.z + d * 0.9);
+  controls.target.copy(c); controls.update();
+}
+document.getElementById("fit").onclick = fit;
+let xray = false;
+document.getElementById("xray").onclick = () => {
+  xray = !xray;
+  model?.traverse((o) => { if (o.isMesh) { o.material = o.material.clone(); o.material.transparent = xray; o.material.opacity = xray ? 0.35 : 1; o.material.depthWrite = !xray; } });
+};
+
+// LDraw: the part library comes through this server (/ldraw/…, cached from the bucket)
+const loader = new LDrawLoader();
+loader.setConditionalLineMaterial(LDrawConditionalLineMaterial); // required since three r167
+loader.setPartsLibraryPath("/ldraw/");
+loader.smoothNormals = true;
+const materials = loader.preloadMaterials("/ldraw/LDConfig.ldr");
+
+async function showModel(text, label) {
+  await materials;
+  if (model) scene.remove(model);
+  model = null;
+  hud(`${label} · loading parts…`);
+  await new Promise((done) => loader.parse(text, (group) => {
+    group.rotation.x = Math.PI; // LDraw y points down
+    model = group; scene.add(group); fit(); hud(label); done();
+  }, (e) => { hud(`${label} · could not render: ${e?.message ?? e}`); done(); }));
+}
+const hud = (s) => (document.getElementById("hud").innerHTML = s);
+
+// ── the detail panes ─────────────────────────────────────────────────────
+let current = null, tab = "grade";
+const detail = document.getElementById("detail");
+const esc = (s) => String(s ?? "").replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+function render() {
+  if (!current) return;
+  const r = current;
+  if (tab === "grade") {
+    const post = r.post ? Object.entries(r.post).map(([k, v]) => `${v ? "✓" : "✗"} ${k}`).join(" · ") : "—";
+    detail.innerHTML = `<div class="kv">
+      <span>run</span><span>${esc(r.id)} <span class="n">(${esc(r.file)})</span></span>
+      <span>condition</span><span>${esc(r.condition)} · ${esc(r.model ?? "")}${r.seconds ? ` · ${r.seconds}s` : ""}</span>
+      <span>verdict</span><span class="${tone(r.mark)}">${r.mark} ${r.PASS ? "PASS" : "fail"}</span>
+      <span>parts</span><span>${r.partCount ?? "—"}${r.heightLdu != null ? ` · height ${r.heightLdu} LDU` : ""}${r.footprintStuds ? ` · footprint ${r.footprintStuds.join("×")} studs` : ""}</span>
+      <span>valid</span><span>${r.valid === undefined ? "—" : r.valid}</span>
+      <span>stable</span><span>${r.stable === undefined ? "—" : r.stable}</span>
+      <span>requirements</span><span>${post}</span>
+    </div>
+    <div class="band">validator report</div><pre>${esc(r.verifyReport ?? "—")}</pre>
+    <div class="band">stability report</div><pre>${esc(r.stabilityReport ?? "—")}</pre>`;
+  } else if (tab === "trace") {
+    detail.innerHTML = r.rounds.length
+      ? r.rounds.map((x) => `<div class="round"><div class="h">attempt ${x.round} · ${x.parts ?? "—"} parts · valid ${x.valid ?? "—"} · stable ${x.stable ?? "—"}${x.ldr && r.attempts?.[x.ldr] ? ` · <a href="#" data-attempt="${esc(x.ldr)}">show this attempt</a>` : ""}</div><pre>${esc(x.note)}</pre></div>`).join("")
+      : `<div class="empty">no per-attempt trace in this record (the env conditions' sessions are replayed in the environment, not here)</div>`;
+    detail.querySelectorAll("a[data-attempt]").forEach((a) => (a.onclick = (e) => { e.preventDefault(); showModel(r.attempts[a.dataset.attempt], a.dataset.attempt); }));
+  } else {
+    detail.innerHTML = r.ldraw ? `<pre>${esc(r.ldraw)}</pre>` : `<div class="empty">no model file kept for this run</div>`;
+  }
+}
+document.querySelectorAll(".tabs button").forEach((b) => (b.onclick = () => { tab = b.dataset.tab; document.querySelectorAll(".tabs button").forEach((x) => x.classList.toggle("on", x === b)); render(); }));
+
+left.addEventListener("click", async (e) => {
+  const b = e.target.closest("button[data-id]");
+  if (!b) return;
+  left.querySelectorAll("button.on").forEach((x) => x.classList.remove("on"));
+  b.classList.add("on");
+  current = await (await fetch(`/api/run/${b.dataset.id}`)).json();
+  render();
+  if (current.ldraw) showModel(current.ldraw, `${current.task} · ${current.condition} · ${current.partCount ?? "?"} parts`);
+  else { if (model) scene.remove(model); model = null; hud(`${current.task} · ${current.condition} · no model file`); }
+});
+</script>
+</body>
+</html>

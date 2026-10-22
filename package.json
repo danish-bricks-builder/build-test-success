@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "grade": "tsx grade.ts",
-    "report": "python3 report.py"
+    "report": "python3 report.py",
+    "serve": "python3 serve.py"
   },
   "devDependencies": {
     "@types/node": "^20",
