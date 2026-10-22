@@ -1,0 +1,41 @@
+{
+ "runId": "build-house-gable_verifier_mtc37s9h",
+ "task": "house-gable",
+ "condition": "verifier",
+ "model": "claude-opus-5",
+ "seconds": 741,
+ "tools": {
+  "design_layout": 1,
+  "run_connect_script": 14,
+  "render_view": 12,
+  "place_on": 3,
+  "list_connectors": 2,
+  "silhouette": 1,
+  "inspect_build": 2,
+  "remove_parts": 2,
+  "attach_options": 11,
+  "attach_option": 10,
+  "find_parts": 1,
+  "check_validity": 2,
+  "check_stability": 2,
+  "search_parts": 2,
+  "auto_validate": 1
+ },
+ "error": null,
+ "partCount": 90,
+ "heightLdu": 264,
+ "footprintStuds": [
+  11,
+  10
+ ],
+ "valid": true,
+ "verifyReport": "VALID: 90 parts · 140 joints · 1 cluster · 10 grounded · no collisions",
+ "stable": true,
+ "stabilityReport": "STABLE: 90 parts · 137 g · CoM margin 79.2 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": true
+ },
+ "PASS": true
+}

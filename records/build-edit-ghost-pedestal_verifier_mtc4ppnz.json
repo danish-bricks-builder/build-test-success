@@ -1,0 +1,37 @@
+{
+ "runId": "build-edit-ghost-pedestal_verifier_mtc4ppnz",
+ "task": "edit-ghost-pedestal",
+ "condition": "verifier",
+ "model": "claude-opus-5",
+ "seconds": 555,
+ "tools": {
+  "render_view": 8,
+  "inspect_build": 2,
+  "silhouette": 3,
+  "run_connect_script": 4,
+  "remove_parts": 3,
+  "check_validity": 2,
+  "check_stability": 2,
+  "auto_validate": 2,
+  "list_connectors": 1,
+  "attach_part": 9,
+  "attach_options": 1
+ },
+ "error": null,
+ "preserved": 0.222,
+ "partCount": 64,
+ "heightLdu": 168,
+ "footprintStuds": [
+  13,
+  8
+ ],
+ "valid": true,
+ "verifyReport": "VALID: 64 parts · 77 joints · 2 clusters · 7 grounded · no collisions",
+ "stable": true,
+ "stabilityReport": "STABLE: 64 parts · 109 g · CoM margin 19.5 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "preserved": false
+ },
+ "PASS": false
+}

@@ -1,0 +1,32 @@
+{
+ "runId": "build-pyramid-giza_none_mteuvkjs",
+ "task": "pyramid-giza",
+ "condition": "none",
+ "model": "claude-opus-5",
+ "seconds": 908,
+ "tools": {
+  "design_layout": 1,
+  "anchor_part": 1,
+  "inspect_build": 2,
+  "remove_parts": 1,
+  "run_connect_script": 2,
+  "render_view": 3
+ },
+ "error": "terminated",
+ "partCount": 213,
+ "heightLdu": 192,
+ "footprintStuds": [
+  15,
+  13.5
+ ],
+ "valid": true,
+ "verifyReport": "VALID: 213 parts · 192 joints · 23 clusters · 46 grounded · no collisions",
+ "stable": false,
+ "stabilityReport": "UNSTABLE: 2 issue(s) — structure of 13 part(s), 11.7 g: CoM is 6.1 LDU outside its ground footprint — it tips over ; structure of 13 part(s), 11.7 g: CoM is 6.1 LDU outside its ground footprint — it tips over",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": true
+ },
+ "PASS": false
+}

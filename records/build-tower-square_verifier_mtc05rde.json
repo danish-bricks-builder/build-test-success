@@ -1,0 +1,33 @@
+{
+ "runId": "build-tower-square_verifier_mtc05rde",
+ "task": "tower-square",
+ "condition": "verifier",
+ "model": "claude-opus-5",
+ "seconds": 197,
+ "tools": {
+  "write_note": 2,
+  "search_parts": 3,
+  "run_connect_script": 4,
+  "render_view": 4,
+  "check_validity": 1,
+  "check_stability": 1,
+  "auto_validate": 1
+ },
+ "error": null,
+ "partCount": 63,
+ "heightLdu": 296,
+ "footprintStuds": [
+  11,
+  8
+ ],
+ "valid": true,
+ "verifyReport": "VALID: 63 parts · 98 joints · 1 cluster · 4 grounded · no collisions",
+ "stable": true,
+ "stabilityReport": "STABLE: 63 parts · 116 g · CoM margin 59.5 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": true
+ },
+ "PASS": true
+}

@@ -1,0 +1,32 @@
+{
+ "runId": "build-pyramid-giza_raw4r_mtez7ted",
+ "task": "pyramid-giza",
+ "condition": "raw-ldraw-4r",
+ "model": "claude-opus-5",
+ "seconds": 95,
+ "rounds": [
+  {
+   "round": 1,
+   "parts": 139,
+   "valid": true,
+   "stable": true,
+   "report": "VALID: 139 parts · 362 joints · 1 cluster · 84 grounded · no collisions"
+  }
+ ],
+ "partCount": 139,
+ "heightLdu": 144,
+ "footprintStuds": [
+  14,
+  14
+ ],
+ "valid": true,
+ "verifyReport": "VALID: 139 parts · 362 joints · 1 cluster · 84 grounded · no collisions",
+ "stable": true,
+ "stabilityReport": "STABLE: 139 parts · 198 g · CoM margin 138.7 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": true
+ },
+ "PASS": true
+}

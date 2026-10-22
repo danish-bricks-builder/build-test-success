@@ -1,0 +1,32 @@
+{
+ "runId": "build-lighthouse-tall_raw1r_mtezmkvi",
+ "task": "lighthouse-tall",
+ "condition": "raw-ldraw-1r",
+ "model": "claude-opus-5",
+ "seconds": 218,
+ "rounds": [
+  {
+   "round": 1,
+   "parts": 102,
+   "valid": false,
+   "stable": false,
+   "report": "28 invalid parts: 8 unattached, 23 collisions · 20 clusters"
+  }
+ ],
+ "partCount": 102,
+ "heightLdu": 536,
+ "footprintStuds": [
+  9,
+  8
+ ],
+ "valid": false,
+ "verifyReport": "28 invalid parts: 8 unattached, 23 collisions · 20 clusters",
+ "stable": true,
+ "stabilityReport": "STABLE: 102 parts · 197 g · CoM margin 9.4 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": true
+ },
+ "PASS": false
+}

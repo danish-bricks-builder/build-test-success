@@ -1,0 +1,190 @@
+{
+ "note": "The thirteen tasks of the IAEval paper (Build, Test, Success), copied verbatim from evals/build-tasks.json on 2026-10-21. `post` are the machine-checked requirements of Sec. 3.6.4. The seven-task ablation subset is marked.",
+ "ablation_subset": [
+  "greek-temple",
+  "roman-aqueduct",
+  "colosseum-ring",
+  "lighthouse-tall",
+  "pyramid-giza",
+  "edit-ghost-pedestal",
+  "inv-dinosaur"
+ ],
+ "tasks": [
+  {
+   "id": "wall-doorway",
+   "band": "small",
+   "type": "build",
+   "prompt": "Build a straight wall 16 studs long, 1 stud thick, at least 6 bricks tall, with a doorway opening in the middle (at least 3 studs wide and 5 bricks tall) spanned by a lintel. Use running-bond brick courses (seams overlapped). One color for the wall, another for the lintel. 30-70 parts.",
+   "post": {
+    "minParts": 25,
+    "minHeightLdu": 144,
+    "maxFootprintStuds": [
+     18,
+     4
+    ]
+   }
+  },
+  {
+   "id": "tower-square",
+   "band": "small",
+   "type": "build",
+   "prompt": "Build a square watchtower: footprint about 6x6 studs, at least 10 bricks tall, with a wider battlement platform on top (about 8x8 studs, with a parapet ring around its edge). Two colors maximum, sensible courses with overlapped seams (running bond), no floating parts. 60-120 parts.",
+   "post": {
+    "minParts": 40,
+    "minHeightLdu": 240,
+    "maxFootprintStuds": [
+     12,
+     12
+    ]
+   }
+  },
+  {
+   "id": "house-gable",
+   "band": "small",
+   "type": "build",
+   "prompt": "Build a small house: rectangular footprint about 8x10 studs, walls at least 5 bricks tall with a doorway in one long wall and one window opening in another, topped by a sloped gable roof made of slope bricks. Two or three colors, walls in running bond, roof in a single color. 60-140 parts.",
+   "post": {
+    "minParts": 50,
+    "minHeightLdu": 168,
+    "maxFootprintStuds": [
+     14,
+     14
+    ]
+   }
+  },
+  {
+   "id": "pyramid-steps",
+   "band": "small",
+   "type": "build",
+   "prompt": "Build a stepped pyramid: square base about 12x12 studs, at least 5 tiers, each tier inset by one stud on every side, in a single sand-colored scheme. Center the tiers so nothing overhangs. 60-140 parts.",
+   "post": {
+    "minParts": 50,
+    "minHeightLdu": 120,
+    "maxFootprintStuds": [
+     16,
+     16
+    ]
+   }
+  },
+  {
+   "id": "lighthouse-tall",
+   "band": "medium",
+   "type": "build",
+   "prompt": "Build a tall lighthouse on a rocky base: a rough wide base (about 8x8 studs, 2-3 bricks, dark grey), then a tapering tower in alternating red and white bands at least 14 bricks tall, topped by a glazed lantern room (trans-clear pieces) with a small roof. It must stand: keep the tower centered over the base as it tapers. Within a 10x10 stud footprint. 80-180 parts.",
+   "post": {
+    "minParts": 70,
+    "minHeightLdu": 400,
+    "maxFootprintStuds": [
+     10,
+     10
+    ]
+   }
+  },
+  {
+   "id": "roman-aqueduct",
+   "band": "medium",
+   "type": "build",
+   "prompt": "Build a section of Roman aqueduct: a lower tier of at least 4 round arches (arch bricks or corbelled), a second tier of smaller arches above it, and a water channel running along the top with side walls. Straight run, about 24 studs long, 3-4 studs thick. Tan/sand scheme. 100-220 parts.",
+   "post": {
+    "minParts": 90,
+    "minHeightLdu": 200,
+    "maxFootprintStuds": [
+     26,
+     6
+    ]
+   }
+  },
+  {
+   "id": "greek-temple",
+   "band": "medium",
+   "type": "build",
+   "prompt": "Build a Greek temple: a stepped stylobate base about 16x10 studs, a colonnade of at least 6 round columns per long side (freestanding, evenly spaced), an inner cella wall, an entablature beam ring resting on the columns, and a low-pitch pediment roof with triangular gable ends. Sand or white scheme. 120-260 parts.",
+   "post": {
+    "minParts": 100,
+    "minHeightLdu": 168,
+    "maxFootprintStuds": [
+     18,
+     12
+    ]
+   }
+  },
+  {
+   "id": "pyramid-giza",
+   "band": "medium",
+   "type": "build",
+   "prompt": "Build the Great Pyramid: square base 14x14 studs, at least 7 tiers stepping in evenly to a peak, in tan, with one side carrying a small entrance opening at ground level. Center the tiers exactly. 130-280 parts.",
+   "post": {
+    "minParts": 120,
+    "minHeightLdu": 140,
+    "maxFootprintStuds": [
+     16,
+     16
+    ]
+   }
+  },
+  {
+   "id": "colosseum-ring",
+   "band": "medium",
+   "type": "build",
+   "prompt": "Build a Colosseum-style arena: a closed oval or octagonal ring wall about 20x16 studs outside, with a lower tier of arched openings all the way around and a second, set-back tier above with smaller openings. Sand color. Leave the arena floor open. 150-320 parts.",
+   "post": {
+    "minParts": 140,
+    "minHeightLdu": 120,
+    "maxFootprintStuds": [
+     22,
+     18
+    ]
+   }
+  },
+  {
+   "id": "notre-dame-de-paris",
+   "band": "monumental",
+   "type": "build",
+   "prompt": "Build an extremely detailed model of Notre-Dame de Paris: two rectangular west towers with tall arched openings, a large rose window above three portal arches between them, a long nave behind with flying buttresses along both sides, and a slender spire at the crossing. Use trans-colored pieces for stained glass \u2014 the rose window and the tall nave windows should glow with mixed trans colors. Light grey stone with a dark roof. 450-900 parts.",
+   "post": {
+    "minParts": 400,
+    "minHeightLdu": 432,
+    "maxFootprintStuds": [
+     40,
+     22
+    ]
+   }
+  },
+  {
+   "id": "taj-mahal",
+   "band": "monumental",
+   "type": "build",
+   "prompt": "Build a detailed Taj Mahal: a wide raised platform, a central hall with a great arched iwan on each face, a large central onion dome on a drum, four smaller domed kiosks around it, and four slender corner minarets with little domes. All white with subtle accents. 450-900 parts.",
+   "post": {
+    "minParts": 400,
+    "minHeightLdu": 360,
+    "maxFootprintStuds": [
+     36,
+     36
+    ]
+   }
+  },
+  {
+   "id": "edit-ghost-pedestal",
+   "band": "edit",
+   "type": "edit",
+   "set": "40013-1",
+   "prompt": "This is the official LEGO Halloween Ghost, loaded as-is. Build a black display pedestal (at least 6x6 studs, 3 bricks tall, one row of dark-grey trim) and put the ghost ON TOP of it. The engine cannot move placed parts, so to lift the ghost you must remove its parts and re-place the SAME arrangement higher up \u2014 record the original positions first (inspect_build), and rebuild it exactly, only translated. The final scene must contain the complete unchanged ghost (same parts, same colors, same relative arrangement) standing on the pedestal.",
+   "post": {
+    "minParts": 30,
+    "minPreserved": 0.9
+   }
+  },
+  {
+   "id": "inv-dinosaur",
+   "band": "inventory",
+   "type": "inventory",
+   "set": "31009-1",
+   "prompt": "You may use ONLY the parts remaining in your inventory \u2014 every placement is rejected once a part+color runs out (check remaining stock with inspect_build). From this inventory, build a DINOSAUR: a standing four-legged or two-legged dinosaur with a long neck or big head, a tail, and a recognizable silhouette from the side. It must be valid and stable. Use the silhouette tool to check the side view reads as a dinosaur.",
+   "post": {
+    "minParts": 40,
+    "minPreserved": 0
+   }
+  }
+ ]
+}

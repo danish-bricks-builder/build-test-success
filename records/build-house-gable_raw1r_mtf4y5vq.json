@@ -1,0 +1,32 @@
+{
+ "runId": "build-house-gable_raw1r_mtf4y5vq",
+ "task": "house-gable",
+ "condition": "raw-ldraw-1r",
+ "model": "claude-opus-5",
+ "seconds": 238,
+ "rounds": [
+  {
+   "round": 1,
+   "parts": 91,
+   "valid": false,
+   "stable": false,
+   "report": "50 invalid parts: 25 unattached, 56 collisions · 34 clusters"
+  }
+ ],
+ "partCount": 91,
+ "heightLdu": 200,
+ "footprintStuds": [
+  16,
+  8
+ ],
+ "valid": false,
+ "verifyReport": "50 invalid parts: 25 unattached, 56 collisions · 34 clusters",
+ "stable": true,
+ "stabilityReport": "STABLE: 91 parts · 131 g · CoM margin 7.6 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": false
+ },
+ "PASS": false
+}

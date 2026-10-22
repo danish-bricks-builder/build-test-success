@@ -1,0 +1,32 @@
+{
+ "runId": "build-tower-square_raw1r_mtevglt1",
+ "task": "tower-square",
+ "condition": "raw-ldraw-1r",
+ "model": "claude-opus-5",
+ "seconds": 99,
+ "rounds": [
+  {
+   "round": 1,
+   "parts": 71,
+   "valid": false,
+   "stable": false,
+   "report": "12 invalid parts: 0 unattached, 16 collisions · 2 clusters"
+  }
+ ],
+ "partCount": 71,
+ "heightLdu": 304,
+ "footprintStuds": [
+  15,
+  8
+ ],
+ "valid": false,
+ "verifyReport": "12 invalid parts: 0 unattached, 16 collisions · 2 clusters",
+ "stable": true,
+ "stabilityReport": "STABLE: 71 parts · 157 g · CoM margin 59.5 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": false
+ },
+ "PASS": false
+}

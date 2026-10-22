@@ -1,0 +1,34 @@
+{
+ "runId": "build-lighthouse-tall_none_mteuqn91",
+ "task": "lighthouse-tall",
+ "condition": "none",
+ "model": "claude-opus-5",
+ "seconds": 228,
+ "tools": {
+  "design_layout": 1,
+  "run_connect_script": 10,
+  "render_view": 5,
+  "search_parts": 3,
+  "list_connectors": 1,
+  "attach_part": 1,
+  "inspect_build": 1,
+  "write_note": 1
+ },
+ "error": null,
+ "partCount": 118,
+ "heightLdu": 536,
+ "footprintStuds": [
+  11,
+  8
+ ],
+ "valid": true,
+ "verifyReport": "VALID: 118 parts · 199 joints · 1 cluster · 8 grounded · no collisions",
+ "stable": true,
+ "stabilityReport": "STABLE: 118 parts · 185 g · CoM margin 79.5 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": false
+ },
+ "PASS": false
+}

@@ -1,0 +1,39 @@
+{
+ "runId": "build-notre-dame-de-paris_verifier_mtfecunw",
+ "task": "notre-dame-de-paris",
+ "condition": "verifier",
+ "model": "claude-opus-5",
+ "seconds": 1541,
+ "tools": {
+  "design_layout": 1,
+  "search_parts": 8,
+  "write_note": 1,
+  "run_connect_script": 34,
+  "render_view": 14,
+  "list_connectors": 5,
+  "check_validity": 6,
+  "silhouette": 2,
+  "remove_parts": 8,
+  "define_module_from": 3,
+  "mirror_stamp": 2,
+  "find_parts": 14,
+  "stamp_module": 6
+ },
+ "error": null,
+ "partCount": 809,
+ "heightLdu": 504,
+ "footprintStuds": [
+  29,
+  34
+ ],
+ "valid": true,
+ "verifyReport": "VALID: 809 parts · 1135 joints · 1 cluster · 52 grounded · no collisions",
+ "stable": true,
+ "stabilityReport": "STABLE: 809 parts · 1221 g · CoM margin 213.4 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": false
+ },
+ "PASS": false
+}

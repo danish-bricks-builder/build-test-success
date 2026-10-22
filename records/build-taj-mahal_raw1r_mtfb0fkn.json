@@ -1,0 +1,10 @@
+{
+ "runId": "build-taj-mahal_raw1r_mtfb0fkn",
+ "task": "taj-mahal",
+ "condition": "raw-ldraw-1r",
+ "model": "claude-opus-5",
+ "seconds": 444,
+ "rounds": [],
+ "PASS": false,
+ "verifyReport": "no LDraw produced in any round"
+}

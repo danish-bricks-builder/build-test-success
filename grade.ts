@@ -1,0 +1,148 @@
+/**
+ * Grade one LDraw file against one of the paper's tasks — the checks of Sec. 3.6 of
+ * "Build, Test, Success", exactly as the paper's harness ran them:
+ *
+ *   connection validity + collision   verifyBuild      (lib/engine/verify)
+ *   stability                         checkStability   (lib/engine/stability)
+ *   task requirements                 part count, height, footprint, part names, inventory
+ *
+ *   npx tsx grade.ts <file.ldr> --task <id>      → one JSON object on stdout
+ *
+ * Reads the part data under data/ (sh fetch-data.sh). Voxel shapes come one file per part from
+ * the data bucket, fetched the first time a part is met and cached in data/parts/voxels/ — the
+ * same table the paper's machine held whole. The output has the same
+ * fields as the paper's grade records in records/*.json; baseline.py calls this for every attempt.
+ */
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { fromLdr } from "./lib/ldraw/serialize";
+import { verifyBuild } from "./lib/engine/verify";
+import { validateConnections } from "./lib/engine/connectionGraph";
+import type { ConnectionMap } from "./lib/engine/snapAlign";
+import { checkStability } from "./lib/engine/stability";
+import type { VoxelData } from "./lib/engine/voxelCollision";
+import type { PartMetaMap } from "./lib/data/schemas";
+
+const DATA = join(__dirname, "data");
+const ORIGIN = (process.env.DATA_ORIGIN ?? "https://pub-09680f02457547f9bd4034ba506c47d7.r2.dev").replace(/\/$/, "");
+
+interface Task {
+  id: string;
+  type: "build" | "edit" | "inventory";
+  set?: string;
+  prompt: string;
+  post: {
+    minParts: number;
+    minHeightLdu?: number;
+    maxFootprintStuds?: [number, number];
+    partNames?: { match: string; min: number }[];
+    minPreserved?: number;
+  };
+}
+
+async function main() {
+  const args = process.argv.slice(2);
+  const file = args.find((a) => !a.startsWith("--"));
+  const taskId = args[args.indexOf("--task") + 1];
+  if (!file || args.indexOf("--task") < 0 || !taskId) {
+    console.error("usage: npx tsx grade.ts <file.ldr> --task <task-id>");
+    process.exit(2);
+  }
+  const { tasks } = JSON.parse(readFileSync(join(__dirname, "tasks.json"), "utf8")) as { tasks: Task[] };
+  const task = tasks.find((t) => t.id === taskId);
+  if (!task) {
+    console.error(`unknown task ${taskId}; known: ${tasks.map((t) => t.id).join(", ")}`);
+    process.exit(2);
+  }
+  for (const f of ["parts/meta.json", "parts/index.json", "parts/connections.json"])
+    if (!existsSync(join(DATA, f))) {
+      console.error(`missing data/${f} — run: sh fetch-data.sh`);
+      process.exit(2);
+    }
+
+  const meta = JSON.parse(readFileSync(join(DATA, "parts", "meta.json"), "utf8")) as PartMetaMap;
+  const nameIdx = new Map((JSON.parse(readFileSync(join(DATA, "parts", "index.json"), "utf8")) as { p: string; n: string }[]).map((r) => [r.p, r.n]));
+  const conns = JSON.parse(readFileSync(join(DATA, "parts", "connections.json"), "utf8")) as ConnectionMap;
+  // the voxel table, one file per part (data/parts/voxels/<part>.json = {min, dims, bits}), res 1 LDU
+  const vox: VoxelData = { res: 1, parts: {} };
+
+  const out: Record<string, unknown> = { task: task.id, file };
+  let parts;
+  try {
+    parts = fromLdr(readFileSync(file, "utf8"), meta).parts;
+  } catch (e) {
+    out.parseError = String(e).slice(0, 300);
+    out.PASS = false;
+    console.log(JSON.stringify(out));
+    return;
+  }
+
+  await Promise.all(
+    [...new Set(parts.map((p) => p.part))].map(async (p) => {
+      const cached = join(DATA, "parts", "voxels", `${p}.json`);
+      if (!existsSync(cached)) {
+        const res = await fetch(`${ORIGIN}/data/parts/voxels/${encodeURIComponent(p)}.json`).catch(() => null);
+        if (!res || !res.ok) return; // no shape for this part: the engine treats it as box-only, as the paper's did
+        mkdirSync(join(DATA, "parts", "voxels"), { recursive: true });
+        writeFileSync(cached, await res.text());
+      }
+      vox.parts[p] = JSON.parse(readFileSync(cached, "utf8"));
+    }),
+  );
+
+  // Both checks always run, as in the paper's final grading (the feedback text sent between
+  // attempts quotes stability only when the build is valid; see baseline.py).
+  const verify = verifyBuild(parts, meta, conns, vox);
+  const stability = checkStability(parts, meta, validateConnections(parts, meta, conns), vox);
+
+  // the task requirements, measured the way the paper's harness measured them
+  let maxY = 0, minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
+  for (const p of parts) {
+    const m = meta[p.part] ?? { w: 2, l: 2, h: 24 };
+    maxY = Math.max(maxY, p.y + m.h);
+    minX = Math.min(minX, p.x - (m.w * 20) / 2);
+    maxX = Math.max(maxX, p.x + (m.w * 20) / 2);
+    minZ = Math.min(minZ, p.z - (m.l * 20) / 2);
+    maxZ = Math.max(maxZ, p.z + (m.l * 20) / 2);
+  }
+  const fp: [number, number] = [(maxX - minX) / 20, (maxZ - minZ) / 20];
+  const post: Record<string, boolean> = { parts: parts.length >= task.post.minParts };
+  if (task.post.minHeightLdu != null) post.height = maxY >= task.post.minHeightLdu;
+  if (task.post.maxFootprintStuds)
+    post.footprint =
+      Math.max(fp[0], fp[1]) <= Math.max(...task.post.maxFootprintStuds) &&
+      Math.min(fp[0], fp[1]) <= Math.min(...task.post.maxFootprintStuds) + 0.001;
+  if (task.post.partNames)
+    for (const req of task.post.partNames) {
+      const re = new RegExp(req.match, "i");
+      const n = parts.filter((p) => re.test(nameIdx.get(p.part) ?? p.part)).length;
+      out[`parts_${req.match}`] = n;
+      post[`names(${req.match})`] = n >= req.min;
+    }
+  if (task.type === "inventory" && task.set) {
+    const inv = JSON.parse(readFileSync(join(DATA, "inv", `${task.set}.json`), "utf8")) as { parts: { p: string; c: number; q: number; spare: boolean }[] };
+    const allowed: Record<string, number> = {};
+    for (const r of inv.parts) if (!r.spare) allowed[`${r.p}:${r.c}`] = (allowed[`${r.p}:${r.c}`] ?? 0) + r.q;
+    const used: Record<string, number> = {};
+    for (const p of parts) used[`${p.part}:${p.color}`] = (used[`${p.part}:${p.color}`] ?? 0) + 1;
+    const over = Object.entries(used).filter(([k, n]) => n > (allowed[k] ?? 0));
+    out.bomOver = over.slice(0, 8);
+    post.bom = over.length === 0;
+  }
+
+  out.partCount = parts.length;
+  out.heightLdu = Math.round(maxY);
+  out.footprintStuds = fp.map((v) => Math.round(v * 2) / 2);
+  out.valid = verify.ok;
+  out.verifyReport = verify.report;
+  out.stable = stability.ok;
+  out.stabilityReport = stability.report;
+  out.post = post;
+  out.PASS = verify.ok && stability.ok && Object.values(post).every(Boolean);
+  console.log(JSON.stringify(out));
+}
+
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

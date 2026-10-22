@@ -1,0 +1,15 @@
+{
+  "name": "build-test-success",
+  "private": true,
+  "description": "Code for the Build, Test, Success paper: tasks, grader, baseline runner, records",
+  "license": "MIT",
+  "scripts": {
+    "grade": "tsx grade.ts",
+    "report": "python3 report.py"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "tsx": "^4.23.0",
+    "typescript": "^5"
+  }
+}
