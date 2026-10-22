@@ -13,7 +13,8 @@ browser cannot fetch them itself — this server stands in between).
 Routes:
     /                  the page (viewer/index.html)
     /api/runs          every run in records/ (the paper's) and runs/ (yours), normalized
-    /api/run/<id>      one run: the grade record and the LDraw text
+    /api/run/<id>      one run: the grade record, the LDraw text, the conversation or session if recorded
+    /api/snapshot/<id>/<file>   a model snapshot from sessions/<id>/snapshots/
     /ldraw/<path>      a part-library file, cached from the bucket
 """
 from __future__ import annotations
@@ -71,7 +72,28 @@ def normalize(path: Path, source: str) -> dict:
         "stable": final.get("stable"), "post": final.get("post"), "heightLdu": final.get("heightLdu"), "footprintStuds": final.get("footprintStuds"),
         "verifyReport": final.get("verifyReport"), "stabilityReport": final.get("stabilityReport"), "rounds": rounds,
         "hasLdr": path.with_suffix(".ldr").exists(), "file": str(path.relative_to(HERE)),
+        "conversation": r.get("conversation"), "hasSession": (HERE / "sessions" / run_id / "run.json").exists(),
     }
+
+
+def session(run_id: str) -> dict | None:
+    """The harness's own recording of a session, when sessions/<runId>/ holds one: run.json (the
+    turns, each with the message the agent was given) and toolLog.jsonl (one line per tool call:
+    name, input, result, and the model snapshot taken after it)."""
+    d = HERE / "sessions" / run_id
+    if not (d / "run.json").exists():
+        return None
+    run = json.loads((d / "run.json").read_text())
+    calls = []
+    log = d / "toolLog.jsonl"
+    if log.exists():
+        for line in log.read_text().splitlines():
+            if line.strip():
+                try:
+                    calls.append(json.loads(line))
+                except json.JSONDecodeError:
+                    pass
+    return {"run": run, "calls": calls, "snapshots": sorted(p.name for p in (d / "snapshots").glob("*.ldr")) if (d / "snapshots").exists() else []}
 
 
 def all_runs() -> list[dict]:
@@ -120,7 +142,14 @@ class Handler(SimpleHTTPRequestHandler):
                     run["ldraw"] = ldr.read_text() if ldr.exists() else None
                     # earlier attempts of a baseline.py run, when kept
                     run["attempts"] = {x["ldr"]: (HERE / "runs" / x["ldr"]).read_text() for x in run["rounds"] if x.get("ldr") and (HERE / "runs" / x["ldr"]).exists()}
+                    run["session"] = session(run["id"])
                     return self.send_json(run)
+            return self.send_json({"error": "no such run"}, 404)
+        m = re.fullmatch(r"/api/snapshot/([\w.-]+)/([\w.-]+)", path)
+        if m:
+            p = HERE / "sessions" / m.group(1) / "snapshots" / m.group(2)
+            if p.exists():
+                return self.send_text(p.read_text())
             return self.send_json({"error": "no such run"}, 404)
         if path.startswith("/ldraw/"):
             return self.ldraw(path[len("/ldraw/"):])

@@ -21,6 +21,7 @@ records behind every number in the paper. The interactive environment itself is 
 | `baseline.py` | the baseline runner: `raw` (one shot) and `raw+feedback` (four attempts with the validator's report pasted back as text), with the paper's exact prompts |
 | `report.py` | the results table in the paper's notation, for your runs and for the paper's records |
 | `records/` | the paper's grade records, one JSON per run (55 runs over the five conditions), with the final `.ldr` model beside most of them |
+| `sessions/` | the harness's recording of each session, `run.json` + `toolLog.jsonl` + `snapshots/` — the paper's are being restored from the machine that ran them and will land here |
 | `lib/` | the engine: connector library and mate detection, voxel collision, statics, LDraw parsing |
 
 ## The paper's results, from the records
@@ -88,7 +89,8 @@ python3 serve.py            # http://localhost:8787
 
 The paper's runs and yours in one table, every task against every condition. Click a cell: the
 model in 3D (orbit, zoom, x-ray), its grade with the validator's and the stability reports, the
-attempt-by-attempt trace where the record has one, and the LDraw source. Standard library only;
+attempt-by-attempt trace where the record has one (your own runs keep the whole conversation;
+a session folder shows every tool call with its snapshot), and the LDraw source. Standard library only;
 part geometry is fetched from the data bucket as needed and cached under `data/ldraw/`.
 
 ## Citing

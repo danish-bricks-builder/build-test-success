@@ -22,7 +22,8 @@ and an ANTHROPIC_API_KEY in the environment or in .env):
     python3 report.py                                    # the table
 
 Every run writes runs/<runId>.ldr (the final file) and <runId>.json (every
-round's file, report and grade), the same shape as the paper's records in records/.
+round's file, report and grade, plus the whole conversation), the same shape as the paper's
+records in records/.
 """
 from __future__ import annotations
 
@@ -162,6 +163,8 @@ def run_task(client, model: str, task: dict, attempts: int, dry_run: bool) -> di
         "seconds": round(time.time() - started), "rounds": rounds,
         "PASS": bool(final_grade and final_grade.get("PASS")),
         "final": final_grade or {"PASS": False, "verifyReport": "no LDraw produced in any round"},
+        # the whole exchange, so the run can be read back later (serve.py shows it under "trace")
+        "conversation": [{"role": "system", "content": SYSTEM}, *messages],
     }
     if final_ldr:
         (RUNS / f"{run_id}.ldr").write_text(final_ldr + "\n")

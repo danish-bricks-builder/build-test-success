@@ -191,10 +191,30 @@ function render() {
     <div class="band">validator report</div><pre>${esc(r.verifyReport ?? "—")}</pre>
     <div class="band">stability report</div><pre>${esc(r.stabilityReport ?? "—")}</pre>`;
   } else if (tab === "trace") {
-    detail.innerHTML = r.rounds.length
-      ? r.rounds.map((x) => `<div class="round"><div class="h">attempt ${x.round} · ${x.parts ?? "—"} parts · valid ${x.valid ?? "—"} · stable ${x.stable ?? "—"}${x.ldr && r.attempts?.[x.ldr] ? ` · <a href="#" data-attempt="${esc(x.ldr)}">show this attempt</a>` : ""}</div><pre>${esc(x.note)}</pre></div>`).join("")
-      : `<div class="empty">no per-attempt trace in this record (the env conditions' sessions are replayed in the environment, not here)</div>`;
+    let html = "";
+    // the harness's own recording: the turns, every tool call, a snapshot after each
+    if (r.session) {
+      const s = r.session;
+      html += `<div class="band">session recording (sessions/${esc(r.id)}/)</div>`;
+      for (const t of s.run.turns ?? []) html += `<div class="round"><div class="h">turn ${t.i + 1} · the agent was told</div><pre>${esc(t.userMessage)}</pre></div>`;
+      html += `<div class="band">${s.calls.length} tool calls</div>`;
+      html += s.calls.map((c, i) => `<div class="round"><div class="h">${i + 1}. <b>${esc(c.name)}</b>${c.snapshot ? ` · <a href="#" data-snap="${esc(c.snapshot)}">show snapshot ${esc(c.snapshot)}</a>` : ""}</div><pre>${esc(typeof c.input === "string" ? c.input : JSON.stringify(c.input, null, 1))}</pre><pre style="color:var(--muted)">${esc(typeof c.result === "string" ? c.result : JSON.stringify(c.result, null, 1))}</pre></div>`).join("");
+    }
+    // the whole exchange, as baseline.py keeps it
+    if (r.conversation) {
+      html += `<div class="band">conversation</div>`;
+      html += r.conversation.map((m) => `<div class="round"><div class="h"><b>${esc(m.role)}</b></div><pre>${esc(m.content)}</pre></div>`).join("");
+    }
+    // the per-attempt summary every record has
+    if (r.rounds.length) {
+      html += `<div class="band">attempts</div>`;
+      html += r.rounds.map((x) => `<div class="round"><div class="h">attempt ${x.round} · ${x.parts ?? "—"} parts · valid ${x.valid ?? "—"} · stable ${x.stable ?? "—"}${x.ldr && r.attempts?.[x.ldr] ? ` · <a href="#" data-attempt="${esc(x.ldr)}">show this attempt</a>` : ""}</div><pre>${esc(x.note)}</pre></div>`).join("");
+    }
+    if (!html) html = `<div class="empty">no trace in this record</div>`;
+    else if (!r.session && !r.conversation) html += `<div class="empty">Only the per-attempt summary is in the grade record. The conversation itself is in the harness's session folder (run.json, toolLog.jsonl, snapshots/) — drop it into sessions/${esc(r.id)}/ and it shows here.</div>`;
+    detail.innerHTML = html;
     detail.querySelectorAll("a[data-attempt]").forEach((a) => (a.onclick = (e) => { e.preventDefault(); showModel(r.attempts[a.dataset.attempt], a.dataset.attempt); }));
+    detail.querySelectorAll("a[data-snap]").forEach((a) => (a.onclick = async (e) => { e.preventDefault(); const t = await (await fetch(`/api/snapshot/${r.id}/${a.dataset.snap}`)).text(); showModel(t, `${r.task} · snapshot ${a.dataset.snap}`); }));
   } else {
     detail.innerHTML = r.ldraw ? `<pre>${esc(r.ldraw)}</pre>` : `<div class="empty">no model file kept for this run</div>`;
   }
