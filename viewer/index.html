@@ -160,12 +160,11 @@ async function showModel(text, label) {
   await new Promise((done) => loader.parse(text, (group) => {
     group.rotation.x = Math.PI; // LDraw y points down
     model = group; scene.add(group); fit();
-    // The ground is drawn under the model's lowest point, which is where the grader's "resting on the
-    // ground" test effectively puts it (a part at or below LDraw y = 0 counts as grounded). A model
-    // written with its bottom course at y = 0 sits one brick below the LDraw ground plane; say so.
+    // The grid is the LDraw ground plane, y = 0, and the model is drawn exactly where the file puts
+    // it. A raw-condition model often has its bottom course at y = 0, one brick below the plane
+    // (LDraw origins sit on the top face); the grader accepts that as resting on the ground. Say so.
     const low = new THREE.Box3().setFromObject(group).min.y;
-    grid.position.y = low;
-    hud(`${label}${Math.abs(low) > 0.5 ? ` · lowest point at LDraw y = ${Math.round(-low)} (ground plane drawn there)` : ""}`);
+    hud(`${label}${Math.abs(low) > 0.5 ? ` · lowest point at LDraw y = ${Math.round(-low)}, ${low < 0 ? "below" : "above"} the y = 0 plane` : ""}`);
     done();
   }, (e) => { hud(`${label} · could not render: ${e?.message ?? e}`); done(); }));
 }
