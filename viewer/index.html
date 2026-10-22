@@ -159,7 +159,14 @@ async function showModel(text, label) {
   hud(`${label} · loading parts…`);
   await new Promise((done) => loader.parse(text, (group) => {
     group.rotation.x = Math.PI; // LDraw y points down
-    model = group; scene.add(group); fit(); hud(label); done();
+    model = group; scene.add(group); fit();
+    // The ground is drawn under the model's lowest point, which is where the grader's "resting on the
+    // ground" test effectively puts it (a part at or below LDraw y = 0 counts as grounded). A model
+    // written with its bottom course at y = 0 sits one brick below the LDraw ground plane; say so.
+    const low = new THREE.Box3().setFromObject(group).min.y;
+    grid.position.y = low;
+    hud(`${label}${Math.abs(low) > 0.5 ? ` · lowest point at LDraw y = ${Math.round(-low)} (ground plane drawn there)` : ""}`);
+    done();
   }, (e) => { hud(`${label} · could not render: ${e?.message ?? e}`); done(); }));
 }
 const hud = (s) => (document.getElementById("hud").innerHTML = s);
