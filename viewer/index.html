@@ -152,12 +152,16 @@ loader.setPartsLibraryPath("/ldraw/");
 loader.smoothNormals = true;
 const materials = loader.preloadMaterials("/ldraw/LDConfig.ldr");
 
+let showing = 0; // the latest request wins: a slow earlier parse must not land on top of a newer one
 async function showModel(text, label) {
+  const mine = ++showing;
   await materials;
   if (model) scene.remove(model);
   model = null;
   hud(`${label} · loading parts…`);
   await new Promise((done) => loader.parse(text, (group) => {
+    if (mine !== showing) return done(); // superseded by a later click
+    if (model) scene.remove(model);
     group.rotation.x = Math.PI; // LDraw y points down
     model = group; scene.add(group); fit();
     // The grid is the LDraw ground plane, y = 0, and the model is drawn exactly where the file puts
@@ -166,7 +170,7 @@ async function showModel(text, label) {
     const low = new THREE.Box3().setFromObject(group).min.y;
     hud(`${label}${Math.abs(low) > 0.5 ? ` · lowest point at LDraw y = ${Math.round(-low)}, ${low < 0 ? "below" : "above"} the y = 0 plane` : ""}`);
     done();
-  }, (e) => { hud(`${label} · could not render: ${e?.message ?? e}`); done(); }));
+  }, (e) => { if (mine === showing) hud(`${label} · could not render: ${e?.message ?? e}`); done(); }));
 }
 const hud = (s) => (document.getElementById("hud").innerHTML = s);
 
@@ -229,7 +233,7 @@ left.addEventListener("click", async (e) => {
   current = await (await fetch(`/api/run/${b.dataset.id}`)).json();
   render();
   if (current.ldraw) showModel(current.ldraw, `${current.task} · ${current.condition} · ${current.partCount ?? "?"} parts`);
-  else { if (model) scene.remove(model); model = null; hud(`${current.task} · ${current.condition} · no model file`); }
+  else { showing++; if (model) scene.remove(model); model = null; hud(`${current.task} · ${current.condition} · no model file`); }
 });
 </script>
 </body>
