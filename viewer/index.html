@@ -68,7 +68,7 @@
     <div style="display:grid;grid-template-columns:max-content 1fr;gap:4px 10px;align-items:center;font-size:12px;margin-top:6px">
       <label for="tk">API key</label><input id="tk" type="password" placeholder="sk-ant-… (kept in this browser and in the server's memory only)" style="font:12px ui-monospace,Menlo,monospace;padding:3px 6px;border:1px solid var(--line);border-radius:4px">
       <label for="tc">condition</label><select id="tc" style="font:12px -apple-system,sans-serif;padding:3px"></select>
-      <label for="tm">model</label><input id="tm" value="claude-opus-5" style="font:12px ui-monospace,Menlo,monospace;padding:3px 6px;border:1px solid var(--line);border-radius:4px">
+      <label for="tm">model</label><select id="tm" style="font:12px ui-monospace,Menlo,monospace;padding:3px"></select>
       <span></span><span style="display:flex;gap:14px;align-items:center;font-size:11px;color:var(--muted)"><label><input id="te" type="checkbox" checked> eyes</label><button id="tgo" style="font:12px -apple-system,sans-serif;background:var(--ink);color:#fff;border:0;border-radius:4px;padding:4px 12px;cursor:pointer">run</button><span id="tmsg"></span></span>
     </div>
     <div id="feed" style="margin-top:8px;display:none"></div>
@@ -82,7 +82,7 @@
       <label for="rk">API key</label><input id="rk" type="password" placeholder="sk-ant-… (kept in this browser and in the server's memory only)" style="font:12px ui-monospace,Menlo,monospace;padding:3px 6px;border:1px solid var(--line);border-radius:4px">
       <label for="rt">task</label><select id="rt" style="font:12px -apple-system,sans-serif;padding:3px"></select>
       <label for="rc">condition</label><select id="rc" style="font:12px -apple-system,sans-serif;padding:3px"></select>
-      <label for="rm">model</label><input id="rm" value="claude-opus-5" style="font:12px ui-monospace,Menlo,monospace;padding:3px 6px;border:1px solid var(--line);border-radius:4px">
+      <label for="rm">model</label><select id="rm" style="font:12px ui-monospace,Menlo,monospace;padding:3px"></select>
       <span></span><span style="display:flex;gap:14px;font-size:11px;color:var(--muted)"><label><input id="re" type="checkbox" checked> eyes (render_view; needs Chrome + fetch-data.sh --eyes)</label><label><input id="rd" type="checkbox"> dry run (ldraw conditions only: print the prompt, call nothing)</label></span>
       <span></span><span style="display:flex;gap:6px;align-items:center"><button id="rgo" style="font:12px -apple-system,sans-serif;background:var(--ink);color:#fff;border:0;border-radius:4px;padding:4px 12px;cursor:pointer">run</button><span id="rmsg" style="font-size:11px;color:var(--muted)"></span></span>
     </div>
@@ -302,6 +302,10 @@ async function loadJobs() {
     const rt = $("rt");
     for (const t of [{ id: "all", band: "the 12 attemptable tasks (ldraw conditions only)" }, { id: "ablation", band: "the ablation subset (ldraw conditions only)" }, ...data.tasks]) { const o = document.createElement("option"); o.value = t.id; o.textContent = t.band ? `${t.id} · ${t.band}` : t.id; rt.appendChild(o); }
     rt.value = "wall-doorway";
+    for (const sel of [$("rm"), $("tm")]) {
+      for (const id of j.models.ids) { const o = document.createElement("option"); o.value = id; o.textContent = id + (id === j.models.default ? "  (the paper)" : ""); sel.appendChild(o); }
+      sel.value = j.models.default;
+    }
   }
   const box = $("jobs");
   box.innerHTML = j.jobs.length ? j.jobs.slice(0, 12).map((x) => `<div class="job ${x.id === selectedJob ? "on" : ""}" data-job="${x.id}"><span>${x.running ? "⏳" : x.code === 0 ? "done" : `exit ${x.code}`}</span><span>${esc(x.task)} · ${esc(x.condition)}</span><span class="n">${x.seconds}s</span>${x.running ? `<button data-stop="${x.id}">stop</button>` : ""}</div>`).join("") : "";

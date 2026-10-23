@@ -357,7 +357,7 @@ class Handler(SimpleHTTPRequestHandler):
             with JOBS_LOCK:
                 views = [job_view(j) for j in JOBS.values()]
             env_up = ENV_SERVER["proc"] is not None and ENV_SERVER["proc"].poll() is None
-            return self.send_json({"jobs": sorted(views, key=lambda j: j["startedAt"], reverse=True), "envServer": env_up, "conditions": list(CONDITIONS.values())})
+            return self.send_json({"jobs": sorted(views, key=lambda j: j["startedAt"], reverse=True), "envServer": env_up, "conditions": list(CONDITIONS.values()), "models": json.loads((HERE / "conditions.json").read_text())["models"]})
         m = re.fullmatch(r"/api/jobs/([\w-]+)/log", path)
         if m:
             with JOBS_LOCK:

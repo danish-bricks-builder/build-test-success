@@ -31,5 +31,19 @@
    "harness": "env/run.ts --condition verifier",
    "what": "env+gates, plus the validator as tools the agent may call during the build"
   }
- ]
+ ],
+ "models": {
+  "_note": "The model ids the environment accepts (lib/copilot/types.ts COPILOT_MODELS); any other id silently falls back to claude-sonnet-5 there. The paper used claude-opus-5. The ldraw conditions call the Anthropic API directly, so the gemini id does not apply to them.",
+  "default": "claude-opus-5",
+  "ids": [
+   "claude-opus-5",
+   "claude-opus-5-5",
+   "claude-fable-5-1",
+   "claude-fable-5",
+   "claude-opus-4-8",
+   "claude-sonnet-5",
+   "claude-haiku-4-5",
+   "gemini-3.8-flash"
+  ]
+ }
 }
