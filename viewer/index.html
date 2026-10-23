@@ -13,7 +13,10 @@
   header .muted { color: var(--muted); font-size: 12px; }
   main { display: grid; grid-template-columns: minmax(420px, 36%) 1fr; height: calc(100vh - 42px); }
   @media (max-width: 900px) { main { grid-template-columns: 1fr; height: auto; } }
-  #left { overflow: auto; border-right: 1px solid var(--line); padding: 10px 12px; }
+  #left { padding: 10px 12px; }
+  .job { display: flex; gap: 8px; align-items: center; font: 11px ui-monospace, Menlo, monospace; padding: 3px 0; border-top: 1px solid var(--line); cursor: pointer; }
+  .job.on { color: var(--accent); }
+  .job button { font: 10px -apple-system, sans-serif; background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; cursor: pointer; }
   #right { display: flex; flex-direction: column; min-width: 0; }
   table { border-collapse: collapse; width: 100%; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
   th, td { padding: 4px 6px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
@@ -50,7 +53,22 @@
   <span class="muted" style="margin-left:auto">click a cell · drag to orbit · scroll to zoom</span>
 </header>
 <main>
+  <div id="leftcol" style="overflow:auto;border-right:1px solid var(--line)">
+  <div id="runpanel" style="padding:10px 12px;border-bottom:1px solid var(--line);background:var(--panel)">
+    <div class="band" style="padding-top:0">run a condition</div>
+    <div style="display:grid;grid-template-columns:max-content 1fr;gap:4px 10px;align-items:center;font-size:12px;margin-top:4px">
+      <label for="rk">API key</label><input id="rk" type="password" placeholder="sk-ant-… (kept in this browser and in the server's memory only)" style="font:12px ui-monospace,Menlo,monospace;padding:3px 6px;border:1px solid var(--line);border-radius:4px">
+      <label for="rt">task</label><select id="rt" style="font:12px -apple-system,sans-serif;padding:3px"></select>
+      <label for="rc">condition</label><select id="rc" style="font:12px -apple-system,sans-serif;padding:3px"></select>
+      <label for="rm">model</label><input id="rm" value="claude-opus-5" style="font:12px ui-monospace,Menlo,monospace;padding:3px 6px;border:1px solid var(--line);border-radius:4px">
+      <span></span><span style="display:flex;gap:14px;font-size:11px;color:var(--muted)"><label><input id="re" type="checkbox" checked> eyes (render_view; needs Chrome + fetch-data.sh --eyes)</label><label><input id="rd" type="checkbox"> dry run (ldraw conditions only: print the prompt, call nothing)</label></span>
+      <span></span><span style="display:flex;gap:6px;align-items:center"><button id="rgo" style="font:12px -apple-system,sans-serif;background:var(--ink);color:#fff;border:0;border-radius:4px;padding:4px 12px;cursor:pointer">run</button><span id="rmsg" style="font-size:11px;color:var(--muted)"></span></span>
+    </div>
+    <div id="jobs" style="margin-top:8px"></div>
+    <pre id="joblog" style="display:none;max-height:220px;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:4px;padding:6px 8px;margin-top:6px;font-size:11px"></pre>
+  </div>
   <div id="left"></div>
+  </div>
   <div id="right">
     <div id="view">
       <div id="hud">pick a run</div>
@@ -77,14 +95,25 @@ const CONDITIONS = ["raw", "raw+feedback", "env", "env+gates", "env+full"];
 const tone = (m) => (m === "✓" ? "p" : m === "∅" || m === "—" ? "n" : m === "×r" ? "w" : "f");
 
 // ── the table ────────────────────────────────────────────────────────────
-const data = await (await fetch("/api/runs")).json();
-const byCell = new Map(); // task|condition|source → runs, oldest first
-for (const r of data.runs) {
-  const k = `${r.task}|${r.condition}|${r.source}`;
-  if (!byCell.has(k)) byCell.set(k, []);
-  byCell.get(k).push(r);
+let data = { tasks: [], runs: [] };
+let byCell = new Map(); // task|condition|source → runs, oldest first
+async function loadTable() {
+  data = await (await fetch("/api/runs")).json();
+  byCell = new Map();
+  for (const r of data.runs) {
+    const k = `${r.task}|${r.condition}|${r.source}`;
+    if (!byCell.has(k)) byCell.set(k, []);
+    byCell.get(k).push(r);
+  }
+  for (const v of byCell.values()) v.sort((a, b) => (a.id.split("_").pop() < b.id.split("_").pop() ? -1 : 1));
+  const mine = data.runs.filter((r) => r.source === "mine");
+  left.innerHTML =
+    `<div class="band">the paper's runs (records/)</div>${table("paper", CONDITIONS)}` +
+    `<div class="band" style="margin-top:14px">your runs (runs/)</div>${mine.length ? table("mine", CONDITIONS) : `<p class="n" style="font-size:12px">none yet — run one above</p>`}` +
+    `<div class="legend">✓ every check passes · ×v parts collide or float · ×s falls over · ×f too big for the footprint · ×r another requirement missed · ∅ no model produced · — not run</div>`;
+  document.getElementById("counts").textContent = `${data.runs.filter((r) => r.source === "paper").length} paper runs · ${mine.length} of yours`;
+  if (current) left.querySelector(`button[data-id="${current.id}"]`)?.classList.add("on");
 }
-for (const v of byCell.values()) v.sort((a, b) => (a.id.split("_").pop() < b.id.split("_").pop() ? -1 : 1));
 
 function table(source, conditions) {
   let html = `<table><thead><tr><th>task</th>${conditions.map((c) => `<th>${c}</th>`).join("")}</tr></thead><tbody>`;
@@ -106,12 +135,6 @@ function table(source, conditions) {
   return html;
 }
 const left = document.getElementById("left");
-const mine = data.runs.filter((r) => r.source === "mine");
-left.innerHTML =
-  `<div class="band">the paper's runs (records/)</div>${table("paper", CONDITIONS)}` +
-  `<div class="band" style="margin-top:14px">your runs (runs/)</div>${mine.length ? table("mine", ["raw", "raw+feedback"]) : `<p class="n" style="font-size:12px">none yet — python3 baseline.py --condition raw --tasks wall-doorway</p>`}` +
-  `<div class="legend">✓ every check passes · ×v parts collide or float · ×s falls over · ×f too big for the footprint · ×r another requirement missed · ∅ no model produced · — not run</div>`;
-document.getElementById("counts").textContent = `${data.runs.filter((r) => r.source === "paper").length} paper runs · ${mine.length} of yours`;
 
 // ── the 3D view ──────────────────────────────────────────────────────────
 const view = document.getElementById("view");
@@ -235,6 +258,48 @@ left.addEventListener("click", async (e) => {
   if (current.ldraw) showModel(current.ldraw, `${current.task} · ${current.condition} · ${current.partCount ?? "?"} parts`);
   else { showing++; if (model) scene.remove(model); model = null; hud(`${current.task} · ${current.condition} · no model file`); }
 });
+
+// ── running a condition from the page ────────────────────────────────────
+const $ = (id) => document.getElementById(id);
+try { $("rk").value = localStorage.getItem("bts-key") || ""; } catch {}
+$("rk").addEventListener("change", () => { try { localStorage.setItem("bts-key", $("rk").value.trim()); } catch {} });
+let selectedJob = null;
+async function loadJobs() {
+  const j = await (await fetch("/api/jobs")).json();
+  if (!$("rc").options.length) {
+    for (const c of j.conditions) { const o = document.createElement("option"); o.value = c.key; o.textContent = `${c.name} — ${c.what}`; $("rc").appendChild(o); }
+    const rt = $("rt");
+    for (const t of [{ id: "all", band: "the 12 attemptable tasks (ldraw conditions only)" }, { id: "ablation", band: "the ablation subset (ldraw conditions only)" }, ...data.tasks]) { const o = document.createElement("option"); o.value = t.id; o.textContent = t.band ? `${t.id} · ${t.band}` : t.id; rt.appendChild(o); }
+    rt.value = "wall-doorway";
+  }
+  const box = $("jobs");
+  box.innerHTML = j.jobs.length ? j.jobs.slice(0, 12).map((x) => `<div class="job ${x.id === selectedJob ? "on" : ""}" data-job="${x.id}"><span>${x.running ? "⏳" : x.code === 0 ? "done" : `exit ${x.code}`}</span><span>${esc(x.task)} · ${esc(x.condition)}</span><span class="n">${x.seconds}s</span>${x.running ? `<button data-stop="${x.id}">stop</button>` : ""}</div>`).join("") : "";
+  const envNote = j.envServer ? ` · environment server up on :8788 <button data-envstop style="font:10px -apple-system,sans-serif">stop it</button>` : "";
+  if (!$("rmsg").dataset.hold) $("rmsg").innerHTML = (j.jobs.some((x) => x.running) ? "running…" : "") + envNote;
+  box.querySelectorAll("[data-job]").forEach((el) => (el.onclick = (e) => { if (e.target.dataset.stop) return; selectedJob = el.dataset.job; showLog(); loadJobs(); }));
+  box.querySelectorAll("[data-stop]").forEach((b) => (b.onclick = async () => { await fetch(`/api/jobs/${b.dataset.stop}/stop`, { method: "POST" }); loadJobs(); }));
+  document.querySelector("[data-envstop]")?.addEventListener("click", async () => { await fetch("/api/env/stop", { method: "POST" }); loadJobs(); });
+  const running = j.jobs.some((x) => x.running);
+  if (running) setTimeout(loadJobs, 2000);
+  if (selectedJob) showLog();
+  if (!running && loadJobs.wasRunning) loadTable(); // a job just finished: its run is in the table now
+  loadJobs.wasRunning = running;
+}
+async function showLog() {
+  const t = await (await fetch(`/api/jobs/${selectedJob}/log`)).text();
+  const pre = $("joblog"); pre.style.display = "block"; pre.textContent = t || "(no output yet)"; pre.scrollTop = pre.scrollHeight;
+}
+$("rgo").onclick = async () => {
+  const key = $("rk").value.trim();
+  $("rmsg").dataset.hold = "1"; $("rmsg").textContent = "starting…";
+  const res = await fetch("/api/jobs", { method: "POST", headers: { "content-type": "application/json", ...(key ? { "x-api-key": key } : {}) }, body: JSON.stringify({ task: $("rt").value, condition: $("rc").value, model: $("rm").value, eyes: $("re").checked, dryRun: $("rd").checked }) });
+  const j = await res.json();
+  delete $("rmsg").dataset.hold;
+  if (!res.ok) { $("rmsg").textContent = j.error; return; }
+  selectedJob = j.id; loadJobs();
+};
+await loadTable();
+await loadJobs();
 </script>
 </body>
 </html>

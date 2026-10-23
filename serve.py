@@ -16,14 +16,24 @@ Routes:
     /api/run/<id>      one run: the grade record, the LDraw text, the conversation or session if recorded
     /api/snapshot/<id>/<file>   a model snapshot from sessions/<id>/snapshots/
     /ldraw/<path>      a part-library file, cached from the bucket
+    /api/jobs          GET: running and finished jobs; POST {task, condition, model, eyes, dryRun}
+                       with the API key in the x-api-key header starts one (baseline.py or env/run.ts;
+                       the environment server is started here when needed, with the key in its env)
+    /api/jobs/<id>/log · /api/jobs/<id>/stop · /api/env/stop
 """
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
+import socket
+import subprocess
+import threading
+import time
 import urllib.error
 import urllib.request
+import uuid
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -100,6 +110,114 @@ def all_runs() -> list[dict]:
     return out
 
 
+# ── running conditions from the page ─────────────────────────────────────────────────────
+# A job is one subprocess: baseline.py for the two ldraw conditions, env/run.ts for the three
+# environment conditions (which need the environment server; it is started here on demand, with
+# the key in its environment). Keys arrive in a request header, live in memory, never on disk.
+CONDITIONS = {c["key"]: c for c in json.loads((HERE / "conditions.json").read_text())["conditions"]}
+JOBS: dict[str, dict] = {}
+JOBS_LOCK = threading.Lock()
+LOG_DIR = HERE / "runs" / "_jobs"
+ENV_PORT = 8788
+ENV_SERVER: dict = {"proc": None, "key": None}
+
+
+def stop(proc: subprocess.Popen | None) -> None:
+    """Terminate a child and everything it spawned (npx wraps node; tsx wraps the script)."""
+    if proc is None or proc.poll() is not None:
+        return
+    try:
+        os.killpg(os.getpgid(proc.pid), 15)
+    except ProcessLookupError:
+        return
+    try:
+        proc.wait(timeout=10)
+    except subprocess.TimeoutExpired:
+        os.killpg(os.getpgid(proc.pid), 9)
+
+
+def port_open(port: int) -> bool:
+    with socket.socket() as sk:
+        sk.settimeout(0.3)
+        return sk.connect_ex(("127.0.0.1", port)) == 0
+
+
+def ensure_env_server(key: str) -> str | None:
+    """Start env/server.ts (or restart it when the key changed). Returns an error string or None."""
+    p = ENV_SERVER["proc"]
+    if p is not None and p.poll() is None and ENV_SERVER["key"] == key:
+        return None
+    stop(p)
+    if port_open(ENV_PORT):
+        return f"something else is already listening on port {ENV_PORT}; stop it or start the environment yourself with the same key"
+    LOG_DIR.mkdir(parents=True, exist_ok=True)
+    log = open(LOG_DIR / "env-server.log", "ab")
+    ENV_SERVER["proc"] = subprocess.Popen(["npx", "tsx", "env/server.ts", "--port", str(ENV_PORT)], cwd=HERE, env={**os.environ, "ANTHROPIC_API_KEY": key}, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+    ENV_SERVER["key"] = key
+    for _ in range(60):  # tsx compiles the route on first start; give it a while
+        if port_open(ENV_PORT):
+            return None
+        if ENV_SERVER["proc"].poll() is not None:
+            return "the environment server exited at start — see runs/_jobs/env-server.log"
+        time.sleep(0.5)
+    return "the environment server did not come up within 30 s — see runs/_jobs/env-server.log"
+
+
+def start_job(spec: dict, key: str) -> dict:
+    cond = CONDITIONS.get(spec.get("condition", ""))
+    if not cond:
+        raise ValueError(f"unknown condition {spec.get('condition')!r}")
+    task = spec.get("task")
+    tasks = json.loads((HERE / "tasks.json").read_text())["tasks"]
+    if task not in {t["id"] for t in tasks} and task not in ("all", "ablation"):
+        raise ValueError(f"unknown task {task!r}")
+    model = (spec.get("model") or "claude-opus-5").strip()
+    dry = bool(spec.get("dryRun"))
+    if cond["key"].startswith("raw-ldraw"):
+        cmd = ["python3", "baseline.py", "--condition", cond["name"], "--tasks", task, "--model", model] + (["--dry-run"] if dry else [])
+        env = {**os.environ, "ANTHROPIC_API_KEY": key} if key else dict(os.environ)
+    else:
+        if dry:
+            raise ValueError("dry run is only for the ldraw conditions (the environment has no dry run)")
+        if not key:
+            raise ValueError("the environment conditions need an API key")
+        if task in ("all", "ablation"):
+            raise ValueError("the environment runs one task per job — pick a task")
+        err = ensure_env_server(key)
+        if err:
+            raise ValueError(err)
+        cmd = ["npx", "tsx", "env/run.ts", f"--task={task}", f"--condition={cond['key']}", f"--model={model}", f"--eyes={'off' if spec.get('eyes') is False else 'on'}", f"--base=http://localhost:{ENV_PORT}"]
+        env = {**os.environ, "ANTHROPIC_API_KEY": key}
+    job_id = time.strftime("%Y%m%d-%H%M%S") + "-" + uuid.uuid4().hex[:4]
+    LOG_DIR.mkdir(parents=True, exist_ok=True)
+    log_path = LOG_DIR / f"{job_id}.log"
+    log = open(log_path, "wb")
+    proc = subprocess.Popen(cmd, cwd=HERE, env=env, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+    job = {"id": job_id, "cmd": " ".join(cmd), "task": task, "condition": cond["name"], "model": model, "startedAt": time.time(), "endedAt": None, "code": None, "proc": proc, "log": str(log_path)}
+    with JOBS_LOCK:
+        JOBS[job_id] = job
+    return job
+
+
+def job_view(j: dict) -> dict:
+    p = j["proc"]
+    if j["endedAt"] is None and p.poll() is not None:
+        j["endedAt"] = time.time()
+        j["code"] = p.returncode
+    return {k: v for k, v in j.items() if k != "proc"} | {"running": j["endedAt"] is None, "seconds": round((j["endedAt"] or time.time()) - j["startedAt"])}
+
+
+def tail(path: str, n: int = 4000) -> str:
+    try:
+        with open(path, "rb") as f:
+            f.seek(0, 2)
+            size = f.tell()
+            f.seek(max(0, size - n))
+            return f.read().decode("utf-8", "replace")
+    except FileNotFoundError:
+        return ""
+
+
 class Handler(SimpleHTTPRequestHandler):
     def log_message(self, fmt, *args):  # quiet, except errors
         if args and str(args[1]).startswith(("4", "5")) and "/ldraw/" not in str(args[0]):
@@ -149,8 +267,44 @@ class Handler(SimpleHTTPRequestHandler):
             if p.exists():
                 return self.send_text(p.read_text())
             return self.send_json({"error": "no such run"}, 404)
+        if path == "/api/jobs":
+            with JOBS_LOCK:
+                views = [job_view(j) for j in JOBS.values()]
+            env_up = ENV_SERVER["proc"] is not None and ENV_SERVER["proc"].poll() is None
+            return self.send_json({"jobs": sorted(views, key=lambda j: j["startedAt"], reverse=True), "envServer": env_up, "conditions": list(CONDITIONS.values())})
+        m = re.fullmatch(r"/api/jobs/([\w-]+)/log", path)
+        if m:
+            with JOBS_LOCK:
+                j = JOBS.get(m.group(1))
+            if not j:
+                return self.send_json({"error": "no such job"}, 404)
+            return self.send_text(tail(j["log"]) + ("" if j["proc"].poll() is None else ""), cache=False)
         if path.startswith("/ldraw/"):
             return self.ldraw(path[len("/ldraw/"):])
+        return self.send_json({"error": "not found"}, 404)
+
+    def do_POST(self):
+        path = self.path.split("?", 1)[0]
+        length = int(self.headers.get("content-length") or 0)
+        body = json.loads(self.rfile.read(length) or b"{}") if length else {}
+        key = (self.headers.get("x-api-key") or "").strip()
+        if path == "/api/jobs":
+            try:
+                return self.send_json(job_view(start_job(body, key)), 201)
+            except ValueError as e:
+                return self.send_json({"error": str(e)}, 400)
+        m = re.fullmatch(r"/api/jobs/([\w-]+)/stop", path)
+        if m:
+            with JOBS_LOCK:
+                j = JOBS.get(m.group(1))
+            if not j:
+                return self.send_json({"error": "no such job"}, 404)
+            stop(j["proc"])
+            return self.send_json(job_view(j))
+        if path == "/api/env/stop":
+            stop(ENV_SERVER["proc"])
+            ENV_SERVER["proc"] = None
+            return self.send_json({"envServer": False})
         return self.send_json({"error": "not found"}, 404)
 
     def ldraw(self, rel: str):
@@ -189,6 +343,11 @@ def main() -> None:
         server.serve_forever()
     except KeyboardInterrupt:
         pass
+    finally:
+        stop(ENV_SERVER["proc"])
+        with JOBS_LOCK:
+            for j in JOBS.values():
+                stop(j["proc"])
 
 
 if __name__ == "__main__":

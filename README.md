@@ -112,7 +112,11 @@ monumental tasks tens of minutes.
 python3 serve.py            # http://localhost:8787
 ```
 
-The paper's runs and yours in one table, every task against every condition. Click a cell: the
+The paper's runs and yours in one table, every task against every condition. The panel at the top
+runs a condition from the page: paste your API key (it stays in this browser and in the server's
+memory, never on disk), pick a task and a condition, and press run; the log streams below and the
+result lands in the table. The three environment conditions start the environment server for you
+on port 8788. Click a cell: the
 model in 3D (orbit, zoom, x-ray), its grade with the validator's and the stability reports, the
 attempt-by-attempt trace where the record has one (your own runs keep the whole conversation;
 a session folder shows every tool call with its snapshot), and the LDraw source. Standard library only;
