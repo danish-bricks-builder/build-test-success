@@ -472,7 +472,7 @@ class Handler(SimpleHTTPRequestHandler):
         if path == "/api/runs":
             tasks = json.loads((HERE / "tasks.json").read_text())
             return self.send_json({"tasks": [{"id": t["id"], "band": t["band"], "type": t["type"]} for t in tasks["tasks"]], "runs": all_runs()})
-        m = re.fullmatch(r"/api/run/([\w.-]+)", path)
+        m = re.fullmatch(r"/api/run/([\w.+-]+)", path)
         if m:
             for d in ("records", "runs"):
                 p = HERE / d / f"{m.group(1)}.json"
@@ -485,7 +485,7 @@ class Handler(SimpleHTTPRequestHandler):
                     run["session"] = session(run["id"])
                     return self.send_json(run)
             return self.send_json({"error": "no such run"}, 404)
-        m = re.fullmatch(r"/api/snapshot/([\w.-]+)/([\w.-]+)", path)
+        m = re.fullmatch(r"/api/snapshot/([\w.+-]+)/([\w.+-]+)", path)
         if m:
             p = HERE / "sessions" / m.group(1) / "snapshots" / m.group(2)
             if p.exists():
@@ -494,7 +494,7 @@ class Handler(SimpleHTTPRequestHandler):
         if path == "/api/queue":
             with QUEUE_LOCK:
                 return self.send_json(queue_view())
-        m = re.match(r"^/api/thumb/([\w.-]+)$", path)
+        m = re.match(r"^/api/thumb/([\w.+-]+)$", path)
         if m:
             p = thumb_path(m.group(1))
             if not p:
