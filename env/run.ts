@@ -119,6 +119,7 @@ async function runOnce() {
   let finalLdr: string | null = null;
   let lastError: string | null = null;
   const toolCounts = new Map<string, number>();
+  const usage = { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 }; // tokens over every turn, from the environment's usage events
   for (;;) {
     const { done, value } = await reader.read();
     if (done) break;
@@ -134,7 +135,8 @@ async function runOnce() {
       } catch {
         continue;
       }
-      if (ev.type === "result" && ev.ldraw) finalLdr = ev.ldraw;
+      if (ev.type === "usage") { const u = ev as unknown as Record<string, number>; for (const k of ["input", "output", "cacheRead", "cacheWrite"] as const) usage[k] += Number(u[k] ?? 0); }
+      else if (ev.type === "result" && ev.ldraw) finalLdr = ev.ldraw;
       else if (ev.type === "tool" && ev.name) {
         toolCounts.set(ev.name, (toolCounts.get(ev.name) ?? 0) + 1);
         process.stdout.write(ev.name.startsWith("auto_") ? `\n[${ev.name}] ${ev.summary ?? ""}\n` : ".");
@@ -145,7 +147,7 @@ async function runOnce() {
 
   // ── grade the final artifact (independent of anything the agent said)
   mkdirSync("runs", { recursive: true });
-  const grades: Record<string, unknown> = { runId, task: task.id, condition: cond, model, prompt: task.prompt, seconds: Math.round((Date.now() - started) / 1000), tools: Object.fromEntries(toolCounts), error: lastError };
+  const grades: Record<string, unknown> = { runId, task: task.id, condition: cond, model, prompt: task.prompt, seconds: Math.round((Date.now() - started) / 1000), tools: Object.fromEntries(toolCounts), usage, error: lastError };
   if (finalLdr) {
     writeFileSync(join("runs", `${runId}.ldr`), finalLdr);
     // export for the viewers: /assemblies/build:<runId> · /steps2?set=build:<runId> · /editor?set=build:<runId>

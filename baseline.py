@@ -135,9 +135,10 @@ def run_task(client, model: str, task: dict, attempts: int, dry_run: bool) -> di
 
     started = time.time()
     rounds, final_ldr, final_grade = [], None, None
+    usage: dict = {}
     for rnd in range(1, attempts + 1):
         print(f"  attempt {rnd}/{attempts} … ", end="", flush=True)
-        text = call_model(client, model, messages)
+        text = call_model(client, model, messages, usage)
         messages.append({"role": "assistant", "content": text})
         ldr = extract_ldr(text)
         if ldr is None:
@@ -160,7 +161,7 @@ def run_task(client, model: str, task: dict, attempts: int, dry_run: bool) -> di
 
     record = {
         "runId": run_id, "task": task["id"], "condition": condition, "model": model, "prompt": task["prompt"],
-        "seconds": round(time.time() - started), "rounds": rounds,
+        "seconds": round(time.time() - started), "rounds": rounds, "usage": usage,
         "PASS": bool(final_grade and final_grade.get("PASS")),
         "final": final_grade or {"PASS": False, "verifyReport": "no LDraw produced in any round"},
         # the whole exchange, so the run can be read back later (serve.py shows it under "trace")
@@ -173,13 +174,18 @@ def run_task(client, model: str, task: dict, attempts: int, dry_run: bool) -> di
     return record
 
 
-def call_model(client, model: str, messages: list[dict]) -> str:
-    """One model call with the paper's settings (32k output tokens, streamed); retried on network errors."""
+def call_model(client, model: str, messages: list[dict], usage: dict) -> str:
+    """One model call with the paper's settings (32k output tokens, streamed); retried on network errors.
+    Token counts are added into `usage` (output includes the model's thinking, which is billed)."""
     last = None
     for attempt in range(1, 5):
         try:
             with client.messages.stream(model=model, max_tokens=32000, system=SYSTEM, messages=messages) as stream:
-                return "".join(block.text for block in stream.get_final_message().content if block.type == "text")
+                final = stream.get_final_message()
+                u = final.usage
+                for k, v in (("input", u.input_tokens), ("output", u.output_tokens), ("cacheRead", getattr(u, "cache_read_input_tokens", 0) or 0), ("cacheWrite", getattr(u, "cache_creation_input_tokens", 0) or 0)):
+                    usage[k] = usage.get(k, 0) + v
+                return "".join(block.text for block in final.content if block.type == "text")
         except Exception as e:  # noqa: BLE001 — network flakes; the error is re-raised after four tries
             status = getattr(e, "status_code", None)
             if status is not None and status not in (408, 409, 429) and status < 500:
