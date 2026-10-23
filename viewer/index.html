@@ -28,9 +28,9 @@
   /* the five condition columns share the width left after the task column; pictures shrink with them */
   table.results { table-layout: fixed; }
   table.results td:first-child, table.results th:first-child { overflow: hidden; text-overflow: ellipsis; text-align: left; }
-  table.results td.cell { padding: 4px 2px; }
+  table.results td.cell, table.results th:not(:first-child) { padding: 4px 2px; text-align: center; }
   td.cell button { width: 100%; padding: 1px; box-sizing: border-box; }
-  td.cell img { display: block; width: 100%; max-width: 96px; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; border: 2px solid #cfd3d8; background: #f6f7f8; box-sizing: border-box; }
+  td.cell img { display: block; width: 100%; max-width: 96px; margin: 0 auto; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; border: 2px solid #cfd3d8; background: #f6f7f8; box-sizing: border-box; }
   td.cell button.p img { border-color: #4caf50; }
   td.cell button.f img, td.cell button.w img { border-color: #e57373; }
   .p { color: var(--pass); } .w { color: var(--warn); } .f { color: var(--fail); } .n { color: var(--muted); }
@@ -376,17 +376,26 @@ async function loadQueue() {
   const n = q.done.length + (q.active ? 0.5 : 0);
   if (loadQueue.last !== undefined && n !== loadQueue.last) { loadTable(); loadJobs(); } // a cell landed (or the pass ended)
   loadQueue.last = n;
+  // "run every missing cell" means until the table is full: after a server restart (the queue
+  // lives in its memory) the page starts it again, at most three times per visit, never after
+  // the server stopped it itself.
+  let wanted = false; try { wanted = localStorage.getItem("bts-fill") === "1"; } catch {}
+  if (wanted && !q.active && !q.note && q.have < q.total && (loadQueue.resumed || 0) < 3 && $("rk").value.trim()) {
+    loadQueue.resumed = (loadQueue.resumed || 0) + 1;
+    startFill("resumed");
+  } else if (wanted && (q.note || q.have >= q.total)) { try { localStorage.removeItem("bts-fill"); } catch {} }
 }
-$("fgo").onclick = async () => {
+async function startFill(why) {
   const key = $("rk").value.trim();
-  $("rmsg").textContent = "starting the queue…";
+  $("rmsg").textContent = why === "resumed" ? "the server was restarted — starting the queue again…" : "starting the queue…";
   const res = await fetch("/api/queue", { method: "POST", headers: { "content-type": "application/json", ...(key ? { "x-api-key": key } : {}) }, body: JSON.stringify({ model: $("rm").value, eyes: $("re").checked }) });
   const q = await res.json();
   $("rmsg").textContent = res.ok ? (q.pending.length || q.running ? "" : "nothing to run — every cell has a record") : q.error;
   loadQueue(); loadJobs();
-};
-$("fstop").onclick = async () => { await fetch("/api/queue/stop", { method: "POST", headers: { "content-type": "application/json" }, body: "{}" }); $("rmsg").textContent = "stopping after the cell in flight"; loadQueue(); };
-$("fabort").onclick = async () => { await fetch("/api/queue/stop", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ abort: true }) }); $("rmsg").textContent = "stopped"; loadQueue(); loadJobs(); };
+}
+$("fgo").onclick = () => { try { localStorage.setItem("bts-fill", "1"); } catch {} startFill("clicked"); };
+$("fstop").onclick = async () => { try { localStorage.removeItem("bts-fill"); } catch {} await fetch("/api/queue/stop", { method: "POST", headers: { "content-type": "application/json" }, body: "{}" }); $("rmsg").textContent = "stopping after the cell in flight"; loadQueue(); };
+$("fabort").onclick = async () => { try { localStorage.removeItem("bts-fill"); } catch {} await fetch("/api/queue/stop", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ abort: true }) }); $("rmsg").textContent = "stopped"; loadQueue(); loadJobs(); };
 
 // ── the tabs ─────────────────────────────────────────────────────────────
 document.querySelectorAll(".tabs2 button").forEach((b) => (b.onclick = () => {
