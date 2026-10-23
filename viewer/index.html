@@ -17,7 +17,8 @@
   .job { display: flex; gap: 8px; align-items: center; font: 11px ui-monospace, Menlo, monospace; padding: 3px 0; border-top: 1px solid var(--line); cursor: pointer; }
   .job.on { color: var(--accent); }
   .job button { font: 10px -apple-system, sans-serif; background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; cursor: pointer; }
-  #right { display: flex; flex-direction: column; min-width: 0; }
+  #right { display: flex; flex-direction: column; min-width: 0; min-height: 0; overflow: hidden; } /* min-height 0: a long grade report scrolls inside #detail instead of growing the column past the window */
+  #leftcol { min-height: 0; }
   table { border-collapse: collapse; width: 100%; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
   th, td { padding: 4px 6px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
   th { color: var(--muted); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
