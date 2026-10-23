@@ -1,0 +1,24 @@
+{"t":1792796358048,"turn":0,"type":"text","delta":"Planning the house:"}
+{"t":1792796358079,"turn":0,"type":"text","delta":" tan wal"}
+{"t":1792796358143,"turn":0,"type":"text","delta":"ls on"}
+{"t":1792796358211,"turn":0,"type":"text","delta":" a dark gr"}
+{"t":1792796358277,"turn":0,"type":"text","delta":"ey base, dark red st"}
+{"t":1792796358344,"turn":0,"type":"text","delta":"epped-"}
+{"t":1792796358408,"turn":0,"type":"text","delta":"sl"}
+{"t":1792796358475,"turn":0,"type":"text","delta":"ope roof."}
+{"t":1792796358615,"turn":0,"type":"tool_typing","name":"design_layout","bytes":0}
+{"t":1792796361613,"turn":0,"type":"tool_typing","name":"design_layout","bytes":7}
+{"t":1792796361948,"turn":0,"type":"usage","input":2,"output":6396,"cacheRead":0,"cacheWrite":13150}
+{"t":1792796361948,"turn":0,"type":"tool_start","name":"design_layout"}
+{"t":1792796361948,"turn":0,"type":"tool","name":"design_layout","summary":"⚠ 2 plan warning(s)"}
+{"t":1792796426273,"turn":0,"type":"text","delta":"Base pad, then"}
+{"t":1792796426331,"turn":0,"type":"text","delta":" t"}
+{"t":1792796426401,"turn":0,"type":"text","delta":"an walls —"}
+{"t":1792796426474,"turn":0,"type":"text","delta":" 5 courses, door front"}
+{"t":1792796426539,"turn":0,"type":"text","delta":", wind"}
+{"t":1792796426601,"turn":0,"type":"text","delta":"ows left"}
+{"t":1792796426674,"turn":0,"type":"text","delta":" and right."}
+{"t":1792796426817,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792796428243,"turn":0,"type":"usage","input":2,"output":243,"cacheRead":13150,"cacheWrite":6852}
+{"t":1792796428244,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792796428265,"turn":0,"type":"tool","name":"build_program","summary":"placed 64"}

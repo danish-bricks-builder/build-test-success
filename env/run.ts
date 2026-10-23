@@ -97,6 +97,10 @@ async function runOnce() {
     body: JSON.stringify({
       message: task.prompt,
       model,
+      // The paper's sessions ran until the agent declared done (up to 43 minutes). The environment
+      // later gained a per-turn time limit for the serverless deployment (250 s by default), which
+      // would cut a session short and grade a half-built model; lift it for the benchmark.
+      turnBudgetMs: 4 * 3600 * 1000,
       toolMode: "connect",
       toolset: "full",
       baseplate: "none",

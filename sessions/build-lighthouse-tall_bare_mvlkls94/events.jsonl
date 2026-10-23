@@ -1,0 +1,23 @@
+{"t":1792796376228,"turn":0,"type":"text","delta":"I"}
+{"t":1792796376338,"turn":0,"type":"text","delta":"'ll plan the sub"}
+{"t":1792796376411,"turn":0,"type":"text","delta":"systems first, then build b"}
+{"t":1792796376477,"turn":0,"type":"text","delta":"ottom-"}
+{"t":1792796376545,"turn":0,"type":"text","delta":"up."}
+{"t":1792796376679,"turn":0,"type":"tool_typing","name":"design_layout","bytes":0}
+{"t":1792796380616,"turn":0,"type":"tool_typing","name":"design_layout","bytes":7}
+{"t":1792796381046,"turn":0,"type":"usage","input":2,"output":481,"cacheRead":0,"cacheWrite":13159}
+{"t":1792796381046,"turn":0,"type":"tool_start","name":"design_layout"}
+{"t":1792796381046,"turn":0,"type":"tool","name":"design_layout","summary":"plan clean"}
+{"t":1792796430824,"turn":0,"type":"text","delta":"Rocky base:"}
+{"t":1792796430849,"turn":0,"type":"text","delta":" d"}
+{"t":1792796430941,"turn":0,"type":"text","delta":"ark grey,"}
+{"t":1792796431028,"turn":0,"type":"text","delta":" 8×8,"}
+{"t":1792796431079,"turn":0,"type":"text","delta":" three"}
+{"t":1792796431153,"turn":0,"type":"text","delta":" courses with a"}
+{"t":1792796431227,"turn":0,"type":"text","delta":" ragged top"}
+{"t":1792796431310,"turn":0,"type":"text","delta":" edge."}
+{"t":1792796431462,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792796433809,"turn":0,"type":"tool_typing","name":"build_program","bytes":7}
+{"t":1792796433810,"turn":0,"type":"usage","input":2,"output":257,"cacheRead":13159,"cacheWrite":901}
+{"t":1792796433810,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792796433821,"turn":0,"type":"tool","name":"build_program","summary":"placed 34"}

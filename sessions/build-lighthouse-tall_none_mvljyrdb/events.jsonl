@@ -1,0 +1,62 @@
+{"t":1792795188115,"turn":0,"type":"text","delta":"I"}
+{"t":1792795188218,"turn":0,"type":"text","delta":"'ll pl"}
+{"t":1792795188281,"turn":0,"type":"text","delta":"an the sub"}
+{"t":1792795188365,"turn":0,"type":"text","delta":"systems first, then build from"}
+{"t":1792795188429,"turn":0,"type":"text","delta":" the rocks up."}
+{"t":1792795188566,"turn":0,"type":"tool_typing","name":"design_layout","bytes":0}
+{"t":1792795192323,"turn":0,"type":"tool_typing","name":"design_layout","bytes":7}
+{"t":1792795192643,"turn":0,"type":"usage","input":2,"output":479,"cacheRead":0,"cacheWrite":13159}
+{"t":1792795192643,"turn":0,"type":"tool_start","name":"design_layout"}
+{"t":1792795192644,"turn":0,"type":"tool","name":"design_layout","summary":"plan clean"}
+{"t":1792795193687,"turn":0,"type":"text","delta":"Rocky base: d"}
+{"t":1792795193759,"turn":0,"type":"text","delta":"ark grey,"}
+{"t":1792795193796,"turn":0,"type":"text","delta":" st"}
+{"t":1792795193901,"turn":0,"type":"text","delta":"epped and irregular."}
+{"t":1792795194060,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792795196407,"turn":0,"type":"tool_typing","name":"build_program","bytes":7}
+{"t":1792795196408,"turn":0,"type":"usage","input":2,"output":218,"cacheRead":13159,"cacheWrite":896}
+{"t":1792795196408,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792795196425,"turn":0,"type":"tool","name":"build_program","summary":"placed 28"}
+{"t":1792795197642,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792795198150,"turn":0,"type":"usage","input":2,"output":72,"cacheRead":14055,"cacheWrite":254}
+{"t":1792795198151,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792795198364,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792795202806,"turn":0,"type":"text","delta":"Tap"}
+{"t":1792795202850,"turn":0,"type":"text","delta":"ering tower:"}
+{"t":1792795202927,"turn":0,"type":"text","delta":" 6×"}
+{"t":1792795202982,"turn":0,"type":"text","delta":"6 red/white ban"}
+{"t":1792795203050,"turn":0,"type":"text","delta":"ded sh"}
+{"t":1792795203114,"turn":0,"type":"text","delta":"aft."}
+{"t":1792795203254,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792795205158,"turn":0,"type":"tool_typing","name":"build_program","bytes":7}
+{"t":1792795205161,"turn":0,"type":"usage","input":2,"output":420,"cacheRead":14309,"cacheWrite":644}
+{"t":1792795205161,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792795205177,"turn":0,"type":"tool","name":"build_program","summary":"placed 82"}
+{"t":1792795254635,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792795255144,"turn":0,"type":"usage","input":2,"output":72,"cacheRead":14953,"cacheWrite":465}
+{"t":1792795255145,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792795255359,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792795371618,"turn":0,"type":"tool_typing","name":"silhouette","bytes":0}
+{"t":1792795371822,"turn":0,"type":"usage","input":2,"output":251,"cacheRead":15418,"cacheWrite":644}
+{"t":1792795371823,"turn":0,"type":"tool_start","name":"silhouette"}
+{"t":1792795372114,"turn":0,"type":"tool","name":"silhouette","summary":"front"}
+{"t":1792795412549,"turn":0,"type":"tool_typing","name":"inspect_build","bytes":0}
+{"t":1792795412568,"turn":0,"type":"usage","input":2,"output":523,"cacheRead":16062,"cacheWrite":414}
+{"t":1792795412569,"turn":0,"type":"tool_start","name":"inspect_build"}
+{"t":1792795412754,"turn":0,"type":"tool","name":"inspect_build","summary":"110 parts"}
+{"t":1792795531161,"turn":0,"type":"text","delta":"Inter"}
+{"t":1792795531182,"turn":0,"type":"text","delta":"ior"}
+{"t":1792795531248,"turn":0,"type":"text","delta":" rings n"}
+{"t":1792795531318,"turn":0,"type":"text","delta":"ested inst"}
+{"t":1792795531381,"turn":0,"type":"text","delta":"ead of stacking — I"}
+{"t":1792795531453,"turn":0,"type":"text","delta":"'ll continue upward from the"}
+{"t":1792795531516,"turn":0,"type":"text","delta":" true top and then f"}
+{"t":1792795531599,"turn":0,"type":"text","delta":"ix the bands by"}
+{"t":1792795531652,"turn":0,"type":"text","delta":" recoloring."}
+{"t":1792795531782,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792795532788,"turn":0,"type":"usage","input":2,"output":1009,"cacheRead":16476,"cacheWrite":1539}
+{"t":1792795532789,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792795532804,"turn":0,"type":"tool","name":"build_program","summary":"placed 30"}
+{"t":1792795532804,"turn":0,"type":"text","delta":"\n\n⏳ Stopped at the time limit with 140 parts — the build so far is saved. Say “continue” to carry on from here."}
+{"t":1792795532805,"turn":1,"type":"result","ldraw":"0 LeoCAD build\n0 Name: LeoCAD_build.ldr\n0 Author: Danish Bricks Builder\n0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt\n\n1 72 20 -24 60 1 0 0 0 1 0 0 0 1 3001.dat\n1 72 70 -24 40 0 0 -1 0 1 0 1 0 0 3010.dat\n1 72 -70 -24 40 0 0 -1 0 1 0 1 0 0 3010.dat\n1 72 -40 -24 40 0 0 -1 0 1 0 1 0 0 3001.dat\n1 72 20 -24 20 1 0 0 0 1 0 0 0 1 3001.dat\n1 72 20 -24 -20 1 0 0 0 1 0 0 0 1 3001.dat\n1 72 70 -24 -40 0 0 -1 0 1 0 1 0 0 3010.dat\n1 72 -70 -24 -40 0 0 -1 0 1 0 1 0 0 3010.dat\n1 72 -40 -24 -40 0 0 -1 0 1 0 1 0 0 3001.dat\n1 72 20 -24 -60 1 0 0 0 1 0 0 0 1 3001.dat\n1 72 0 -48 60 1 0 0 0 1 0 0 0 1 3001.dat\n1 72 60 -48 40 0 0 -1 0 1 0 1 0 0 3001.dat\n1 72 -60 -48 40 0 0 -1 0 1 0 1 0 0 3001.dat\n1 72 0 -48 20 1 0 0 0 1 0 0 0 1 3001.dat\n1 72 0 -48 -20 1 0 0 0 1 0 0 0 1 3001.dat\n1 72 60 -48 -40 0 0 -1 0 1 0 1 0 0 3001.dat\n1 72 -60 -48 -40 0 0 -1 0 1 0 1 0 0 3001.dat\n1 72 0 -48 -60 1 0 0 0 1 0 0 0 1 3001.dat\n1 0 20 -72 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 0 70 -72 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 0 -40 -72 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 0 20 -72 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 0 70 -72 -70 1 0 0 0 1 0 0 0 1 3005.dat\n1 0 -40 -72 -70 1 0 0 0 1 0 0 0 1 3004.dat\n1 0 -50 -72 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 0 -50 -72 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 0 70 -72 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 0 70 -72 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 20 -96 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 -40 -96 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 4 20 -72 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 -40 -96 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 4 -50 -96 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 4 50 -72 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 4 0 -120 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 50 -120 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 -50 -120 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 0 -120 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 50 -96 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 -50 -120 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 -50 -120 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 4 50 -96 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 15 20 -144 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 15 -40 -144 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 15 20 -144 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 15 -40 -144 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 15 -50 -144 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 15 50 -120 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 15 0 -168 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 15 50 -168 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 -50 -168 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 0 -168 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 15 50 -168 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 -50 -168 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 -50 -168 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 15 50 -144 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 4 20 -192 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 -40 -192 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 4 20 -192 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 -40 -192 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 4 -50 -192 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 4 50 -168 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 4 0 -216 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 50 -216 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 -50 -216 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 0 -216 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 50 -216 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 -50 -216 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 -50 -216 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 4 50 -192 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 15 10 -72 30 1 0 0 0 1 0 0 0 1 3622.dat\n1 15 -30 -72 30 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 10 -72 -30 1 0 0 0 1 0 0 0 1 3622.dat\n1 15 -30 -72 -30 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 -30 -72 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 30 -72 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 0 -96 30 1 0 0 0 1 0 0 0 1 3010.dat\n1 15 0 -96 -30 1 0 0 0 1 0 0 0 1 3010.dat\n1 15 -30 -96 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 30 -96 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 4 10 -120 30 1 0 0 0 1 0 0 0 1 3622.dat\n1 4 -30 -120 30 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 10 -120 -30 1 0 0 0 1 0 0 0 1 3622.dat\n1 4 -30 -120 -30 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 -30 -120 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 4 30 -120 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 4 0 -144 30 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 0 -144 -30 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 -30 -144 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 4 30 -144 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 10 -168 30 1 0 0 0 1 0 0 0 1 3622.dat\n1 15 -30 -168 30 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 10 -168 -30 1 0 0 0 1 0 0 0 1 3622.dat\n1 15 -30 -168 -30 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 -30 -168 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 30 -168 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 0 -192 30 1 0 0 0 1 0 0 0 1 3010.dat\n1 15 0 -192 -30 1 0 0 0 1 0 0 0 1 3010.dat\n1 15 -30 -192 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 30 -192 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 4 10 -216 30 1 0 0 0 1 0 0 0 1 3622.dat\n1 4 -30 -216 30 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 10 -216 -30 1 0 0 0 1 0 0 0 1 3622.dat\n1 4 -30 -216 -30 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 -30 -216 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 4 30 -216 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 4 0 -240 30 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 0 -240 -30 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 -30 -240 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 4 30 -240 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 10 -264 30 1 0 0 0 1 0 0 0 1 3622.dat\n1 15 -30 -264 30 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 10 -264 -30 1 0 0 0 1 0 0 0 1 3622.dat\n1 15 -30 -264 -30 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 -30 -264 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 30 -264 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 0 -288 30 1 0 0 0 1 0 0 0 1 3010.dat\n1 15 0 -288 -30 1 0 0 0 1 0 0 0 1 3010.dat\n1 15 -30 -288 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 30 -288 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 4 10 -312 30 1 0 0 0 1 0 0 0 1 3622.dat\n1 4 -30 -312 30 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 10 -312 -30 1 0 0 0 1 0 0 0 1 3622.dat\n1 4 -30 -312 -30 1 0 0 0 1 0 0 0 1 3005.dat\n1 4 -30 -312 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 4 30 -312 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 4 0 -336 30 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 0 -336 -30 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 -30 -336 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 4 30 -336 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 10 -360 30 1 0 0 0 1 0 0 0 1 3622.dat\n1 15 -30 -360 30 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 10 -360 -30 1 0 0 0 1 0 0 0 1 3622.dat\n1 15 -30 -360 -30 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 -30 -360 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 30 -360 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 0 -384 30 1 0 0 0 1 0 0 0 1 3010.dat\n1 15 0 -384 -30 1 0 0 0 1 0 0 0 1 3010.dat\n1 15 -30 -384 0 0 0 -1 0 1 0 1 0 0 3004.dat\n1 15 30 -384 0 0 0 -1 0 1 0 1 0 0 3004.dat\n","partCount":140}
+{"t":1792795532805,"turn":1,"type":"done"}

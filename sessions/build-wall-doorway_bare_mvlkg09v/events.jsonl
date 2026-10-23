@@ -1,0 +1,20 @@
+{"t":1792796023041,"turn":0,"type":"text","delta":"D"}
+{"t":1792796023105,"turn":0,"type":"text","delta":"ry-running the"}
+{"t":1792796023169,"turn":0,"type":"text","delta":" wall program"}
+{"t":1792796023237,"turn":0,"type":"text","delta":" first"}
+{"t":1792796023305,"turn":0,"type":"text","delta":"."}
+{"t":1792796023438,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792796026151,"turn":0,"type":"tool_typing","name":"build_program","bytes":7}
+{"t":1792796026224,"turn":0,"type":"usage","input":2,"output":1955,"cacheRead":0,"cacheWrite":13115}
+{"t":1792796026225,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792796026237,"turn":0,"type":"tool","name":"build_program","summary":"dry run: would place 30"}
+{"t":1792796242491,"turn":0,"type":"text","delta":"Clean —"}
+{"t":1792796242574,"turn":0,"type":"text","delta":" committing."}
+{"t":1792796242762,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792796244469,"turn":0,"type":"tool_typing","name":"build_program","bytes":7}
+{"t":1792796244470,"turn":0,"type":"usage","input":2,"output":225,"cacheRead":13115,"cacheWrite":2072}
+{"t":1792796244477,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792796244499,"turn":0,"type":"tool","name":"build_program","summary":"placed 30"}
+{"t":1792796244500,"turn":0,"type":"text","delta":"\n\n⏳ Stopped at the time limit with 30 parts — the build so far is saved. Say “continue” to carry on from here."}
+{"t":1792796244509,"turn":1,"type":"result","ldraw":"0 LeoCAD build\n0 Name: LeoCAD_build.ldr\n0 Author: Danish Bricks Builder\n0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt\n\n1 19 -120 -24 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -60 -24 -10 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 80 -24 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 140 -24 -10 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -120 -48 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -60 -48 -10 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 80 -48 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 140 -48 -10 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -120 -72 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -60 -72 -10 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 80 -72 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 140 -72 -10 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -120 -96 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -60 -96 -10 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 80 -96 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 140 -96 -10 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -120 -120 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -60 -120 -10 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 80 -120 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 140 -120 -10 1 0 0 0 1 0 0 0 1 3004.dat\n1 320 0 -144 -10 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 -120 -144 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -70 -144 -10 1 0 0 0 1 0 0 0 1 3005.dat\n1 19 100 -144 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 150 -144 -10 1 0 0 0 1 0 0 0 1 3005.dat\n1 19 0 -168 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 80 -168 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -80 -168 -10 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 140 -168 -10 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -140 -168 -10 1 0 0 0 1 0 0 0 1 3004.dat\n","partCount":30}
+{"t":1792796244509,"turn":1,"type":"done"}
