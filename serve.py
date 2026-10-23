@@ -7,7 +7,7 @@ its grade, its attempt-by-attempt trace and its LDraw source.
     python3 serve.py --port 9000
 
 Standard library only. The 3D view needs LDraw part files; they are fetched from the data bucket
-the first time a part is seen and cached under data/ldraw/ (the bucket has no CORS headers, so the
+the first time a part is seen and cached under public/ldraw/ (the bucket has no CORS headers, so the
 browser cannot fetch them itself — this server stands in between).
 
 Routes:
@@ -30,10 +30,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ORIGIN = "https://pub-09680f02457547f9bd4034ba506c47d7.r2.dev"
-CONDITION_NAMES = {  # the harness's strings → the paper's names
-    "raw-ldraw-1r": "raw", "raw-ldraw-4r": "raw+feedback", "none": "env", "bare": "env+gates", "verifier": "env+full",
-    "raw": "raw", "raw+feedback": "raw+feedback",
-}
+CONDITION_NAMES = {c["key"]: c["name"] for c in json.loads((HERE / "conditions.json").read_text())["conditions"]}
+CONDITION_NAMES.update({c["name"]: c["name"] for c in json.loads((HERE / "conditions.json").read_text())["conditions"]})
 MISSING: set[str] = set()  # part-library paths the bucket does not have (so we ask once)
 
 
@@ -160,7 +158,7 @@ class Handler(SimpleHTTPRequestHandler):
         rel = rel.replace("\\", "/")
         if ".." in rel or rel.startswith("/") or not re.fullmatch(r"[\w./ -]+", rel):
             return self.send_json({"error": "bad path"}, 400)
-        local = HERE / "data" / "ldraw" / rel
+        local = HERE / "public" / "ldraw" / rel
         if not local.exists():
             if rel.lower() in MISSING:
                 return self.send_json({"error": "no such file"}, 404)

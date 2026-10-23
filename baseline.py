@@ -88,8 +88,8 @@ def user_message(task: dict) -> str:
 
 def inventory_text(set_id: str) -> str:
     """The restricted-inventory task lists the parts of one official set (non-spare)."""
-    inv = json.loads((ROOT / "data" / "inv" / f"{set_id}.json").read_text())
-    names = {r["p"]: r["n"] for r in json.loads((ROOT / "data" / "parts" / "index.json").read_text())}
+    inv = json.loads((ROOT / "public" / "data" / "inv" / f"{set_id}.json").read_text())
+    names = {r["p"]: r["n"] for r in json.loads((ROOT / "public" / "data" / "parts" / "index.json").read_text())}
     lines = [f"{r['q']}x {r['p']}.dat color {r['c']} ({names.get(r['p'], '?')})" for r in inv["parts"] if not r["spare"]]
     return "\nYou may ONLY use parts from this inventory (part, LDraw color code, quantity):\n" + "\n".join(lines) + "\n"
 

@@ -8,8 +8,8 @@
  *
  *   npx tsx grade.ts <file.ldr> --task <id>      → one JSON object on stdout
  *
- * Reads the part data under data/ (sh fetch-data.sh). Voxel shapes come one file per part from
- * the data bucket, fetched the first time a part is met and cached in data/parts/voxels/ — the
+ * Reads the part data under public/data/ (sh fetch-data.sh). Voxel shapes come one file per part from
+ * the data bucket, fetched the first time a part is met and cached in public/data/parts/voxels/ — the
  * same table the paper's machine held whole. The output has the same
  * fields as the paper's grade records in records/*.json; baseline.py calls this for every attempt.
  */
@@ -23,7 +23,7 @@ import { checkStability } from "./lib/engine/stability";
 import type { VoxelData } from "./lib/engine/voxelCollision";
 import type { PartMetaMap } from "./lib/data/schemas";
 
-const DATA = join(__dirname, "data");
+const DATA = join(__dirname, "public", "data");
 const ORIGIN = (process.env.DATA_ORIGIN ?? "https://pub-09680f02457547f9bd4034ba506c47d7.r2.dev").replace(/\/$/, "");
 
 interface Task {
@@ -56,7 +56,7 @@ async function main() {
   }
   for (const f of ["parts/meta.json", "parts/index.json", "parts/connections.json"])
     if (!existsSync(join(DATA, f))) {
-      console.error(`missing data/${f} — run: sh fetch-data.sh`);
+      console.error(`missing public/data/${f} — run: sh fetch-data.sh`);
       process.exit(2);
     }
 

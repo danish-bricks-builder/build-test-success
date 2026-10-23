@@ -8,9 +8,10 @@ finding: the same frontier model that passes almost none of thirteen constructio
 writing a brick file directly passes nearly all of them inside a build-and-check loop, and an
 ablation attributes the difference to verification.
 
-This repository holds, so far, the **baseline conditions** and the **grader**, with the grade
-records behind every number in the paper. The interactive environment itself is part of
-[Danish Bricks Builder](https://danish-bricks-builder.vercel.app); its release follows.
+This repository holds all five conditions of the paper — the two baselines and the three
+environment conditions — the grader, a results viewer, and the grade records behind every number
+in the paper. The environment is the copilot of [Danish Bricks Builder](https://danish-bricks-builder.vercel.app),
+carved out so it runs on its own (`env/`).
 
 ## What is here
 
@@ -20,6 +21,8 @@ records behind every number in the paper. The interactive environment itself is 
 | `grade.ts` | the grader: connection validity and collision, stability, task requirements. The same engine code (`lib/`) that graded the paper's runs |
 | `baseline.py` | the baseline runner: `raw` (one shot) and `raw+feedback` (four attempts with the validator's report pasted back as text), with the paper's exact prompts |
 | `report.py` | the results table in the paper's notation, for your runs and for the paper's records |
+| `env/` | the environment: `server.ts` serves the copilot route on plain Node; `run.ts` drives one session per task and condition |
+| `conditions.json` | the five conditions: harness key, paper name, what each one is |
 | `records/` | the paper's grade records, one JSON per run (55 runs over the five conditions), with the final `.ldr` model beside most of them |
 | `sessions/` | the harness's recording of each session, `run.json` + `toolLog.jsonl` + `snapshots/` — the paper's are being restored from the machine that ran them and will land here |
 | `lib/` | the engine: connector library and mate detection, voxel collision, statics, LDraw parsing |
@@ -80,6 +83,28 @@ Grade any LDraw file against a task:
 ```sh
 npx tsx grade.ts some-model.ldr --task greek-temple
 ```
+
+## Reproducing the environment conditions
+
+The three env conditions run the agent inside the environment. Two terminals:
+
+```sh
+sh fetch-data.sh --eyes               # part data, the edit task's set, and what render_view needs
+export ANTHROPIC_API_KEY=…
+npx tsx env/server.ts                 # terminal 1: the environment, http://localhost:8788
+
+npx tsx env/run.ts --task=greek-temple --condition=verifier    # terminal 2: env+full
+npx tsx env/run.ts --task=greek-temple --condition=bare        # env+gates
+npx tsx env/run.ts --task=greek-temple --condition=none        # env
+```
+
+`verifier` offers the validator as tools and gates completion; `bare` gates only; `none` neither,
+though every placement is still checked as it is made. Each session is recorded under
+`sessions/<runId>/` and graded into `runs/<runId>.json`. The agent's "eyes" (`render_view`) need
+Chrome on the machine (`CHROME_PATH` or a standard install) and the packed part files from
+`fetch-data.sh --eyes`; pass `--eyes=off` to run blind, which the paper did not. The paper's runs
+used `claude-opus-5` with up to 90 tool-loop iterations; a session takes minutes and the
+monumental tasks tens of minutes.
 
 ## Looking at the runs
 

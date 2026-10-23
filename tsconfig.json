@@ -8,7 +8,15 @@
     "skipLibCheck": true,
     "noEmit": true,
     "baseUrl": ".",
-    "paths": { "@/*": ["./*"] }
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
   },
-  "include": ["grade.ts", "lib/**/*.ts"]
+  "include": [
+    "grade.ts",
+    "env/**/*.ts",
+    "lib/**/*.ts"
+  ]
 }

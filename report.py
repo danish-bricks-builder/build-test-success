@@ -24,10 +24,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE
-PAPER_CONDITIONS = {  # the paper's names → the harness's condition strings in the records
-    "raw": ("raw-ldraw-1r",), "raw+feedback": ("raw-ldraw-4r",),
-    "env": ("none",), "env+gates": ("bare",), "env+full": ("verifier",),
-}
+PAPER_CONDITIONS = {c["name"]: (c["key"],) for c in json.loads((HERE / "conditions.json").read_text())["conditions"]}
 
 
 def mark(g: dict | None) -> str:

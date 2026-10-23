@@ -1,5 +1,6 @@
 node_modules/
-data/
+public/*
+!public/render-snap/
 runs/*
 !runs/.gitkeep
 # sessions/ (the harness's recordings: run.json, toolLog.jsonl, snapshots/) is meant to be committed

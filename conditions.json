@@ -1,0 +1,35 @@
+{
+ "_note": "Condition keys as the harness writes them into records, with the paper's names. Edit `name` to rename everywhere (report.py, serve.py, env/run.ts read this).",
+ "conditions": [
+  {
+   "key": "raw-ldraw-1r",
+   "name": "raw",
+   "harness": "baseline.py --condition raw",
+   "what": "one LDraw file in one shot, no environment"
+  },
+  {
+   "key": "raw-ldraw-4r",
+   "name": "raw+feedback",
+   "harness": "baseline.py --condition raw+feedback",
+   "what": "up to four files; the validator's report pasted back as text between them"
+  },
+  {
+   "key": "none",
+   "name": "env",
+   "harness": "env/run.ts --condition none",
+   "what": "the environment and connection language; each placement checked as it is made, the finished build never verified"
+  },
+  {
+   "key": "bare",
+   "name": "env+gates",
+   "harness": "env/run.ts --condition bare",
+   "what": "env, plus the validator at completion with two repair rounds per gate"
+  },
+  {
+   "key": "verifier",
+   "name": "env+full",
+   "harness": "env/run.ts --condition verifier",
+   "what": "env+gates, plus the validator as tools the agent may call during the build"
+  }
+ ]
+}
