@@ -21,6 +21,7 @@ Routes:
                        the environment server is started here when needed, with the key in its env)
     /api/jobs/<id>/log · /api/jobs/<id>/stop · /api/env/stop
     /api/try           POST {prompt, condition, model, eyes} + x-api-key: run a free prompt, events streamed back
+    /api/thumb/<id>    PNG of the final build (records/thumbs, runs/thumbs; thumb.ts renders them)
     /api/queue         GET: the fill-the-table queue; POST {model, eyes, conditions?} + x-api-key starts it over
                        every cell without a record in runs/ (resumable); POST /api/queue/stop {abort?}
 """
@@ -169,6 +170,44 @@ def ensure_env_server(key: str) -> str | None:
     return "the environment server did not come up within 30 s — see runs/_jobs/env-server.log"
 
 
+# ── thumbnails: thumb.ts renders every final build without one, one sweep at a time ──────
+THUMB_LOCK = threading.Lock()
+THUMB_STATE: dict = {"again": False}
+
+
+def thumb_sweep() -> None:
+    """Render missing thumbnails in the background; a sweep asked for during a sweep runs after it."""
+    if not THUMB_LOCK.acquire(blocking=False):
+        THUMB_STATE["again"] = True
+        return
+
+    def go() -> None:
+        try:
+            while True:
+                THUMB_STATE["again"] = False
+                LOG_DIR.mkdir(parents=True, exist_ok=True)
+                with open(LOG_DIR / "thumbs.log", "ab") as log:
+                    subprocess.run(["npx", "tsx", "thumb.ts", "--all"], cwd=HERE, stdout=log, stderr=subprocess.STDOUT, env={**os.environ, "PYTHON_COLORS": "0"})
+                if not THUMB_STATE["again"]:
+                    return
+        finally:
+            THUMB_LOCK.release()
+
+    threading.Thread(target=go, daemon=True).start()
+
+
+def thumb_path(run_id: str) -> Path | None:
+    for d in ("records", "runs"):
+        p = HERE / d / "thumbs" / f"{run_id}.png"
+        if p.exists():
+            return p
+    return None
+
+
+def thumb_count() -> int:
+    return sum(1 for d in ("records", "runs") for _ in (HERE / d / "thumbs").glob("*.png"))
+
+
 def start_job(spec: dict, key: str) -> dict:
     cond = CONDITIONS.get(spec.get("condition", ""))
     if not cond:
@@ -211,6 +250,7 @@ def job_view(j: dict) -> dict:
     if j["endedAt"] is None and p.poll() is not None:
         j["endedAt"] = time.time()
         j["code"] = p.returncode
+        thumb_sweep()  # the job's final build gets its picture
     return {k: v for k, v in j.items() if k != "proc"} | {"running": j["endedAt"] is None, "seconds": round((j["endedAt"] or time.time()) - j["startedAt"])}
 
 
@@ -305,6 +345,7 @@ def try_prompt(handler, body: dict, key: str) -> None:
                                                               "seconds": round(time.time() - started), "rounds": [], "PASS": bool(grade.get("PASS")), "final": grade}, indent=1))
     p = HERE / "runs" / f"{run_id}.json"
     if p.exists():
+        thumb_sweep()
         sse(handler, {"type": "graded", "run": normalize(p, "mine")})
     sse(handler, {"type": "done"})
 
@@ -357,6 +398,7 @@ def queue_worker() -> None:
         try:
             job = start_job({"task": task, "condition": cond, "model": QUEUE["model"], "eyes": QUEUE["eyes"]}, QUEUE["key"])
             job["proc"].wait()
+            thumb_sweep()
             with QUEUE_LOCK:
                 QUEUE["done"].append({"task": task, "condition": cond, "code": job["proc"].returncode, "seconds": round(time.time() - QUEUE["running"]["startedAt"]), "job": job["id"]})
                 if all(d["code"] != 0 for d in QUEUE["done"][-3:]) and len(QUEUE["done"]) >= 3:
@@ -387,7 +429,7 @@ def queue_start(spec: dict, key: str) -> dict:
 
 def queue_view() -> dict:
     return {"pending": QUEUE["pending"], "running": QUEUE["running"], "done": QUEUE["done"], "active": QUEUE["thread"] is not None and QUEUE["thread"].is_alive(),
-            "total": len(all_cells()), "have": len(done_cells()), "model": QUEUE["model"], "eyes": QUEUE["eyes"], "note": QUEUE.get("note")}
+            "total": len(all_cells()), "have": len(done_cells()), "model": QUEUE["model"], "eyes": QUEUE["eyes"], "note": QUEUE.get("note"), "thumbs": thumb_count()}
 
 
 class Handler(SimpleHTTPRequestHandler):
@@ -442,6 +484,18 @@ class Handler(SimpleHTTPRequestHandler):
         if path == "/api/queue":
             with QUEUE_LOCK:
                 return self.send_json(queue_view())
+        m = re.match(r"^/api/thumb/([\w.-]+)$", path)
+        if m:
+            p = thumb_path(m.group(1))
+            if not p:
+                return self.send_json({"error": "no thumbnail (yet)"}, 404)
+            data = p.read_bytes()
+            self.send_response(200)
+            self.send_header("content-type", "image/png")
+            self.send_header("content-length", str(len(data)))
+            self.send_header("cache-control", "max-age=3600")
+            self.end_headers()
+            return self.wfile.write(data)
         if path == "/api/jobs":
             with JOBS_LOCK:
                 views = [job_view(j) for j in JOBS.values()]
@@ -532,6 +586,7 @@ def main() -> None:
     ap.add_argument("--port", type=int, default=8787)
     a = ap.parse_args()
     (HERE / "runs").mkdir(exist_ok=True)
+    thumb_sweep()
     server = ThreadingHTTPServer(("127.0.0.1", a.port), partial(Handler, directory=str(HERE / "viewer")))
     print(f"results at http://localhost:{a.port}   (records/: {len(list((HERE / 'records').glob('*.json')))} paper runs · runs/: {len(list((HERE / 'runs').glob('*.json')))} of yours)")
     try:
