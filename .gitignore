@@ -6,3 +6,5 @@ runs/*
 # sessions/ (the harness's recordings: run.json, toolLog.jsonl, snapshots/) is meant to be committed
 .env
 __pycache__/
+# try-it-yourself sessions are personal, not the paper's; keep them local
+sessions/prompt_*

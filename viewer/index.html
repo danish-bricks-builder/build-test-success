@@ -50,6 +50,16 @@
   #feed .tool { color: var(--accent); } #feed .err { color: var(--fail); } #feed .ok { color: var(--pass); font-weight: 600; }
   .prow { display: flex; gap: 8px; align-items: baseline; font: 12px -apple-system, sans-serif; padding: 4px 0; border-top: 1px solid var(--line); cursor: pointer; }
   .prow .m { font-family: ui-monospace, Menlo, monospace; }
+  .form { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 5px 10px; align-items: center; font-size: 12px; }
+  .form input, .form select, .form textarea { width: 100%; min-width: 0; box-sizing: border-box; font: 12px ui-monospace, Menlo, monospace; padding: 4px 6px; border: 1px solid var(--line); border-radius: 4px; background: #fff; }
+  .form select { font-family: -apple-system, sans-serif; }
+  .form textarea { font-family: -apple-system, sans-serif; font-size: 13px; resize: vertical; }
+  .form .row { display: flex; gap: 12px; align-items: center; font-size: 11px; color: var(--muted); flex-wrap: wrap; }
+  .go { font: 12px -apple-system, sans-serif; background: var(--ink); color: #fff; border: 0; border-radius: 4px; padding: 4px 12px; cursor: pointer; }
+  .go:disabled { opacity: .5; }
+  #feedhead { font: 12px ui-monospace, Menlo, monospace; cursor: pointer; user-select: none; padding: 4px 0; }
+  #feed .say { color: var(--ink); padding: 2px 0 2px 10px; border-left: 2px solid var(--line); margin: 3px 0; white-space: pre-wrap; }
+  #feed .tool { color: var(--accent); }
 </style>
 </head>
 <body>
@@ -64,27 +74,28 @@
   <div id="tryTab" style="display:none;padding:10px 12px">
     <div class="band" style="padding-top:0">try it yourself</div>
     <p class="n" style="font-size:12px;margin:4px 0 8px">Type what to build, pick a condition, run. The ldraw conditions show the model's attempts; the environment conditions show every tool call and the model as it grows, in 3D on the right. The result is graded the same way as the paper's runs: valid, stable.</p>
-    <textarea id="tp" rows="3" placeholder="Build a small lighthouse: a square base, a tapering tower in red and white bands, a lantern on top." style="width:100%;font:13px -apple-system,sans-serif;padding:6px 8px;border:1px solid var(--line);border-radius:4px;resize:vertical"></textarea>
-    <div style="display:grid;grid-template-columns:max-content 1fr;gap:4px 10px;align-items:center;font-size:12px;margin-top:6px">
-      <label for="tk">API key</label><input id="tk" type="password" placeholder="sk-ant-… (kept in this browser and in the server's memory only)" style="font:12px ui-monospace,Menlo,monospace;padding:3px 6px;border:1px solid var(--line);border-radius:4px">
-      <label for="tc">condition</label><select id="tc" style="font:12px -apple-system,sans-serif;padding:3px"></select>
-      <label for="tm">model</label><select id="tm" style="font:12px ui-monospace,Menlo,monospace;padding:3px"></select>
-      <span></span><span style="display:flex;gap:14px;align-items:center;font-size:11px;color:var(--muted)"><label><input id="te" type="checkbox" checked> eyes</label><button id="tgo" style="font:12px -apple-system,sans-serif;background:var(--ink);color:#fff;border:0;border-radius:4px;padding:4px 12px;cursor:pointer">run</button><span id="tmsg"></span></span>
+    <div class="form">
+      <label for="tk">API key</label><input id="tk" type="password" placeholder="sk-ant-… (kept in this browser and in the server's memory only)">
+      <label for="tm">model</label><select id="tm"></select>
+      <label for="tc">condition</label><select id="tc"></select>
+      <label for="tp">prompt</label><textarea id="tp" rows="3" placeholder="Build a small lighthouse: a square base, a tapering tower in red and white bands, a lantern on top."></textarea>
+      <span></span><span class="row"><label><input id="te" type="checkbox" checked> eyes (render_view)</label><button id="tgo" class="go">run</button><span id="tmsg"></span></span>
     </div>
-    <div id="feed" style="margin-top:8px;display:none"></div>
+    <div id="feedhead" style="display:none"></div>
+    <div id="feed" style="margin-top:4px;display:none"></div>
     <div class="band">your prompts</div>
     <div id="prompts"><p class="n" style="font-size:12px">none yet</p></div>
   </div>
   <div id="paperTab">
   <div id="runpanel" style="padding:10px 12px;border-bottom:1px solid var(--line);background:var(--panel)">
     <div class="band" style="padding-top:0">rerun a cell of the table</div>
-    <div style="display:grid;grid-template-columns:max-content 1fr;gap:4px 10px;align-items:center;font-size:12px;margin-top:4px">
-      <label for="rk">API key</label><input id="rk" type="password" placeholder="sk-ant-… (kept in this browser and in the server's memory only)" style="font:12px ui-monospace,Menlo,monospace;padding:3px 6px;border:1px solid var(--line);border-radius:4px">
-      <label for="rt">task</label><select id="rt" style="font:12px -apple-system,sans-serif;padding:3px"></select>
-      <label for="rc">condition</label><select id="rc" style="font:12px -apple-system,sans-serif;padding:3px"></select>
-      <label for="rm">model</label><select id="rm" style="font:12px ui-monospace,Menlo,monospace;padding:3px"></select>
-      <span></span><span style="display:flex;gap:14px;font-size:11px;color:var(--muted)"><label><input id="re" type="checkbox" checked> eyes (render_view; needs Chrome + fetch-data.sh --eyes)</label><label><input id="rd" type="checkbox"> dry run (ldraw conditions only: print the prompt, call nothing)</label></span>
-      <span></span><span style="display:flex;gap:6px;align-items:center"><button id="rgo" style="font:12px -apple-system,sans-serif;background:var(--ink);color:#fff;border:0;border-radius:4px;padding:4px 12px;cursor:pointer">run</button><span id="rmsg" style="font-size:11px;color:var(--muted)"></span></span>
+    <div class="form" style="margin-top:4px">
+      <label for="rk">API key</label><input id="rk" type="password" placeholder="sk-ant-… (kept in this browser and in the server's memory only)">
+      <label for="rm">model</label><select id="rm"></select>
+      <label for="rc">condition</label><select id="rc"></select>
+      <label for="rt">task</label><select id="rt"></select>
+      <span></span><span class="row"><label><input id="re" type="checkbox" checked> eyes (render_view; needs Chrome + fetch-data.sh --eyes)</label><label><input id="rd" type="checkbox"> dry run (ldraw only: print the prompt, call nothing)</label></span>
+      <span></span><span class="row"><button id="rgo" class="go">run</button><span id="rmsg"></span></span>
     </div>
     <div id="jobs" style="margin-top:8px"></div>
     <pre id="joblog" style="display:none;max-height:220px;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:4px;padding:6px 8px;margin-top:6px;font-size:11px"></pre>
@@ -344,14 +355,16 @@ document.querySelectorAll(".tabs2 button").forEach((b) => (b.onclick = () => {
 try { $("tk").value = localStorage.getItem("bts-key") || ""; } catch {}
 $("tk").addEventListener("change", () => { try { localStorage.setItem("bts-key", $("tk").value.trim()); } catch {} $("rk").value = $("tk").value.trim(); });
 $("rk").addEventListener("change", () => { $("tk").value = $("rk").value.trim(); });
-const feed = $("feed");
+const feed = $("feed"), feedhead = $("feedhead");
+feedhead.onclick = () => { const open = feed.style.display !== "none"; feed.style.display = open ? "none" : "block"; feedhead.textContent = (open ? "▶ " : "▼ ") + feedhead.dataset.label; };
+const setHead = (label) => { feedhead.dataset.label = label; feedhead.textContent = "▼ " + label; feedhead.style.display = "block"; };
 const line = (text, cls) => { const d = document.createElement("div"); if (cls) d.className = cls; d.textContent = text; feed.appendChild(d); feed.scrollTop = feed.scrollHeight; };
 let lastModelAt = 0;
 $("tgo").onclick = async () => {
   const key = $("tk").value.trim(), prompt = $("tp").value.trim();
   if (!prompt) return ($("tmsg").textContent = "type a prompt first");
   if (!key) return ($("tmsg").textContent = "an API key is required");
-  $("tgo").disabled = true; $("tmsg").textContent = "running…"; feed.style.display = "block"; feed.innerHTML = "";
+  $("tgo").disabled = true; $("tmsg").textContent = "running…"; feed.style.display = "block"; feed.innerHTML = ""; feedhead.style.display = "none";
   showing++; if (model) scene.remove(model); model = null; hud("building…");
   const res = await fetch("/api/try", { method: "POST", headers: { "content-type": "application/json", "x-api-key": key }, body: JSON.stringify({ prompt, condition: $("tc").value, model: $("tm").value, eyes: $("te").checked }) });
   if (!res.ok) { $("tmsg").textContent = (await res.json()).error; $("tgo").disabled = false; return; }
@@ -363,13 +376,13 @@ $("tgo").onclick = async () => {
     for (const f of frames) {
       if (!f.startsWith("data: ")) continue;
       let ev; try { ev = JSON.parse(f.slice(6)); } catch { continue; }
-      if (ev.type === "start") line(`▶ ${ev.runId} · ${ev.condition}`);
-      else if (ev.type === "tool") line(`▸ ${ev.name}${ev.summary ? " — " + ev.summary : ""}`, "tool");
-      else if (ev.type === "text") { text += ev.delta ?? ""; const last = feed.lastChild; if (last && last.dataset.text) last.textContent = text.slice(-1500); else { const d = document.createElement("div"); d.dataset.text = "1"; d.textContent = text.slice(-1500); feed.appendChild(d); } feed.scrollTop = feed.scrollHeight; }
+      if (ev.type === "start") setHead(`${ev.runId} · ${ev.condition} · live`);
+      else if (ev.type === "tool") { text = ""; line(`▸ ${ev.name}${ev.summary ? " — " + ev.summary : ""}`, "tool"); }
+      else if (ev.type === "text") { text += ev.delta ?? ""; const last = feed.lastChild; const shown = text.replace(/\*\*/g, "").trimStart(); if (last && last.dataset.text) last.textContent = shown; else { const d = document.createElement("div"); d.dataset.text = "1"; d.className = "say"; d.textContent = shown; feed.appendChild(d); } feed.scrollTop = feed.scrollHeight; }
       else if (ev.type === "model" && ev.ldraw) { const now = Date.now(); if (now - lastModelAt > 1500) { lastModelAt = now; showModel(ev.ldraw, `building… ${ev.partCount ?? "?"} parts${ev.tool ? " · " + ev.tool : ""}`); } }
       else if (ev.type === "result" && ev.ldraw) { showModel(ev.ldraw, `finished · ${ev.partCount ?? "?"} parts`); line(`■ finished: ${ev.partCount ?? "?"} parts`); }
       else if (ev.type === "error") line(`✗ ${ev.message}`, "err");
-      else if (ev.type === "graded") { const r = ev.run; line(`${r.mark} ${r.PASS ? "PASS" : "fail"} · valid ${r.valid} · stable ${r.stable}${r.verifyReport ? " · " + r.verifyReport.slice(0, 160) : ""}`, r.PASS ? "ok" : "err"); await loadTable(); openRun(r.id); }
+      else if (ev.type === "graded") { const r = ev.run; line(`${r.mark} ${r.PASS ? "PASS" : "fail"} · valid ${r.valid} · stable ${r.stable}${r.verifyReport ? " · " + r.verifyReport.slice(0, 160) : ""}`, r.PASS ? "ok" : "err"); setHead(`${r.id} · ${r.condition} · ${r.PASS ? "PASS" : "fail"}`); await loadTable(); await openRun(r.id); if (r.hasSession) { tab = "trace"; document.querySelectorAll(".tabs button").forEach((x) => x.classList.toggle("on", x.dataset.tab === "trace")); render(); } }
     }
   }
   $("tgo").disabled = false; $("tmsg").textContent = "";
