@@ -180,7 +180,8 @@ function table(source, conditions) {
       if (!runs) { html += `<td class="n">—</td>`; return; }
       const last = runs[runs.length - 1];
       totals[i][1]++; if (last.mark === "✓") totals[i][0]++;
-      const pic = last.hasLdr ? `<img src="/api/thumb/${last.id}?v=${thumbV}" alt="" loading="lazy" onerror="this.remove()">` : "";
+      // static files through viewer/thumbs/{records,runs} → ../records/thumbs, ../runs/thumbs
+      const pic = last.hasLdr ? `<img src="/thumbs/${source === "paper" ? "records" : "runs"}/${last.id}.png?v=${thumbV}" alt="" loading="lazy" onerror="this.remove()">` : "";
       html += `<td class="cell"><button data-id="${last.id}" class="${tone(last.mark)}" title="${last.id}">${pic}<span>${last.mark}</span></button>${runs.length > 1 ? `<sup title="${runs.length} runs; latest shown">×${runs.length}</sup>` : ""}</td>`;
     });
     html += "</tr>";
