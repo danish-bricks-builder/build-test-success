@@ -22,12 +22,14 @@ Routes:
     /api/jobs/<id>/log · /api/jobs/<id>/stop · /api/env/stop
     /api/try           POST {prompt, condition, model, eyes} + x-api-key: run a free prompt, events streamed back
     /api/thumb/<id>    PNG of the final build (records/thumbs, runs/thumbs; thumb.ts renders them)
+    python3 serve.py --fill [--model …] [--eyes off] [--conditions raw-ldraw-1r,…]   the whole table from the terminal
     /api/queue         GET: the fill-the-table queue; POST {model, eyes, conditions?} + x-api-key starts it over
                        every cell without a record in runs/ (resumable); POST /api/queue/stop {abort?}
 """
 from __future__ import annotations
 
 import argparse
+import sys
 import json
 import os
 import re
@@ -581,11 +583,55 @@ class Handler(SimpleHTTPRequestHandler):
         return self.send_text(local.read_text(errors="replace"), cache=True)
 
 
+def fill(a) -> None:
+    """The whole table from the terminal, no page: every cell without a record, one at a time."""
+    key = os.environ.get("ANTHROPIC_API_KEY") or ""
+    if not key and (HERE / ".env").exists():
+        m = re.search(r"^ANTHROPIC_API_KEY=(.+)$", (HERE / ".env").read_text(), re.M)
+        key = m.group(1).strip() if m else ""
+    if not key:
+        sys.exit("no ANTHROPIC_API_KEY in the environment or in .env")
+    spec = {"model": a.model, "eyes": a.eyes != "off", "conditions": a.conditions.split(",") if a.conditions else None}
+    q = queue_start(spec, key)
+    print(f"{q['have']}/{q['total']} cells have a record · {len(q['pending'])} to run · model {q['model']} · eyes {'on' if q['eyes'] else 'off'}")
+    seen = 0
+    try:
+        while True:
+            with QUEUE_LOCK:
+                done, running, active, note = list(QUEUE["done"]), QUEUE["running"], QUEUE["thread"] is not None and QUEUE["thread"].is_alive(), QUEUE.get("note")
+            for d in done[seen:]:
+                print(f"  {'done' if d['code'] == 0 else f'FAILED (exit {d['code']})'}  {d['task']} · {CONDITION_NAMES.get(d['condition'], d['condition'])}  {d.get('seconds', '?')}s   runs/_jobs/{d.get('job', '?')}.log", flush=True)
+            seen = len(done)
+            if not active:
+                break
+            time.sleep(5)
+        thumb_sweep()
+        with THUMB_LOCK:  # wait for the last pictures
+            pass
+        print(note or f"{len(done_cells())}/{len(all_cells())} cells have a record")
+    except KeyboardInterrupt:
+        print("\nstopping — the cell in flight is cut; run again to resume")
+        with QUEUE_LOCK:
+            QUEUE["stop"] = True
+            QUEUE["pending"] = []
+        with JOBS_LOCK:
+            for j in JOBS.values():
+                stop(j["proc"])
+    finally:
+        stop(ENV_SERVER["proc"])
+
+
 def main() -> None:
-    ap = argparse.ArgumentParser()
+    ap = argparse.ArgumentParser(description="the results page, or (--fill) a pass over every cell of the table without a record")
     ap.add_argument("--port", type=int, default=8787)
+    ap.add_argument("--fill", action="store_true", help="no page: run every missing task × condition, then exit (resumable; ^C stops)")
+    ap.add_argument("--model", default="claude-opus-5")
+    ap.add_argument("--eyes", choices=("on", "off"), default="on")
+    ap.add_argument("--conditions", default="", help="comma-separated condition keys to restrict the pass to (see conditions.json)")
     a = ap.parse_args()
     (HERE / "runs").mkdir(exist_ok=True)
+    if a.fill:
+        return fill(a)
     thumb_sweep()
     server = ThreadingHTTPServer(("127.0.0.1", a.port), partial(Handler, directory=str(HERE / "viewer")))
     print(f"results at http://localhost:{a.port}   (records/: {len(list((HERE / 'records').glob('*.json')))} paper runs · runs/: {len(list((HERE / 'runs').glob('*.json')))} of yours)")

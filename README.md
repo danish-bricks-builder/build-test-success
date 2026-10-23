@@ -112,18 +112,25 @@ monumental tasks tens of minutes.
 python3 serve.py            # http://localhost:8787
 ```
 
-Three tabs. **Paper results**: the paper's runs, every task against every condition.
-**New results**: the same table filled from your own reruns (`runs/`), with the controls to fill
-it: paste your API key (it stays in this browser and in the server's memory, never on disk), pick
-a model, and either run one task in one condition or press *run every missing cell* — the server
-then works through every task × condition that has no record yet, one session at a time, and
-each result lands in the table as it finishes. Stop whenever; starting again picks up where it
-left off. The full table is 63 cells (the edit task cannot run in the two ldraw conditions). The
-three environment conditions start the environment server for you on port 8788. **Try it
-yourself**: type any prompt, pick a condition, press run, and watch it happen — for the
-environment conditions every tool call streams into the page and the model grows in 3D as the
-agent places parts; at the end the build is graded like the paper's runs and listed under "your
-prompts". Click a cell: the
+Four tabs. **Paper results**: the paper's runs, every task against every condition, a picture
+of each final build. **New results**: the same page filled from your own reruns (`runs/`),
+latest run per cell. **Run cells**: paste your API key (it stays in this browser and in the
+server's memory, never on disk), pick a model, and run one task in one condition or press *run
+every missing cell*; the server then works through every task × condition that has no record
+yet, one session at a time, and each result lands in new results as it finishes. The same pass
+from the terminal, with no page open:
+
+```sh
+ANTHROPIC_API_KEY=… python3 serve.py --fill            # every missing cell, then exit; ^C stops, run again to resume
+python3 serve.py --fill --conditions raw-ldraw-1r,raw-ldraw-4r --eyes off
+```
+
+The full table is 63 cells (the edit task cannot run in the two ldraw conditions); the three
+environment conditions start the environment server for you on port 8788. **Try it yourself**:
+type any prompt, pick a condition, press run, and watch it happen — for the environment
+conditions every tool call streams into the page and the model grows in 3D as the agent places
+parts; at the end the build is graded like the paper's runs and listed under "your prompts".
+Click a cell: the
 model in 3D (orbit, zoom, x-ray), its grade with the validator's and the stability reports, the
 attempt-by-attempt trace where the record has one (your own runs keep the whole conversation;
 a session folder shows every tool call with its snapshot), and the LDraw source. Standard library only;
