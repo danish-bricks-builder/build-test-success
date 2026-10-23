@@ -106,13 +106,17 @@ Chrome on the machine (`CHROME_PATH` or a standard install) and the packed part 
 used `claude-opus-5` with up to 90 tool-loop iterations; a session takes minutes and the
 monumental tasks tens of minutes.
 
-## Looking at the runs
+## Looking at the runs, and trying it yourself
 
 ```sh
 python3 serve.py            # http://localhost:8787
 ```
 
-The paper's runs and yours in one table, every task against every condition. The panel at the top
+Two tabs. **Paper results**: the paper's runs and your reruns in one table, every task against
+every condition. **Try it yourself**: type any prompt, pick a condition, press run, and watch it
+happen — for the environment conditions every tool call streams into the page and the model grows
+in 3D as the agent places parts; at the end the build is graded like the paper's runs and listed
+under "your prompts". The rerun panel on the paper tab
 runs a condition from the page: paste your API key (it stays in this browser and in the server's
 memory, never on disk), pick a task and a condition, and press run; the log streams below and the
 result lands in the table. The three environment conditions start the environment server for you

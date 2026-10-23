@@ -49,7 +49,8 @@ async function main() {
     process.exit(2);
   }
   const { tasks } = JSON.parse(readFileSync(join(__dirname, "tasks.json"), "utf8")) as { tasks: Task[] };
-  const task = tasks.find((t) => t.id === taskId);
+  // a free prompt (try-it-yourself runs): graded on validity and stability alone
+  const task = taskId.startsWith("prompt") ? ({ id: taskId, type: "build", prompt: "", post: { minParts: 1 } } as Task) : tasks.find((t) => t.id === taskId);
   if (!task) {
     console.error(`unknown task ${taskId}; known: ${tasks.map((t) => t.id).join(", ")}`);
     process.exit(2);

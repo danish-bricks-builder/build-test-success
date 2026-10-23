@@ -126,7 +126,7 @@ def feedback_message(g: dict) -> str:
 
 def run_task(client, model: str, task: dict, attempts: int, dry_run: bool) -> dict:
     condition = "raw" if attempts == 1 else "raw+feedback"
-    run_id = f"{task['id']}_{condition}_{int(time.time()):x}"
+    run_id = task["id"] if task["id"].startswith("prompt") else f"{task['id']}_{condition}_{int(time.time()):x}"
     messages = [{"role": "user", "content": user_message(task)}]
     print(f"\n== {task['id']}  [{condition}]  {run_id}")
     if dry_run:
@@ -159,7 +159,7 @@ def run_task(client, model: str, task: dict, attempts: int, dry_run: bool) -> di
         messages.append({"role": "user", "content": feedback_message(g)})
 
     record = {
-        "runId": run_id, "task": task["id"], "condition": condition, "model": model,
+        "runId": run_id, "task": task["id"], "condition": condition, "model": model, "prompt": task["prompt"],
         "seconds": round(time.time() - started), "rounds": rounds,
         "PASS": bool(final_grade and final_grade.get("PASS")),
         "final": final_grade or {"PASS": False, "verifyReport": "no LDraw produced in any round"},
@@ -193,10 +193,14 @@ def main() -> None:
     ap.add_argument("--tasks", default="all", help="comma-separated task ids, 'all' (the 12 attemptable), or 'ablation' (the 7-task subset minus the edit task)")
     ap.add_argument("--model", default="claude-opus-5", help="the paper used claude-opus-5")
     ap.add_argument("--dry-run", action="store_true", help="print the prompts and call nothing")
+    ap.add_argument("--prompt", default=None, help="run this prompt instead of a task from tasks.json (graded on validity and stability only)")
+    ap.add_argument("--run-id", default=None, help="record under this run id (default: <task>_<condition>_<time>)")
     a = ap.parse_args()
 
     tasks = load_tasks()
-    if a.tasks == "all":
+    if a.prompt:
+        chosen = [{"id": a.run_id or f"prompt_{int(time.time()):x}", "band": "prompt", "type": "build", "prompt": a.prompt.strip(), "post": {"minParts": 1}}]
+    elif a.tasks == "all":
         chosen = [t for t in tasks if t["type"] != "edit"]  # the edit task cannot be expressed without the environment
     elif a.tasks == "ablation":
         subset = json.loads((HERE / "tasks.json").read_text())["ablation_subset"]

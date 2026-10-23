@@ -62,10 +62,14 @@ interface Task {
 async function runOnce() {
   const started = Date.now();
   const { tasks } = JSON.parse(readFileSync("tasks.json", "utf8")) as { tasks: Task[] };
-  const task = tasks.find((t) => t.id === taskId);
+  const prompt = opt("prompt", "");
+  // a free prompt (try-it-yourself runs): no requirements beyond validity and stability
+  const task: Task | undefined = prompt
+    ? { id: opt("runId", `prompt_${Date.now().toString(36)}`), type: "build", prompt, post: { minParts: 1 } }
+    : tasks.find((t) => t.id === taskId);
   if (!task) throw new Error(`unknown task ${taskId} — have: ${tasks.map((t) => t.id).join(", ")}`);
   const cond = `${condition}${eyes ? "" : "-noeyes"}`;
-  const runId = `build-${task.id}_${cond}_${Date.now().toString(36)}`;
+  const runId = prompt ? task.id : `build-${task.id}_${cond}_${Date.now().toString(36)}`;
 
   // edit tasks: seed the session with the official set, loaded as-is
   let seedLdr: string | undefined;
@@ -141,7 +145,7 @@ async function runOnce() {
 
   // ── grade the final artifact (independent of anything the agent said)
   mkdirSync("runs", { recursive: true });
-  const grades: Record<string, unknown> = { runId, task: task.id, condition: cond, model, seconds: Math.round((Date.now() - started) / 1000), tools: Object.fromEntries(toolCounts), error: lastError };
+  const grades: Record<string, unknown> = { runId, task: task.id, condition: cond, model, prompt: task.prompt, seconds: Math.round((Date.now() - started) / 1000), tools: Object.fromEntries(toolCounts), error: lastError };
   if (finalLdr) {
     writeFileSync(join("runs", `${runId}.ldr`), finalLdr);
     // export for the viewers: /assemblies/build:<runId> · /steps2?set=build:<runId> · /editor?set=build:<runId>

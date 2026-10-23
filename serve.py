@@ -20,6 +20,7 @@ Routes:
                        with the API key in the x-api-key header starts one (baseline.py or env/run.ts;
                        the environment server is started here when needed, with the key in its env)
     /api/jobs/<id>/log · /api/jobs/<id>/stop · /api/env/stop
+    /api/try           POST {prompt, condition, model, eyes} + x-api-key: run a free prompt, events streamed back
 """
 from __future__ import annotations
 
@@ -81,6 +82,7 @@ def normalize(path: Path, source: str) -> dict:
         "verifyReport": final.get("verifyReport"), "stabilityReport": final.get("stabilityReport"), "rounds": rounds,
         "hasLdr": path.with_suffix(".ldr").exists(), "file": str(path.relative_to(HERE)),
         "conversation": r.get("conversation"), "hasSession": (HERE / "sessions" / run_id / "run.json").exists(),
+        "prompt": r.get("prompt"), "kind": "prompt" if str(r.get("task", "")).startswith("prompt") else "task",
     }
 
 
@@ -218,6 +220,90 @@ def tail(path: str, n: int = 4000) -> str:
         return ""
 
 
+def sse(handler, obj: dict) -> None:
+    handler.wfile.write(f"data: {json.dumps(obj)}\n\n".encode())
+    handler.wfile.flush()
+
+
+def grade_file(ldr_path: Path, task_id: str) -> dict:
+    out = subprocess.run(["npx", "tsx", "grade.ts", str(ldr_path), "--task", task_id], cwd=HERE, capture_output=True, text=True)
+    if out.returncode != 0:
+        return {"PASS": False, "verifyReport": f"grader failed: {out.stderr[-400:]}"}
+    return json.loads(out.stdout.strip().splitlines()[-1])
+
+
+def try_prompt(handler, body: dict, key: str) -> None:
+    """Run a free prompt under one condition and stream what happens, as Server-Sent Events.
+    ldraw conditions: baseline.py runs with --prompt and its log is relayed line by line.
+    env conditions: the environment server's own event stream is relayed as is (tool calls,
+    narration, the model as it grows), then the final build is graded and recorded."""
+    prompt = (body.get("prompt") or "").strip()
+    cond = CONDITIONS.get(body.get("condition", ""))
+    model = (body.get("model") or "claude-opus-5").strip()
+    if not prompt or not cond:
+        return handler.send_json({"error": "prompt and condition are required"}, 400)
+    if not key:
+        return handler.send_json({"error": "an API key is required"}, 400)
+    run_id = f"prompt_{re.sub(r'[^a-z0-9]+', '-', cond['name'].lower()).strip('-')}_{int(time.time()):x}"
+    handler.send_response(200)
+    handler.send_header("Content-Type", "text/event-stream; charset=utf-8")
+    handler.send_header("Cache-Control", "no-cache")
+    handler.end_headers()
+    sse(handler, {"type": "start", "runId": run_id, "condition": cond["name"]})
+    started = time.time()
+    if cond["key"].startswith("raw-ldraw"):
+        LOG_DIR.mkdir(parents=True, exist_ok=True)
+        log_path = LOG_DIR / f"{run_id}.log"
+        with open(log_path, "wb") as log:
+            proc = subprocess.Popen(["python3", "-u", "baseline.py", "--condition", cond["name"], "--prompt", prompt, "--model", model, "--run-id", run_id],
+                                    cwd=HERE, env={**os.environ, "ANTHROPIC_API_KEY": key}, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+        sent = 0
+        while True:
+            text = tail(str(log_path), 10**6)
+            if len(text) > sent:
+                sse(handler, {"type": "text", "delta": text[sent:]})
+                sent = len(text)
+            if proc.poll() is not None:
+                break
+            time.sleep(0.5)
+    else:
+        err = ensure_env_server(key)
+        if err:
+            sse(handler, {"type": "error", "message": err}); sse(handler, {"type": "done"}); return
+        req_body = json.dumps({"message": prompt, "model": model, "toolMode": "connect", "toolset": "full", "baseplate": "none",
+                               "verifierTools": cond["key"] == "verifier", **({"gates": False} if cond["key"] == "none" else {}),
+                               "eyes": body.get("eyes") is not False, "stream": "model",
+                               "record": {"runId": run_id, "taskId": run_id, "condition": cond["key"] + ("" if body.get("eyes") is not False else "-noeyes"), "model": model}}).encode()
+        req = urllib.request.Request(f"http://127.0.0.1:{ENV_PORT}/api/copilot", data=req_body, headers={"Content-Type": "application/json", "x-user-api-key": key}, method="POST")
+        final_ldr = None
+        try:
+            with urllib.request.urlopen(req, timeout=3600) as resp:
+                for raw in resp:
+                    line = raw.decode("utf-8", "replace").rstrip("\n")
+                    if not line.startswith("data: "):
+                        continue
+                    handler.wfile.write((line + "\n\n").encode()); handler.wfile.flush()
+                    try:
+                        ev = json.loads(line[6:])
+                    except json.JSONDecodeError:
+                        continue
+                    if ev.get("type") == "result" and ev.get("ldraw"):
+                        final_ldr = ev["ldraw"]
+        except Exception as e:  # noqa: BLE001
+            sse(handler, {"type": "error", "message": f"environment: {e}"})
+        RUNS_DIR = HERE / "runs"; RUNS_DIR.mkdir(exist_ok=True)
+        grade = {"PASS": False, "verifyReport": "no final model produced"}
+        if final_ldr:
+            (RUNS_DIR / f"{run_id}.ldr").write_text(final_ldr)
+            grade = grade_file(RUNS_DIR / f"{run_id}.ldr", run_id)
+        (RUNS_DIR / f"{run_id}.json").write_text(json.dumps({"runId": run_id, "task": run_id, "condition": cond["key"], "model": model, "prompt": prompt,
+                                                              "seconds": round(time.time() - started), "rounds": [], "PASS": bool(grade.get("PASS")), "final": grade}, indent=1))
+    p = HERE / "runs" / f"{run_id}.json"
+    if p.exists():
+        sse(handler, {"type": "graded", "run": normalize(p, "mine")})
+    sse(handler, {"type": "done"})
+
+
 class Handler(SimpleHTTPRequestHandler):
     def log_message(self, fmt, *args):  # quiet, except errors
         if args and str(args[1]).startswith(("4", "5")) and "/ldraw/" not in str(args[0]):
@@ -288,6 +374,8 @@ class Handler(SimpleHTTPRequestHandler):
         length = int(self.headers.get("content-length") or 0)
         body = json.loads(self.rfile.read(length) or b"{}") if length else {}
         key = (self.headers.get("x-api-key") or "").strip()
+        if path == "/api/try":
+            return try_prompt(self, body, key)
         if path == "/api/jobs":
             try:
                 return self.send_json(job_view(start_job(body, key)), 201)
