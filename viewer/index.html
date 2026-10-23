@@ -11,7 +11,7 @@
   header { display: flex; align-items: baseline; gap: 14px; padding: 10px 16px; border-bottom: 1px solid var(--line); }
   header h1 { font-size: 16px; margin: 0; }
   header .muted { color: var(--muted); font-size: 12px; }
-  main { display: grid; grid-template-columns: minmax(420px, 36%) 1fr; height: calc(100vh - 42px); }
+  main { display: grid; grid-template-columns: minmax(420px, 44%) 1fr; height: calc(100vh - 42px); }
   @media (max-width: 900px) { main { grid-template-columns: 1fr; height: auto; } }
   #left { padding: 10px 12px; }
   .job { display: flex; gap: 8px; align-items: center; font: 11px ui-monospace, Menlo, monospace; padding: 3px 0; border-top: 1px solid var(--line); cursor: pointer; }
@@ -25,7 +25,12 @@
   td.cell button { font: inherit; background: none; border: 1px solid transparent; border-radius: 4px; padding: 1px 5px; cursor: pointer; color: inherit; display: inline-flex; flex-direction: column; align-items: center; gap: 2px; }
   td.cell button:hover { border-color: var(--accent); }
   td.cell button.on { background: var(--ink); color: #fff; }
-  td.cell img { display: block; width: 96px; height: 72px; object-fit: cover; border-radius: 3px; border: 2px solid #cfd3d8; background: #f6f7f8; }
+  /* the five condition columns share the width left after the task column; pictures shrink with them */
+  table.results { table-layout: fixed; }
+  table.results td:first-child, table.results th:first-child { overflow: hidden; text-overflow: ellipsis; text-align: left; }
+  table.results td.cell { padding: 4px 2px; }
+  td.cell button { width: 100%; padding: 1px; box-sizing: border-box; }
+  td.cell img { display: block; width: 100%; max-width: 96px; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; border: 2px solid #cfd3d8; background: #f6f7f8; box-sizing: border-box; }
   td.cell button.p img { border-color: #4caf50; }
   td.cell button.f img, td.cell button.w img { border-color: #e57373; }
   .p { color: var(--pass); } .w { color: var(--warn); } .f { color: var(--fail); } .n { color: var(--muted); }
@@ -169,19 +174,19 @@ async function openRun(id) {
 }
 
 function table(source, conditions) {
-  let html = `<table><thead><tr><th>task</th>${conditions.map((c) => `<th>${c}</th>`).join("")}</tr></thead><tbody>`;
+  let html = `<table class="results"><colgroup><col style="width:30%"></colgroup><thead><tr><th>task</th>${conditions.map((c) => `<th>${c}</th>`).join("")}</tr></thead><tbody>`;
   let band = "";
   const totals = conditions.map(() => [0, 0]);
   for (const t of data.tasks) {
     if (t.band !== band) { band = t.band; html += `<tr><td class="band" colspan="${conditions.length + 1}">${band}</td></tr>`; }
-    html += `<tr><td>${t.id}</td>`;
+    html += `<tr><td title="${t.id}">${t.id}</td>`;
     conditions.forEach((c, i) => {
       const runs = byCell.get(`${t.id}|${c}|${source}`);
       if (!runs) { html += `<td class="n">—</td>`; return; }
       const last = runs[runs.length - 1];
       totals[i][1]++; if (last.mark === "✓") totals[i][0]++;
       const pic = last.hasLdr ? `<img src="/api/thumb/${last.id}?v=${thumbV}" alt="" loading="lazy" onerror="this.remove()">` : "";
-      html += `<td class="cell"><button data-id="${last.id}" class="${tone(last.mark)}" title="${last.id}">${pic}<span>${last.mark}</span></button>${runs.length > 1 ? `<sup title="${runs.length} runs; latest shown">×${runs.length}</sup>` : ""}</td>`;
+      html += `<td class="cell"><button data-id="${last.id}" class="${tone(last.mark)}" title="${last.id}${runs.length > 1 ? ` (${runs.length} runs; latest shown)` : ""}">${pic}<span>${last.mark}${runs.length > 1 ? `<sup>×${runs.length}</sup>` : ""}</span></button></td>`;
     });
     html += "</tr>";
   }
