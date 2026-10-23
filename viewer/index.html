@@ -310,10 +310,11 @@ function render() {
 }
 document.querySelectorAll(".tabs button").forEach((b) => (b.onclick = () => { tab = b.dataset.tab; document.querySelectorAll(".tabs button").forEach((x) => x.classList.toggle("on", x === b)); render(); }));
 
-left.addEventListener("click", async (e) => {
+// cells in either table (paper results, new results)
+for (const box of [left, document.getElementById("newleft")]) box.addEventListener("click", async (e) => {
   const b = e.target.closest("button[data-id]");
   if (!b) return;
-  left.querySelectorAll("button.on").forEach((x) => x.classList.remove("on"));
+  document.querySelectorAll("#left button.on, #newleft button.on").forEach((x) => x.classList.remove("on"));
   b.classList.add("on");
   openRun(b.dataset.id);
 });
