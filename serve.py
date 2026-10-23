@@ -22,7 +22,7 @@ Routes:
     /api/jobs/<id>/log · /api/jobs/<id>/stop · /api/env/stop
     /api/try           POST {prompt, condition, model, eyes} + x-api-key: run a free prompt, events streamed back
     /api/thumb/<id>    PNG of the final build (records/thumbs, runs/thumbs; thumb.ts renders them)
-    python3 serve.py --fill [--model …] [--eyes off] [--conditions raw-ldraw-1r,…]   the whole table from the terminal
+    python3 serve.py --fill [--parallel 4] [--model …] [--eyes off] [--conditions …]   the whole table from the terminal
     /api/queue         GET: the fill-the-table queue; POST {model, eyes, conditions?} + x-api-key starts it over
                        every cell without a record in runs/ (resumable); POST /api/queue/stop {abort?}
 """
@@ -355,7 +355,7 @@ def try_prompt(handler, body: dict, key: str) -> None:
 # ── filling the whole table: a queue of cells, one job at a time ────────────────────────
 # Every task × condition the paper reports (the edit task cannot run in the ldraw conditions).
 # Cells that already have a record in runs/ are skipped, so the queue is resumable.
-QUEUE: dict = {"pending": [], "running": None, "done": [], "stop": False, "thread": None, "key": None, "model": None, "eyes": True}
+QUEUE: dict = {"pending": [], "running": [], "done": [], "stop": False, "threads": [], "key": None, "model": None, "eyes": True, "parallel": 1}
 QUEUE_LOCK = threading.Lock()
 
 
@@ -388,21 +388,23 @@ def done_cells() -> set[tuple[str, str]]:
     return out
 
 
-def queue_worker() -> None:
+def queue_worker(slot: int) -> None:
+    """One of QUEUE["parallel"] workers: takes the next cell until the list is empty or the queue is stopped.
+    Cells are independent sessions; running several at once changes nothing per cell."""
     while True:
         with QUEUE_LOCK:
             if QUEUE["stop"] or not QUEUE["pending"]:
-                QUEUE["running"] = None
-                QUEUE["thread"] = None
+                QUEUE["running"] = [r for r in QUEUE["running"] if r["slot"] != slot]
                 return
             task, cond = QUEUE["pending"].pop(0)
-            QUEUE["running"] = {"task": task, "condition": cond, "startedAt": time.time()}
+            mine = {"slot": slot, "task": task, "condition": cond, "startedAt": time.time()}
+            QUEUE["running"] = [r for r in QUEUE["running"] if r["slot"] != slot] + [mine]
         try:
             job = start_job({"task": task, "condition": cond, "model": QUEUE["model"], "eyes": QUEUE["eyes"]}, QUEUE["key"])
             job["proc"].wait()
             thumb_sweep()
             with QUEUE_LOCK:
-                QUEUE["done"].append({"task": task, "condition": cond, "code": job["proc"].returncode, "seconds": round(time.time() - QUEUE["running"]["startedAt"]), "job": job["id"]})
+                QUEUE["done"].append({"task": task, "condition": cond, "code": job["proc"].returncode, "seconds": round(time.time() - mine["startedAt"]), "job": job["id"]})
                 if all(d["code"] != 0 for d in QUEUE["done"][-3:]) and len(QUEUE["done"]) >= 3:
                     QUEUE["note"] = "stopped: three cells in a row failed — check the job log (a bad key, no Chrome for the eyes, …)"
                     QUEUE["stop"] = True
@@ -412,25 +414,31 @@ def queue_worker() -> None:
                 QUEUE["stop"] = True  # an unrunnable cell stops the queue rather than failing 60 times
 
 
+def queue_active() -> bool:
+    return any(t.is_alive() for t in QUEUE.get("threads") or [])
+
+
 def queue_start(spec: dict, key: str) -> dict:
     if not key:
         raise ValueError("an API key is required")
     with QUEUE_LOCK:
-        if QUEUE["thread"] is not None and QUEUE["thread"].is_alive():
+        if queue_active():
             raise ValueError("the queue is already running")
         done = done_cells()
         wanted = [c for c in all_cells() if c not in done]
         if spec.get("conditions"):
             wanted = [c for c in wanted if c[1] in spec["conditions"]]
-        QUEUE.update({"pending": wanted, "done": [], "stop": False, "note": None, "key": key, "model": (spec.get("model") or "claude-opus-5").strip(), "eyes": spec.get("eyes") is not False})
-        t = threading.Thread(target=queue_worker, daemon=True)
-        QUEUE["thread"] = t
-        t.start()
+        parallel = max(1, min(int(spec.get("parallel") or 1), 12))
+        QUEUE.update({"pending": wanted, "running": [], "done": [], "stop": False, "note": None, "key": key, "model": (spec.get("model") or "claude-opus-5").strip(),
+                      "eyes": spec.get("eyes") is not False, "parallel": parallel})
+        QUEUE["threads"] = [threading.Thread(target=queue_worker, args=(i,), daemon=True) for i in range(min(parallel, len(wanted)) or 1)]
+        for t in QUEUE["threads"]:
+            t.start()
         return queue_view()
 
 
 def queue_view() -> dict:
-    return {"pending": QUEUE["pending"], "running": QUEUE["running"], "done": QUEUE["done"], "active": QUEUE["thread"] is not None and QUEUE["thread"].is_alive(),
+    return {"pending": QUEUE["pending"], "running": QUEUE["running"], "done": QUEUE["done"], "active": queue_active(), "parallel": QUEUE.get("parallel", 1),
             "total": len(all_cells()), "have": len(done_cells()), "model": QUEUE["model"], "eyes": QUEUE["eyes"], "note": QUEUE.get("note"), "thumbs": thumb_count()}
 
 
@@ -531,11 +539,11 @@ class Handler(SimpleHTTPRequestHandler):
                 QUEUE["stop"] = True
                 QUEUE["pending"] = []
                 running = QUEUE["running"]
-            # the cell in flight finishes on its own unless its job is stopped too
+            # the cells in flight finish on their own unless their jobs are stopped too
             if body.get("abort") and running:
                 with JOBS_LOCK:
                     for j in JOBS.values():
-                        if j["endedAt"] is None and j["task"] == running["task"]:
+                        if j["endedAt"] is None and any(j["task"] == r["task"] for r in running):
                             stop(j["proc"])
             with QUEUE_LOCK:
                 return self.send_json(queue_view())
@@ -591,14 +599,14 @@ def fill(a) -> None:
         key = m.group(1).strip() if m else ""
     if not key:
         sys.exit("no ANTHROPIC_API_KEY in the environment or in .env")
-    spec = {"model": a.model, "eyes": a.eyes != "off", "conditions": a.conditions.split(",") if a.conditions else None}
+    spec = {"model": a.model, "eyes": a.eyes != "off", "conditions": a.conditions.split(",") if a.conditions else None, "parallel": a.parallel}
     q = queue_start(spec, key)
-    print(f"{q['have']}/{q['total']} cells have a record · {len(q['pending'])} to run · model {q['model']} · eyes {'on' if q['eyes'] else 'off'}")
+    print(f"{q['have']}/{q['total']} cells have a record · {len(q['pending'])} to run · model {q['model']} · eyes {'on' if q['eyes'] else 'off'} · {q['parallel']} at a time")
     seen = 0
     try:
         while True:
             with QUEUE_LOCK:
-                done, running, active, note = list(QUEUE["done"]), QUEUE["running"], QUEUE["thread"] is not None and QUEUE["thread"].is_alive(), QUEUE.get("note")
+                done, running, active, note = list(QUEUE["done"]), QUEUE["running"], queue_active(), QUEUE.get("note")
             for d in done[seen:]:
                 print(f"  {'done' if d['code'] == 0 else f'FAILED (exit {d['code']})'}  {d['task']} · {CONDITION_NAMES.get(d['condition'], d['condition'])}  {d.get('seconds', '?')}s   runs/_jobs/{d.get('job', '?')}.log", flush=True)
             seen = len(done)
@@ -628,6 +636,7 @@ def main() -> None:
     ap.add_argument("--model", default="claude-opus-5")
     ap.add_argument("--eyes", choices=("on", "off"), default="on")
     ap.add_argument("--conditions", default="", help="comma-separated condition keys to restrict the pass to (see conditions.json)")
+    ap.add_argument("--parallel", type=int, default=4, help="cells run at the same time (independent sessions; the API's rate limit is the ceiling)")
     a = ap.parse_args()
     (HERE / "runs").mkdir(exist_ok=True)
     if a.fill:
