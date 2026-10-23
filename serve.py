@@ -21,6 +21,8 @@ Routes:
                        the environment server is started here when needed, with the key in its env)
     /api/jobs/<id>/log · /api/jobs/<id>/stop · /api/env/stop
     /api/try           POST {prompt, condition, model, eyes} + x-api-key: run a free prompt, events streamed back
+    /api/queue         GET: the fill-the-table queue; POST {model, eyes, conditions?} + x-api-key starts it over
+                       every cell without a record in runs/ (resumable); POST /api/queue/stop {abort?}
 """
 from __future__ import annotations
 
@@ -118,6 +120,8 @@ def all_runs() -> list[dict]:
 # the key in its environment). Keys arrive in a request header, live in memory, never on disk.
 CONDITIONS = {c["key"]: c for c in json.loads((HERE / "conditions.json").read_text())["conditions"]}
 JOBS: dict[str, dict] = {}
+# baseline.py needs the anthropic package: python3 -m venv .venv && .venv/bin/pip install anthropic
+PY = str(HERE / ".venv" / "bin" / "python3") if (HERE / ".venv" / "bin" / "python3").exists() else "python3"
 JOBS_LOCK = threading.Lock()
 LOG_DIR = HERE / "runs" / "_jobs"
 ENV_PORT = 8788
@@ -176,7 +180,7 @@ def start_job(spec: dict, key: str) -> dict:
     model = (spec.get("model") or "claude-opus-5").strip()
     dry = bool(spec.get("dryRun"))
     if cond["key"].startswith("raw-ldraw"):
-        cmd = ["python3", "baseline.py", "--condition", cond["name"], "--tasks", task, "--model", model] + (["--dry-run"] if dry else [])
+        cmd = [PY, "baseline.py", "--condition", cond["name"], "--tasks", task, "--model", model] + (["--dry-run"] if dry else [])
         env = {**os.environ, "ANTHROPIC_API_KEY": key} if key else dict(os.environ)
     else:
         if dry:
@@ -194,6 +198,7 @@ def start_job(spec: dict, key: str) -> dict:
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     log_path = LOG_DIR / f"{job_id}.log"
     log = open(log_path, "wb")
+    env["PYTHON_COLORS"] = "0"  # plain tracebacks in the job log
     proc = subprocess.Popen(cmd, cwd=HERE, env=env, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
     job = {"id": job_id, "cmd": " ".join(cmd), "task": task, "condition": cond["name"], "model": model, "startedAt": time.time(), "endedAt": None, "code": None, "proc": proc, "log": str(log_path)}
     with JOBS_LOCK:
@@ -304,6 +309,87 @@ def try_prompt(handler, body: dict, key: str) -> None:
     sse(handler, {"type": "done"})
 
 
+# ── filling the whole table: a queue of cells, one job at a time ────────────────────────
+# Every task × condition the paper reports (the edit task cannot run in the ldraw conditions).
+# Cells that already have a record in runs/ are skipped, so the queue is resumable.
+QUEUE: dict = {"pending": [], "running": None, "done": [], "stop": False, "thread": None, "key": None, "model": None, "eyes": True}
+QUEUE_LOCK = threading.Lock()
+
+
+def all_cells() -> list[tuple[str, str]]:
+    tasks = json.loads((HERE / "tasks.json").read_text())["tasks"]
+    cells = []
+    for c in CONDITIONS.values():
+        for t in tasks:
+            if t["type"] == "edit" and c["key"].startswith("raw-ldraw"):
+                continue
+            cells.append((t["id"], c["key"]))
+    return cells
+
+
+def done_cells() -> set[tuple[str, str]]:
+    """(task, condition key) pairs that already have a rerun record in runs/."""
+    out = set()
+    by_name = {c["name"]: c["key"] for c in CONDITIONS.values()}
+    for p in (HERE / "runs").glob("*.json"):
+        try:
+            r = json.loads(p.read_text())
+        except json.JSONDecodeError:
+            continue
+        if str(r.get("task", "")).startswith("prompt"):
+            continue
+        cond = str(r.get("condition", ""))
+        key = by_name.get(cond, cond)
+        if key in CONDITIONS and "PASS" in r and r.get("task"):
+            out.add((r["task"], key))
+    return out
+
+
+def queue_worker() -> None:
+    while True:
+        with QUEUE_LOCK:
+            if QUEUE["stop"] or not QUEUE["pending"]:
+                QUEUE["running"] = None
+                QUEUE["thread"] = None
+                return
+            task, cond = QUEUE["pending"].pop(0)
+            QUEUE["running"] = {"task": task, "condition": cond, "startedAt": time.time()}
+        try:
+            job = start_job({"task": task, "condition": cond, "model": QUEUE["model"], "eyes": QUEUE["eyes"]}, QUEUE["key"])
+            job["proc"].wait()
+            with QUEUE_LOCK:
+                QUEUE["done"].append({"task": task, "condition": cond, "code": job["proc"].returncode, "seconds": round(time.time() - QUEUE["running"]["startedAt"]), "job": job["id"]})
+                if all(d["code"] != 0 for d in QUEUE["done"][-3:]) and len(QUEUE["done"]) >= 3:
+                    QUEUE["note"] = "stopped: three cells in a row failed — check the job log (a bad key, no Chrome for the eyes, …)"
+                    QUEUE["stop"] = True
+        except Exception as e:  # noqa: BLE001
+            with QUEUE_LOCK:
+                QUEUE["done"].append({"task": task, "condition": cond, "code": -1, "error": str(e)})
+                QUEUE["stop"] = True  # an unrunnable cell stops the queue rather than failing 60 times
+
+
+def queue_start(spec: dict, key: str) -> dict:
+    if not key:
+        raise ValueError("an API key is required")
+    with QUEUE_LOCK:
+        if QUEUE["thread"] is not None and QUEUE["thread"].is_alive():
+            raise ValueError("the queue is already running")
+        done = done_cells()
+        wanted = [c for c in all_cells() if c not in done]
+        if spec.get("conditions"):
+            wanted = [c for c in wanted if c[1] in spec["conditions"]]
+        QUEUE.update({"pending": wanted, "done": [], "stop": False, "note": None, "key": key, "model": (spec.get("model") or "claude-opus-5").strip(), "eyes": spec.get("eyes") is not False})
+        t = threading.Thread(target=queue_worker, daemon=True)
+        QUEUE["thread"] = t
+        t.start()
+        return queue_view()
+
+
+def queue_view() -> dict:
+    return {"pending": QUEUE["pending"], "running": QUEUE["running"], "done": QUEUE["done"], "active": QUEUE["thread"] is not None and QUEUE["thread"].is_alive(),
+            "total": len(all_cells()), "have": len(done_cells()), "model": QUEUE["model"], "eyes": QUEUE["eyes"], "note": QUEUE.get("note")}
+
+
 class Handler(SimpleHTTPRequestHandler):
     def log_message(self, fmt, *args):  # quiet, except errors
         if args and str(args[1]).startswith(("4", "5")) and "/ldraw/" not in str(args[0]):
@@ -353,6 +439,9 @@ class Handler(SimpleHTTPRequestHandler):
             if p.exists():
                 return self.send_text(p.read_text())
             return self.send_json({"error": "no such run"}, 404)
+        if path == "/api/queue":
+            with QUEUE_LOCK:
+                return self.send_json(queue_view())
         if path == "/api/jobs":
             with JOBS_LOCK:
                 views = [job_view(j) for j in JOBS.values()]
@@ -376,6 +465,24 @@ class Handler(SimpleHTTPRequestHandler):
         key = (self.headers.get("x-api-key") or "").strip()
         if path == "/api/try":
             return try_prompt(self, body, key)
+        if path == "/api/queue":
+            try:
+                return self.send_json(queue_start(body, key), 201)
+            except ValueError as e:
+                return self.send_json({"error": str(e)}, 400)
+        if path == "/api/queue/stop":
+            with QUEUE_LOCK:
+                QUEUE["stop"] = True
+                QUEUE["pending"] = []
+                running = QUEUE["running"]
+            # the cell in flight finishes on its own unless its job is stopped too
+            if body.get("abort") and running:
+                with JOBS_LOCK:
+                    for j in JOBS.values():
+                        if j["endedAt"] is None and j["task"] == running["task"]:
+                            stop(j["proc"])
+            with QUEUE_LOCK:
+                return self.send_json(queue_view())
         if path == "/api/jobs":
             try:
                 return self.send_json(job_view(start_job(body, key)), 201)

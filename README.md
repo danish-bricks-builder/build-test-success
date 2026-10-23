@@ -62,7 +62,7 @@ Needs Node 20+, Python 3.10+, and an Anthropic API key.
 ```sh
 npm install
 sh fetch-data.sh                      # ~28 MB of part data, see DATA-LICENSES.md
-pip install anthropic
+python3 -m venv .venv && .venv/bin/pip install anthropic   # serve.py uses .venv when it exists
 export ANTHROPIC_API_KEY=…            # or put it in .env
 
 python3 baseline.py --condition raw                          # the 12 attemptable tasks
@@ -112,15 +112,18 @@ monumental tasks tens of minutes.
 python3 serve.py            # http://localhost:8787
 ```
 
-Two tabs. **Paper results**: the paper's runs and your reruns in one table, every task against
-every condition. **Try it yourself**: type any prompt, pick a condition, press run, and watch it
-happen — for the environment conditions every tool call streams into the page and the model grows
-in 3D as the agent places parts; at the end the build is graded like the paper's runs and listed
-under "your prompts". The rerun panel on the paper tab
-runs a condition from the page: paste your API key (it stays in this browser and in the server's
-memory, never on disk), pick a task and a condition, and press run; the log streams below and the
-result lands in the table. The three environment conditions start the environment server for you
-on port 8788. Click a cell: the
+Three tabs. **Paper results**: the paper's runs, every task against every condition.
+**New results**: the same table filled from your own reruns (`runs/`), with the controls to fill
+it: paste your API key (it stays in this browser and in the server's memory, never on disk), pick
+a model, and either run one task in one condition or press *run every missing cell* — the server
+then works through every task × condition that has no record yet, one session at a time, and
+each result lands in the table as it finishes. Stop whenever; starting again picks up where it
+left off. The full table is 63 cells (the edit task cannot run in the two ldraw conditions). The
+three environment conditions start the environment server for you on port 8788. **Try it
+yourself**: type any prompt, pick a condition, press run, and watch it happen — for the
+environment conditions every tool call streams into the page and the model grows in 3D as the
+agent places parts; at the end the build is graded like the paper's runs and listed under "your
+prompts". Click a cell: the
 model in 3D (orbit, zoom, x-ray), its grade with the validator's and the stability reports, the
 attempt-by-attempt trace where the record has one (your own runs keep the whole conversation;
 a session folder shows every tool call with its snapshot), and the LDraw source. Standard library only;

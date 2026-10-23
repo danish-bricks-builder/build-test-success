@@ -181,6 +181,9 @@ def call_model(client, model: str, messages: list[dict]) -> str:
             with client.messages.stream(model=model, max_tokens=32000, system=SYSTEM, messages=messages) as stream:
                 return "".join(block.text for block in stream.get_final_message().content if block.type == "text")
         except Exception as e:  # noqa: BLE001 — network flakes; the error is re-raised after four tries
+            status = getattr(e, "status_code", None)
+            if status is not None and status not in (408, 409, 429) and status < 500:
+                raise  # a bad key, an unknown model, a malformed request: retrying cannot help
             last = e
             print(f"[retry {attempt}/4: {type(e).__name__}] ", end="", flush=True)
             time.sleep(15 * attempt)

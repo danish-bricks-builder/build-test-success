@@ -10,3 +10,4 @@ __pycache__/
 sessions/prompt_*
 # the renderer builds this with esbuild on first use
 public/render-snap/snap.js
+.venv/
