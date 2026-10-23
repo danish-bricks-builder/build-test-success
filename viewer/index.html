@@ -13,7 +13,7 @@
   header .muted { color: var(--muted); font-size: 12px; }
   main { display: grid; grid-template-columns: minmax(420px, 44%) 1fr; height: calc(100vh - 42px); }
   @media (max-width: 900px) { main { grid-template-columns: 1fr; height: auto; } }
-  #left { padding: 10px 12px; }
+  #left, #newleft { padding: 10px 12px 48px; } /* room under the legend, so the last rows are not jammed against the window's edge */
   .job { display: flex; gap: 8px; align-items: center; font: 11px ui-monospace, Menlo, monospace; padding: 3px 0; border-top: 1px solid var(--line); cursor: pointer; }
   .job.on { color: var(--accent); }
   .job button { font: 10px -apple-system, sans-serif; background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; cursor: pointer; }
