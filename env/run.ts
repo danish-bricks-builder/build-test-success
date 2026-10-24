@@ -152,10 +152,10 @@ async function runOnce() {
 
   // ── grade the final artifact (independent of anything the agent said)
   mkdirSync("runs", { recursive: true });
-  if (lastError && !finalLdr) {
-    // The session never produced a model because something outside the agent failed (the API
-    // refused, the network went, …): no record — the cell stays missing and the pass's failure
-    // guard sees a failed job instead of a graded one.
+  if (lastError) {
+    // Something outside the agent failed during the session (the API refused, the network went,
+    // …): the build is whatever was there when it broke, not what the agent would have finished.
+    // No record — the cell stays missing and the pass's failure guard sees a failed job.
     console.error(`\n${runId}: no model — ${lastError}`);
     process.exit(1);
   }
