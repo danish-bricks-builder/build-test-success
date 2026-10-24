@@ -533,6 +533,12 @@ class Handler(SimpleHTTPRequestHandler):
                     run = normalize(p, "paper" if d == "records" else "mine")
                     ldr = p.with_suffix(".ldr")
                     run["ldraw"] = ldr.read_text() if ldr.exists() else None
+                    run["taskSpec"] = next((t for t in json.loads((HERE / "tasks.json").read_text())["tasks"] if t["id"] == run.get("task")), None)
+                    if run.get("kind") == "task":
+                        # measured values the requirement list needs beyond the grade summary
+                        raw = json.loads(p.read_text()); fin = raw.get("final") or raw
+                        run["measured"] = {k: fin.get(k) for k in ("preserved", "preservedOffset", "bomOver", "newProblems") if fin.get(k) is not None}
+                        run["measured"].update({k: v for k, v in fin.items() if k.startswith("parts_")})
                     # earlier attempts of a baseline.py run, when kept
                     run["attempts"] = {x["ldr"]: (HERE / "runs" / x["ldr"]).read_text() for x in run["rounds"] if x.get("ldr") and (HERE / "runs" / x["ldr"]).exists()}
                     run["session"] = session(run["id"])

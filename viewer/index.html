@@ -45,6 +45,10 @@
   #stages label { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
   #stages .sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
   #stagenote { font: 11px ui-monospace, Menlo, monospace; margin-left: 4px; }
+  table.req { width: auto; margin: 4px 0 10px; font: 12px ui-monospace, Menlo, monospace; }
+  table.req th, table.req td { text-align: left; white-space: normal; padding: 3px 10px 3px 0; vertical-align: top; }
+  table.req tr.ok td:first-child { color: #1f8f4e; font-weight: 700; } table.req tr.bad td:first-child { color: #c62828; font-weight: 700; }
+  details.prompt pre { white-space: pre-wrap; font-size: 11px; color: var(--muted); }
   #tools { position: absolute; top: 8px; right: 10px; display: flex; gap: 4px; }
   #tools button, .tabs button { font: 12px -apple-system, sans-serif; background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 2px 8px; cursor: pointer; }
   .tabs { display: flex; gap: 4px; padding: 6px 10px; border-bottom: 1px solid var(--line); }
@@ -372,7 +376,19 @@ function render() {
   if (!current) return;
   const r = current;
   if (tab === "grade") {
-    const post = r.post ? Object.entries(r.post).map(([k, v]) => `${v ? "✓" : "✗"} ${k}`).join(" · ") : "—";
+    // every requirement the task set, with what it asked and what was measured
+    const spec = r.taskSpec?.post || {}, m = r.measured || {}, P = r.post || {};
+    const row = (ok, what, asked, got) => `<tr class="${ok === undefined ? "" : ok ? "ok" : "bad"}"><td>${ok === undefined ? "–" : ok ? "✓" : "✗"}</td><td>${what}</td><td>${asked}</td><td>${got}</td></tr>`;
+    const rows = [];
+    rows.push(row(P.parts, "part count", spec.minParts != null ? `at least ${spec.minParts}` : "—", r.partCount ?? "—"));
+    if (spec.minHeightLdu != null || P.height !== undefined) rows.push(row(P.height, "height", spec.minHeightLdu != null ? `at least ${spec.minHeightLdu} LDU (${(spec.minHeightLdu / 24).toFixed(0)} bricks)` : "—", r.heightLdu != null ? `${r.heightLdu} LDU (${(r.heightLdu / 24).toFixed(1)} bricks)` : "—"));
+    if (spec.maxFootprintStuds || P.footprint !== undefined) rows.push(row(P.footprint, "footprint", spec.maxFootprintStuds ? `within ${spec.maxFootprintStuds.join("×")} studs` : "—", r.footprintStuds ? `${r.footprintStuds.join("×")} studs` : "—"));
+    for (const pn of spec.partNames || []) rows.push(row(P[`names(${pn.match})`], `parts matching “${pn.match}”`, `at least ${pn.min}`, m[`parts_${pn.match}`] ?? "—"));
+    if (spec.minPreserved != null || P.preserved !== undefined) rows.push(row(P.preserved, "original set preserved", spec.minPreserved != null ? `at least ${Math.round(spec.minPreserved * 100)}% of its parts, moved as one piece` : "—", m.preserved != null ? `${Math.round(m.preserved * 100)}%${m.preservedOffset ? ` (shifted ${m.preservedOffset.join(", ")} LDU)` : ""}` : "—"));
+    if (P.bom !== undefined) rows.push(row(P.bom, "parts from the set's inventory only", "no part beyond the set's count", m.bomOver?.length ? `over: ${m.bomOver.map(([k, n]) => `${k} ×${n}`).join(", ")}` : "all within"));
+    for (const [k, v] of Object.entries(P)) if (!["parts", "height", "footprint", "preserved", "bom"].includes(k) && !k.startsWith("names(")) rows.push(row(v, k, "—", "—"));
+    rows.unshift(row(r.valid, "valid", "every part attached, nothing overlapping", r.verifyReport ? esc(r.verifyReport.split("\n")[0]) : "—"), row(r.stable, "stable", "stands under its own weight", r.stabilityReport ? esc(r.stabilityReport.split("\n")[0]) : "—"));
+    const post = `<table class="req"><thead><tr><th></th><th>check</th><th>asked</th><th>measured</th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
     detail.innerHTML = `<div class="kv">
       <span>run</span><span>${esc(r.id)} <span class="n">(${esc(r.file)})</span></span>
       <span>condition</span><span>${esc(r.condition)} · ${esc(r.model ?? "")}${r.seconds ? ` · ${r.seconds}s` : ""}</span>
@@ -380,8 +396,9 @@ function render() {
       <span>parts</span><span>${r.partCount ?? "—"}${r.heightLdu != null ? ` · height ${r.heightLdu} LDU` : ""}${r.footprintStuds ? ` · footprint ${r.footprintStuds.join("×")} studs` : ""}</span>
       <span>valid</span><span>${r.valid === undefined ? "—" : r.valid}</span>
       <span>stable</span><span>${r.stable === undefined ? "—" : r.stable}</span>
-      <span>requirements</span><span>${post}</span>
     </div>
+    <div class="band">what the task required</div>${post}
+    ${r.taskSpec?.prompt ? `<details class="prompt"><summary class="n">the prompt</summary><pre>${esc(r.taskSpec.prompt)}</pre></details>` : ""}
     <div class="band">validator report</div><pre>${esc(r.verifyReport ?? "—")}</pre>
     <div class="band">stability report</div><pre>${esc(r.stabilityReport ?? "—")}</pre>`;
   } else if (tab === "trace") {
