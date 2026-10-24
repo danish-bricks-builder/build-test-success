@@ -25,10 +25,10 @@ const RENDERS = "paper-out/renders";
 mkdirSync(RENDERS, { recursive: true });
 
 interface Task { id: string; band: string; type: string }
-interface Cond { key: string; name: string }
+interface Cond { key: string; name: string; aliases?: string[] }
 const tasks: Task[] = JSON.parse(readFileSync("tasks.json", "utf8")).tasks;
 const conds: Cond[] = JSON.parse(readFileSync("conditions.json", "utf8")).conditions;
-const nameToKey = new Map(conds.map((c) => [c.name, c.key]));
+const nameToKey = new Map(conds.flatMap((c) => [[c.name, c.key], ...(c.aliases ?? []).map((a) => [a, c.key] as [string, string])])); // earlier names too
 
 type Mark = "✓" | "×v" | "×s" | "×f" | "×r" | "∅";
 interface Cell { id: string; mark: Mark; parts: number | null; ldr: string | null }
