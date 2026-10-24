@@ -1,0 +1,38 @@
+{"t":1792796638970,"turn":0,"type":"text","delta":"Plan"}
+{"t":1792796639019,"turn":0,"type":"text","delta":"ning the"}
+{"t":1792796639084,"turn":0,"type":"text","delta":" house first."}
+{"t":1792796639220,"turn":0,"type":"tool_typing","name":"design_layout","bytes":0}
+{"t":1792796642020,"turn":0,"type":"tool_typing","name":"design_layout","bytes":7}
+{"t":1792796642368,"turn":0,"type":"usage","input":2,"output":7341,"cacheRead":13150,"cacheWrite":0}
+{"t":1792796642369,"turn":0,"type":"tool_start","name":"design_layout"}
+{"t":1792796642370,"turn":0,"type":"tool","name":"design_layout","summary":"⚠ 1 plan warning(s)"}
+{"t":1792796682778,"turn":0,"type":"text","delta":"Tan wal"}
+{"t":1792796682849,"turn":0,"type":"text","delta":"ls, 5 courses,"}
+{"t":1792796682914,"turn":0,"type":"text","delta":" door front, wind"}
+{"t":1792796682985,"turn":0,"type":"text","delta":"ows back and side."}
+{"t":1792796683124,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792796684336,"turn":0,"type":"usage","input":2,"output":202,"cacheRead":13150,"cacheWrite":7693}
+{"t":1792796684337,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792796684353,"turn":0,"type":"tool","name":"build_program","summary":"placed 54"}
+{"t":1792796719475,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792796719944,"turn":0,"type":"usage","input":2,"output":72,"cacheRead":20843,"cacheWrite":239}
+{"t":1792796719945,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792796720119,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792796735980,"turn":0,"type":"text","delta":"D"}
+{"t":1792796736040,"turn":0,"type":"text","delta":"ark-gr"}
+{"t":1792796736108,"turn":0,"type":"text","delta":"ey base course, then test"}
+{"t":1792796736171,"turn":0,"type":"text","delta":" a"}
+{"t":1792796736236,"turn":0,"type":"text","delta":" ro"}
+{"t":1792796736303,"turn":0,"type":"text","delta":"of slope's"}
+{"t":1792796736367,"turn":0,"type":"text","delta":" fac"}
+{"t":1792796736437,"turn":0,"type":"text","delta":"ing."}
+{"t":1792796736575,"turn":0,"type":"tool_typing","name":"find_parts","bytes":0}
+{"t":1792796737054,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792796737638,"turn":0,"type":"usage","input":2,"output":305,"cacheRead":21082,"cacheWrite":644}
+{"t":1792796737640,"turn":0,"type":"tool_start","name":"find_parts"}
+{"t":1792796737641,"turn":0,"type":"tool","name":"find_parts","summary":"10 parts match"}
+{"t":1792796737641,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792796738158,"turn":0,"type":"tool","name":"build_program","summary":"placed 0 · 1 rejected"}
+{"t":1792797068171,"turn":0,"type":"error","message":"terminated"}
+{"t":1792797068173,"turn":1,"type":"result","ldraw":"0 LeoCAD build\n0 Name: LeoCAD_build.ldr\n0 Author: Danish Bricks Builder\n0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt\n\n1 19 20 -24 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 80 -24 70 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -80 -24 70 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -40 -24 70 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -60 -24 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 60 -24 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -90 -24 20 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 -90 -24 -40 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 90 -24 20 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 90 -24 -40 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 0 -48 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 70 -48 70 1 0 0 0 1 0 0 0 1 3622.dat\n1 19 -70 -48 70 1 0 0 0 1 0 0 0 1 3622.dat\n1 19 -30 -48 -70 1 0 0 0 1 0 0 0 1 3005.dat\n1 19 -70 -48 -70 1 0 0 0 1 0 0 0 1 3622.dat\n1 19 60 -48 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -90 -48 20 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 -90 -48 -40 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 90 -48 20 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 90 -48 -40 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 20 -72 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 80 -72 70 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -80 -72 70 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -60 -72 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 60 -72 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -90 -72 20 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 -90 -72 -40 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 90 -72 40 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 90 -72 -40 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 0 -96 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 40 -96 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 90 -96 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 19 -90 -96 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 19 -70 -96 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 19 -10 -96 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 19 -70 -96 -70 1 0 0 0 1 0 0 0 1 3622.dat\n1 19 70 -96 -70 1 0 0 0 1 0 0 0 1 3622.dat\n1 19 -90 -96 20 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 -90 -96 -40 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 90 -96 40 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 90 -96 -40 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -40 -120 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 90 -120 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 40 -120 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 90 -120 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 19 -90 -120 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 19 20 -120 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 80 -120 -70 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -80 -120 -70 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -40 -120 -70 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -90 -120 20 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 -90 -120 -40 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 90 -120 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 19 90 -120 -50 1 0 0 0 1 0 0 0 1 3005.dat\n","partCount":54}
+{"t":1792797068173,"turn":1,"type":"done"}

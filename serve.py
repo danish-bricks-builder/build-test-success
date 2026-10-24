@@ -600,23 +600,49 @@ def fill(a) -> None:
     if not key:
         sys.exit("no ANTHROPIC_API_KEY in the environment or in .env")
     spec = {"model": a.model, "eyes": a.eyes != "off", "conditions": a.conditions.split(",") if a.conditions else None, "parallel": a.parallel}
-    q = queue_start(spec, key)
-    print(f"{q['have']}/{q['total']} cells have a record · {len(q['pending'])} to run · model {q['model']} · eyes {'on' if q['eyes'] else 'off'} · {q['parallel']} at a time")
-    seen = 0
+    resumes = 0
     try:
         while True:
-            with QUEUE_LOCK:
-                done, running, active, note = list(QUEUE["done"]), QUEUE["running"], queue_active(), QUEUE.get("note")
-            for d in done[seen:]:
-                print(f"  {'done' if d['code'] == 0 else f'FAILED (exit {d['code']})'}  {d['task']} · {CONDITION_NAMES.get(d['condition'], d['condition'])}  {d.get('seconds', '?')}s   runs/_jobs/{d.get('job', '?')}.log", flush=True)
-            seen = len(done)
-            if not active:
+            q = queue_start(spec, key)
+            print(f"{q['have']}/{q['total']} cells have a record · {len(q['pending'])} to run · model {q['model']} · eyes {'on' if q['eyes'] else 'off'} · {q['parallel']} at a time", flush=True)
+            seen = 0
+            while True:
+                with QUEUE_LOCK:
+                    done, active, note = list(QUEUE["done"]), queue_active(), QUEUE.get("note")
+                for d in done[seen:]:
+                    print(f"  {'done' if d['code'] == 0 else f'FAILED (exit {d['code']})'}  {d['task']} · {CONDITION_NAMES.get(d['condition'], d['condition'])}  {d.get('seconds', '?')}s   runs/_jobs/{d.get('job', '?')}.log", flush=True)
+                seen = len(done)
+                if not active:
+                    break
+                time.sleep(5)
+            thumb_sweep()
+            with THUMB_LOCK:  # wait for the last pictures
+                pass
+            missing = len(all_cells()) - len(done_cells())
+            if not note or not missing or resumes >= 3:
+                print(note or f"{len(done_cells())}/{len(all_cells())} cells have a record")
                 break
-            time.sleep(5)
-        thumb_sweep()
-        with THUMB_LOCK:  # wait for the last pictures
-            pass
-        print(note or f"{len(done_cells())}/{len(all_cells())} cells have a record")
+            # Stopped on repeated failures. The usual cause is the network or the API being away;
+            # wait until the API answers again (up to two hours), then take up the missing cells.
+            print(f"{note}\n  {missing} cells still missing — waiting for the API to answer before resuming ({resumes + 1}/3)…", flush=True)
+            stop(ENV_SERVER["proc"])
+            ENV_SERVER["proc"] = None
+            waited = 0
+            while waited < 7200:
+                time.sleep(60)
+                waited += 60
+                try:
+                    req = urllib.request.Request("https://api.anthropic.com/v1/models", headers={"x-api-key": key, "anthropic-version": "2023-06-01"})
+                    with urllib.request.urlopen(req, timeout=15) as resp:
+                        if resp.status == 200:
+                            break
+                except Exception:  # noqa: BLE001
+                    continue
+            else:
+                print("the API did not answer for two hours — giving up; run again to resume")
+                break
+            resumes += 1
+            print(f"  API reachable again after {waited // 60} min — resuming", flush=True)
     except KeyboardInterrupt:
         print("\nstopping — the cell in flight is cut; run again to resume")
         with QUEUE_LOCK:
