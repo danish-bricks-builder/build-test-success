@@ -151,6 +151,13 @@ async function runOnce() {
 
   // ── grade the final artifact (independent of anything the agent said)
   mkdirSync("runs", { recursive: true });
+  if (lastError && !finalLdr) {
+    // The session never produced a model because something outside the agent failed (the API
+    // refused, the network went, …): no record — the cell stays missing and the pass's failure
+    // guard sees a failed job instead of a graded one.
+    console.error(`\n${runId}: no model — ${lastError}`);
+    process.exit(1);
+  }
   const grades: Record<string, unknown> = { runId, task: task.id, condition: cond, model, prompt: task.prompt, seconds: Math.round((Date.now() - started) / 1000), tools: Object.fromEntries(toolCounts), usage, error: lastError };
   if (finalLdr) {
     writeFileSync(join("runs", `${runId}.ldr`), finalLdr);
