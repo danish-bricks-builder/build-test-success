@@ -439,6 +439,8 @@ def queue_start(spec: dict, key: str) -> dict:
         wanted = [c for c in all_cells() if c not in done]
         if spec.get("conditions"):
             wanted = [c for c in wanted if c[1] in spec["conditions"]]
+        skip = {tuple(x.split("/", 1)) for x in (spec.get("skip") or [])}  # "task/condition-key" pairs running elsewhere
+        wanted = [c for c in wanted if c not in skip]
         parallel = max(1, min(int(spec.get("parallel") or 1), 12))
         QUEUE.update({"pending": wanted, "running": [], "done": [], "stop": False, "note": None, "key": key, "model": (spec.get("model") or "claude-opus-5").strip(),
                       "eyes": spec.get("eyes") is not False, "parallel": parallel})
@@ -610,7 +612,8 @@ def fill(a) -> None:
         key = m.group(1).strip() if m else ""
     if not key:
         sys.exit("no ANTHROPIC_API_KEY in the environment or in .env")
-    spec = {"model": a.model, "eyes": a.eyes != "off", "conditions": a.conditions.split(",") if a.conditions else None, "parallel": a.parallel}
+    spec = {"model": a.model, "eyes": a.eyes != "off", "conditions": a.conditions.split(",") if a.conditions else None, "parallel": a.parallel,
+            "skip": a.skip.split(",") if a.skip else []}
     resumes = 0
     try:
         while True:
@@ -675,6 +678,7 @@ def main() -> None:
     ap.add_argument("--eyes", choices=("on", "off"), default="on")
     ap.add_argument("--conditions", default="", help="comma-separated condition keys to restrict the pass to (see conditions.json)")
     ap.add_argument("--parallel", type=int, default=4, help="cells run at the same time (independent sessions; the API's rate limit is the ceiling)")
+    ap.add_argument("--skip", default="", help="comma-separated task/condition-key cells to leave alone (e.g. running elsewhere)")
     a = ap.parse_args()
     (HERE / "runs").mkdir(exist_ok=True)
     if a.fill:
