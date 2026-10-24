@@ -84,7 +84,7 @@
 <body>
 <header>
   <h1>Build, Test, Success</h1>
-  <span class="tabs2"><button data-top="paper" class="on">paper results</button><button data-top="new">new results</button><button data-top="run">run cells</button><button data-top="try">try it yourself</button></span>
+  <span class="tabs2"><button data-top="new" class="on">results</button><button data-top="run">run cells</button><button data-top="try">try it yourself</button></span>
   <span class="muted" id="counts">loading…</span>
   <span class="muted" style="margin-left:auto">click a cell · drag to orbit · scroll to zoom</span>
 </header>
@@ -105,10 +105,8 @@
     <div class="band">your prompts</div>
     <div id="prompts"><p class="n" style="font-size:12px">none yet</p></div>
   </div>
-  <div id="paperTab">
-  <div id="left"></div>
-  </div>
-  <div id="newTab" style="display:none">
+  <div id="left" style="display:none"></div>
+  <div id="newTab">
   <div id="newleft"></div>
   </div>
   <div id="runTab" style="display:none">
@@ -143,7 +141,7 @@
       </div>
     </div>
     <div class="tabs"><button data-tab="grade" class="on">grade</button><button data-tab="trace">trace</button><button data-tab="ldraw">ldraw</button></div>
-    <div id="detail"><div class="empty">The paper's runs are on the left: every task against every condition, in the paper's notation. Your own runs (runs/) appear below them.</div></div>
+    <div id="detail"><div class="empty">Every task against every condition, in the paper's notation; click a cell to see the build, its grade and its trace.</div></div>
   </div>
 </main>
 
@@ -177,10 +175,9 @@ async function loadTable() {
   for (const v of byCell.values()) v.sort((a, b) => (a.id.split("_").pop() < b.id.split("_").pop() ? -1 : 1));
   const mine = data.runs.filter((r) => r.source === "mine" && r.kind !== "prompt");
   const legend = `<div class="legend">✓ every check passes · ×v parts collide or float · ×s falls over · ×f too big for the footprint · ×r another requirement missed · ∅ no model produced · — not run</div>`;
-  // the two tabs are the same page: the paper's table from records/, the new one from runs/
-  left.innerHTML = `<div class="band">the paper's runs (records/)</div>${table("paper", CONDITIONS)}${legend}`;
-  document.getElementById("newleft").innerHTML = `<div class="band">new results (runs/)</div>${table("mine", CONDITIONS)}${legend}`;
-  document.getElementById("counts").textContent = `${data.runs.filter((r) => r.source === "paper").length} paper runs · ${mine.length} reruns · ${data.runs.filter((r) => r.kind === "prompt").length} prompts`;
+  // the table: every task against every condition, from runs/ (the paper's own records stay in records/, not shown)
+  document.getElementById("newleft").innerHTML = `<div class="band">results (runs/ — latest run per cell)</div>${table("mine", CONDITIONS)}${legend}`;
+  document.getElementById("counts").textContent = `${mine.length} runs · ${data.runs.filter((r) => r.kind === "prompt").length} prompts`;
   if (current) document.querySelector(`#left button[data-id="${current.id}"], #newleft button[data-id="${current.id}"]`)?.classList.add("on");
   const prompts = data.runs.filter((r) => r.kind === "prompt").sort((a, b) => (a.id.split("_").pop() < b.id.split("_").pop() ? 1 : -1));
   document.getElementById("prompts").innerHTML = prompts.length
@@ -445,7 +442,7 @@ function render() {
 }
 document.querySelectorAll(".tabs button").forEach((b) => (b.onclick = () => { tab = b.dataset.tab; document.querySelectorAll(".tabs button").forEach((x) => x.classList.toggle("on", x === b)); render(); }));
 
-// cells in either table (paper results, new results)
+// cells in the table
 for (const box of [left, document.getElementById("newleft")]) box.addEventListener("click", async (e) => {
   const b = e.target.closest("button[data-id]");
   if (!b) return;
@@ -540,7 +537,6 @@ $("fabort").onclick = async () => { try { localStorage.removeItem("bts-fill"); }
 // ── the tabs ─────────────────────────────────────────────────────────────
 document.querySelectorAll(".tabs2 button").forEach((b) => (b.onclick = () => {
   document.querySelectorAll(".tabs2 button").forEach((x) => x.classList.toggle("on", x === b));
-  $("paperTab").style.display = b.dataset.top === "paper" ? "" : "none";
   $("newTab").style.display = b.dataset.top === "new" ? "" : "none";
   $("runTab").style.display = b.dataset.top === "run" ? "" : "none";
   $("tryTab").style.display = b.dataset.top === "try" ? "" : "none";
