@@ -29,6 +29,7 @@
   /* the five condition columns share the width left after the task column; pictures shrink with them */
   table.results { table-layout: fixed; }
   table.results td:first-child, table.results th:first-child { overflow: hidden; text-overflow: ellipsis; text-align: left; }
+  table.results th { white-space: normal; vertical-align: bottom; line-height: 1.25; }
   table.results td.cell, table.results th:not(:first-child) { padding: 4px 2px; text-align: center; }
   td.cell button { width: 100%; padding: 1px; box-sizing: border-box; }
   td.cell img { display: block; width: 100%; max-width: 96px; margin: 0 auto; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; border: 2px solid #cfd3d8; background: #f6f7f8; box-sizing: border-box; }
@@ -195,7 +196,8 @@ async function openRun(id) {
 }
 
 function table(source, conditions) {
-  let html = `<table class="results"><colgroup><col style="width:30%"></colgroup><thead><tr><th>task</th>${conditions.map((c) => `<th>${c}</th>`).join("")}</tr></thead><tbody>`;
+  // a condition's name breaks before its "+": "interactive" over "+final check"
+  let html = `<table class="results"><colgroup><col style="width:30%"></colgroup><thead><tr><th>task</th>${conditions.map((c) => `<th>${c.replace("+", "<br>+")}</th>`).join("")}</tr></thead><tbody>`;
   let band = "";
   const totals = conditions.map(() => [0, 0]);
   for (const t of data.tasks) {
