@@ -144,7 +144,7 @@ def feedback_message(g: dict) -> str:
     """What the model is told between attempts: the validator's own report, as text."""
     if g.get("parseError"):
         return f"The file failed to parse: {g['parseError']}. Output a corrected complete file."
-    msg = f"Verifier report:\n{g['verifyReport'][:1500]}\n"
+    msg = f"Verifier report:\n{g['verifyReport'][:6000]}\n"
     if g["valid"]:
         msg += f"Stability report:\n{g['stabilityReport'][:1500]}\n"
     msg += "Fix these problems and output the corrected COMPLETE file as a ```ldraw fenced block."

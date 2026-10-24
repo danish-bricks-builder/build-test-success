@@ -21,6 +21,7 @@ Routes:
                        the environment server is started here when needed, with the key in its env)
     /api/jobs/<id>/log · /api/jobs/<id>/stop · /api/env/stop
     /api/try           POST {prompt, condition, model, eyes} + x-api-key: run a free prompt, events streamed back
+    /api/verify/<id>   the faulty parts of a run by index (unattached, colliding), for the viewer's highlights
     /api/thumb/<id>    PNG of the final build (records/thumbs, runs/thumbs; thumb.ts renders them)
     python3 serve.py --fill [--parallel 4] [--model …] [--eyes off] [--conditions …]   the whole table from the terminal
     /api/queue         GET: the fill-the-table queue; POST {model, eyes, conditions?} + x-api-key starts it over
@@ -212,6 +213,35 @@ def thumb_sweep() -> None:
             THUMB_LOCK.release()
 
     threading.Thread(target=go, daemon=True).start()
+
+
+VERIFY_DIR = HERE / "runs" / "_verify"
+
+
+def verify_run(run_id: str) -> dict | None:
+    """The grader's per-part faults for one run (unattached / colliding part indices), cached."""
+    cached = VERIFY_DIR / f"{run_id}.json"
+    if cached.exists():
+        return json.loads(cached.read_text())
+    for d in ("records", "runs"):
+        rec, ldr = HERE / d / f"{run_id}.json", HERE / d / f"{run_id}.ldr"
+        if rec.exists() and ldr.exists():
+            r = json.loads(rec.read_text())
+            task = str(r.get("task") or run_id)
+            tasks = {t["id"]: t for t in json.loads((HERE / "tasks.json").read_text())["tasks"]}
+            cmd = ["npx", "tsx", "grade.ts", str(ldr), "--task", task]
+            seed = HERE / "runs" / "_seeds" / f"{tasks.get(task, {}).get('set', '')}.ldr"
+            if tasks.get(task, {}).get("type") == "edit" and seed.exists():
+                cmd += ["--seed", str(seed)]
+            out = subprocess.run(cmd, cwd=HERE, capture_output=True, text=True)
+            if out.returncode != 0:
+                return {"error": out.stderr[-300:]}
+            g = json.loads(out.stdout.strip().splitlines()[-1])
+            res = {"id": run_id, "faults": g.get("faults") or {"unattached": [], "colliding": [], "reasons": {}}, "valid": g.get("valid"), "partCount": g.get("partCount")}
+            VERIFY_DIR.mkdir(parents=True, exist_ok=True)
+            cached.write_text(json.dumps(res))
+            return res
+    return None
 
 
 def thumb_path(run_id: str) -> Path | None:
@@ -516,6 +546,9 @@ class Handler(SimpleHTTPRequestHandler):
         if path == "/api/queue":
             with QUEUE_LOCK:
                 return self.send_json(queue_view())
+        m = re.fullmatch(r"/api/verify/([\w.+-]+)", path)
+        if m:
+            return self.send_json(verify_run(m.group(1)) or {"error": "no model file for this run"}, 200)
         m = re.match(r"^/api/thumb/([\w.+-]+)$", path)
         if m:
             p = thumb_path(m.group(1))

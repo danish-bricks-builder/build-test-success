@@ -122,7 +122,7 @@
   <div id="right">
     <div id="view">
       <div id="hud">pick a run</div>
-      <div id="tools"><button id="fit">fit</button><button id="xray">x-ray</button></div>
+      <div id="tools"><button id="fit">fit</button><button id="xray">x-ray</button><button id="faults" class="on" title="paint the parts the validator rejects: orange unattached, red colliding">faults</button></div>
     </div>
     <div class="tabs"><button data-tab="grade" class="on">grade</button><button data-tab="trace">trace</button><button data-tab="ldraw">ldraw</button></div>
     <div id="detail"><div class="empty">The paper's runs are on the left: every task against every condition, in the paper's notation. Your own runs (runs/) appear below them.</div></div>
@@ -250,6 +250,7 @@ async function showModel(text, label) {
     if (model) scene.remove(model);
     group.rotation.x = Math.PI; // LDraw y points down
     model = group; scene.add(group); fit();
+    paintFaults(group, label);
     // The grid is the LDraw ground plane, y = 0, and the model is drawn exactly where the file puts
     // it. A raw-condition model often has its bottom course at y = 0, one brick below the plane
     // (LDraw origins sit on the top face); the grader accepts that as resting on the ground. Say so.
@@ -259,6 +260,37 @@ async function showModel(text, label) {
   }, (e) => { if (mine === showing) hud(`${label} · could not render: ${e?.message ?? e}`); done(); }));
 }
 const hud = (s) => (document.getElementById("hud").innerHTML = s);
+
+// ── the validator's verdict on the model, painted: orange = unattached, red = colliding ──
+let showFaults = true;
+const FAULT = { unattached: new THREE.Color(0xf08a24), colliding: new THREE.Color(0xd9312b) };
+async function paintFaults(group, label) {
+  if (!current?.id) return;
+  const id = current.id;
+  const v = await (await fetch(`/api/verify/${id}`)).json().catch(() => null);
+  if (!v?.faults || current?.id !== id || model !== group) return;
+  group.userData.faults = v.faults;
+  applyFaults(group);
+  const u = v.faults.unattached.length, c = v.faults.colliding.length;
+  const base = document.getElementById("hud").innerHTML;
+  if (u || c) hud(`${base} · <b>${u ? `${u} unattached <span style="color:#f08a24">■</span>` : ""}${u && c ? " · " : ""}${c ? `${c} colliding <span style="color:#d9312b">■</span>` : ""}</b>`);
+}
+function applyFaults(group) {
+  const f = group.userData.faults;
+  if (!f) return;
+  const parts = group.children.filter((o) => o.isGroup); // one group per part line, in file order
+  parts.forEach((part, i) => {
+    const kind = f.colliding.includes(i) ? "colliding" : f.unattached.includes(i) ? "unattached" : null;
+    part.traverse((o) => {
+      if (!o.isMesh) return;
+      if (o.userData.baseColor === undefined) { o.material = o.material.clone(); o.userData.baseColor = o.material.color.clone(); }
+      if (kind && showFaults) { o.material.color.copy(FAULT[kind]); o.material.emissive?.set(FAULT[kind]).multiplyScalar(0.25); }
+      else { o.material.color.copy(o.userData.baseColor); o.material.emissive?.set(0x000000); }
+    });
+    if (kind && f.reasons?.[i]) part.userData.reason = f.reasons[i];
+  });
+}
+document.getElementById("faults").onclick = (e) => { showFaults = !showFaults; e.target.classList.toggle("on", showFaults); if (model) applyFaults(model); };
 
 // ── the detail panes ─────────────────────────────────────────────────────
 let current = null, tab = "grade";

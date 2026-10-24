@@ -181,11 +181,27 @@ async function main() {
   out.heightLdu = Math.round(maxY);
   out.footprintStuds = fp.map((v) => Math.round(v * 2) / 2);
   out.valid = verify.ok;
-  out.verifyReport = verify.report;
+  // The report names each faulty part: its index, part number, colour, the file's own line for
+  // it, and why — the same located complaint the environment's gate gives, so text feedback can
+  // act on it (the one-line summary alone told a model nothing it could fix).
+  const partLines = readFileSync(file, "utf8").split(/\r?\n/).filter((l) => /^\s*1\s/.test(l));
+  const faulty = verify.perPart.filter((p) => !p.ok);
+  const named = faulty.slice(0, 40).map((p) => {
+    const q = parts[p.idx];
+    const line = partLines[p.idx]?.trim();
+    return `  #${p.idx} ${q.part}.dat colour ${q.color}${line ? ` (file line: ${line})` : ""}: ${p.reasons.join("; ")}`;
+  });
+  out.verifyReport = verify.report + (named.length ? `\n${named.join("\n")}${faulty.length > named.length ? `\n  … and ${faulty.length - named.length} more` : ""}` : "");
   out.stable = stability.ok;
   out.stabilityReport = stability.report;
   out.post = post;
   out.PASS = verify.ok && stability.ok && Object.values(post).every(Boolean);
+  // which parts are wrong, by index in the file's part lines — the viewer paints them
+  out.faults = {
+    unattached: verify.unconnected,
+    colliding: [...new Set(verify.collisions.flatMap((c) => [c.a, c.b]))].sort((a, b) => a - b),
+    reasons: Object.fromEntries(verify.perPart.filter((p) => !p.ok).map((p) => [p.idx, p.reasons.join("; ")])),
+  };
   console.log(JSON.stringify(out));
 }
 
