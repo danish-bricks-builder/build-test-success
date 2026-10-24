@@ -256,7 +256,9 @@ def main() -> None:
             import anthropic
         except ImportError:
             sys.exit("pip install anthropic")
-        client = anthropic.Anthropic(api_key=api_key())
+        # a stream that goes quiet for ten minutes is dead (the network blinked): time out and retry
+        # rather than wait forever; the default would otherwise hang a whole pass behind one job
+        client = anthropic.Anthropic(api_key=api_key(), timeout=600.0, max_retries=2)
 
     results = [run_task(client, a.model, t, CONDITIONS[a.condition], a.dry_run) for t in chosen]
     if not a.dry_run:

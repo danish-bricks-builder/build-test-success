@@ -373,6 +373,7 @@ def try_prompt(handler, body: dict, key: str) -> None:
 # Cells that already have a record in runs/ are skipped, so the queue is resumable.
 QUEUE: dict = {"pending": [], "running": [], "done": [], "stop": False, "threads": [], "key": None, "model": None, "eyes": True, "parallel": 1}
 QUEUE_LOCK = threading.Lock()
+JOB_MAX_SECONDS = 3 * 3600  # the paper's longest session was 43 min; three hours is far beyond any real run
 
 
 def all_cells() -> list[tuple[str, str]]:
@@ -412,7 +413,15 @@ def queue_worker(slot: int) -> None:
             QUEUE["running"] = [r for r in QUEUE["running"] if r["slot"] != slot] + [mine]
         try:
             job = start_job({"task": task, "condition": cond, "model": QUEUE["model"], "eyes": QUEUE["eyes"]}, QUEUE["key"])
-            job["proc"].wait()
+            # A session that outlives every real one is stuck (a stream that never ends after the
+            # network blinked): it is killed and counts as a failed job, so it cannot stall the pass.
+            try:
+                job["proc"].wait(timeout=JOB_MAX_SECONDS)
+            except subprocess.TimeoutExpired:
+                stop(job["proc"])
+                job["proc"].wait(timeout=30)
+                with open(job["log"], "ab") as log:
+                    log.write(f"\nkilled by the queue after {JOB_MAX_SECONDS // 3600} h with no result\n".encode())
             thumb_sweep()
             with QUEUE_LOCK:
                 QUEUE["done"].append({"task": task, "condition": cond, "code": job["proc"].returncode, "seconds": round(time.time() - mine["startedAt"]), "job": job["id"]})
