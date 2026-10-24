@@ -17,6 +17,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { fromLdr } from "./lib/ldraw/serialize";
 import { verifyBuild } from "./lib/engine/verify";
+import { extentOfParts } from "./lib/engine/footprint";
 import { validateConnections } from "./lib/engine/connectionGraph";
 import type { ConnectionMap } from "./lib/engine/snapAlign";
 import { checkStability } from "./lib/engine/stability";
@@ -123,16 +124,9 @@ async function main() {
   const stability = checkStability(parts, meta, validateConnections(parts, meta, conns), vox);
 
   // the task requirements, measured the way the paper's harness measured them
-  let maxY = 0, minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
-  for (const p of parts) {
-    const m = meta[p.part] ?? { w: 2, l: 2, h: 24 };
-    maxY = Math.max(maxY, p.y + m.h);
-    minX = Math.min(minX, p.x - (m.w * 20) / 2);
-    maxX = Math.max(maxX, p.x + (m.w * 20) / 2);
-    minZ = Math.min(minZ, p.z - (m.l * 20) / 2);
-    maxZ = Math.max(maxZ, p.z + (m.l * 20) / 2);
-  }
-  const fp: [number, number] = [(maxX - minX) / 20, (maxZ - minZ) / 20];
+  const ext = extentOfParts(parts, meta);
+  const maxY = ext.height;
+  const fp: [number, number] = ext.footprint;
   const post: Record<string, boolean> = { parts: parts.length >= task.post.minParts };
   if (task.post.minHeightLdu != null) post.height = maxY >= task.post.minHeightLdu;
   if (task.post.maxFootprintStuds)

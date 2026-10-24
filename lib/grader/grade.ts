@@ -11,6 +11,7 @@
  *   task         postconditions of the task spec
  */
 import { fromLdr } from "@/lib/ldraw/serialize";
+import { extentOfParts } from "../engine/footprint";
 import { validateConnections } from "@/lib/engine/connectionGraph";
 import { checkCollisionsValidated, worldCells } from "@/lib/engine/voxelCollision";
 import { checkStability } from "@/lib/engine/stability";
@@ -61,18 +62,9 @@ const boxStr = (b: Box3) => `{${(["x", "y", "z"] as const).filter((k) => b[k]).m
  * footprint (studs, x by z) of the parts' nominal w × l boxes around their
  * origins. Coarse (rotation-blind), but it is the one every size check uses.
  */
-export function extentOf(parts: { part: string; x: number; y: number; z: number }[], meta: GraderData["meta"]): { height: number; footprint: [number, number] } {
-  let maxY = 0, minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
-  for (const p of parts) {
-    const mm = meta[p.part] ?? { w: 2, l: 2, h: 24 };
-    maxY = Math.max(maxY, p.y + mm.h);
-    minX = Math.min(minX, p.x - (mm.w * 20) / 2);
-    maxX = Math.max(maxX, p.x + (mm.w * 20) / 2);
-    minZ = Math.min(minZ, p.z - (mm.l * 20) / 2);
-    maxZ = Math.max(maxZ, p.z + (mm.l * 20) / 2);
-  }
-  if (!parts.length) return { height: 0, footprint: [0, 0] };
-  return { height: maxY, footprint: [(maxX - minX) / 20, (maxZ - minZ) / 20] };
+export function extentOf(parts: { part: string; x: number; y: number; z: number; rot?: number; m?: number[] }[], meta: GraderData["meta"]): { height: number; footprint: [number, number] } {
+  const e = extentOfParts(parts as Parameters<typeof extentOfParts>[0], meta);
+  return { height: e.height, footprint: e.footprint };
 }
 
 export function gradeLdraw(ldraw: string, data: GraderData, task?: TaskSpec, opts: GradeOpts = {}): Verdict {

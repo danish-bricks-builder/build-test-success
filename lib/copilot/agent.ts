@@ -12,6 +12,7 @@
  * validation gate and system prompt — the "brain" the LeoCAD sidecar reuses.
  */
 import type Anthropic from "@anthropic-ai/sdk";
+import { extentOfParts } from "../engine/footprint";
 import { attachChain, attachPart, collisionCount, getPartIndex, collisionReport, jointEdges, jointReport, listConnectors, settleBuild, stabilityReport, unconnectedCount } from "@/lib/copilot/connect";
 import { findReferences, referencesBlock } from "@/lib/generate/references";
 import { searchParts } from "@/lib/data/partSearch";
@@ -1173,16 +1174,7 @@ export async function runAgentTurn(ctx: AgentTurnCtx): Promise<{ note: string }>
           const env = ctx.missionEnvelope?.maxW ? ctx.missionEnvelope : ctx.seededSession ? undefined : lastDesign?.envelope;
           const label = ctx.missionEnvelope?.maxW ? "the MISSION's size limit" : "YOUR OWN design envelope";
           if (!env?.maxW || session.parts.length === 0) return null;
-          let x0 = Infinity, x1 = -Infinity, z0 = Infinity, z1 = -Infinity;
-          for (const pp of session.parts) {
-            const m = metaOf(pp.part, session.meta);
-            x0 = Math.min(x0, pp.x - (m.w * 20) / 2);
-            x1 = Math.max(x1, pp.x + (m.w * 20) / 2);
-            z0 = Math.min(z0, pp.z - (m.l * 20) / 2);
-            z1 = Math.max(z1, pp.z + (m.l * 20) / 2);
-          }
-          const fw = (x1 - x0) / 20;
-          const fl = (z1 - z0) / 20;
+          const [fw, fl] = extentOfParts(session.parts, session.meta).footprint;
           const maxSide = Math.max(env.maxW, env.maxL ?? env.maxW);
           const minSide = Math.min(env.maxW, env.maxL ?? env.maxW);
           if (Math.max(fw, fl) > maxSide + 0.01 || Math.min(fw, fl) > minSide + 0.01)
