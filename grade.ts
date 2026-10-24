@@ -202,6 +202,19 @@ async function main() {
     colliding: [...new Set(verify.collisions.flatMap((c) => [c.a, c.b]))].sort((a, b) => a - b),
     reasons: Object.fromEntries(verify.perPart.filter((p) => !p.ok).map((p) => [p.idx, p.reasons.join("; ")])),
   };
+  // what each grading stage looked at, for the viewer's stage-by-stage overlays
+  const massOf = (p: { part: string }) => { const m = meta[p.part] ?? { w: 2, l: 2, h: 24 }; return m.w * m.l * m.h; };
+  let mass = 0, cx = 0, cy = 0, cz = 0;
+  for (const p of parts) { const m = meta[p.part] ?? { w: 2, l: 2, h: 24 }; const w = massOf(p); mass += w; cx += p.x * w; cy += (p.y + m.h / 2) * w; cz += p.z * w; }
+  const ground = parts.filter((p) => p.y <= 0.6);
+  const gext = ground.length ? extentOfParts(ground, meta) : null;
+  out.view = {
+    extent: { minX: ext.minX, maxX: ext.maxX, minZ: ext.minZ, maxZ: ext.maxZ, height: ext.height },
+    limits: { maxFootprintStuds: task.post.maxFootprintStuds ?? null, minHeightLdu: task.post.minHeightLdu ?? null, minParts: task.post.minParts ?? null },
+    com: mass ? [cx / mass, cy / mass, cz / mass] : null,
+    ground: gext ? { x0: gext.minX, x1: gext.maxX, z0: gext.minZ, z1: gext.maxZ } : null,
+    stability: { ok: stability.ok, marginLdu: stability.globalMarginLdu, issues: stability.issues.map((i) => ({ kind: i.kind, severe: i.severe, parts: i.parts, detail: i.detail })) },
+  };
   console.log(JSON.stringify(out));
 }
 

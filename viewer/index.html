@@ -41,6 +41,10 @@
   #view canvas { display: block; }
   #hud { position: absolute; top: 8px; left: 10px; font: 12px ui-monospace, Menlo, monospace; color: var(--muted); }
   #hud b { color: var(--ink); }
+  #stages { position: absolute; left: 10px; bottom: 8px; display: flex; gap: 10px; align-items: center; font: 12px -apple-system, sans-serif; background: rgba(255,255,255,.85); padding: 4px 8px; border-radius: 6px; border: 1px solid var(--line); }
+  #stages label { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+  #stages .sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
+  #stagenote { font: 11px ui-monospace, Menlo, monospace; margin-left: 4px; }
   #tools { position: absolute; top: 8px; right: 10px; display: flex; gap: 4px; }
   #tools button, .tabs button { font: 12px -apple-system, sans-serif; background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 2px 8px; cursor: pointer; }
   .tabs { display: flex; gap: 4px; padding: 6px 10px; border-bottom: 1px solid var(--line); }
@@ -122,7 +126,15 @@
   <div id="right">
     <div id="view">
       <div id="hud">pick a run</div>
-      <div id="tools"><button id="fit">fit</button><button id="xray">x-ray</button><button id="faults" class="on" title="paint the parts the validator rejects: orange unattached, red colliding">faults</button></div>
+      <div id="tools"><button id="fit">fit</button><button id="xray">x-ray</button></div>
+      <div id="stages" title="what each grading stage saw: tick a stage to draw its verdict on the model">
+        <label><input type="checkbox" data-stage="unattached" checked> <span class="sw" style="background:#f08a24"></span>unattached</label>
+        <label><input type="checkbox" data-stage="colliding" checked> <span class="sw" style="background:#d9312b"></span>colliding</label>
+        <label><input type="checkbox" data-stage="stability"> <span class="sw" style="background:#7b4fd6"></span>stability</label>
+        <label><input type="checkbox" data-stage="footprint"> <span class="sw" style="background:#1f6fd0"></span>footprint</label>
+        <label><input type="checkbox" data-stage="height"> <span class="sw" style="background:#1f9e6a"></span>height</label>
+        <span id="stagenote" class="n"></span>
+      </div>
     </div>
     <div class="tabs"><button data-tab="grade" class="on">grade</button><button data-tab="trace">trace</button><button data-tab="ldraw">ldraw</button></div>
     <div id="detail"><div class="empty">The paper's runs are on the left: every task against every condition, in the paper's notation. Your own runs (runs/) appear below them.</div></div>
@@ -243,7 +255,7 @@ async function showModel(text, label) {
   const mine = ++showing;
   await materials;
   if (model) scene.remove(model);
-  model = null;
+  model = null; verdict = null; overlay.clear(); $("stagenote").textContent = "";
   hud(`${label} · loading parts…`);
   await new Promise((done) => loader.parse(text, (group) => {
     if (mine !== showing) return done(); // superseded by a later click
@@ -261,36 +273,96 @@ async function showModel(text, label) {
 }
 const hud = (s) => (document.getElementById("hud").innerHTML = s);
 
-// ── the validator's verdict on the model, painted: orange = unattached, red = colliding ──
-let showFaults = true;
-const FAULT = { unattached: new THREE.Color(0xf08a24), colliding: new THREE.Color(0xd9312b) };
+// ── the grading stages, drawn on the model ───────────────────────────────
+// unattached / colliding: the parts painted. stability: the centre of mass over the ground
+// contact, and any component the checker says breaks off. footprint: the allowed box and the
+// built box on the ground. height: the required height as a plane.
+const STAGE = { unattached: 0xf08a24, colliding: 0xd9312b, stability: 0x7b4fd6, footprint: 0x1f6fd0, height: 0x1f9e6a };
+const stageOn = (k) => document.querySelector(`#stages input[data-stage="${k}"]`).checked;
+const overlay = new THREE.Group(); scene.add(overlay);
+let verdict = null; // /api/verify for the model on screen
 async function paintFaults(group, label) {
   if (!current?.id) return;
   const id = current.id;
   const v = await (await fetch(`/api/verify/${id}`)).json().catch(() => null);
   if (!v?.faults || current?.id !== id || model !== group) return;
-  group.userData.faults = v.faults;
-  applyFaults(group);
-  const u = v.faults.unattached.length, c = v.faults.colliding.length;
-  const base = document.getElementById("hud").innerHTML;
-  if (u || c) hud(`${base} · <b>${u ? `${u} unattached <span style="color:#f08a24">■</span>` : ""}${u && c ? " · " : ""}${c ? `${c} colliding <span style="color:#d9312b">■</span>` : ""}</b>`);
+  verdict = v; group.userData.faults = v.faults;
+  drawStages();
 }
-function applyFaults(group) {
-  const f = group.userData.faults;
-  if (!f) return;
-  const parts = group.children.filter((o) => o.isGroup); // one group per part line, in file order
-  parts.forEach((part, i) => {
-    const kind = f.colliding.includes(i) ? "colliding" : f.unattached.includes(i) ? "unattached" : null;
-    part.traverse((o) => {
-      if (!o.isMesh) return;
-      if (o.userData.baseColor === undefined) { o.material = o.material.clone(); o.userData.baseColor = o.material.color.clone(); }
-      if (kind && showFaults) { o.material.color.copy(FAULT[kind]); o.material.emissive?.set(FAULT[kind]).multiplyScalar(0.25); }
-      else { o.material.color.copy(o.userData.baseColor); o.material.emissive?.set(0x000000); }
-    });
-    if (kind && f.reasons?.[i]) part.userData.reason = f.reasons[i];
+function partGroups(group) { return group.children.filter((o) => o.isGroup); } // one group per part line, in file order
+function tint(part, color) {
+  part.traverse((o) => {
+    if (!o.isMesh) return;
+    if (o.userData.baseColor === undefined) { o.material = o.material.clone(); o.userData.baseColor = o.material.color.clone(); }
+    if (color === null) { o.material.color.copy(o.userData.baseColor); o.material.emissive?.set(0x000000); }
+    else { o.material.color.set(color); o.material.emissive?.set(color).multiplyScalar(0.25); }
   });
 }
-document.getElementById("faults").onclick = (e) => { showFaults = !showFaults; e.target.classList.toggle("on", showFaults); if (model) applyFaults(model); };
+const rectLines = (x0, x1, z0, z1, y, color, dashed) => {
+  const pts = [[x0, y, z0], [x1, y, z0], [x1, y, z1], [x0, y, z1], [x0, y, z0]].map(([x, yy, z]) => new THREE.Vector3(x, yy, z));
+  const geo = new THREE.BufferGeometry().setFromPoints(pts);
+  const mat = dashed ? new THREE.LineDashedMaterial({ color, dashSize: 6, gapSize: 4, linewidth: 2 }) : new THREE.LineBasicMaterial({ color, linewidth: 2 });
+  const line = new THREE.Line(geo, mat); if (dashed) line.computeLineDistances(); return line;
+};
+function drawStages() {
+  overlay.clear();
+  const notes = [];
+  if (!model || !verdict) { $("stagenote").textContent = ""; return; }
+  const f = verdict.faults, w = verdict.view || {};
+  const parts = partGroups(model);
+  const stabParts = new Set((w.stability?.issues || []).flatMap((i) => i.parts));
+  parts.forEach((part, i) => {
+    let color = null;
+    if (stageOn("stability") && stabParts.has(i)) color = STAGE.stability;
+    if (stageOn("unattached") && f.unattached.includes(i)) color = STAGE.unattached;
+    if (stageOn("colliding") && f.colliding.includes(i)) color = STAGE.colliding;
+    tint(part, color);
+  });
+  // engine frame → the scene: x and z as they are, y up from the ground (the model is drawn that way too)
+  if (stageOn("unattached")) notes.push(`${f.unattached.length} unattached`);
+  if (stageOn("colliding")) notes.push(`${f.colliding.length} colliding`);
+  if (stageOn("stability") && w.stability) {
+    const s = w.stability;
+    if (w.com) {
+      const [x, y, z] = w.com;
+      const dot = new THREE.Mesh(new THREE.SphereGeometry(5, 16, 12), new THREE.MeshBasicMaterial({ color: s.ok ? STAGE.stability : 0xd9312b })); dot.position.set(x, y, z); overlay.add(dot);
+      const drop = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(x, y, z), new THREE.Vector3(x, 0, z)]), new THREE.LineDashedMaterial({ color: STAGE.stability, dashSize: 6, gapSize: 4 })); drop.computeLineDistances(); overlay.add(drop);
+      const foot = new THREE.Mesh(new THREE.CircleGeometry(4, 16), new THREE.MeshBasicMaterial({ color: s.ok ? STAGE.stability : 0xd9312b })); foot.rotation.x = -Math.PI / 2; foot.position.set(x, 0.5, z); overlay.add(foot);
+    }
+    if (w.ground) overlay.add(rectLines(w.ground.x0, w.ground.x1, w.ground.z0, w.ground.z1, 0.5, STAGE.stability, false));
+    notes.push(s.ok ? `stable · CoM ${Math.round(s.marginLdu)} LDU inside the ground contact` : `UNSTABLE: ${(s.issues.find((i) => i.severe) || s.issues[0] || {}).detail || "topples"}`);
+  }
+  if (stageOn("footprint") && w.extent) {
+    const e = w.extent, lim = w.limits?.maxFootprintStuds;
+    overlay.add(rectLines(e.minX, e.maxX, e.minZ, e.maxZ, 1, STAGE.footprint, false));
+    const fw = (e.maxX - e.minX) / 20, fl = (e.maxZ - e.minZ) / 20;
+    if (lim) {
+      // the allowed box, centred on what was built, turned to match the built box's longer side
+      const [a, b] = lim; const long = Math.max(a, b) * 20, short = Math.min(a, b) * 20;
+      const ax = fw >= fl ? long : short, az = fw >= fl ? short : long;
+      const cx = (e.minX + e.maxX) / 2, cz = (e.minZ + e.maxZ) / 2;
+      const ok = Math.max(fw, fl) <= Math.max(a, b) + 0.001 && Math.min(fw, fl) <= Math.min(a, b) + 0.001;
+      overlay.add(rectLines(cx - ax / 2, cx + ax / 2, cz - az / 2, cz + az / 2, 1.5, ok ? STAGE.footprint : 0xd9312b, true));
+      if (!ok) { // the overhang, filled
+        const over = new THREE.Mesh(new THREE.PlaneGeometry(e.maxX - e.minX, e.maxZ - e.minZ), new THREE.MeshBasicMaterial({ color: 0xd9312b, transparent: true, opacity: 0.18, side: THREE.DoubleSide, depthWrite: false }));
+        over.rotation.x = -Math.PI / 2; over.position.set(cx, 0.8, cz); overlay.add(over);
+      }
+      notes.push(`footprint ${fw.toFixed(0)}×${fl.toFixed(0)} studs (built, solid) vs ${a}×${b} allowed (dashed)${ok ? "" : " — TOO BIG"}`);
+    } else notes.push(`footprint ${fw.toFixed(0)}×${fl.toFixed(0)} studs (no limit)`);
+  }
+  if (stageOn("height") && w.extent) {
+    const e = w.extent, need = w.limits?.minHeightLdu;
+    if (need != null) {
+      const ok = e.height >= need;
+      const pad = 30, plane = new THREE.Mesh(new THREE.PlaneGeometry(e.maxX - e.minX + 2 * pad, e.maxZ - e.minZ + 2 * pad), new THREE.MeshBasicMaterial({ color: ok ? STAGE.height : 0xd9312b, transparent: true, opacity: 0.22, side: THREE.DoubleSide, depthWrite: false }));
+      plane.rotation.x = -Math.PI / 2; plane.position.set((e.minX + e.maxX) / 2, need, (e.minZ + e.maxZ) / 2); overlay.add(plane);
+      notes.push(`height ${Math.round(e.height)} LDU (${(e.height / 24).toFixed(1)} bricks) vs ${need} required${ok ? "" : " — TOO LOW"}`);
+    } else notes.push(`height ${Math.round(e.height)} LDU (no minimum)`);
+  }
+  $("stagenote").textContent = notes.join(" · ");
+}
+document.querySelectorAll("#stages input").forEach((cb) => (cb.onchange = () => { try { localStorage.setItem("bts-stages", JSON.stringify([...document.querySelectorAll("#stages input")].map((x) => x.checked))); } catch {} drawStages(); }));
+try { const saved = JSON.parse(localStorage.getItem("bts-stages") || "null"); if (saved) document.querySelectorAll("#stages input").forEach((x, i) => (x.checked = !!saved[i])); } catch {}
 
 // ── the detail panes ─────────────────────────────────────────────────────
 let current = null, tab = "grade";

@@ -237,7 +237,8 @@ def verify_run(run_id: str) -> dict | None:
             if out.returncode != 0:
                 return {"error": out.stderr[-300:]}
             g = json.loads(out.stdout.strip().splitlines()[-1])
-            res = {"id": run_id, "faults": g.get("faults") or {"unattached": [], "colliding": [], "reasons": {}}, "valid": g.get("valid"), "partCount": g.get("partCount")}
+            res = {"id": run_id, "faults": g.get("faults") or {"unattached": [], "colliding": [], "reasons": {}}, "valid": g.get("valid"), "partCount": g.get("partCount"),
+                   "view": g.get("view"), "post": g.get("post"), "footprintStuds": g.get("footprintStuds"), "heightLdu": g.get("heightLdu")}
             VERIFY_DIR.mkdir(parents=True, exist_ok=True)
             cached.write_text(json.dumps(res))
             return res
