@@ -11,6 +11,13 @@
  * render tool, which is the --eyes=off condition.
  */
 import { createServer } from "node:http";
+
+// The route clamps a request's turn budget to COPILOT_TURN_BUDGET_MAX_MS (default 250 s, a limit for
+// the hosted copilot's serverless platform). The paper's sessions had no such limit: they ran until
+// the agent declared done. Lift it here unless the caller sets its own.
+process.env.COPILOT_TURN_BUDGET_MAX_MS ??= String(4 * 3600 * 1000);
+process.env.COPILOT_TURN_BUDGET_MS ??= process.env.COPILOT_TURN_BUDGET_MAX_MS;
+
 import { POST } from "./route";
 
 const port = Number(process.argv[process.argv.indexOf("--port") + 1] || 8788);

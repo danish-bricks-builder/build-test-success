@@ -161,7 +161,10 @@ def ensure_env_server(key: str) -> str | None:
         return f"something else is already listening on port {ENV_PORT}; stop it or start the environment yourself with the same key"
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     log = open(LOG_DIR / "env-server.log", "ab")
-    ENV_SERVER["proc"] = subprocess.Popen(["npx", "tsx", "env/server.ts", "--port", str(ENV_PORT)], cwd=HERE, env={**os.environ, "ANTHROPIC_API_KEY": key}, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+    budget = str(4 * 3600 * 1000)  # no per-turn time limit for benchmark sessions (the paper's ran until done)
+    ENV_SERVER["proc"] = subprocess.Popen(["npx", "tsx", "env/server.ts", "--port", str(ENV_PORT)], cwd=HERE,
+                                          env={**os.environ, "ANTHROPIC_API_KEY": key, "COPILOT_TURN_BUDGET_MAX_MS": budget, "COPILOT_TURN_BUDGET_MS": budget},
+                                          stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
     ENV_SERVER["key"] = key
     for _ in range(60):  # tsx compiles the route on first start; give it a while
         if port_open(ENV_PORT):
@@ -610,7 +613,7 @@ def fill(a) -> None:
                 with QUEUE_LOCK:
                     done, active, note = list(QUEUE["done"]), queue_active(), QUEUE.get("note")
                 for d in done[seen:]:
-                    print(f"  {'done' if d['code'] == 0 else f'FAILED (exit {d['code']})'}  {d['task']} · {CONDITION_NAMES.get(d['condition'], d['condition'])}  {d.get('seconds', '?')}s   runs/_jobs/{d.get('job', '?')}.log", flush=True)
+                    print(f"  {'done' if d['code'] == 0 else f'FAILED (exit {d['code']})'}  {d['task']} · {CONDITION_NAMES.get(d['condition'], d['condition'])}  {d.get('seconds', '?')}s   runs/_jobs/{d.get('job', '?')}.log" + (f"\n      {d['error']}" if d.get('error') else ""), flush=True)
                 seen = len(done)
                 if not active:
                     break
@@ -619,12 +622,13 @@ def fill(a) -> None:
             with THUMB_LOCK:  # wait for the last pictures
                 pass
             missing = len(all_cells()) - len(done_cells())
-            if not note or not missing or resumes >= 3:
+            stopped_itself = note or any(d.get("error") for d in done)
+            if not stopped_itself or not missing or resumes >= 3:
                 print(note or f"{len(done_cells())}/{len(all_cells())} cells have a record")
                 break
             # Stopped on repeated failures. The usual cause is the network or the API being away;
             # wait until the API answers again (up to two hours), then take up the missing cells.
-            print(f"{note}\n  {missing} cells still missing — waiting for the API to answer before resuming ({resumes + 1}/3)…", flush=True)
+            print(f"{note or 'stopped: a cell could not be started (see above)'}\n  {missing} cells still missing — waiting for the API to answer before resuming ({resumes + 1}/3)…", flush=True)
             stop(ENV_SERVER["proc"])
             ENV_SERVER["proc"] = None
             waited = 0
