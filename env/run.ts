@@ -96,7 +96,8 @@ async function runOnce() {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      message: task.prompt,
+      // the same machine-checked limits the one-shot prompt states, so every condition is told the spec
+      message: task.prompt + constraintsLine(task),
       model,
       // The paper's sessions ran until the agent declared done (up to 43 minutes). The environment
       // later gained a per-turn time limit for the serverless deployment (250 s by default), which
@@ -280,6 +281,14 @@ async function runOnce() {
   console.log(` valid=${grades.valid ?? "—"} stable=${grades.stable ?? "—"} post=${JSON.stringify(grades.post ?? {})} PASS=${grades.PASS}`);
   console.log(` → runs/${runId}.json · session in sessions/${runId}/ · python3 serve.py to look at it`);
   return true;
+}
+
+function constraintsLine(task: Task): string {
+  const c: string[] = [];
+  if (task.post.maxFootprintStuds) c.push(`footprint must fit within ${task.post.maxFootprintStuds[0]}x${task.post.maxFootprintStuds[1]} studs`);
+  if (task.post.minHeightLdu) c.push(`height at least ${task.post.minHeightLdu} LDU (${Math.round(task.post.minHeightLdu / 24)} bricks)`);
+  c.push(`use at least ${task.post.minParts} parts`);
+  return `\nConstraints: ${c.join("; ")}.`;
 }
 
 async function main() {
