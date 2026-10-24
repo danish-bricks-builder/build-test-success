@@ -412,6 +412,7 @@ function render() {
       html += `<div class="band">${s.calls.length} tool calls</div>`;
       // a tool result that carries pictures (render_view, the initial view) shows them: this is what the model saw
       const resultHtml = (res) => {
+        if (typeof res === "string" && res.trimStart().startsWith("[")) { try { res = JSON.parse(res); } catch {} } // some recordings keep the result as JSON text
         if (Array.isArray(res) && res.some((b) => b && b.type === "image" && b.imageRef)) {
           return res.map((b) => b.type === "image" && b.imageRef
             ? `<img class="seen" src="/api/blob/${encodeURIComponent(r.id)}/${encodeURIComponent(b.imageRef)}" alt="what the model saw" title="the picture returned to the model">`
