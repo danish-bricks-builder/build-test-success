@@ -198,7 +198,7 @@ async function main() {
   out.PASS = verify.ok && stability.ok && Object.values(post).every(Boolean);
   // which parts are wrong, by index in the file's part lines — the viewer paints them
   out.faults = {
-    unattached: verify.unconnected,
+    unattached: verify.perPart.filter((p) => !p.ok && p.reasons.some((r) => !r.startsWith("interpenetrates"))).map((p) => p.idx),
     colliding: [...new Set(verify.collisions.flatMap((c) => [c.a, c.b]))].sort((a, b) => a - b),
     reasons: Object.fromEntries(verify.perPart.filter((p) => !p.ok).map((p) => [p.idx, p.reasons.join("; ")])),
   };

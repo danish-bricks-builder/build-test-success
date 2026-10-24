@@ -83,10 +83,16 @@ export function verifyBuild(
   const groundedSet = new Set(v.grounded);
   const unconnectedSet = new Set(v.unconnected);
 
+  // A cluster that no part of touches the ground floats, however well its own parts are joined:
+  // every part must reach the ground through real joints or rest on it.
+  const floating = new Set<number>();
+  for (const members of clusters) if (!members.some((i) => groundedSet.has(i))) for (const i of members) floating.add(i);
   const perPart: PartVerdict[] = parts.map((p, idx) => {
     const reasons: string[] = [];
     if (unconnectedSet.has(idx)) {
       reasons.push("no joint to any other part and not resting on the ground");
+    } else if (floating.has(idx)) {
+      reasons.push("joined only to parts that never reach the ground (the structure floats)");
     }
     const hits = collidingWith.get(idx);
     if (hits?.length) {
@@ -99,7 +105,7 @@ export function verifyBuild(
   const ok = bad === 0;
   const report = ok
     ? `VALID: ${parts.length} parts · ${v.joints.length} joints · ${clusters.length} cluster${clusters.length === 1 ? "" : "s"} · ${v.grounded.length} grounded · no collisions`
-    : `${bad} invalid part${bad === 1 ? "" : "s"}: ${v.unconnected.length} unattached, ${collisions.length} collision${collisions.length === 1 ? "" : "s"} · ${clusters.length} clusters`;
+    : `${bad} invalid part${bad === 1 ? "" : "s"}: ${v.unconnected.length + floating.size} unattached, ${collisions.length} collision${collisions.length === 1 ? "" : "s"} · ${clusters.length} clusters`;
 
   return {
     ok,
