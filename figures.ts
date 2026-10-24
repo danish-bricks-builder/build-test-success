@@ -21,12 +21,14 @@ const arg = (k: string, d: string) => {
 };
 const FROM = process.argv.includes("--records") ? "records" : "runs";
 const OUT = arg("out", "paper-out/fig-grid.png");
+const ROWS = arg("rows", ""); // "1-7": only these task rows (1-based), for a grid split over pages
 const RENDERS = "paper-out/renders";
 mkdirSync(RENDERS, { recursive: true });
 
 interface Task { id: string; band: string; type: string }
 interface Cond { key: string; name: string; aliases?: string[] }
-const tasks: Task[] = JSON.parse(readFileSync("tasks.json", "utf8")).tasks;
+const allTasks: Task[] = JSON.parse(readFileSync("tasks.json", "utf8")).tasks;
+const tasks: Task[] = ROWS ? allTasks.slice(Number(ROWS.split("-")[0]) - 1, Number(ROWS.split("-")[1])) : allTasks;
 const conds: Cond[] = JSON.parse(readFileSync("conditions.json", "utf8")).conditions;
 const nameToKey = new Map(conds.flatMap((c) => [[c.name, c.key], ...(c.aliases ?? []).map((a) => [a, c.key] as [string, string])])); // earlier names too
 
