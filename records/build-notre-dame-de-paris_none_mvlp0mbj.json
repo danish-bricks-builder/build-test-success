@@ -1,0 +1,47 @@
+{
+ "runId": "build-notre-dame-de-paris_none_mvlp0mbj",
+ "task": "notre-dame-de-paris",
+ "condition": "none",
+ "model": "claude-opus-5",
+ "prompt": "Build an extremely detailed model of Notre-Dame de Paris: two rectangular west towers with tall arched openings, a large rose window above three portal arches between them, a long nave behind with flying buttresses along both sides, and a slender spire at the crossing. Use trans-colored pieces for stained glass \u2014 the rose window and the tall nave windows should glow with mixed trans colors. Light grey stone with a dark roof. 450-900 parts.",
+ "seconds": 4947,
+ "tools": {
+  "design_layout": 1,
+  "build_program": 19,
+  "write_note": 2,
+  "render_view": 13,
+  "remove_parts": 8,
+  "silhouette": 1,
+  "find_parts": 8,
+  "list_connectors": 4,
+  "inspect_build": 4,
+  "anchor_part": 1,
+  "settle_build": 1,
+  "join_structures": 1,
+  "run_connect_script": 1
+ },
+ "usage": {
+  "input": 116,
+  "output": 94893,
+  "cacheRead": 3767569,
+  "cacheWrite": 265839
+ },
+ "error": null,
+ "partCount": 736,
+ "heightLdu": 520,
+ "footprintStuds": [
+  20,
+  34
+ ],
+ "valid": true,
+ "verifyReport": "VALID: 736 parts \u00b7 836 joints \u00b7 23 clusters \u00b7 64 grounded \u00b7 no collisions",
+ "stable": true,
+ "stabilityReport": "STABLE: 736 parts \u00b7 940 g \u00b7 CoM margin 5.7 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": true
+ },
+ "PASS": true,
+ "regraded": "footprint measure turned with the part (2026-10-24)"
+}

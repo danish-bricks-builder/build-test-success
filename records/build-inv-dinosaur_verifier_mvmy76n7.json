@@ -1,0 +1,42 @@
+{
+ "runId": "build-inv-dinosaur_verifier_mvmy76n7",
+ "task": "inv-dinosaur",
+ "condition": "verifier",
+ "model": "claude-opus-5",
+ "prompt": "You may use ONLY the parts remaining in your inventory — every placement is rejected once a part+color runs out (check remaining stock with inspect_build). From this inventory, build a DINOSAUR: a standing four-legged or two-legged dinosaur with a long neck or big head, a tail, and a recognizable silhouette from the side. It must be valid and stable. Use the silhouette tool to check the side view reads as a dinosaur.",
+ "seconds": 1619,
+ "tools": {
+  "inspect_build": 1,
+  "design_layout": 1,
+  "build_program": 9,
+  "render_view": 4,
+  "check_validity": 2,
+  "join_structures": 1,
+  "silhouette": 2,
+  "check_stability": 2,
+  "auto_validate": 1
+ },
+ "usage": {
+  "input": 46,
+  "output": 30955,
+  "cacheRead": 883984,
+  "cacheWrite": 66160
+ },
+ "error": null,
+ "bomOver": [],
+ "partCount": 47,
+ "heightLdu": 232,
+ "footprintStuds": [
+  21,
+  3
+ ],
+ "valid": true,
+ "verifyReport": "VALID: 47 parts · 55 joints · 1 cluster · 5 grounded · no collisions",
+ "stable": true,
+ "stabilityReport": "STABLE: 47 parts · 55 g · CoM margin 29.4 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "bom": true
+ },
+ "PASS": true
+}

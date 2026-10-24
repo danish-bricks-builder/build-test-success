@@ -1,0 +1,17 @@
+{
+ "runId": "build-house-gable_none_mvms1qjt",
+ "taskId": "build-house-gable",
+ "condition": "none",
+ "model": "claude-opus-5",
+ "createdAt": "2026-10-24T19:13:49.243Z",
+ "turns": [
+  {
+   "i": 0,
+   "userMessage": "Build a small house: rectangular footprint about 8x10 studs, walls at least 5 bricks tall with a doorway in one long wall and one window opening in another, topped by a sloped gable roof made of slope bricks. Two or three colors, walls in running bond, roof in a single color. 60-140 parts.",
+   "startedAt": "2026-10-24T19:13:49.243Z",
+   "toolset": "full",
+   "turnBudgetMs": 14400000,
+   "endedAt": "2026-10-24T19:36:17.822Z"
+  }
+ ]
+}

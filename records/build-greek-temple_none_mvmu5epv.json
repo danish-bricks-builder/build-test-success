@@ -1,0 +1,38 @@
+{
+ "runId": "build-greek-temple_none_mvmu5epv",
+ "task": "greek-temple",
+ "condition": "none",
+ "model": "claude-opus-5",
+ "prompt": "Build a Greek temple: a stepped stylobate base about 16x10 studs, a colonnade of at least 6 round columns per long side (freestanding, evenly spaced), an inner cella wall, an entablature beam ring resting on the columns, and a low-pitch pediment roof with triangular gable ends. Sand or white scheme. 120-260 parts.",
+ "seconds": 1214,
+ "tools": {
+  "design_layout": 1,
+  "build_program": 6,
+  "render_view": 3,
+  "silhouette": 1,
+  "inspect_build": 1
+ },
+ "usage": {
+  "input": 24,
+  "output": 13629,
+  "cacheRead": 250466,
+  "cacheWrite": 55198
+ },
+ "error": null,
+ "partCount": 215,
+ "heightLdu": 216,
+ "footprintStuds": [
+  18,
+  12
+ ],
+ "valid": true,
+ "verifyReport": "VALID: 215 parts · 271 joints · 1 cluster · 6 grounded · no collisions",
+ "stable": true,
+ "stabilityReport": "STABLE: 215 parts · 292 g · CoM margin 119.3 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": true
+ },
+ "PASS": true
+}

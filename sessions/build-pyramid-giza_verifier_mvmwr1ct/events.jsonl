@@ -1,0 +1,121 @@
+{"t":1792877297021,"turn":0,"type":"text","delta":"Plan"}
+{"t":1792877297080,"turn":0,"type":"text","delta":"ning the"}
+{"t":1792877297147,"turn":0,"type":"text","delta":" pyramid first."}
+{"t":1792877297351,"turn":0,"type":"tool_typing","name":"design_layout","bytes":0}
+{"t":1792877302238,"turn":0,"type":"tool_typing","name":"design_layout","bytes":61}
+{"t":1792877302241,"turn":0,"type":"usage","input":2,"output":5280,"cacheRead":0,"cacheWrite":13582}
+{"t":1792877302242,"turn":0,"type":"tool_start","name":"design_layout"}
+{"t":1792877302242,"turn":0,"type":"tool","name":"design_layout","summary":"plan clean"}
+{"t":1792877320141,"turn":0,"type":"text","delta":"Base plate pl"}
+{"t":1792877320255,"turn":0,"type":"text","delta":"us tier 1 "}
+{"t":1792877320334,"turn":0,"type":"text","delta":"ring with the entrance t"}
+{"t":1792877320410,"turn":0,"type":"text","delta":"unnel."}
+{"t":1792877320550,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792877321600,"turn":0,"type":"usage","input":2,"output":144,"cacheRead":13582,"cacheWrite":5980}
+{"t":1792877321601,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792877321613,"turn":0,"type":"tool","name":"build_program","summary":"placed 31"}
+{"t":1792877337977,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792877338566,"turn":0,"type":"usage","input":2,"output":156,"cacheRead":19562,"cacheWrite":181}
+{"t":1792877338568,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792877339706,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792877715372,"turn":0,"type":"text","delta":"Tiers 2–7 "}
+{"t":1792877715436,"turn":0,"type":"text","delta":"stepping in"}
+{"t":1792877715502,"turn":0,"type":"text","delta":" one"}
+{"t":1792877715567,"turn":0,"type":"text","delta":" stud per"}
+{"t":1792877715634,"turn":0,"type":"text","delta":" side, g"}
+{"t":1792877715702,"turn":0,"type":"text","delta":"old capstone t"}
+{"t":1792877715768,"turn":0,"type":"text","delta":"ile."}
+{"t":1792877715910,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792877717270,"turn":0,"type":"usage","input":2,"output":522,"cacheRead":0,"cacheWrite":20471}
+{"t":1792877717271,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792877717292,"turn":0,"type":"tool","name":"build_program","summary":"placed 45"}
+{"t":1792877782467,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792877782921,"turn":0,"type":"usage","input":2,"output":72,"cacheRead":20471,"cacheWrite":559}
+{"t":1792877782922,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792877783136,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792877847541,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792877849351,"turn":0,"type":"tool_typing","name":"build_program","bytes":7}
+{"t":1792877849461,"turn":0,"type":"usage","input":2,"output":769,"cacheRead":21030,"cacheWrite":644}
+{"t":1792877849462,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792877849478,"turn":0,"type":"tool","name":"build_program","summary":"dry run: would place 56"}
+{"t":1792877887734,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792877889511,"turn":0,"type":"tool_typing","name":"build_program","bytes":7}
+{"t":1792877889513,"turn":0,"type":"usage","input":2,"output":378,"cacheRead":21674,"cacheWrite":885}
+{"t":1792877889514,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792877889538,"turn":0,"type":"tool","name":"build_program","summary":"placed 56"}
+{"t":1792878156956,"turn":0,"type":"tool_typing","name":"check_validity","bytes":0}
+{"t":1792878157127,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792878157765,"turn":0,"type":"usage","input":2,"output":96,"cacheRead":22559,"cacheWrite":415}
+{"t":1792878157766,"turn":0,"type":"tool_start","name":"check_validity"}
+{"t":1792878158040,"turn":0,"type":"tool","name":"check_validity","summary":"clean"}
+{"t":1792878158040,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792878158241,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792878220369,"turn":0,"type":"tool_typing","name":"find_parts","bytes":0}
+{"t":1792878220673,"turn":0,"type":"usage","input":2,"output":261,"cacheRead":22974,"cacheWrite":800}
+{"t":1792878220674,"turn":0,"type":"tool_start","name":"find_parts"}
+{"t":1792878220674,"turn":0,"type":"tool","name":"find_parts","summary":"1 parts match"}
+{"t":1792878308356,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792878308914,"turn":0,"type":"usage","input":2,"output":253,"cacheRead":23774,"cacheWrite":276}
+{"t":1792878308915,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792878309127,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792878391715,"turn":0,"type":"tool_typing","name":"find_parts","bytes":0}
+{"t":1792878392044,"turn":0,"type":"usage","input":2,"output":339,"cacheRead":24050,"cacheWrite":825}
+{"t":1792878392046,"turn":0,"type":"tool_start","name":"find_parts"}
+{"t":1792878392047,"turn":0,"type":"tool","name":"find_parts","summary":"10 parts match"}
+{"t":1792878427613,"turn":0,"type":"tool_typing","name":"list_connectors","bytes":0}
+{"t":1792878427829,"turn":0,"type":"usage","input":2,"output":213,"cacheRead":24875,"cacheWrite":372}
+{"t":1792878427831,"turn":0,"type":"tool_start","name":"list_connectors"}
+{"t":1792878427832,"turn":0,"type":"tool","name":"list_connectors","summary":"index:75"}
+{"t":1792878505248,"turn":0,"type":"tool_typing","name":"recolor_parts","bytes":0}
+{"t":1792878505760,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792878506291,"turn":0,"type":"usage","input":2,"output":529,"cacheRead":25247,"cacheWrite":453}
+{"t":1792878506292,"turn":0,"type":"tool_start","name":"recolor_parts"}
+{"t":1792878506292,"turn":0,"type":"tool","name":"recolor_parts","summary":"recolored 1/1 parts to color 297"}
+{"t":1792878506292,"turn":0,"type":"partial","ldraw":"0 LeoCAD build\n0 Name: LeoCAD_build.ldr\n0 Author: Danish Bricks Builder\n0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt\n\n1 72 0 -8 0 1 0 0 0 1 0 0 0 1 91405.dat\n1 19 20 -32 120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 100 -32 120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -100 -32 120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -40 -32 120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -100 -32 -120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -40 -32 -120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 60 -32 -120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 120 -32 -120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -120 -32 60 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -120 -32 -20 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -120 -32 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 120 -32 60 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 120 -32 -20 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 120 -32 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 -56 -120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 0 -56 120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 80 -56 120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -80 -56 120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 130 -56 120 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -130 -56 120 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -100 -56 -120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -50 -56 -120 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 80 -56 -120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 130 -56 -120 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -120 -56 60 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -120 -56 -20 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -120 -56 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 120 -56 60 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 120 -56 -20 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 120 -56 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -80 100 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 90 -80 100 1 0 0 0 1 0 0 0 1 3002.dat\n1 19 -90 -80 100 1 0 0 0 1 0 0 0 1 3002.dat\n1 19 -40 -80 100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -80 -100 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 90 -80 -100 1 0 0 0 1 0 0 0 1 3002.dat\n1 19 -90 -80 -100 1 0 0 0 1 0 0 0 1 3002.dat\n1 19 -40 -80 -100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -100 -80 40 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -100 -80 -40 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 100 -80 40 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 100 -80 -40 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 20 -104 80 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 80 -104 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 -104 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 -104 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -104 -80 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 80 -104 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 -104 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 -104 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 -104 20 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -80 -104 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 80 -104 20 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 80 -104 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -128 60 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 70 -128 60 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -70 -128 60 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -40 -128 60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -128 -60 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 70 -128 -60 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -70 -128 -60 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -40 -128 -60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -60 -128 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 60 -128 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 20 -152 40 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -40 -152 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -152 -40 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -40 -152 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 -152 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 -152 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 -176 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 30 -176 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 -30 -176 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 297 0 -200 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 297 0 -208 0 1 0 0 0 1 0 0 0 1 3068b.dat\n1 19 40 -64 130 1 0 0 0 1 0 0 0 1 6636.dat\n1 19 120 -64 130 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 -120 -64 130 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 -60 -64 130 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 40 -64 -130 1 0 0 0 1 0 0 0 1 6636.dat\n1 19 120 -64 -130 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 -120 -64 -130 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 -60 -64 -130 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 -130 -64 60 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 -130 -64 -60 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 130 -64 60 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 130 -64 -60 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 40 -88 110 1 0 0 0 1 0 0 0 1 6636.dat\n1 19 110 -88 110 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -110 -88 110 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -60 -88 110 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 40 -88 -110 1 0 0 0 1 0 0 0 1 6636.dat\n1 19 110 -88 -110 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -110 -88 -110 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -60 -88 -110 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 -110 -88 40 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 -110 -88 -60 0 0 -1 0 1 0 1 0 0 2431.dat\n1 19 110 -88 40 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 110 -88 -60 0 0 -1 0 1 0 1 0 0 2431.dat\n1 19 40 -112 90 1 0 0 0 1 0 0 0 1 6636.dat\n1 19 -60 -112 90 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 40 -112 -90 1 0 0 0 1 0 0 0 1 6636.dat\n1 19 -60 -112 -90 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 -90 -112 20 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 -90 -112 -60 0 0 -1 0 1 0 1 0 0 3069b.dat\n1 19 90 -112 20 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 90 -112 -60 0 0 -1 0 1 0 1 0 0 3069b.dat\n1 19 20 -136 70 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 70 -136 70 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -70 -136 70 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -40 -136 70 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 20 -136 -70 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 70 -136 -70 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -70 -136 -70 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -40 -136 -70 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 -70 -136 0 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 70 -136 0 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 20 -160 50 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 -40 -160 50 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 20 -160 -50 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 -40 -160 -50 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 -50 -160 0 0 0 -1 0 1 0 1 0 0 2431.dat\n1 19 50 -160 0 0 0 -1 0 1 0 1 0 0 2431.dat\n1 19 0 -184 30 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 30 -184 30 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -30 -184 30 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 0 -184 -30 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 30 -184 -30 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -30 -184 -30 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -30 -184 0 0 0 -1 0 1 0 1 0 0 3069b.dat\n1 19 30 -184 0 0 0 -1 0 1 0 1 0 0 3069b.dat\n","parts":132}
+{"t":1792878506292,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792878506314,"turn":0,"type":"tool","name":"build_program","summary":"placed 18"}
+{"t":1792878531566,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792878532082,"turn":0,"type":"usage","input":2,"output":176,"cacheRead":25700,"cacheWrite":634}
+{"t":1792878532082,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792878532298,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792878568840,"turn":0,"type":"text","delta":"Adding a"}
+{"t":1792878568841,"turn":0,"type":"text","delta":" dark threshold t"}
+{"t":1792878568895,"turn":0,"type":"text","delta":"ile in the entrance, then"}
+{"t":1792878568957,"turn":0,"type":"text","delta":" final chec"}
+{"t":1792878569024,"turn":0,"type":"text","delta":"ks."}
+{"t":1792878569159,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792878569667,"turn":0,"type":"usage","input":2,"output":723,"cacheRead":26334,"cacheWrite":748}
+{"t":1792878569668,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792878569690,"turn":0,"type":"tool","name":"build_program","summary":"placed 0 · 2 rejected"}
+{"t":1792878626905,"turn":0,"type":"tool_typing","name":"check_stability","bytes":0}
+{"t":1792878627092,"turn":0,"type":"tool_typing","name":"check_validity","bytes":0}
+{"t":1792878627167,"turn":0,"type":"usage","input":2,"output":372,"cacheRead":27082,"cacheWrite":1035}
+{"t":1792878627168,"turn":0,"type":"tool_start","name":"check_stability"}
+{"t":1792878627200,"turn":0,"type":"tool","name":"check_stability","summary":"stable"}
+{"t":1792878627200,"turn":0,"type":"tool_start","name":"check_validity"}
+{"t":1792878627520,"turn":0,"type":"tool","name":"check_validity","summary":"clean"}
+{"t":1792878699114,"turn":0,"type":"text","delta":"Done — 150 parts"}
+{"t":1792878699118,"turn":0,"type":"text","delta":", s"}
+{"t":1792878699200,"turn":0,"type":"text","delta":"ound and stable: 14×"}
+{"t":1792878699254,"turn":0,"type":"text","delta":"14 t"}
+{"t":1792878699320,"turn":0,"type":"text","delta":"an base on a d"}
+{"t":1792878699396,"turn":0,"type":"text","delta":"ark grey 16×16 "}
+{"t":1792878699450,"turn":0,"type":"text","delta":"fo"}
+{"t":1792878699522,"turn":0,"type":"text","delta":"undation, 7 ev"}
+{"t":1792878699609,"turn":0,"type":"text","delta":"enly in"}
+{"t":1792878699664,"turn":0,"type":"text","delta":"set tiers with"}
+{"t":1792878699717,"turn":0,"type":"text","delta":" tiled step"}
+{"t":1792878699789,"turn":0,"type":"text","delta":" ledges, gold capst"}
+{"t":1792878699858,"turn":0,"type":"text","delta":"one, and a 2-w"}
+{"t":1792878699924,"turn":0,"type":"text","delta":"ide entrance t"}
+{"t":1792878699987,"turn":0,"type":"text","delta":"unnel at"}
+{"t":1792878700053,"turn":0,"type":"text","delta":" ground level on"}
+{"t":1792878700119,"turn":0,"type":"text","delta":" the front face ("}
+{"t":1792878700186,"turn":0,"type":"text","delta":"208 LDU t"}
+{"t":1792878700249,"turn":0,"type":"text","delta":"all,"}
+{"t":1792878700320,"turn":0,"type":"text","delta":" 16×16 footprint"}
+{"t":1792878700374,"turn":0,"type":"text","delta":")."}
+{"t":1792878700379,"turn":0,"type":"usage","input":2,"output":106,"cacheRead":28117,"cacheWrite":560}
+{"t":1792878700713,"turn":0,"type":"tool","name":"auto_validate","summary":"PASSED — sound, jointed, collision-free, stable"}
+{"t":1792878700720,"turn":1,"type":"result","ldraw":"0 LeoCAD build\n0 Name: LeoCAD_build.ldr\n0 Author: Danish Bricks Builder\n0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt\n\n1 72 0 -8 0 1 0 0 0 1 0 0 0 1 91405.dat\n1 19 20 -32 120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 100 -32 120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -100 -32 120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -40 -32 120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -100 -32 -120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -40 -32 -120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 60 -32 -120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 120 -32 -120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -120 -32 60 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -120 -32 -20 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -120 -32 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 120 -32 60 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 120 -32 -20 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 120 -32 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 -56 -120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 0 -56 120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 80 -56 120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -80 -56 120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 130 -56 120 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -130 -56 120 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -100 -56 -120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -50 -56 -120 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 80 -56 -120 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 130 -56 -120 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -120 -56 60 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -120 -56 -20 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -120 -56 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 120 -56 60 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 120 -56 -20 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 120 -56 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -80 100 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 90 -80 100 1 0 0 0 1 0 0 0 1 3002.dat\n1 19 -90 -80 100 1 0 0 0 1 0 0 0 1 3002.dat\n1 19 -40 -80 100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -80 -100 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 90 -80 -100 1 0 0 0 1 0 0 0 1 3002.dat\n1 19 -90 -80 -100 1 0 0 0 1 0 0 0 1 3002.dat\n1 19 -40 -80 -100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -100 -80 40 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -100 -80 -40 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 100 -80 40 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 100 -80 -40 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 20 -104 80 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 80 -104 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 -104 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 -104 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -104 -80 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 80 -104 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 -104 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 -104 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 -104 20 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -80 -104 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 80 -104 20 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 80 -104 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -128 60 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 70 -128 60 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -70 -128 60 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -40 -128 60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -128 -60 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 70 -128 -60 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -70 -128 -60 0 0 -1 0 1 0 1 0 0 3004.dat\n1 19 -40 -128 -60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -60 -128 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 60 -128 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 20 -152 40 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -40 -152 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -152 -40 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -40 -152 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 -152 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 -152 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 -176 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 30 -176 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 -30 -176 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 297 0 -200 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 297 0 -208 0 1 0 0 0 1 0 0 0 1 3068b.dat\n1 19 40 -64 130 1 0 0 0 1 0 0 0 1 6636.dat\n1 19 120 -64 130 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 -120 -64 130 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 -60 -64 130 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 40 -64 -130 1 0 0 0 1 0 0 0 1 6636.dat\n1 19 120 -64 -130 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 -120 -64 -130 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 -60 -64 -130 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 -130 -64 60 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 -130 -64 -60 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 130 -64 60 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 130 -64 -60 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 40 -88 110 1 0 0 0 1 0 0 0 1 6636.dat\n1 19 110 -88 110 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -110 -88 110 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -60 -88 110 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 40 -88 -110 1 0 0 0 1 0 0 0 1 6636.dat\n1 19 110 -88 -110 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -110 -88 -110 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -60 -88 -110 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 -110 -88 40 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 -110 -88 -60 0 0 -1 0 1 0 1 0 0 2431.dat\n1 19 110 -88 40 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 110 -88 -60 0 0 -1 0 1 0 1 0 0 2431.dat\n1 19 40 -112 90 1 0 0 0 1 0 0 0 1 6636.dat\n1 19 -60 -112 90 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 40 -112 -90 1 0 0 0 1 0 0 0 1 6636.dat\n1 19 -60 -112 -90 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 -90 -112 20 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 -90 -112 -60 0 0 -1 0 1 0 1 0 0 3069b.dat\n1 19 90 -112 20 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 90 -112 -60 0 0 -1 0 1 0 1 0 0 3069b.dat\n1 19 20 -136 70 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 70 -136 70 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -70 -136 70 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -40 -136 70 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 20 -136 -70 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 70 -136 -70 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -70 -136 -70 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -40 -136 -70 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 -70 -136 0 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 70 -136 0 0 0 -1 0 1 0 1 0 0 6636.dat\n1 19 20 -160 50 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 -40 -160 50 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 20 -160 -50 1 0 0 0 1 0 0 0 1 2431.dat\n1 19 -40 -160 -50 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 -50 -160 0 0 0 -1 0 1 0 1 0 0 2431.dat\n1 19 50 -160 0 0 0 -1 0 1 0 1 0 0 2431.dat\n1 19 0 -184 30 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 30 -184 30 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -30 -184 30 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 0 -184 -30 1 0 0 0 1 0 0 0 1 3069b.dat\n1 19 30 -184 -30 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -30 -184 -30 1 0 0 0 1 0 0 0 1 3070b.dat\n1 19 -30 -184 0 0 0 -1 0 1 0 1 0 0 3069b.dat\n1 19 30 -184 0 0 0 -1 0 1 0 1 0 0 3069b.dat\n1 72 40 -16 150 1 0 0 0 1 0 0 0 1 6636.dat\n1 72 120 -16 150 1 0 0 0 1 0 0 0 1 3069b.dat\n1 72 -120 -16 150 1 0 0 0 1 0 0 0 1 3069b.dat\n1 72 150 -16 150 1 0 0 0 1 0 0 0 1 3070b.dat\n1 72 -150 -16 150 1 0 0 0 1 0 0 0 1 3070b.dat\n1 72 -60 -16 150 1 0 0 0 1 0 0 0 1 2431.dat\n1 72 40 -16 -150 1 0 0 0 1 0 0 0 1 6636.dat\n1 72 120 -16 -150 1 0 0 0 1 0 0 0 1 3069b.dat\n1 72 -120 -16 -150 1 0 0 0 1 0 0 0 1 3069b.dat\n1 72 150 -16 -150 1 0 0 0 1 0 0 0 1 3070b.dat\n1 72 -150 -16 -150 1 0 0 0 1 0 0 0 1 3070b.dat\n1 72 -60 -16 -150 1 0 0 0 1 0 0 0 1 2431.dat\n1 72 -150 -16 80 0 0 -1 0 1 0 1 0 0 6636.dat\n1 72 -150 -16 -40 0 0 -1 0 1 0 1 0 0 6636.dat\n1 72 -150 -16 -120 0 0 -1 0 1 0 1 0 0 3069b.dat\n1 72 150 -16 80 0 0 -1 0 1 0 1 0 0 6636.dat\n1 72 150 -16 -40 0 0 -1 0 1 0 1 0 0 6636.dat\n1 72 150 -16 -120 0 0 -1 0 1 0 1 0 0 3069b.dat\n","partCount":150}
+{"t":1792878700720,"turn":1,"type":"done"}

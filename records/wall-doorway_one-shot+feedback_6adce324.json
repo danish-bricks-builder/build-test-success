@@ -1,0 +1,119 @@
+{
+ "runId": "wall-doorway_one-shot+feedback_6adce324",
+ "task": "wall-doorway",
+ "condition": "one-shot+feedback",
+ "model": "claude-opus-5",
+ "prompt": "Build a straight wall 16 studs long, 1 stud thick, at least 6 bricks tall, with a doorway opening in the middle (at least 3 studs wide and 5 bricks tall) spanned by a lintel. Use running-bond brick courses (seams overlapped). One color for the wall, another for the lintel. 30-70 parts.",
+ "seconds": 57,
+ "rounds": [
+  {
+   "round": 1,
+   "ldr": "wall-doorway_one-shot+feedback_6adce324.round1.ldr",
+   "grade": {
+    "task": "wall-doorway",
+    "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/wall-doorway_one-shot+feedback_6adce324.round1.ldr",
+    "partCount": 34,
+    "heightLdu": 240,
+    "footprintStuds": [
+     16,
+     1
+    ],
+    "valid": true,
+    "verifyReport": "VALID: 34 parts \u00b7 49 joints \u00b7 1 cluster \u00b7 6 grounded \u00b7 no collisions",
+    "stable": true,
+    "stabilityReport": "STABLE: 34 parts \u00b7 67 g \u00b7 CoM margin 9.5 LDU inside ground footprint",
+    "post": {
+     "parts": true,
+     "height": true,
+     "footprint": true
+    },
+    "PASS": true,
+    "faults": {
+     "unattached": [],
+     "colliding": [],
+     "reasons": {}
+    }
+   }
+  }
+ ],
+ "usage": {
+  "input": 387,
+  "output": 4605,
+  "cacheRead": 0,
+  "cacheWrite": 0
+ },
+ "PASS": true,
+ "final": {
+  "task": "wall-doorway",
+  "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/wall-doorway_one-shot+feedback_6adce324.round1.ldr",
+  "partCount": 34,
+  "heightLdu": 240,
+  "footprintStuds": [
+   16,
+   1
+  ],
+  "valid": true,
+  "verifyReport": "VALID: 34 parts \u00b7 49 joints \u00b7 1 cluster \u00b7 6 grounded \u00b7 no collisions",
+  "stable": true,
+  "stabilityReport": "STABLE: 34 parts \u00b7 67 g \u00b7 CoM margin 9.5 LDU inside ground footprint",
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "PASS": true,
+  "faults": {
+   "unattached": [],
+   "colliding": [],
+   "reasons": {}
+  },
+  "view": {
+   "extent": {
+    "minX": 0,
+    "maxX": 320,
+    "minZ": -10,
+    "maxZ": 10,
+    "height": 240
+   },
+   "limits": {
+    "maxFootprintStuds": [
+     18,
+     4
+    ],
+    "minHeightLdu": 144,
+    "minParts": 25
+   },
+   "com": [
+    160,
+    117.23076923076923,
+    0
+   ],
+   "ground": {
+    "x0": 0,
+    "x1": 320,
+    "z0": -10,
+    "z1": 10
+   },
+   "stability": {
+    "ok": true,
+    "marginLdu": 9.5,
+    "issues": []
+   }
+  }
+ },
+ "conversation": [
+  {
+   "role": "system",
+   "content": "You are an expert LEGO designer. You output raw LDraw model files.\nRespond with ONLY the LDraw file in a ```ldraw fenced block \u2014 no other prose.\nUse standard LDraw conventions: type-1 lines `1 <color> x y z a b c d e f g h i <part>.dat`,\n-Y is up, 1 brick height = 24 LDU, 1 plate = 8 LDU, 1 stud pitch = 20 LDU.\nUse common official part files (3001.dat, 3003.dat, 3020.dat, 3024.dat, ...).\nEvery part must be properly connected (studs seated in anti-studs) and no two parts may overlap."
+  },
+  {
+   "role": "user",
+   "content": "Build a straight wall 16 studs long, 1 stud thick, at least 6 bricks tall, with a doorway opening in the middle (at least 3 studs wide and 5 bricks tall) spanned by a lintel. Use running-bond brick courses (seams overlapped). One color for the wall, another for the lintel. 30-70 parts.\nConstraints: footprint must fit within 18x4 studs; height at least 144 LDU (6 bricks); use at least 25 parts."
+  },
+  {
+   "role": "assistant",
+   "content": "```ldraw\n0 Castle Wall with Doorway and Lintel\n0 Name: wall_doorway.ldr\n0 Author: LEGO Designer\n0 !LDRAW_ORG Model\n0 BFC CERTIFY CCW\n\n0 // Wall runs along X: 16 studs (0..320 LDU), 1 stud thick (Z=0)\n0 // Doorway = studs 6-9 (x 120..200), 5 bricks tall, lintel in red at course 5\n\n0 // ---- Course 0 (y=0) ----\n1 7 60 0 0 1 0 0 0 1 0 0 0 1 3009.dat\n1 7 260 0 0 1 0 0 0 1 0 0 0 1 3009.dat\n\n0 // ---- Course 1 (y=-24) ----\n1 7 20 -24 0 1 0 0 0 1 0 0 0 1 3004.dat\n1 7 80 -24 0 1 0 0 0 1 0 0 0 1 3010.dat\n1 7 240 -24 0 1 0 0 0 1 0 0 0 1 3010.dat\n1 7 300 -24 0 1 0 0 0 1 0 0 0 1 3004.dat\n\n0 // ---- Course 2 (y=-48) ----\n1 7 60 -48 0 1 0 0 0 1 0 0 0 1 3009.dat\n1 7 260 -48 0 1 0 0 0 1 0 0 0 1 3009.dat\n\n0 // ---- Course 3 (y=-72) ----\n1 7 20 -72 0 1 0 0 0 1 0 0 0 1 3004.dat\n1 7 80 -72 0 1 0 0 0 1 0 0 0 1 3010.dat\n1 7 240 -72 0 1 0 0 0 1 0 0 0 1 3010.dat\n1 7 300 -72 0 1 0 0 0 1 0 0 0 1 3004.dat\n\n0 // ---- Course 4 (y=-96) ----\n1 7 60 -96 0 1 0 0 0 1 0 0 0 1 3009.dat\n1 7 260 -96 0 1 0 0 0 1 0 0 0 1 3009.dat\n\n0 // ---- Course 5 (y=-120) : lintel course ----\n1 7 40 -120 0 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 160 -120 0 1 0 0 0 1 0 0 0 1 3008.dat\n1 7 280 -120 0 1 0 0 0 1 0 0 0 1 3010.dat\n\n0 // ---- Course 6 (y=-144) ----\n1 7 60 -144 0 1 0 0 0 1 0 0 0 1 3009.dat\n1 7 160 -144 0 1 0 0 0 1 0 0 0 1 3010.dat\n1 7 260 -144 0 1 0 0 0 1 0 0 0 1 3009.dat\n\n0 // ---- Course 7 (y=-168) ----\n1 7 20 -168 0 1 0 0 0 1 0 0 0 1 3004.dat\n1 7 100 -168 0 1 0 0 0 1 0 0 0 1 3009.dat\n1 7 220 -168 0 1 0 0 0 1 0 0 0 1 3009.dat\n1 7 300 -168 0 1 0 0 0 1 0 0 0 1 3004.dat\n\n0 // ---- Course 8 (y=-192) ----\n1 7 60 -192 0 1 0 0 0 1 0 0 0 1 3009.dat\n1 7 160 -192 0 1 0 0 0 1 0 0 0 1 3010.dat\n1 7 260 -192 0 1 0 0 0 1 0 0 0 1 3009.dat\n\n0 // ---- Course 9 (y=-216) ----\n1 7 20 -216 0 1 0 0 0 1 0 0 0 1 3004.dat\n1 7 100 -216 0 1 0 0 0 1 0 0 0 1 3009.dat\n1 7 220 -216 0 1 0 0 0 1 0 0 0 1 3009.dat\n1 7 300 -216 0 1 0 0 0 1 0 0 0 1 3004.dat\n\n0 // ---- Course 10 (y=-240) ----\n1 7 60 -240 0 1 0 0 0 1 0 0 0 1 3009.dat\n1 7 160 -240 0 1 0 0 0 1 0 0 0 1 3010.dat\n1 7 260 -240 0 1 0 0 0 1 0 0 0 1 3009.dat\n\n0 STEP\n```"
+  }
+ ],
+ "regraded": "footprint measure turned with the part (2026-10-24)"
+}

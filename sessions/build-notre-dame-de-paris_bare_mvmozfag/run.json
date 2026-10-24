@@ -1,0 +1,17 @@
+{
+ "runId": "build-notre-dame-de-paris_bare_mvmozfag",
+ "taskId": "build-notre-dame-de-paris",
+ "condition": "bare",
+ "model": "claude-opus-5",
+ "createdAt": "2026-10-24T17:48:01.992Z",
+ "turns": [
+  {
+   "i": 0,
+   "userMessage": "Build an extremely detailed model of Notre-Dame de Paris: two rectangular west towers with tall arched openings, a large rose window above three portal arches between them, a long nave behind with flying buttresses along both sides, and a slender spire at the crossing. Use trans-colored pieces for stained glass — the rose window and the tall nave windows should glow with mixed trans colors. Light grey stone with a dark roof. 450-900 parts.",
+   "startedAt": "2026-10-24T17:48:01.993Z",
+   "toolset": "full",
+   "turnBudgetMs": 14400000,
+   "endedAt": "2026-10-24T17:48:02.296Z"
+  }
+ ]
+}

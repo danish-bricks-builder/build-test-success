@@ -1,0 +1,42 @@
+{
+ "runId": "build-pyramid-giza_verifier_mvmwr1ct",
+ "task": "pyramid-giza",
+ "condition": "verifier",
+ "model": "claude-opus-5",
+ "prompt": "Build the Great Pyramid: square base 14x14 studs, at least 7 tiers stepping in evenly to a peak, in tan, with one side carrying a small entrance opening at ground level. Center the tiers exactly. 130-280 parts.",
+ "seconds": 1573,
+ "tools": {
+  "design_layout": 1,
+  "build_program": 6,
+  "render_view": 5,
+  "check_validity": 2,
+  "find_parts": 2,
+  "list_connectors": 1,
+  "recolor_parts": 1,
+  "check_stability": 1,
+  "auto_validate": 1
+ },
+ "usage": {
+  "input": 34,
+  "output": 10389,
+  "cacheRead": 347031,
+  "cacheWrite": 48420
+ },
+ "error": null,
+ "partCount": 150,
+ "heightLdu": 208,
+ "footprintStuds": [
+  16,
+  16
+ ],
+ "valid": true,
+ "verifyReport": "VALID: 150 parts · 231 joints · 1 cluster · 1 grounded · no collisions",
+ "stable": true,
+ "stabilityReport": "STABLE: 150 parts · 229 g · CoM margin 159.1 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": true
+ },
+ "PASS": true
+}

@@ -1,0 +1,86 @@
+{"t":1792876394773,"turn":0,"type":"tool_typing","name":"design_layout","bytes":0}
+{"t":1792876398761,"turn":0,"type":"tool_typing","name":"design_layout","bytes":60}
+{"t":1792876398763,"turn":0,"type":"tool_typing","name":"search_parts","bytes":0}
+{"t":1792876399236,"turn":0,"type":"usage","input":2,"output":4736,"cacheRead":0,"cacheWrite":13644}
+{"t":1792876399236,"turn":0,"type":"tool_start","name":"design_layout"}
+{"t":1792876399237,"turn":0,"type":"tool","name":"design_layout","summary":"plan clean"}
+{"t":1792876399237,"turn":0,"type":"tool_start","name":"search_parts"}
+{"t":1792876400970,"turn":0,"type":"tool","name":"search_parts","summary":"\"arch 1x6\" → 17 hits, 3 card(s)"}
+{"t":1792876471675,"turn":0,"type":"tool_typing","name":"search_parts","bytes":0}
+{"t":1792876471902,"turn":0,"type":"usage","input":2,"output":1822,"cacheRead":13644,"cacheWrite":9124}
+{"t":1792876471903,"turn":0,"type":"tool_start","name":"search_parts"}
+{"t":1792876471942,"turn":0,"type":"tool","name":"search_parts","summary":"\"Brick Arch 1 x 4 x 2\" → 6 hits"}
+{"t":1792876584110,"turn":0,"type":"text","delta":"Tier 1:"}
+{"t":1792876584135,"turn":0,"type":"text","delta":" five piers, four"}
+{"t":1792876584192,"turn":0,"type":"text","delta":" 1"}
+{"t":1792876584257,"turn":0,"type":"text","delta":"x"}
+{"t":1792876584324,"turn":0,"type":"text","delta":"6x2 round arches,"}
+{"t":1792876584393,"turn":0,"type":"text","delta":" cornice deck."}
+{"t":1792876584526,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792876587333,"turn":0,"type":"tool_typing","name":"build_program","bytes":7}
+{"t":1792876587338,"turn":0,"type":"usage","input":2,"output":3484,"cacheRead":22768,"cacheWrite":2091}
+{"t":1792876587339,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792876587361,"turn":0,"type":"tool","name":"build_program","summary":"placed 50"}
+{"t":1792876602856,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792876603348,"turn":0,"type":"usage","input":2,"output":72,"cacheRead":24859,"cacheWrite":3527}
+{"t":1792876603350,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792876603538,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792876722565,"turn":0,"type":"text","delta":"Tier 2: se"}
+{"t":1792876722625,"turn":0,"type":"text","delta":"ven short"}
+{"t":1792876722692,"turn":0,"type":"text","delta":" piers and six sm"}
+{"t":1792876722760,"turn":0,"type":"text","delta":"aller 1x4x2"}
+{"t":1792876722826,"turn":0,"type":"text","delta":" arches."}
+{"t":1792876722961,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792876725355,"turn":0,"type":"tool_typing","name":"build_program","bytes":7}
+{"t":1792876725356,"turn":0,"type":"usage","input":2,"output":1669,"cacheRead":28386,"cacheWrite":644}
+{"t":1792876725357,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792876725377,"turn":0,"type":"tool","name":"build_program","summary":"placed 43"}
+{"t":1792876741704,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792876742194,"turn":0,"type":"usage","input":2,"output":72,"cacheRead":29030,"cacheWrite":1711}
+{"t":1792876742196,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792876742410,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792876779696,"turn":0,"type":"text","delta":"Top deck, par"}
+{"t":1792876779708,"turn":0,"type":"text","delta":"apet"}
+{"t":1792876779775,"turn":0,"type":"text","delta":" walls, and"}
+{"t":1792876779840,"turn":0,"type":"text","delta":" the water"}
+{"t":1792876779907,"turn":0,"type":"text","delta":" channel between"}
+{"t":1792876779975,"turn":0,"type":"text","delta":" them."}
+{"t":1792876780116,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792876781477,"turn":0,"type":"usage","input":2,"output":471,"cacheRead":30741,"cacheWrite":644}
+{"t":1792876781478,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792876781492,"turn":0,"type":"tool","name":"build_program","summary":"placed 41"}
+{"t":1792877114780,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792877115304,"turn":0,"type":"usage","input":2,"output":72,"cacheRead":0,"cacheWrite":31893}
+{"t":1792877115305,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792877115594,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792877138526,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792877139434,"turn":0,"type":"usage","input":2,"output":309,"cacheRead":31893,"cacheWrite":644}
+{"t":1792877139436,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792877139452,"turn":0,"type":"tool","name":"build_program","summary":"placed 12"}
+{"t":1792877314030,"turn":0,"type":"tool_typing","name":"check_validity","bytes":0}
+{"t":1792877314251,"turn":0,"type":"tool_typing","name":"check_stability","bytes":0}
+{"t":1792877314320,"turn":0,"type":"usage","input":2,"output":51,"cacheRead":32537,"cacheWrite":346}
+{"t":1792877314322,"turn":0,"type":"tool_start","name":"check_validity"}
+{"t":1792877314729,"turn":0,"type":"tool","name":"check_validity","summary":"clean"}
+{"t":1792877314729,"turn":0,"type":"tool_start","name":"check_stability"}
+{"t":1792877314764,"turn":0,"type":"tool","name":"check_stability","summary":"stable"}
+{"t":1792877332355,"turn":0,"type":"text","delta":"Aqueduct complete —"}
+{"t":1792877332416,"turn":0,"type":"text","delta":" 146 parts, 26"}
+{"t":1792877332483,"turn":0,"type":"text","delta":"×4 studs, 288"}
+{"t":1792877332550,"turn":0,"type":"text","delta":" LDU tall, S"}
+{"t":1792877332618,"turn":0,"type":"text","delta":"OUND and STABLE"}
+{"t":1792877332687,"turn":0,"type":"text","delta":": gr"}
+{"t":1792877332752,"turn":0,"type":"text","delta":"ey plinths"}
+{"t":1792877332818,"turn":0,"type":"text","delta":", four 1"}
+{"t":1792877332885,"turn":0,"type":"text","delta":"x"}
+{"t":1792877332951,"turn":0,"type":"text","delta":"6x2 l"}
+{"t":1792877333019,"turn":0,"type":"text","delta":"ower arches, six sm"}
+{"t":1792877333086,"turn":0,"type":"text","delta":"aller up"}
+{"t":1792877333151,"turn":0,"type":"text","delta":"per arches, trans-bl"}
+{"t":1792877333217,"turn":0,"type":"text","delta":"ue water channel between"}
+{"t":1792877333285,"turn":0,"type":"text","delta":" dark-tan co"}
+{"t":1792877333374,"turn":0,"type":"text","delta":"ped parapets."}
+{"t":1792877333384,"turn":0,"type":"usage","input":2,"output":235,"cacheRead":32883,"cacheWrite":239}
+{"t":1792877333816,"turn":0,"type":"tool","name":"auto_validate","summary":"PASSED — sound, jointed, collision-free, stable"}
+{"t":1792877333820,"turn":1,"type":"result","ldraw":"0 LeoCAD build\n0 Name: LeoCAD_build.ldr\n0 Author: Danish Bricks Builder\n0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt\n\n1 72 -240 -24 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 72 -120 -24 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 72 0 -24 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 72 120 -24 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 72 240 -24 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -240 -48 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -120 -48 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 10 -48 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 -10 -48 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 120 -48 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 240 -48 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -240 -72 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -120 -72 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 0 -72 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 120 -72 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 240 -72 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 28 -180 -120 30 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 -180 -120 10 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 -180 -120 -10 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 -180 -120 -30 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 -60 -120 30 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 -60 -120 10 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 -60 -120 -10 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 -60 -120 -30 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 60 -120 30 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 60 -120 10 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 60 -120 -10 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 60 -120 -30 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 180 -120 30 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 180 -120 10 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 180 -120 -10 1 0 0 0 1 0 0 0 1 3307.dat\n1 28 180 -120 -30 1 0 0 0 1 0 0 0 1 3307.dat\n1 19 -250 -96 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 250 -96 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 -250 -120 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 250 -120 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 0 -144 20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 80 -144 20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -80 -144 20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 160 -144 20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -160 -144 20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 220 -144 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -220 -144 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 250 -144 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 -250 -144 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 0 -144 -20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 80 -144 -20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -80 -144 -20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 160 -144 -20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -160 -144 -20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -240 -168 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -160 -168 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -80 -168 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 0 -168 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 80 -168 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 160 -168 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 240 -168 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -240 -192 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -160 -192 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -80 -192 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 10 -192 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 -10 -192 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 80 -192 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 160 -192 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 240 -192 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 28 -200 -240 30 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 -200 -240 10 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 -200 -240 -10 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 -200 -240 -30 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 -120 -240 30 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 -120 -240 10 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 -120 -240 -10 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 -120 -240 -30 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 -40 -240 30 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 -40 -240 10 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 -40 -240 -10 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 -40 -240 -30 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 40 -240 30 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 40 -240 10 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 40 -240 -10 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 40 -240 -30 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 120 -240 30 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 120 -240 10 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 120 -240 -10 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 120 -240 -30 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 200 -240 30 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 200 -240 10 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 200 -240 -10 1 0 0 0 1 0 0 0 1 6182.dat\n1 28 200 -240 -30 1 0 0 0 1 0 0 0 1 6182.dat\n1 19 -250 -216 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 250 -216 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 -250 -240 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 250 -240 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 0 -264 20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 80 -264 20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -80 -264 20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 160 -264 20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -160 -264 20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 220 -264 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 -220 -264 0 0 0 -1 0 1 0 1 0 0 3001.dat\n1 19 250 -264 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 -250 -264 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 19 0 -264 -20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 80 -264 -20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -80 -264 -20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 160 -264 -20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 -160 -264 -20 1 0 0 0 1 0 0 0 1 3001.dat\n1 19 20 -288 30 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 100 -288 30 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -100 -288 30 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 180 -288 30 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -180 -288 30 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 240 -288 30 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -240 -288 30 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -40 -288 30 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 20 -288 -30 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 100 -288 -30 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -100 -288 -30 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 180 -288 -30 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -180 -288 -30 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 240 -288 -30 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -240 -288 -30 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -40 -288 -30 1 0 0 0 1 0 0 0 1 3004.dat\n1 41 40 -272 10 1 0 0 0 1 0 0 0 1 6636.dat\n1 41 160 -272 10 1 0 0 0 1 0 0 0 1 6636.dat\n1 41 -160 -272 10 1 0 0 0 1 0 0 0 1 6636.dat\n1 41 240 -272 10 1 0 0 0 1 0 0 0 1 3069b.dat\n1 41 -240 -272 10 1 0 0 0 1 0 0 0 1 3069b.dat\n1 41 -60 -272 0 1 0 0 0 1 0 0 0 1 87079.dat\n1 41 40 -272 -10 1 0 0 0 1 0 0 0 1 6636.dat\n1 41 160 -272 -10 1 0 0 0 1 0 0 0 1 6636.dat\n1 41 -160 -272 -10 1 0 0 0 1 0 0 0 1 6636.dat\n1 41 240 -272 -10 1 0 0 0 1 0 0 0 1 3069b.dat\n1 41 -240 -272 -10 1 0 0 0 1 0 0 0 1 3069b.dat\n1 28 40 -296 30 1 0 0 0 1 0 0 0 1 6636.dat\n1 28 160 -296 30 1 0 0 0 1 0 0 0 1 6636.dat\n1 28 -160 -296 30 1 0 0 0 1 0 0 0 1 6636.dat\n1 28 240 -296 30 1 0 0 0 1 0 0 0 1 3069b.dat\n1 28 -240 -296 30 1 0 0 0 1 0 0 0 1 3069b.dat\n1 28 -60 -296 30 1 0 0 0 1 0 0 0 1 2431.dat\n1 28 40 -296 -30 1 0 0 0 1 0 0 0 1 6636.dat\n1 28 160 -296 -30 1 0 0 0 1 0 0 0 1 6636.dat\n1 28 -160 -296 -30 1 0 0 0 1 0 0 0 1 6636.dat\n1 28 240 -296 -30 1 0 0 0 1 0 0 0 1 3069b.dat\n1 28 -240 -296 -30 1 0 0 0 1 0 0 0 1 3069b.dat\n1 28 -60 -296 -30 1 0 0 0 1 0 0 0 1 2431.dat\n","partCount":146}
+{"t":1792877333820,"turn":1,"type":"done"}

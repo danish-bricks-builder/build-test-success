@@ -1,0 +1,3 @@
+{"t":1792864149514,"turn":0,"type":"tool","name":"render_view","summary":"initial view"}
+{"t":1792864149746,"turn":0,"type":"error","message":"400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CgMV1w9nFKq4dsHm3mX9L\"}"}
+{"t":1792864149746,"turn":1,"type":"done"}

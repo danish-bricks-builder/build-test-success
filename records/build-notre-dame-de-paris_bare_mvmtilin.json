@@ -1,0 +1,43 @@
+{
+ "runId": "build-notre-dame-de-paris_bare_mvmtilin",
+ "task": "notre-dame-de-paris",
+ "condition": "bare",
+ "model": "claude-opus-5",
+ "prompt": "Build an extremely detailed model of Notre-Dame de Paris: two rectangular west towers with tall arched openings, a large rose window above three portal arches between them, a long nave behind with flying buttresses along both sides, and a slender spire at the crossing. Use trans-colored pieces for stained glass — the rose window and the tall nave windows should glow with mixed trans colors. Light grey stone with a dark roof. 450-900 parts.",
+ "seconds": 3998,
+ "tools": {
+  "design_layout": 1,
+  "build_program": 27,
+  "render_view": 15,
+  "remove_parts": 8,
+  "inspect_build": 5,
+  "find_parts": 12,
+  "join_structures": 5,
+  "auto_validate": 1,
+  "list_connectors": 2,
+  "attach_part": 31
+ },
+ "usage": {
+  "input": 180,
+  "output": 104278,
+  "cacheRead": 7222563,
+  "cacheWrite": 190244
+ },
+ "error": null,
+ "partCount": 897,
+ "heightLdu": 704,
+ "footprintStuds": [
+  24,
+  38
+ ],
+ "valid": false,
+ "verifyReport": "9 invalid parts: 12 unattached, 0 collisions · 16 clusters",
+ "stable": true,
+ "stabilityReport": "STABLE: 897 parts · 1251 g · CoM margin 9.5 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": false
+ },
+ "PASS": false
+}

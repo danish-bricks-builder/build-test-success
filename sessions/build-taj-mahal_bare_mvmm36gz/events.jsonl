@@ -1,0 +1,43 @@
+{"t":1792859230371,"turn":0,"type":"tool_typing","name":"design_layout","bytes":0}
+{"t":1792859237802,"turn":0,"type":"tool_typing","name":"design_layout","bytes":62}
+{"t":1792859237808,"turn":0,"type":"usage","input":2,"output":1239,"cacheRead":0,"cacheWrite":13138}
+{"t":1792859237809,"turn":0,"type":"tool_start","name":"design_layout"}
+{"t":1792859237810,"turn":0,"type":"tool","name":"design_layout","summary":"⚠ 1 plan warning(s)"}
+{"t":1792859338867,"turn":0,"type":"text","delta":"Platform first"}
+{"t":1792859338926,"turn":0,"type":"text","delta":": "}
+{"t":1792859338993,"turn":0,"type":"text","delta":"26×26 pl"}
+{"t":1792859339060,"turn":0,"type":"text","delta":"inth,"}
+{"t":1792859339131,"turn":0,"type":"text","delta":" ra"}
+{"t":1792859339193,"turn":0,"type":"text","delta":"ised 22×22 terr"}
+{"t":1792859339261,"turn":0,"type":"text","delta":"ace, tiled sur"}
+{"t":1792859339326,"turn":0,"type":"text","delta":"faces with grey trim"}
+{"t":1792859339394,"turn":0,"type":"text","delta":"."}
+{"t":1792859339529,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792859341811,"turn":0,"type":"tool_typing","name":"build_program","bytes":7}
+{"t":1792859341814,"turn":0,"type":"usage","input":2,"output":4371,"cacheRead":13138,"cacheWrite":2692}
+{"t":1792859341815,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792859341901,"turn":0,"type":"tool","name":"build_program","summary":"placed 243"}
+{"t":1792859529799,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792859530279,"turn":0,"type":"usage","input":2,"output":72,"cacheRead":15830,"cacheWrite":4409}
+{"t":1792859530279,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792859530520,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792859556050,"turn":0,"type":"text","delta":"Central"}
+{"t":1792859556110,"turn":0,"type":"text","delta":" hall:"}
+{"t":1792859556178,"turn":0,"type":"text","delta":" 14×14 walls,"}
+{"t":1792859556248,"turn":0,"type":"text","delta":" five courses, great iwan"}
+{"t":1792859556312,"turn":0,"type":"text","delta":" arch on each face."}
+{"t":1792859556448,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792859557902,"turn":0,"type":"usage","input":2,"output":623,"cacheRead":20239,"cacheWrite":644}
+{"t":1792859557906,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792859557959,"turn":0,"type":"tool","name":"build_program","summary":"placed 60"}
+{"t":1792859604455,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792859604958,"turn":0,"type":"usage","input":2,"output":72,"cacheRead":20883,"cacheWrite":660}
+{"t":1792859604959,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792859605225,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792859656902,"turn":0,"type":"text","delta":"Interior support core"}
+{"t":1792859656950,"turn":0,"type":"text","delta":", then roof sl"}
+{"t":1792859657020,"turn":0,"type":"text","delta":"ab."}
+{"t":1792859657151,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792859658137,"turn":0,"type":"usage","input":2,"output":2286,"cacheRead":21543,"cacheWrite":644}
+{"t":1792859658138,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792859658252,"turn":0,"type":"tool","name":"build_program","summary":"placed 56"}

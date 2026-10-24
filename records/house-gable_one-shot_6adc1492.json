@@ -1,0 +1,363 @@
+{
+ "runId": "house-gable_one-shot_6adc1492",
+ "task": "house-gable",
+ "condition": "one-shot",
+ "model": "claude-opus-5",
+ "prompt": "Build a small house: rectangular footprint about 8x10 studs, walls at least 5 bricks tall with a doorway in one long wall and one window opening in another, topped by a sloped gable roof made of slope bricks. Two or three colors, walls in running bond, roof in a single color. 60-140 parts.",
+ "seconds": 389,
+ "rounds": [
+  {
+   "round": 1,
+   "ldr": "house-gable_one-shot_6adc1492.round1.ldr",
+   "grade": {
+    "task": "house-gable",
+    "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/house-gable_one-shot_6adc1492.round1.ldr",
+    "partCount": 81,
+    "heightLdu": 232,
+    "footprintStuds": [
+     17,
+     8
+    ],
+    "valid": false,
+    "verifyReport": "52 invalid parts: 5 unattached, 44 collisions \u00b7 19 clusters",
+    "stable": true,
+    "stabilityReport": "STABLE (10 minor warning(s)): 81 parts \u00b7 160 g \u00b7 CoM margin -5.1 LDU inside ground footprint",
+    "post": {
+     "parts": true,
+     "height": true,
+     "footprint": false
+    },
+    "PASS": false
+   }
+  }
+ ],
+ "usage": {
+  "input": 374,
+  "output": 28514,
+  "cacheRead": 0,
+  "cacheWrite": 0
+ },
+ "PASS": false,
+ "final": {
+  "task": "house-gable",
+  "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/house-gable_one-shot_6adc1492.round1.ldr",
+  "partCount": 81,
+  "heightLdu": 232,
+  "footprintStuds": [
+   10,
+   8
+  ],
+  "valid": false,
+  "verifyReport": "52 invalid parts: 49 unattached, 44 collisions \u00b7 19 clusters\n  #0 3033.dat colour 72 (file line: 1 72 0 0 -20 1 0 0 0 1 0 0 0 1 3033.dat): interpenetrates parts 7, 6, 2, 3\n  #1 3832.dat colour 72 (file line: 1 72 0 0 60 1 0 0 0 1 0 0 0 1 3832.dat): interpenetrates parts 4, 5, 6, 7\n  #2 3010.dat colour 19 (file line: 1 19 -60 -8 -70 1 0 0 0 1 0 0 0 1 3010.dat): interpenetrates part 0\n  #3 3010.dat colour 19 (file line: 1 19 60 -8 -70 1 0 0 0 1 0 0 0 1 3010.dat): interpenetrates part 0\n  #4 3009.dat colour 19 (file line: 1 19 -40 -8 70 1 0 0 0 1 0 0 0 1 3009.dat): interpenetrates part 1\n  #5 3010.dat colour 19 (file line: 1 19 60 -8 70 1 0 0 0 1 0 0 0 1 3010.dat): interpenetrates part 1\n  #6 3009.dat colour 19 (file line: 1 19 -90 -8 0 0 0 1 0 1 0 -1 0 0 3009.dat): interpenetrates parts 0, 1\n  #7 3009.dat colour 19 (file line: 1 19 90 -8 0 0 0 1 0 1 0 -1 0 0 3009.dat): interpenetrates parts 0, 1\n  #37 3033.dat colour 4 (file line: 1 4 0 -152 -20 1 0 0 0 1 0 0 0 1 3033.dat): no joint to any other part and not resting on the ground; interpenetrates parts 54, 53, 49, 50\n  #38 3832.dat colour 4 (file line: 1 4 0 -152 60 1 0 0 0 1 0 0 0 1 3832.dat): no joint to any other part and not resting on the ground; interpenetrates parts 44, 48, 45, 46\n  #39 3039.dat colour 4 (file line: 1 4 -80 -160 -60 1 0 0 0 1 0 0 0 1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 37\n  #40 3039.dat colour 4 (file line: 1 4 -40 -160 -60 1 0 0 0 1 0 0 0 1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 37\n  #41 3039.dat colour 4 (file line: 1 4 0 -160 -60 1 0 0 0 1 0 0 0 1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 37\n  #42 3039.dat colour 4 (file line: 1 4 40 -160 -60 1 0 0 0 1 0 0 0 1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 37\n  #43 3039.dat colour 4 (file line: 1 4 80 -160 -60 1 0 0 0 1 0 0 0 1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 37\n  #44 3039.dat colour 4 (file line: 1 4 -80 -160 60 -1 0 0 0 1 0 0 0 -1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 38\n  #45 3039.dat colour 4 (file line: 1 4 -40 -160 60 -1 0 0 0 1 0 0 0 -1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 38\n  #46 3039.dat colour 4 (file line: 1 4 0 -160 60 -1 0 0 0 1 0 0 0 -1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 38\n  #47 3039.dat colour 4 (file line: 1 4 40 -160 60 -1 0 0 0 1 0 0 0 -1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 38\n  #48 3039.dat colour 4 (file line: 1 4 80 -160 60 -1 0 0 0 1 0 0 0 -1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 38\n  #49 3001.dat colour 4 (file line: 1 4 -60 -160 -20 1 0 0 0 1 0 0 0 1 3001.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates parts 37, 55, 56\n  #50 3001.dat colour 4 (file line: 1 4 20 -160 -20 1 0 0 0 1 0 0 0 1 3001.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates parts 37, 57, 58\n  #51 3003.dat colour 4 (file line: 1 4 80 -160 -20 1 0 0 0 1 0 0 0 1 3003.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates parts 37, 59\n  #52 3003.dat colour 4 (file line: 1 4 -80 -160 20 1 0 0 0 1 0 0 0 1 3003.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates parts 37, 60\n  #53 3001.dat colour 4 (file line: 1 4 -20 -160 20 1 0 0 0 1 0 0 0 1 3001.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates parts 37, 61, 62\n  #54 3001.dat colour 4 (file line: 1 4 60 -160 20 1 0 0 0 1 0 0 0 1 3001.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates parts 37, 63, 64\n  #55 3039.dat colour 4 (file line: 1 4 -80 -184 -40 1 0 0 0 1 0 0 0 1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 49\n  #56 3039.dat colour 4 (file line: 1 4 -40 -184 -40 1 0 0 0 1 0 0 0 1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 49\n  #57 3039.dat colour 4 (file line: 1 4 0 -184 -40 1 0 0 0 1 0 0 0 1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 50\n  #58 3039.dat colour 4 (file line: 1 4 40 -184 -40 1 0 0 0 1 0 0 0 1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 50\n  #59 3039.dat colour 4 (file line: 1 4 80 -184 -40 1 0 0 0 1 0 0 0 1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 51\n  #60 3039.dat colour 4 (file line: 1 4 -80 -184 40 -1 0 0 0 1 0 0 0 -1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 52\n  #61 3039.dat colour 4 (file line: 1 4 -40 -184 40 -1 0 0 0 1 0 0 0 -1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 53\n  #62 3039.dat colour 4 (file line: 1 4 0 -184 40 -1 0 0 0 1 0 0 0 -1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 53\n  #63 3039.dat colour 4 (file line: 1 4 40 -184 40 -1 0 0 0 1 0 0 0 -1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 54\n  #64 3039.dat colour 4 (file line: 1 4 80 -184 40 -1 0 0 0 1 0 0 0 -1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 54\n  #65 3001.dat colour 4 (file line: 1 4 -60 -184 0 1 0 0 0 1 0 0 0 1 3001.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates parts 73, 74, 68, 69\n  #66 3001.dat colour 4 (file line: 1 4 20 -184 0 1 0 0 0 1 0 0 0 1 3001.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates parts 75, 76, 70, 71\n  #67 3003.dat colour 4 (file line: 1 4 80 -184 0 1 0 0 0 1 0 0 0 1 3003.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates parts 77, 72\n  #68 3039.dat colour 4 (file line: 1 4 -80 -208 -20 1 0 0 0 1 0 0 0 1 3039.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 65\n  \u2026 and 12 more",
+  "stable": true,
+  "stabilityReport": "STABLE (10 minor warning(s)): 81 parts \u00b7 160 g \u00b7 CoM margin -5.1 LDU inside ground footprint",
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "PASS": false,
+  "faults": {
+   "unattached": [
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80
+   ],
+   "colliding": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77
+   ],
+   "reasons": {
+    "0": "interpenetrates parts 7, 6, 2, 3",
+    "1": "interpenetrates parts 4, 5, 6, 7",
+    "2": "interpenetrates part 0",
+    "3": "interpenetrates part 0",
+    "4": "interpenetrates part 1",
+    "5": "interpenetrates part 1",
+    "6": "interpenetrates parts 0, 1",
+    "7": "interpenetrates parts 0, 1",
+    "37": "no joint to any other part and not resting on the ground; interpenetrates parts 54, 53, 49, 50",
+    "38": "no joint to any other part and not resting on the ground; interpenetrates parts 44, 48, 45, 46",
+    "39": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 37",
+    "40": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 37",
+    "41": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 37",
+    "42": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 37",
+    "43": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 37",
+    "44": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 38",
+    "45": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 38",
+    "46": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 38",
+    "47": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 38",
+    "48": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 38",
+    "49": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 37, 55, 56",
+    "50": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 37, 57, 58",
+    "51": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 37, 59",
+    "52": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 37, 60",
+    "53": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 37, 61, 62",
+    "54": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 37, 63, 64",
+    "55": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 49",
+    "56": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 49",
+    "57": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 50",
+    "58": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 50",
+    "59": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 51",
+    "60": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 52",
+    "61": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 53",
+    "62": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 53",
+    "63": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 54",
+    "64": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 54",
+    "65": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 73, 74, 68, 69",
+    "66": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 75, 76, 70, 71",
+    "67": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 77, 72",
+    "68": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 65",
+    "69": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 65",
+    "70": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 66",
+    "71": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 66",
+    "72": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 67",
+    "73": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 65",
+    "74": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 65",
+    "75": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 66",
+    "76": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 66",
+    "77": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 67",
+    "78": "no joint to any other part and not resting on the ground",
+    "79": "no joint to any other part and not resting on the ground",
+    "80": "no joint to any other part and not resting on the ground"
+   }
+  },
+  "view": {
+   "extent": {
+    "minX": -100,
+    "maxX": 100,
+    "minZ": -80,
+    "maxZ": 80,
+    "height": 232
+   },
+   "limits": {
+    "maxFootprintStuds": [
+     14,
+     14
+    ],
+    "minHeightLdu": 168,
+    "minParts": 50
+   },
+   "com": [
+    -0.38095238095238093,
+    108.64761904761905,
+    -0.6666666666666666
+   ],
+   "ground": {
+    "x0": -100,
+    "x1": 100,
+    "z0": -80,
+    "z1": 80
+   },
+   "stability": {
+    "ok": true,
+    "marginLdu": -5.1,
+    "issues": [
+     {
+      "kind": "topple",
+      "severe": false,
+      "parts": [
+       39,
+       55,
+       68
+      ],
+      "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+     },
+     {
+      "kind": "topple",
+      "severe": false,
+      "parts": [
+       40,
+       56,
+       69
+      ],
+      "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+     },
+     {
+      "kind": "topple",
+      "severe": false,
+      "parts": [
+       41,
+       57,
+       70
+      ],
+      "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+     },
+     {
+      "kind": "topple",
+      "severe": false,
+      "parts": [
+       42,
+       58,
+       71
+      ],
+      "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+     },
+     {
+      "kind": "topple",
+      "severe": false,
+      "parts": [
+       43,
+       59,
+       72
+      ],
+      "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+     },
+     {
+      "kind": "topple",
+      "severe": false,
+      "parts": [
+       44,
+       60,
+       73
+      ],
+      "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+     },
+     {
+      "kind": "topple",
+      "severe": false,
+      "parts": [
+       45,
+       61,
+       74
+      ],
+      "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+     },
+     {
+      "kind": "topple",
+      "severe": false,
+      "parts": [
+       46,
+       62,
+       75
+      ],
+      "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+     },
+     {
+      "kind": "topple",
+      "severe": false,
+      "parts": [
+       47,
+       63,
+       76
+      ],
+      "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+     },
+     {
+      "kind": "topple",
+      "severe": false,
+      "parts": [
+       48,
+       64,
+       77
+      ],
+      "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+     }
+    ]
+   }
+  }
+ },
+ "conversation": [
+  {
+   "role": "system",
+   "content": "You are an expert LEGO designer. You output raw LDraw model files.\nRespond with ONLY the LDraw file in a ```ldraw fenced block \u2014 no other prose.\nUse standard LDraw conventions: type-1 lines `1 <color> x y z a b c d e f g h i <part>.dat`,\n-Y is up, 1 brick height = 24 LDU, 1 plate = 8 LDU, 1 stud pitch = 20 LDU.\nUse common official part files (3001.dat, 3003.dat, 3020.dat, 3024.dat, ...).\nEvery part must be properly connected (studs seated in anti-studs) and no two parts may overlap."
+  },
+  {
+   "role": "user",
+   "content": "Build a small house: rectangular footprint about 8x10 studs, walls at least 5 bricks tall with a doorway in one long wall and one window opening in another, topped by a sloped gable roof made of slope bricks. Two or three colors, walls in running bond, roof in a single color. 60-140 parts.\nConstraints: footprint must fit within 14x14 studs; height at least 168 LDU (7 bricks); use at least 50 parts."
+  },
+  {
+   "role": "assistant",
+   "content": "```ldraw\n0 Small Gabled House\n0 Name: small_house.ldr\n0 Author: LEGO Designer\n0 !LDRAW_ORG Model\n0 BFC CERTIFY CCW\n0\n0 // Footprint 10 studs (X, -100..100) x 8 studs (Z, -80..80)\n0 // Walls: tan (19), running bond, 6 courses tall\n0 // Roof: red (4), stepped 45 degree gable, ridge along X\n0 // Floor: dark bluish gray (72)\n0\n0 // ---------- FLOOR ----------\n1 72 0 0 -20 1 0 0 0 1 0 0 0 1 3033.dat\n1 72 0 0 60 1 0 0 0 1 0 0 0 1 3832.dat\n0\n0 // ---------- WALL COURSE 1  (y = -8)  doorway open in south wall ----------\n1 19 -60 -8 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 60 -8 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -40 -8 70 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 60 -8 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -90 -8 0 0 0 1 0 1 0 -1 0 0 3009.dat\n1 19 90 -8 0 0 0 1 0 1 0 -1 0 0 3009.dat\n0\n0 // ---------- WALL COURSE 2  (y = -32)  corners interlocked, bond offset ----------\n1 19 -50 -32 -70 1 0 0 0 1 0 0 0 1 3622.dat\n1 19 50 -32 -70 1 0 0 0 1 0 0 0 1 3622.dat\n1 19 0 -32 70 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 -90 -32 0 0 0 1 0 1 0 -1 0 0 3008.dat\n1 19 90 -32 0 0 0 1 0 1 0 -1 0 0 3008.dat\n0\n0 // ---------- WALL COURSE 3  (y = -56)  window opening starts in north wall ----------\n1 19 -60 -56 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 60 -56 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -40 -56 70 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 80 -56 70 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -90 -56 0 0 0 1 0 1 0 -1 0 0 3009.dat\n1 19 90 -56 0 0 0 1 0 1 0 -1 0 0 3009.dat\n0\n0 // ---------- WALL COURSE 4  (y = -80) ----------\n1 19 -50 -80 -70 1 0 0 0 1 0 0 0 1 3622.dat\n1 19 50 -80 -70 1 0 0 0 1 0 0 0 1 3622.dat\n1 19 -40 -80 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 10 -80 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 19 70 -80 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 19 -90 -80 0 0 0 1 0 1 0 -1 0 0 3008.dat\n1 19 90 -80 0 0 0 1 0 1 0 -1 0 0 3008.dat\n0\n0 // ---------- WALL COURSE 5  (y = -104)  lintels over door and window ----------\n1 19 -20 -104 -70 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 80 -104 -70 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 -40 -104 70 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 60 -104 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -90 -104 0 0 0 1 0 1 0 -1 0 0 3009.dat\n1 19 90 -104 0 0 0 1 0 1 0 -1 0 0 3009.dat\n0\n0 // ---------- WALL COURSE 6  (y = -128) ----------\n1 19 0 -128 -70 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 -40 -128 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 40 -128 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 -90 -128 0 0 0 1 0 1 0 -1 0 0 3008.dat\n1 19 90 -128 0 0 0 1 0 1 0 -1 0 0 3008.dat\n0\n0 // ---------- CEILING / ROOF BASE PLATES (y = -152) ----------\n1 4 0 -152 -20 1 0 0 0 1 0 0 0 1 3033.dat\n1 4 0 -152 60 1 0 0 0 1 0 0 0 1 3832.dat\n0\n0 // ---------- ROOF LEVEL 1 (y = -160) ----------\n1 4 -80 -160 -60 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 -40 -160 -60 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 0 -160 -60 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 40 -160 -60 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 80 -160 -60 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 -80 -160 60 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 -40 -160 60 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 0 -160 60 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 40 -160 60 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 80 -160 60 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 -60 -160 -20 1 0 0 0 1 0 0 0 1 3001.dat\n1 4 20 -160 -20 1 0 0 0 1 0 0 0 1 3001.dat\n1 4 80 -160 -20 1 0 0 0 1 0 0 0 1 3003.dat\n1 4 -80 -160 20 1 0 0 0 1 0 0 0 1 3003.dat\n1 4 -20 -160 20 1 0 0 0 1 0 0 0 1 3001.dat\n1 4 60 -160 20 1 0 0 0 1 0 0 0 1 3001.dat\n0\n0 // ---------- ROOF LEVEL 2 (y = -184) ----------\n1 4 -80 -184 -40 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 -40 -184 -40 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 0 -184 -40 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 40 -184 -40 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 80 -184 -40 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 -80 -184 40 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 -40 -184 40 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 0 -184 40 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 40 -184 40 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 80 -184 40 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 -60 -184 0 1 0 0 0 1 0 0 0 1 3001.dat\n1 4 20 -184 0 1 0 0 0 1 0 0 0 1 3001.dat\n1 4 80 -184 0 1 0 0 0 1 0 0 0 1 3003.dat\n0\n0 // ---------- ROOF LEVEL 3 (y = -208) ----------\n1 4 -80 -208 -20 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 -40 -208 -20 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 0 -208 -20 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 40 -208 -20 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 80 -208 -20 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 -80 -208 20 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 -40 -208 20 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 0 -208 20 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 40 -208 20 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 80 -208 20 -1 0 0 0 1 0 0 0 -1 3039.dat\n0\n0 // ---------- RIDGE CAP (y = -232) ----------\n1 4 -60 -232 0 1 0 0 0 1 0 0 0 1 3020.dat\n1 4 20 -232 0 1 0 0 0 1 0 0 0 1 3020.dat\n1 4 80 -232 0 1 0 0 0 1 0 0 0 1 3022.dat\n0\n```"
+  }
+ ],
+ "regraded": "footprint measure turned with the part (2026-10-24)"
+}

@@ -1,0 +1,112 @@
+{
+ "runId": "pyramid-giza_raw_6adbcb1b",
+ "task": "pyramid-giza",
+ "condition": "raw",
+ "model": "claude-opus-5",
+ "prompt": "Build the Great Pyramid: square base 14x14 studs, at least 7 tiers stepping in evenly to a peak, in tan, with one side carrying a small entrance opening at ground level. Center the tiers exactly. 130-280 parts.",
+ "seconds": 173,
+ "rounds": [
+  {
+   "round": 1,
+   "ldr": "pyramid-giza_raw_6adbcb1b.round1.ldr",
+   "grade": {
+    "task": "pyramid-giza",
+    "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/pyramid-giza_raw_6adbcb1b.round1.ldr",
+    "partCount": 140,
+    "heightLdu": 144,
+    "footprintStuds": [
+     14,
+     14
+    ],
+    "valid": false,
+    "verifyReport": "1 invalid part: 1 unattached, 0 collisions \u00b7 2 clusters",
+    "stable": true,
+    "stabilityReport": "STABLE: 140 parts \u00b7 199 g \u00b7 CoM margin 9.5 LDU inside ground footprint",
+    "post": {
+     "parts": true,
+     "height": true,
+     "footprint": true
+    },
+    "PASS": false
+   }
+  }
+ ],
+ "PASS": false,
+ "final": {
+  "task": "pyramid-giza",
+  "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/pyramid-giza_raw_6adbcb1b.round1.ldr",
+  "partCount": 140,
+  "heightLdu": 144,
+  "footprintStuds": [
+   14,
+   14
+  ],
+  "valid": false,
+  "verifyReport": "1 invalid part: 2 unattached, 0 collisions \u00b7 2 clusters\n  #48 3710.dat colour 19 (file line: 1 19 0 -24 130 1 0 0 0 1 0 0 0 1 3710.dat): no joint to any other part and not resting on the ground",
+  "stable": true,
+  "stabilityReport": "STABLE: 140 parts \u00b7 199 g \u00b7 CoM margin 9.5 LDU inside ground footprint",
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "PASS": false,
+  "faults": {
+   "unattached": [
+    48
+   ],
+   "colliding": [],
+   "reasons": {
+    "48": "no joint to any other part and not resting on the ground"
+   }
+  },
+  "view": {
+   "extent": {
+    "minX": -140,
+    "maxX": 140,
+    "minZ": -140,
+    "maxZ": 140,
+    "height": 144
+   },
+   "limits": {
+    "maxFootprintStuds": [
+     16,
+     16
+    ],
+    "minHeightLdu": 140,
+    "minParts": 120
+   },
+   "com": [
+    0,
+    21.83732057416268,
+    0.5502392344497608
+   ],
+   "ground": {
+    "x0": -140,
+    "x1": 140,
+    "z0": -140,
+    "z1": 140
+   },
+   "stability": {
+    "ok": true,
+    "marginLdu": 9.5,
+    "issues": []
+   }
+  }
+ },
+ "conversation": [
+  {
+   "role": "system",
+   "content": "You are an expert LEGO designer. You output raw LDraw model files.\nRespond with ONLY the LDraw file in a ```ldraw fenced block \u2014 no other prose.\nUse standard LDraw conventions: type-1 lines `1 <color> x y z a b c d e f g h i <part>.dat`,\n-Y is up, 1 brick height = 24 LDU, 1 plate = 8 LDU, 1 stud pitch = 20 LDU.\nUse common official part files (3001.dat, 3003.dat, 3020.dat, 3024.dat, ...).\nEvery part must be properly connected (studs seated in anti-studs) and no two parts may overlap."
+  },
+  {
+   "role": "user",
+   "content": "Build the Great Pyramid: square base 14x14 studs, at least 7 tiers stepping in evenly to a peak, in tan, with one side carrying a small entrance opening at ground level. Center the tiers exactly. 130-280 parts.\nConstraints: footprint must fit within 16x16 studs; height at least 140 LDU (6 bricks); use at least 120 parts."
+  },
+  {
+   "role": "assistant",
+   "content": "```ldraw\n0 Great Pyramid of Giza - stepped 7-tier model\n0 Name: great_pyramid.ldr\n0 Author: LDraw Pyramid Builder\n0 !LDRAW_ORG Model Unofficial_Model\n0 !LICENSE Licensed under CC BY 4.0\n\n0 // Base grid: 14 x 14 studs (x,z from -140 to +140)\n0 // 7 tiers of 2x2 bricks, each tier inset 1 stud per side\n0 // Tier sizes: 14 - 12 - 10 - 8 - 6 - 4 - 2 studs\n0 // Total height 168 LDU (7 bricks)\n\n0 // ======== TIER 1  (14 x 14)  y = 0 ========\n1 19 -120 0 -120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 0 -120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 0 -120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 0 -120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 0 -120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 80 0 -120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 120 0 -120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -120 0 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 0 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 0 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 0 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 0 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 80 0 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 120 0 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -120 0 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 0 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 0 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 0 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 0 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 80 0 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 120 0 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -120 0 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 0 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 0 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 0 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 0 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 80 0 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 120 0 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -120 0 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 0 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 0 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 0 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 0 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 80 0 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 120 0 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -120 0 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 0 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 0 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 0 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 0 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 80 0 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 120 0 80 1 0 0 0 1 0 0 0 1 3003.dat\n0 // front row - 2x2 stud gap left at x = 0 for the entrance\n1 19 -120 0 120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 0 120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 0 120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 0 120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 80 0 120 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 120 0 120 1 0 0 0 1 0 0 0 1 3003.dat\n\n0 // ---- entrance lintel: 1x4 plate bridging the doorway ----\n1 19 0 -24 130 1 0 0 0 1 0 0 0 1 3710.dat\n\n0 // ======== TIER 2  (12 x 12)  y = -24 ========\n1 19 -100 -24 -100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -60 -24 -100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -20 -24 -100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -24 -100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 60 -24 -100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 100 -24 -100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -100 -24 -60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -60 -24 -60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -20 -24 -60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -24 -60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 60 -24 -60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 100 -24 -60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -100 -24 -20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -60 -24 -20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -20 -24 -20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -24 -20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 60 -24 -20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 100 -24 -20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -100 -24 20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -60 -24 20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -20 -24 20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -24 20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 60 -24 20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 100 -24 20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -100 -24 60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -60 -24 60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -20 -24 60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -24 60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 60 -24 60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 100 -24 60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -100 -24 100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -60 -24 100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -20 -24 100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -24 100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 60 -24 100 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 100 -24 100 1 0 0 0 1 0 0 0 1 3003.dat\n\n0 // ======== TIER 3  (10 x 10)  y = -48 ========\n1 19 -80 -48 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 -48 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 -48 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 -48 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 80 -48 -80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 -48 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 -48 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 -48 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 -48 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 80 -48 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 -48 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 -48 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 -48 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 -48 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 80 -48 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 -48 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 -48 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 -48 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 -48 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 80 -48 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -80 -48 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 -48 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 -48 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 -48 80 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 80 -48 80 1 0 0 0 1 0 0 0 1 3003.dat\n\n0 // ======== TIER 4  (8 x 8)  y = -72 ========\n1 19 -60 -72 -60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -20 -72 -60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -72 -60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 60 -72 -60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -60 -72 -20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -20 -72 -20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -72 -20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 60 -72 -20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -60 -72 20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -20 -72 20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -72 20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 60 -72 20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -60 -72 60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -20 -72 60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -72 60 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 60 -72 60 1 0 0 0 1 0 0 0 1 3003.dat\n\n0 // ======== TIER 5  (6 x 6)  y = -96 ========\n1 19 -40 -96 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 -96 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 -96 -40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 -96 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 -96 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 -96 0 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -40 -96 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 0 -96 40 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 40 -96 40 1 0 0 0 1 0 0 0 1 3003.dat\n\n0 // ======== TIER 6  (4 x 4)  y = -120 ========\n1 19 -20 -120 -20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -120 -20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 -20 -120 20 1 0 0 0 1 0 0 0 1 3003.dat\n1 19 20 -120 20 1 0 0 0 1 0 0 0 1 3003.dat\n\n0 // ======== TIER 7 / CAPSTONE  (2 x 2)  y = -144 ========\n1 19 0 -144 0 1 0 0 0 1 0 0 0 1 3003.dat\n\n0 // Total parts: 139 bricks + 1 lintel plate = 140\n0 // Footprint 14 x 14 studs, height 168 LDU\n```"
+  }
+ ],
+ "regraded": "footprint measure turned with the part (2026-10-24)"
+}

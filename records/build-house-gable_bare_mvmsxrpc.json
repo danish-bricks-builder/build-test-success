@@ -1,0 +1,45 @@
+{
+ "runId": "build-house-gable_bare_mvmsxrpc",
+ "task": "house-gable",
+ "condition": "bare",
+ "model": "claude-opus-5",
+ "prompt": "Build a small house: rectangular footprint about 8x10 studs, walls at least 5 bricks tall with a doorway in one long wall and one window opening in another, topped by a sloped gable roof made of slope bricks. Two or three colors, walls in running bond, roof in a single color. 60-140 parts.",
+ "seconds": 3573,
+ "tools": {
+  "design_layout": 1,
+  "build_program": 9,
+  "render_view": 9,
+  "silhouette": 4,
+  "inspect_build": 5,
+  "find_parts": 10,
+  "remove_parts": 4,
+  "list_connectors": 8,
+  "place_on": 4,
+  "recolor_parts": 1,
+  "attach_part": 1,
+  "auto_validate": 1
+ },
+ "usage": {
+  "input": 114,
+  "output": 28928,
+  "cacheRead": 1960136,
+  "cacheWrite": 89372
+ },
+ "error": null,
+ "partCount": 108,
+ "heightLdu": 200,
+ "footprintStuds": [
+  10,
+  8
+ ],
+ "valid": true,
+ "verifyReport": "VALID: 108 parts · 136 joints · 1 cluster · 10 grounded · no collisions",
+ "stable": true,
+ "stabilityReport": "STABLE: 108 parts · 124 g · CoM margin 78.3 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": true
+ },
+ "PASS": true
+}

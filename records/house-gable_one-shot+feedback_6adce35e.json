@@ -1,0 +1,953 @@
+{
+ "runId": "house-gable_one-shot+feedback_6adce35e",
+ "task": "house-gable",
+ "condition": "one-shot+feedback",
+ "model": "claude-opus-5",
+ "prompt": "Build a small house: rectangular footprint about 8x10 studs, walls at least 5 bricks tall with a doorway in one long wall and one window opening in another, topped by a sloped gable roof made of slope bricks. Two or three colors, walls in running bond, roof in a single color. 60-140 parts.",
+ "seconds": 1863,
+ "rounds": [
+  {
+   "round": 1,
+   "ldr": "house-gable_one-shot+feedback_6adce35e.round1.ldr",
+   "grade": {
+    "task": "house-gable",
+    "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/house-gable_one-shot+feedback_6adce35e.round1.ldr",
+    "partCount": 90,
+    "heightLdu": 232,
+    "footprintStuds": [
+     8,
+     10
+    ],
+    "valid": false,
+    "verifyReport": "57 invalid parts: 7 unattached, 51 collisions \u00b7 26 clusters\n  #0 3034.dat colour 15 (file line: 1 15 80 0 20 1 0 0 0 1 0 0 0 1 3034.dat): interpenetrates parts 9, 7, 5\n  #1 3034.dat colour 15 (file line: 1 15 80 0 60 1 0 0 0 1 0 0 0 1 3034.dat): interpenetrates parts 5, 7\n  #2 3034.dat colour 15 (file line: 1 15 80 0 100 1 0 0 0 1 0 0 0 1 3034.dat): interpenetrates part 7\n  #3 3034.dat colour 15 (file line: 1 15 80 0 140 1 0 0 0 1 0 0 0 1 3034.dat): interpenetrates parts 8, 6\n  #4 3034.dat colour 15 (file line: 1 15 80 0 180 1 0 0 0 1 0 0 0 1 3034.dat): interpenetrates parts 10, 8, 6\n  #5 3010.dat colour 19 (file line: 1 19 10 -8 40 0 0 1 0 1 0 -1 0 0 3010.dat): interpenetrates parts 0, 1\n  #6 3010.dat colour 19 (file line: 1 19 10 -8 160 0 0 1 0 1 0 -1 0 0 3010.dat): interpenetrates parts 3, 4\n  #7 3009.dat colour 19 (file line: 1 19 150 -8 60 0 0 1 0 1 0 -1 0 0 3009.dat): interpenetrates parts 0, 2, 1\n  #8 3010.dat colour 19 (file line: 1 19 150 -8 160 0 0 1 0 1 0 -1 0 0 3010.dat): interpenetrates parts 3, 4\n  #9 3009.dat colour 19 (file line: 1 19 80 -8 10 1 0 0 0 1 0 0 0 1 3009.dat): interpenetrates part 0\n  #10 3009.dat colour 19 (file line: 1 19 80 -8 190 1 0 0 0 1 0 0 0 1 3009.dat): interpenetrates part 4\n  #44 3034.dat colour 15 (file line: 1 15 80 -152 20 1 0 0 0 1 0 0 0 1 3034.dat): no joint to any other part and not resting on the ground; interpenetrates parts 54, 49, 59, 62\n  #45 3034.dat colour 15 (file line: 1 15 80 -152 60 1 0 0 0 1 0 0 0 1 3034.dat): no joint to any other part and not resting on the ground; interpenetrates parts 55, 50, 59, 62\n  #46 3034.dat colour 15 (file line: 1 15 80 -152 100 1 0 0 0 1 0 0 0 1 3034.dat): no joint to any other part and not resting on the ground; interpenetrates parts 56, 51, 60, 63\n  #47 3034.dat colour 15 (file line: 1 15 80 -152 140 1 0 0 0 1 0 0 0 1 3034.dat): no joint to any other part and not resting on the ground; interpenetrates parts 57, 52, 60, 63\n  #48 3034.dat colour 15 (file line: 1 15 80 -152 180 1 0 0 0 1 0 0 0 1 3034.dat): no joint to any other part and not resting on the ground; interpenetrates parts 61, 64, 58, 53\n  #49 3039.dat colour 4 (file line: 1 4 20 -160 20 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 44\n  #50 3039.dat colour 4 (file line: 1 4 20 -160 60 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 45\n  #51 3039.dat colour 4 (file line: 1 4 20 -160 100 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 46\n  #52 3039.dat colour 4 (file line: 1 4 20 -160 140 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 47\n  #53 3039.dat colour 4 (file line: 1 4 20 -160 180 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 48\n  #54 3039.dat colour 4 (file line: 1 4 140 -160 20 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 44\n  #55 3039.dat colour 4 (file line: 1 4 140 -160 60 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 45\n  #56 3039.dat colour 4 (file line: 1 4 140 -160 100 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 46\n  #57 3039.dat colour 4 (file line: 1 4 140 -160 140 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 47\n  #58 3039.dat colour 4 (file line: 1 4 140 -160 180 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 48\n  #59 3001.dat colour 4 (file line: 1 4 60 -160 40 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 44, 45, 65, 66\n  #60 3001.dat colour 4 (file line: 1 4 60 -160 120 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 46, 47, 67, 68\n  #61 3003.dat colour 4 (file line: 1 4 60 -160 180 1 0 0 0 1 0 0 0 1 3003.dat): interpenetrates parts 48, 69\n  #62 3001.dat colour 4 (file line: 1 4 100 -160 40 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 44, 45, 70, 71\n  #63 3001.dat colour 4 (file line: 1 4 100 -160 120 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 46, 47, 72, 73\n  #64 3003.dat colour 4 (file line: 1 4 100 -160 180 1 0 0 0 1 0 0 0 1 3003.dat): interpenetrates parts 48, 74\n  #65 3039.dat colour 4 (file line: 1 4 40 -184 20 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 59\n  #66 3039.dat colour 4 (file line: 1 4 40 -184 60 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 59\n  #67 3039.dat colour 4 (file line: 1 4 40 -184 100 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 60\n  #68 3039.dat colour 4 (file line: 1 4 40 -184 140 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 60\n  #69 3039.dat colour 4 (file line: 1 4 40 -184 180 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 61\n  #70 3039.dat colour 4 (file line: 1 4 120 -184 20 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 62\n  #71 3039.dat colour 4 (file line: 1 4 120 -184 60 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 62\n  #72 3039.dat colour 4 (file line: 1 4 120 -184 100 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 63\n  \u2026 and 17 more",
+    "stable": true,
+    "stabilityReport": "STABLE (10 minor warning(s)): 90 parts \u00b7 160 g \u00b7 CoM margin -5.1 LDU inside ground footprint",
+    "post": {
+     "parts": true,
+     "height": true,
+     "footprint": true
+    },
+    "PASS": false,
+    "faults": {
+     "unattached": [
+      44,
+      45,
+      46,
+      47,
+      48,
+      88,
+      89
+     ],
+     "colliding": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87
+     ],
+     "reasons": {
+      "0": "interpenetrates parts 9, 7, 5",
+      "1": "interpenetrates parts 5, 7",
+      "2": "interpenetrates part 7",
+      "3": "interpenetrates parts 8, 6",
+      "4": "interpenetrates parts 10, 8, 6",
+      "5": "interpenetrates parts 0, 1",
+      "6": "interpenetrates parts 3, 4",
+      "7": "interpenetrates parts 0, 2, 1",
+      "8": "interpenetrates parts 3, 4",
+      "9": "interpenetrates part 0",
+      "10": "interpenetrates part 4",
+      "44": "no joint to any other part and not resting on the ground; interpenetrates parts 54, 49, 59, 62",
+      "45": "no joint to any other part and not resting on the ground; interpenetrates parts 55, 50, 59, 62",
+      "46": "no joint to any other part and not resting on the ground; interpenetrates parts 56, 51, 60, 63",
+      "47": "no joint to any other part and not resting on the ground; interpenetrates parts 57, 52, 60, 63",
+      "48": "no joint to any other part and not resting on the ground; interpenetrates parts 61, 64, 58, 53",
+      "49": "interpenetrates part 44",
+      "50": "interpenetrates part 45",
+      "51": "interpenetrates part 46",
+      "52": "interpenetrates part 47",
+      "53": "interpenetrates part 48",
+      "54": "interpenetrates part 44",
+      "55": "interpenetrates part 45",
+      "56": "interpenetrates part 46",
+      "57": "interpenetrates part 47",
+      "58": "interpenetrates part 48",
+      "59": "interpenetrates parts 44, 45, 65, 66",
+      "60": "interpenetrates parts 46, 47, 67, 68",
+      "61": "interpenetrates parts 48, 69",
+      "62": "interpenetrates parts 44, 45, 70, 71",
+      "63": "interpenetrates parts 46, 47, 72, 73",
+      "64": "interpenetrates parts 48, 74",
+      "65": "interpenetrates part 59",
+      "66": "interpenetrates part 59",
+      "67": "interpenetrates part 60",
+      "68": "interpenetrates part 60",
+      "69": "interpenetrates part 61",
+      "70": "interpenetrates part 62",
+      "71": "interpenetrates part 62",
+      "72": "interpenetrates part 63",
+      "73": "interpenetrates part 63",
+      "74": "interpenetrates part 64",
+      "75": "interpenetrates parts 83, 84, 78, 79",
+      "76": "interpenetrates parts 85, 86, 80, 81",
+      "77": "interpenetrates parts 87, 82",
+      "78": "interpenetrates part 75",
+      "79": "interpenetrates part 75",
+      "80": "interpenetrates part 76",
+      "81": "interpenetrates part 76",
+      "82": "interpenetrates part 77",
+      "83": "interpenetrates part 75",
+      "84": "interpenetrates part 75",
+      "85": "interpenetrates part 76",
+      "86": "interpenetrates part 76",
+      "87": "interpenetrates part 77",
+      "88": "no joint to any other part and not resting on the ground",
+      "89": "no joint to any other part and not resting on the ground"
+     }
+    },
+    "view": {
+     "extent": {
+      "minX": 0,
+      "maxX": 160,
+      "minZ": -200,
+      "maxZ": 0,
+      "height": 232
+     },
+     "limits": {
+      "maxFootprintStuds": [
+       14,
+       14
+      ],
+      "minHeightLdu": 168,
+      "minParts": 50
+     },
+     "com": [
+      80.67307692307692,
+      109.15384615384616,
+      -100.86538461538461
+     ],
+     "ground": {
+      "x0": 0,
+      "x1": 160,
+      "z0": -200,
+      "z1": 0
+     },
+     "stability": {
+      "ok": true,
+      "marginLdu": -5.1,
+      "issues": [
+       {
+        "kind": "topple",
+        "severe": false,
+        "parts": [
+         49,
+         65,
+         78
+        ],
+        "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+       },
+       {
+        "kind": "topple",
+        "severe": false,
+        "parts": [
+         50,
+         66,
+         79
+        ],
+        "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+       },
+       {
+        "kind": "topple",
+        "severe": false,
+        "parts": [
+         51,
+         67,
+         80
+        ],
+        "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+       },
+       {
+        "kind": "topple",
+        "severe": false,
+        "parts": [
+         52,
+         68,
+         81
+        ],
+        "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+       },
+       {
+        "kind": "topple",
+        "severe": false,
+        "parts": [
+         53,
+         69,
+         82
+        ],
+        "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+       },
+       {
+        "kind": "topple",
+        "severe": false,
+        "parts": [
+         54,
+         70,
+         83
+        ],
+        "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+       },
+       {
+        "kind": "topple",
+        "severe": false,
+        "parts": [
+         55,
+         71,
+         84
+        ],
+        "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+       },
+       {
+        "kind": "topple",
+        "severe": false,
+        "parts": [
+         56,
+         72,
+         85
+        ],
+        "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+       },
+       {
+        "kind": "topple",
+        "severe": false,
+        "parts": [
+         57,
+         73,
+         86
+        ],
+        "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+       },
+       {
+        "kind": "topple",
+        "severe": false,
+        "parts": [
+         58,
+         74,
+         87
+        ],
+        "detail": "structure of 3 part(s), 3.3 g: CoM is 5.1 LDU outside its ground footprint \u2014 it tips over (minor)"
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "round": 2,
+   "ldr": "house-gable_one-shot+feedback_6adce35e.round2.ldr",
+   "grade": {
+    "task": "house-gable",
+    "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/house-gable_one-shot+feedback_6adce35e.round2.ldr",
+    "partCount": 74,
+    "heightLdu": 192,
+    "footprintStuds": [
+     8,
+     10
+    ],
+    "valid": false,
+    "verifyReport": "36 invalid parts: 40 unattached, 42 collisions \u00b7 21 clusters\n  #38 3008.dat colour 15 (file line: 1 15 80 -144 10 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 48, 53\n  #39 3008.dat colour 15 (file line: 1 15 80 -144 30 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 54, 53, 48\n  #40 3008.dat colour 15 (file line: 1 15 80 -144 50 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 49, 48, 54\n  #41 3008.dat colour 15 (file line: 1 15 80 -144 70 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 55, 54, 49\n  #42 3008.dat colour 15 (file line: 1 15 80 -144 90 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 50, 49, 55\n  #43 3008.dat colour 15 (file line: 1 15 80 -144 110 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 56, 55, 50\n  #44 3008.dat colour 15 (file line: 1 15 80 -144 130 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 51, 50, 56\n  #45 3008.dat colour 15 (file line: 1 15 80 -144 150 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 57, 56, 51\n  #46 3008.dat colour 15 (file line: 1 15 80 -144 170 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 52, 51, 57\n  #47 3008.dat colour 15 (file line: 1 15 80 -144 190 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 57, 52\n  #48 3039.dat colour 4 (file line: 1 4 20 -168 20 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 38, 40, 39\n  #49 3039.dat colour 4 (file line: 1 4 20 -168 60 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 40, 42, 41\n  #50 3039.dat colour 4 (file line: 1 4 20 -168 100 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 42, 44, 43\n  #51 3039.dat colour 4 (file line: 1 4 20 -168 140 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 44, 46, 45\n  #52 3039.dat colour 4 (file line: 1 4 20 -168 180 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 46, 47\n  #53 3039.dat colour 4 (file line: 1 4 140 -168 20 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 39, 38\n  #54 3039.dat colour 4 (file line: 1 4 140 -168 60 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 39, 41, 40\n  #55 3039.dat colour 4 (file line: 1 4 140 -168 100 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 41, 43, 42\n  #56 3039.dat colour 4 (file line: 1 4 140 -168 140 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 43, 45, 44\n  #57 3039.dat colour 4 (file line: 1 4 140 -168 180 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 45, 47, 46\n  #58 3001.dat colour 4 (file line: 1 4 60 -168 40 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 64, 65\n  #59 3001.dat colour 4 (file line: 1 4 60 -168 120 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 66, 67, 65\n  #60 3003.dat colour 4 (file line: 1 4 60 -168 180 1 0 0 0 1 0 0 0 1 3003.dat): interpenetrates parts 68, 67\n  #61 3003.dat colour 4 (file line: 1 4 100 -168 20 1 0 0 0 1 0 0 0 1 3003.dat): interpenetrates parts 69, 70\n  #62 3001.dat colour 4 (file line: 1 4 100 -168 80 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 71, 70, 72\n  #63 3001.dat colour 4 (file line: 1 4 100 -168 160 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 73, 72\n  #64 3039.dat colour 4 (file line: 1 4 60 -192 20 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates part 58\n  #65 3039.dat colour 4 (file line: 1 4 60 -192 60 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 58, 59\n  #66 3039.dat colour 4 (file line: 1 4 60 -192 100 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates part 59\n  #67 3039.dat colour 4 (file line: 1 4 60 -192 140 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 59, 60\n  #68 3039.dat colour 4 (file line: 1 4 60 -192 180 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates part 60\n  #69 3039.dat colour 4 (file line: 1 4 100 -192 20 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates part 61\n  #70 3039.dat colour 4 (file line: 1 4 100 -192 60 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 62, 61\n  #71 3039.dat colour 4 (file line: 1 4 100 -192 100 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates part 62\n  #72 3039.dat colour 4 (file line: 1 4 100 -192 140 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 63, 62\n  #73 3039.dat colour 4 (file line: 1 4 100 -192 180 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates part 63",
+    "stable": true,
+    "stabilityReport": "STABLE: 74 parts \u00b7 145 g \u00b7 CoM margin 14.9 LDU inside ground footprint",
+    "post": {
+     "parts": true,
+     "height": true,
+     "footprint": true
+    },
+    "PASS": false,
+    "faults": {
+     "unattached": [
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73
+     ],
+     "colliding": [
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73
+     ],
+     "reasons": {
+      "38": "interpenetrates parts 48, 53",
+      "39": "interpenetrates parts 54, 53, 48",
+      "40": "interpenetrates parts 49, 48, 54",
+      "41": "interpenetrates parts 55, 54, 49",
+      "42": "interpenetrates parts 50, 49, 55",
+      "43": "interpenetrates parts 56, 55, 50",
+      "44": "interpenetrates parts 51, 50, 56",
+      "45": "interpenetrates parts 57, 56, 51",
+      "46": "interpenetrates parts 52, 51, 57",
+      "47": "interpenetrates parts 57, 52",
+      "48": "no joint to any other part and not resting on the ground; interpenetrates parts 38, 40, 39",
+      "49": "no joint to any other part and not resting on the ground; interpenetrates parts 40, 42, 41",
+      "50": "no joint to any other part and not resting on the ground; interpenetrates parts 42, 44, 43",
+      "51": "no joint to any other part and not resting on the ground; interpenetrates parts 44, 46, 45",
+      "52": "no joint to any other part and not resting on the ground; interpenetrates parts 46, 47",
+      "53": "no joint to any other part and not resting on the ground; interpenetrates parts 39, 38",
+      "54": "no joint to any other part and not resting on the ground; interpenetrates parts 39, 41, 40",
+      "55": "no joint to any other part and not resting on the ground; interpenetrates parts 41, 43, 42",
+      "56": "no joint to any other part and not resting on the ground; interpenetrates parts 43, 45, 44",
+      "57": "no joint to any other part and not resting on the ground; interpenetrates parts 45, 47, 46",
+      "58": "interpenetrates parts 64, 65",
+      "59": "interpenetrates parts 66, 67, 65",
+      "60": "interpenetrates parts 68, 67",
+      "61": "interpenetrates parts 69, 70",
+      "62": "interpenetrates parts 71, 70, 72",
+      "63": "interpenetrates parts 73, 72",
+      "64": "no joint to any other part and not resting on the ground; interpenetrates part 58",
+      "65": "no joint to any other part and not resting on the ground; interpenetrates parts 58, 59",
+      "66": "no joint to any other part and not resting on the ground; interpenetrates part 59",
+      "67": "no joint to any other part and not resting on the ground; interpenetrates parts 59, 60",
+      "68": "no joint to any other part and not resting on the ground; interpenetrates part 60",
+      "69": "no joint to any other part and not resting on the ground; interpenetrates part 61",
+      "70": "no joint to any other part and not resting on the ground; interpenetrates parts 62, 61",
+      "71": "no joint to any other part and not resting on the ground; interpenetrates part 62",
+      "72": "no joint to any other part and not resting on the ground; interpenetrates parts 63, 62",
+      "73": "no joint to any other part and not resting on the ground; interpenetrates part 63"
+     }
+    },
+    "view": {
+     "extent": {
+      "minX": 0,
+      "maxX": 160,
+      "minZ": -200,
+      "maxZ": 0,
+      "height": 192
+     },
+     "limits": {
+      "maxFootprintStuds": [
+       14,
+       14
+      ],
+      "minHeightLdu": 168,
+      "minParts": 50
+     },
+     "com": [
+      80.74468085106383,
+      103.40425531914893,
+      -100.95744680851064
+     ],
+     "ground": {
+      "x0": 0,
+      "x1": 160,
+      "z0": -200,
+      "z1": 0
+     },
+     "stability": {
+      "ok": true,
+      "marginLdu": 14.9,
+      "issues": []
+     }
+    }
+   }
+  },
+  {
+   "round": 3,
+   "ldr": "house-gable_one-shot+feedback_6adce35e.round3.ldr",
+   "grade": {
+    "task": "house-gable",
+    "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/house-gable_one-shot+feedback_6adce35e.round3.ldr",
+    "partCount": 103,
+    "heightLdu": 192,
+    "footprintStuds": [
+     10,
+     10
+    ],
+    "valid": false,
+    "verifyReport": "40 invalid parts: 80 unattached, 0 collisions \u00b7 41 clusters\n  #43 3040.dat colour 4 (file line: 1 4 0 -168 10 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #44 3040.dat colour 4 (file line: 1 4 0 -168 30 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #45 3040.dat colour 4 (file line: 1 4 0 -168 50 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #46 3040.dat colour 4 (file line: 1 4 0 -168 70 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #47 3040.dat colour 4 (file line: 1 4 0 -168 90 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #48 3040.dat colour 4 (file line: 1 4 0 -168 110 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #49 3040.dat colour 4 (file line: 1 4 0 -168 130 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #50 3040.dat colour 4 (file line: 1 4 0 -168 150 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #51 3040.dat colour 4 (file line: 1 4 0 -168 170 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #52 3040.dat colour 4 (file line: 1 4 0 -168 190 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #53 3040.dat colour 4 (file line: 1 4 160 -168 10 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #54 3040.dat colour 4 (file line: 1 4 160 -168 30 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #55 3040.dat colour 4 (file line: 1 4 160 -168 50 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #56 3040.dat colour 4 (file line: 1 4 160 -168 70 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #57 3040.dat colour 4 (file line: 1 4 160 -168 90 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #58 3040.dat colour 4 (file line: 1 4 160 -168 110 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #59 3040.dat colour 4 (file line: 1 4 160 -168 130 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #60 3040.dat colour 4 (file line: 1 4 160 -168 150 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #61 3040.dat colour 4 (file line: 1 4 160 -168 170 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #62 3040.dat colour 4 (file line: 1 4 160 -168 190 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #73 3040.dat colour 4 (file line: 1 4 40 -192 10 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #74 3040.dat colour 4 (file line: 1 4 40 -192 30 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #75 3040.dat colour 4 (file line: 1 4 40 -192 50 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #76 3040.dat colour 4 (file line: 1 4 40 -192 70 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #77 3040.dat colour 4 (file line: 1 4 40 -192 90 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #78 3040.dat colour 4 (file line: 1 4 40 -192 110 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #79 3040.dat colour 4 (file line: 1 4 40 -192 130 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #80 3040.dat colour 4 (file line: 1 4 40 -192 150 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #81 3040.dat colour 4 (file line: 1 4 40 -192 170 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #82 3040.dat colour 4 (file line: 1 4 40 -192 190 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #83 3040.dat colour 4 (file line: 1 4 120 -192 10 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #84 3040.dat colour 4 (file line: 1 4 120 -192 30 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #85 3040.dat colour 4 (file line: 1 4 120 -192 50 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #86 3040.dat colour 4 (file line: 1 4 120 -192 70 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #87 3040.dat colour 4 (file line: 1 4 120 -192 90 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #88 3040.dat colour 4 (file line: 1 4 120 -192 110 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #89 3040.dat colour 4 (file line: 1 4 120 -192 130 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #90 3040.dat colour 4 (file line: 1 4 120 -192 150 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #91 3040.dat colour 4 (file line: 1 4 120 -192 170 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #92 3040.dat colour 4 (file line: 1 4 120 -192 190 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground",
+    "stable": true,
+    "stabilityReport": "STABLE: 103 parts \u00b7 161 g \u00b7 CoM margin 20.0 LDU inside ground footprint",
+    "post": {
+     "parts": true,
+     "height": true,
+     "footprint": true
+    },
+    "PASS": false,
+    "faults": {
+     "unattached": [
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92
+     ],
+     "colliding": [],
+     "reasons": {
+      "43": "no joint to any other part and not resting on the ground",
+      "44": "no joint to any other part and not resting on the ground",
+      "45": "no joint to any other part and not resting on the ground",
+      "46": "no joint to any other part and not resting on the ground",
+      "47": "no joint to any other part and not resting on the ground",
+      "48": "no joint to any other part and not resting on the ground",
+      "49": "no joint to any other part and not resting on the ground",
+      "50": "no joint to any other part and not resting on the ground",
+      "51": "no joint to any other part and not resting on the ground",
+      "52": "no joint to any other part and not resting on the ground",
+      "53": "no joint to any other part and not resting on the ground",
+      "54": "no joint to any other part and not resting on the ground",
+      "55": "no joint to any other part and not resting on the ground",
+      "56": "no joint to any other part and not resting on the ground",
+      "57": "no joint to any other part and not resting on the ground",
+      "58": "no joint to any other part and not resting on the ground",
+      "59": "no joint to any other part and not resting on the ground",
+      "60": "no joint to any other part and not resting on the ground",
+      "61": "no joint to any other part and not resting on the ground",
+      "62": "no joint to any other part and not resting on the ground",
+      "73": "no joint to any other part and not resting on the ground",
+      "74": "no joint to any other part and not resting on the ground",
+      "75": "no joint to any other part and not resting on the ground",
+      "76": "no joint to any other part and not resting on the ground",
+      "77": "no joint to any other part and not resting on the ground",
+      "78": "no joint to any other part and not resting on the ground",
+      "79": "no joint to any other part and not resting on the ground",
+      "80": "no joint to any other part and not resting on the ground",
+      "81": "no joint to any other part and not resting on the ground",
+      "82": "no joint to any other part and not resting on the ground",
+      "83": "no joint to any other part and not resting on the ground",
+      "84": "no joint to any other part and not resting on the ground",
+      "85": "no joint to any other part and not resting on the ground",
+      "86": "no joint to any other part and not resting on the ground",
+      "87": "no joint to any other part and not resting on the ground",
+      "88": "no joint to any other part and not resting on the ground",
+      "89": "no joint to any other part and not resting on the ground",
+      "90": "no joint to any other part and not resting on the ground",
+      "91": "no joint to any other part and not resting on the ground",
+      "92": "no joint to any other part and not resting on the ground"
+     }
+    },
+    "view": {
+     "extent": {
+      "minX": -20,
+      "maxX": 180,
+      "minZ": -200,
+      "maxZ": 0,
+      "height": 192
+     },
+     "limits": {
+      "maxFootprintStuds": [
+       14,
+       14
+      ],
+      "minHeightLdu": 168,
+      "minParts": 50
+     },
+     "com": [
+      80.7,
+      106.68,
+      -100
+     ],
+     "ground": {
+      "x0": 0,
+      "x1": 160,
+      "z0": -200,
+      "z1": 0
+     },
+     "stability": {
+      "ok": true,
+      "marginLdu": 20,
+      "issues": []
+     }
+    }
+   }
+  },
+  {
+   "round": 4,
+   "ldr": "house-gable_one-shot+feedback_6adce35e.round4.ldr",
+   "grade": {
+    "task": "house-gable",
+    "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/house-gable_one-shot+feedback_6adce35e.round4.ldr",
+    "partCount": 97,
+    "heightLdu": 192,
+    "footprintStuds": [
+     8,
+     11
+    ],
+    "valid": false,
+    "verifyReport": "46 invalid parts: 82 unattached, 5 collisions \u00b7 42 clusters\n  #13 3008.dat colour 19 (file line: 1 19 80 -48 190 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates part 24\n  #17 3010.dat colour 19 (file line: 1 19 150 -48 140 0 0 1 0 1 0 -1 0 0 3010.dat): interpenetrates part 24\n  #23 3010.dat colour 19 (file line: 1 19 150 -72 140 0 0 1 0 1 0 -1 0 0 3010.dat): interpenetrates part 24\n  #24 3004.dat colour 19 (file line: 1 19 150 -72 190 0 0 1 0 1 0 -1 0 0 3004.dat): no joint to any other part and not resting on the ground; interpenetrates parts 23, 26, 13, 28\n  #26 3008.dat colour 19 (file line: 1 19 80 -96 190 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates part 24\n  #28 3008.dat colour 19 (file line: 1 19 150 -96 100 0 0 1 0 1 0 -1 0 0 3008.dat): interpenetrates part 24\n  #47 3040.dat colour 4 (file line: 1 4 20 -168 10 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #48 3040.dat colour 4 (file line: 1 4 20 -168 30 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #49 3040.dat colour 4 (file line: 1 4 20 -168 50 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #50 3040.dat colour 4 (file line: 1 4 20 -168 70 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #51 3040.dat colour 4 (file line: 1 4 20 -168 90 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #52 3040.dat colour 4 (file line: 1 4 20 -168 110 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #53 3040.dat colour 4 (file line: 1 4 20 -168 130 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #54 3040.dat colour 4 (file line: 1 4 20 -168 150 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #55 3040.dat colour 4 (file line: 1 4 20 -168 170 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #56 3040.dat colour 4 (file line: 1 4 20 -168 190 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #57 3040.dat colour 4 (file line: 1 4 140 -168 10 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #58 3040.dat colour 4 (file line: 1 4 140 -168 30 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #59 3040.dat colour 4 (file line: 1 4 140 -168 50 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #60 3040.dat colour 4 (file line: 1 4 140 -168 70 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #61 3040.dat colour 4 (file line: 1 4 140 -168 90 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #62 3040.dat colour 4 (file line: 1 4 140 -168 110 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #63 3040.dat colour 4 (file line: 1 4 140 -168 130 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #64 3040.dat colour 4 (file line: 1 4 140 -168 150 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #65 3040.dat colour 4 (file line: 1 4 140 -168 170 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #66 3040.dat colour 4 (file line: 1 4 140 -168 190 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #77 3040.dat colour 4 (file line: 1 4 60 -192 10 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #78 3040.dat colour 4 (file line: 1 4 60 -192 30 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #79 3040.dat colour 4 (file line: 1 4 60 -192 50 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #80 3040.dat colour 4 (file line: 1 4 60 -192 70 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #81 3040.dat colour 4 (file line: 1 4 60 -192 90 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #82 3040.dat colour 4 (file line: 1 4 60 -192 110 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #83 3040.dat colour 4 (file line: 1 4 60 -192 130 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #84 3040.dat colour 4 (file line: 1 4 60 -192 150 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #85 3040.dat colour 4 (file line: 1 4 60 -192 170 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #86 3040.dat colour 4 (file line: 1 4 60 -192 190 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #87 3040.dat colour 4 (file line: 1 4 100 -192 10 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #88 3040.dat colour 4 (file line: 1 4 100 -192 30 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #89 3040.dat colour 4 (file line: 1 4 100 -192 50 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #90 3040.dat colour 4 (file line: 1 4 100 -192 70 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  \u2026 and 6 more",
+    "stable": true,
+    "stabilityReport": "STABLE: 97 parts \u00b7 153 g \u00b7 CoM margin 20.0 LDU inside ground footprint",
+    "post": {
+     "parts": true,
+     "height": true,
+     "footprint": true
+    },
+    "PASS": false,
+    "faults": {
+     "unattached": [
+      24,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96
+     ],
+     "colliding": [
+      13,
+      17,
+      23,
+      24,
+      26,
+      28
+     ],
+     "reasons": {
+      "13": "interpenetrates part 24",
+      "17": "interpenetrates part 24",
+      "23": "interpenetrates part 24",
+      "24": "no joint to any other part and not resting on the ground; interpenetrates parts 23, 26, 13, 28",
+      "26": "interpenetrates part 24",
+      "28": "interpenetrates part 24",
+      "47": "no joint to any other part and not resting on the ground",
+      "48": "no joint to any other part and not resting on the ground",
+      "49": "no joint to any other part and not resting on the ground",
+      "50": "no joint to any other part and not resting on the ground",
+      "51": "no joint to any other part and not resting on the ground",
+      "52": "no joint to any other part and not resting on the ground",
+      "53": "no joint to any other part and not resting on the ground",
+      "54": "no joint to any other part and not resting on the ground",
+      "55": "no joint to any other part and not resting on the ground",
+      "56": "no joint to any other part and not resting on the ground",
+      "57": "no joint to any other part and not resting on the ground",
+      "58": "no joint to any other part and not resting on the ground",
+      "59": "no joint to any other part and not resting on the ground",
+      "60": "no joint to any other part and not resting on the ground",
+      "61": "no joint to any other part and not resting on the ground",
+      "62": "no joint to any other part and not resting on the ground",
+      "63": "no joint to any other part and not resting on the ground",
+      "64": "no joint to any other part and not resting on the ground",
+      "65": "no joint to any other part and not resting on the ground",
+      "66": "no joint to any other part and not resting on the ground",
+      "77": "no joint to any other part and not resting on the ground",
+      "78": "no joint to any other part and not resting on the ground",
+      "79": "no joint to any other part and not resting on the ground",
+      "80": "no joint to any other part and not resting on the ground",
+      "81": "no joint to any other part and not resting on the ground",
+      "82": "no joint to any other part and not resting on the ground",
+      "83": "no joint to any other part and not resting on the ground",
+      "84": "no joint to any other part and not resting on the ground",
+      "85": "no joint to any other part and not resting on the ground",
+      "86": "no joint to any other part and not resting on the ground",
+      "87": "no joint to any other part and not resting on the ground",
+      "88": "no joint to any other part and not resting on the ground",
+      "89": "no joint to any other part and not resting on the ground",
+      "90": "no joint to any other part and not resting on the ground",
+      "91": "no joint to any other part and not resting on the ground",
+      "92": "no joint to any other part and not resting on the ground",
+      "93": "no joint to any other part and not resting on the ground",
+      "94": "no joint to any other part and not resting on the ground",
+      "95": "no joint to any other part and not resting on the ground",
+      "96": "no joint to any other part and not resting on the ground"
+     }
+    },
+    "view": {
+     "extent": {
+      "minX": 0,
+      "maxX": 160,
+      "minZ": -210,
+      "maxZ": 10,
+      "height": 192
+     },
+     "limits": {
+      "maxFootprintStuds": [
+       14,
+       14
+      ],
+      "minHeightLdu": 168,
+      "minParts": 50
+     },
+     "com": [
+      80.91863517060368,
+      102.70866141732283,
+      -100.44619422572178
+     ],
+     "ground": {
+      "x0": 0,
+      "x1": 160,
+      "z0": -200,
+      "z1": 0
+     },
+     "stability": {
+      "ok": true,
+      "marginLdu": 20,
+      "issues": []
+     }
+    }
+   }
+  }
+ ],
+ "usage": {
+  "input": 40422,
+  "output": 136230,
+  "cacheRead": 0,
+  "cacheWrite": 0
+ },
+ "PASS": false,
+ "final": {
+  "task": "house-gable",
+  "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/house-gable_one-shot+feedback_6adce35e.round4.ldr",
+  "partCount": 97,
+  "heightLdu": 192,
+  "footprintStuds": [
+   8,
+   11
+  ],
+  "valid": false,
+  "verifyReport": "46 invalid parts: 82 unattached, 5 collisions \u00b7 42 clusters\n  #13 3008.dat colour 19 (file line: 1 19 80 -48 190 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates part 24\n  #17 3010.dat colour 19 (file line: 1 19 150 -48 140 0 0 1 0 1 0 -1 0 0 3010.dat): interpenetrates part 24\n  #23 3010.dat colour 19 (file line: 1 19 150 -72 140 0 0 1 0 1 0 -1 0 0 3010.dat): interpenetrates part 24\n  #24 3004.dat colour 19 (file line: 1 19 150 -72 190 0 0 1 0 1 0 -1 0 0 3004.dat): no joint to any other part and not resting on the ground; interpenetrates parts 23, 26, 13, 28\n  #26 3008.dat colour 19 (file line: 1 19 80 -96 190 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates part 24\n  #28 3008.dat colour 19 (file line: 1 19 150 -96 100 0 0 1 0 1 0 -1 0 0 3008.dat): interpenetrates part 24\n  #47 3040.dat colour 4 (file line: 1 4 20 -168 10 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #48 3040.dat colour 4 (file line: 1 4 20 -168 30 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #49 3040.dat colour 4 (file line: 1 4 20 -168 50 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #50 3040.dat colour 4 (file line: 1 4 20 -168 70 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #51 3040.dat colour 4 (file line: 1 4 20 -168 90 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #52 3040.dat colour 4 (file line: 1 4 20 -168 110 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #53 3040.dat colour 4 (file line: 1 4 20 -168 130 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #54 3040.dat colour 4 (file line: 1 4 20 -168 150 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #55 3040.dat colour 4 (file line: 1 4 20 -168 170 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #56 3040.dat colour 4 (file line: 1 4 20 -168 190 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #57 3040.dat colour 4 (file line: 1 4 140 -168 10 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #58 3040.dat colour 4 (file line: 1 4 140 -168 30 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #59 3040.dat colour 4 (file line: 1 4 140 -168 50 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #60 3040.dat colour 4 (file line: 1 4 140 -168 70 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #61 3040.dat colour 4 (file line: 1 4 140 -168 90 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #62 3040.dat colour 4 (file line: 1 4 140 -168 110 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #63 3040.dat colour 4 (file line: 1 4 140 -168 130 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #64 3040.dat colour 4 (file line: 1 4 140 -168 150 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #65 3040.dat colour 4 (file line: 1 4 140 -168 170 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #66 3040.dat colour 4 (file line: 1 4 140 -168 190 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #77 3040.dat colour 4 (file line: 1 4 60 -192 10 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #78 3040.dat colour 4 (file line: 1 4 60 -192 30 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #79 3040.dat colour 4 (file line: 1 4 60 -192 50 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #80 3040.dat colour 4 (file line: 1 4 60 -192 70 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #81 3040.dat colour 4 (file line: 1 4 60 -192 90 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #82 3040.dat colour 4 (file line: 1 4 60 -192 110 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #83 3040.dat colour 4 (file line: 1 4 60 -192 130 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #84 3040.dat colour 4 (file line: 1 4 60 -192 150 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #85 3040.dat colour 4 (file line: 1 4 60 -192 170 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #86 3040.dat colour 4 (file line: 1 4 60 -192 190 -1 0 0 0 1 0 0 0 -1 3040.dat): no joint to any other part and not resting on the ground\n  #87 3040.dat colour 4 (file line: 1 4 100 -192 10 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #88 3040.dat colour 4 (file line: 1 4 100 -192 30 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #89 3040.dat colour 4 (file line: 1 4 100 -192 50 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  #90 3040.dat colour 4 (file line: 1 4 100 -192 70 1 0 0 0 1 0 0 0 1 3040.dat): no joint to any other part and not resting on the ground\n  \u2026 and 6 more",
+  "stable": true,
+  "stabilityReport": "STABLE: 97 parts \u00b7 153 g \u00b7 CoM margin 20.0 LDU inside ground footprint",
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "PASS": false,
+  "faults": {
+   "unattached": [
+    24,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96
+   ],
+   "colliding": [
+    13,
+    17,
+    23,
+    24,
+    26,
+    28
+   ],
+   "reasons": {
+    "13": "interpenetrates part 24",
+    "17": "interpenetrates part 24",
+    "23": "interpenetrates part 24",
+    "24": "no joint to any other part and not resting on the ground; interpenetrates parts 23, 26, 13, 28",
+    "26": "interpenetrates part 24",
+    "28": "interpenetrates part 24",
+    "47": "no joint to any other part and not resting on the ground",
+    "48": "no joint to any other part and not resting on the ground",
+    "49": "no joint to any other part and not resting on the ground",
+    "50": "no joint to any other part and not resting on the ground",
+    "51": "no joint to any other part and not resting on the ground",
+    "52": "no joint to any other part and not resting on the ground",
+    "53": "no joint to any other part and not resting on the ground",
+    "54": "no joint to any other part and not resting on the ground",
+    "55": "no joint to any other part and not resting on the ground",
+    "56": "no joint to any other part and not resting on the ground",
+    "57": "no joint to any other part and not resting on the ground",
+    "58": "no joint to any other part and not resting on the ground",
+    "59": "no joint to any other part and not resting on the ground",
+    "60": "no joint to any other part and not resting on the ground",
+    "61": "no joint to any other part and not resting on the ground",
+    "62": "no joint to any other part and not resting on the ground",
+    "63": "no joint to any other part and not resting on the ground",
+    "64": "no joint to any other part and not resting on the ground",
+    "65": "no joint to any other part and not resting on the ground",
+    "66": "no joint to any other part and not resting on the ground",
+    "77": "no joint to any other part and not resting on the ground",
+    "78": "no joint to any other part and not resting on the ground",
+    "79": "no joint to any other part and not resting on the ground",
+    "80": "no joint to any other part and not resting on the ground",
+    "81": "no joint to any other part and not resting on the ground",
+    "82": "no joint to any other part and not resting on the ground",
+    "83": "no joint to any other part and not resting on the ground",
+    "84": "no joint to any other part and not resting on the ground",
+    "85": "no joint to any other part and not resting on the ground",
+    "86": "no joint to any other part and not resting on the ground",
+    "87": "no joint to any other part and not resting on the ground",
+    "88": "no joint to any other part and not resting on the ground",
+    "89": "no joint to any other part and not resting on the ground",
+    "90": "no joint to any other part and not resting on the ground",
+    "91": "no joint to any other part and not resting on the ground",
+    "92": "no joint to any other part and not resting on the ground",
+    "93": "no joint to any other part and not resting on the ground",
+    "94": "no joint to any other part and not resting on the ground",
+    "95": "no joint to any other part and not resting on the ground",
+    "96": "no joint to any other part and not resting on the ground"
+   }
+  },
+  "view": {
+   "extent": {
+    "minX": 0,
+    "maxX": 160,
+    "minZ": -210,
+    "maxZ": 10,
+    "height": 192
+   },
+   "limits": {
+    "maxFootprintStuds": [
+     14,
+     14
+    ],
+    "minHeightLdu": 168,
+    "minParts": 50
+   },
+   "com": [
+    80.91863517060368,
+    102.70866141732283,
+    -100.44619422572178
+   ],
+   "ground": {
+    "x0": 0,
+    "x1": 160,
+    "z0": -200,
+    "z1": 0
+   },
+   "stability": {
+    "ok": true,
+    "marginLdu": 20,
+    "issues": []
+   }
+  }
+ },
+ "conversation": [
+  {
+   "role": "system",
+   "content": "You are an expert LEGO designer. You output raw LDraw model files.\nRespond with ONLY the LDraw file in a ```ldraw fenced block \u2014 no other prose.\nUse standard LDraw conventions: type-1 lines `1 <color> x y z a b c d e f g h i <part>.dat`,\n-Y is up, 1 brick height = 24 LDU, 1 plate = 8 LDU, 1 stud pitch = 20 LDU.\nUse common official part files (3001.dat, 3003.dat, 3020.dat, 3024.dat, ...).\nEvery part must be properly connected (studs seated in anti-studs) and no two parts may overlap."
+  },
+  {
+   "role": "user",
+   "content": "Build a small house: rectangular footprint about 8x10 studs, walls at least 5 bricks tall with a doorway in one long wall and one window opening in another, topped by a sloped gable roof made of slope bricks. Two or three colors, walls in running bond, roof in a single color. 60-140 parts.\nConstraints: footprint must fit within 14x14 studs; height at least 168 LDU (7 bricks); use at least 50 parts."
+  },
+  {
+   "role": "assistant",
+   "content": "```ldraw\n0 Small House with Gable Roof\n0 Name: small_house.ldr\n0 Author: LEGO Designer\n0 !LDRAW_ORG Model\n0 // Footprint 8 x 10 studs (160 x 200 LDU), walls 6 bricks tall,\n0 // door in west long wall, windows in east long wall and south wall,\n0 // stepped gable roof of 45 deg slope bricks (red), plates white, walls tan.\n\n0 // ---------- FLOOR PLATES (white) ----------\n1 15 80 0 20 1 0 0 0 1 0 0 0 1 3034.dat\n1 15 80 0 60 1 0 0 0 1 0 0 0 1 3034.dat\n1 15 80 0 100 1 0 0 0 1 0 0 0 1 3034.dat\n1 15 80 0 140 1 0 0 0 1 0 0 0 1 3034.dat\n1 15 80 0 180 1 0 0 0 1 0 0 0 1 3034.dat\n\n0 // ---------- WALL COURSE 1 (y=-8) ----------\n1 19 10 -8 40 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 10 -8 160 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -8 60 0 0 1 0 1 0 -1 0 0 3009.dat\n1 19 150 -8 160 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 80 -8 10 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 80 -8 190 1 0 0 0 1 0 0 0 1 3009.dat\n\n0 // ---------- WALL COURSE 2 (y=-32) ----------\n1 19 10 -32 50 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 10 -32 150 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 150 -32 100 0 0 1 0 1 0 -1 0 0 3008.dat\n1 19 80 -32 10 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 80 -32 190 1 0 0 0 1 0 0 0 1 3008.dat\n\n0 // ---------- WALL COURSE 3 (y=-56) : window openings ----------\n1 19 10 -56 40 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 10 -56 160 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -56 40 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -56 160 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 40 -56 10 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 120 -56 10 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 60 -56 190 1 0 0 0 1 0 0 0 1 3010.dat\n1 19 120 -56 190 1 0 0 0 1 0 0 0 1 3004.dat\n\n0 // ---------- WALL COURSE 4 (y=-80) : window openings ----------\n1 19 10 -80 50 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 10 -80 150 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 150 -80 50 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 150 -80 150 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 30 -80 10 1 0 0 0 1 0 0 0 1 3622.dat\n1 19 130 -80 10 1 0 0 0 1 0 0 0 1 3622.dat\n1 19 80 -80 190 1 0 0 0 1 0 0 0 1 3008.dat\n\n0 // ---------- WALL COURSE 5 (y=-104) : lintels ----------\n1 19 10 -104 80 0 0 1 0 1 0 -1 0 0 3008.dat\n1 19 10 -104 180 0 0 1 0 1 0 -1 0 0 3004.dat\n1 19 150 -104 80 0 0 1 0 1 0 -1 0 0 3008.dat\n1 19 150 -104 180 0 0 1 0 1 0 -1 0 0 3004.dat\n1 19 80 -104 10 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 40 -104 190 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 100 -104 190 1 0 0 0 1 0 0 0 1 3010.dat\n\n0 // ---------- WALL COURSE 6 (y=-128) ----------\n1 19 10 -128 60 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 10 -128 140 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -128 60 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -128 140 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 80 -128 10 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 80 -128 190 1 0 0 0 1 0 0 0 1 3008.dat\n\n0 // ---------- CEILING PLATES (white) y=-152 ----------\n1 15 80 -152 20 1 0 0 0 1 0 0 0 1 3034.dat\n1 15 80 -152 60 1 0 0 0 1 0 0 0 1 3034.dat\n1 15 80 -152 100 1 0 0 0 1 0 0 0 1 3034.dat\n1 15 80 -152 140 1 0 0 0 1 0 0 0 1 3034.dat\n1 15 80 -152 180 1 0 0 0 1 0 0 0 1 3034.dat\n\n0 // ---------- ROOF LEVEL 1 (y=-160) ----------\n1 4 20 -160 20 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 20 -160 60 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 20 -160 100 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 20 -160 140 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 20 -160 180 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 140 -160 20 0 0 -1 0 1 0 1 0 0 3039.dat\n1 4 140 -160 60 0 0 -1 0 1 0 1 0 0 3039.dat\n1 4 140 -160 100 0 0 -1 0 1 0 1 0 0 3039.dat\n1 4 140 -160 140 0 0 -1 0 1 0 1 0 0 3039.dat\n1 4 140 -160 180 0 0 -1 0 1 0 1 0 0 3039.dat\n1 4 60 -160 40 0 0 1 0 1 0 -1 0 0 3001.dat\n1 4 60 -160 120 0 0 1 0 1 0 -1 0 0 3001.dat\n1 4 60 -160 180 1 0 0 0 1 0 0 0 1 3003.dat\n1 4 100 -160 40 0 0 1 0 1 0 -1 0 0 3001.dat\n1 4 100 -160 120 0 0 1 0 1 0 -1 0 0 3001.dat\n1 4 100 -160 180 1 0 0 0 1 0 0 0 1 3003.dat\n\n0 // ---------- ROOF LEVEL 2 (y=-184) ----------\n1 4 40 -184 20 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 40 -184 60 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 40 -184 100 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 40 -184 140 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 40 -184 180 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 120 -184 20 0 0 -1 0 1 0 1 0 0 3039.dat\n1 4 120 -184 60 0 0 -1 0 1 0 1 0 0 3039.dat\n1 4 120 -184 100 0 0 -1 0 1 0 1 0 0 3039.dat\n1 4 120 -184 140 0 0 -1 0 1 0 1 0 0 3039.dat\n1 4 120 -184 180 0 0 -1 0 1 0 1 0 0 3039.dat\n1 4 80 -184 40 0 0 1 0 1 0 -1 0 0 3001.dat\n1 4 80 -184 120 0 0 1 0 1 0 -1 0 0 3001.dat\n1 4 80 -184 180 1 0 0 0 1 0 0 0 1 3003.dat\n\n0 // ---------- ROOF LEVEL 3 (y=-208) ----------\n1 4 60 -208 20 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 60 -208 60 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 60 -208 100 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 60 -208 140 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 60 -208 180 0 0 1 0 1 0 -1 0 0 3039.dat\n1 4 100 -208 20 0 0 -1 0 1 0 1 0 0 3039.dat\n1 4 100 -208 60 0 0 -1 0 1 0 1 0 0 3039.dat\n1 4 100 -208 100 0 0 -1 0 1 0 1 0 0 3039.dat\n1 4 100 -208 140 0 0 -1 0 1 0 1 0 0 3039.dat\n1 4 100 -208 180 0 0 -1 0 1 0 1 0 0 3039.dat\n\n0 // ---------- RIDGE CAP (y=-232) ----------\n1 4 80 -232 80 0 0 1 0 1 0 -1 0 0 3034.dat\n1 4 80 -232 180 1 0 0 0 1 0 0 0 1 3022.dat\n```"
+  },
+  {
+   "role": "user",
+   "content": "Verifier report:\n57 invalid parts: 7 unattached, 51 collisions \u00b7 26 clusters\n  #0 3034.dat colour 15 (file line: 1 15 80 0 20 1 0 0 0 1 0 0 0 1 3034.dat): interpenetrates parts 9, 7, 5\n  #1 3034.dat colour 15 (file line: 1 15 80 0 60 1 0 0 0 1 0 0 0 1 3034.dat): interpenetrates parts 5, 7\n  #2 3034.dat colour 15 (file line: 1 15 80 0 100 1 0 0 0 1 0 0 0 1 3034.dat): interpenetrates part 7\n  #3 3034.dat colour 15 (file line: 1 15 80 0 140 1 0 0 0 1 0 0 0 1 3034.dat): interpenetrates parts 8, 6\n  #4 3034.dat colour 15 (file line: 1 15 80 0 180 1 0 0 0 1 0 0 0 1 3034.dat): interpenetrates parts 10, 8, 6\n  #5 3010.dat colour 19 (file line: 1 19 10 -8 40 0 0 1 0 1 0 -1 0 0 3010.dat): interpenetrates parts 0, 1\n  #6 3010.dat colour 19 (file line: 1 19 10 -8 160 0 0 1 0 1 0 -1 0 0 3010.dat): interpenetrates parts 3, 4\n  #7 3009.dat colour 19 (file line: 1 19 150 -8 60 0 0 1 0 1 0 -1 0 0 3009.dat): interpenetrates parts 0, 2, 1\n  #8 3010.dat colour 19 (file line: 1 19 150 -8 160 0 0 1 0 1 0 -1 0 0 3010.dat): interpenetrates parts 3, 4\n  #9 3009.dat colour 19 (file line: 1 19 80 -8 10 1 0 0 0 1 0 0 0 1 3009.dat): interpenetrates part 0\n  #10 3009.dat colour 19 (file line: 1 19 80 -8 190 1 0 0 0 1 0 0 0 1 3009.dat): interpenetrates part 4\n  #44 3034.dat colour 15 (file line: 1 15 80 -152 20 1 0 0 0 1 0 0 0 1 3034.dat): no joint to any other part and not resting on the ground; interpenetrates parts 54, 49, 59, 62\n  #45 3034.dat colour 15 (file line: 1 15 80 -152 60 1 0 0 0 1 0 0 0 1 3034.dat): no joint to any other part and not resting on the ground; interpenetrates parts 55, 50, 59, 62\n  #46 3034.dat colour 15 (file line: 1 15 80 -152 100 1 0 0 0 1 0 0 0 1 3034.dat): no joint to any other part and not resting on the ground; interpenetrates parts 56, 51, 60, 63\n  #47 3034.dat colour 15 (file line: 1 15 80 -152 140 1 0 0 0 1 0 0 0 1 3034.dat): no joint to any other part and not resting on the ground; interpenetrates parts 57, 52, 60, 63\n  #48 3034.dat colour 15 (file line: 1 15 80 -152 180 1 0 0 0 1 0 0 0 1 3034.dat): no joint to any other part and not resting on the ground; interpenetrates parts 61, 64, 58, 53\n  #49 3039.dat colour 4 (file line: 1 4 20 -160 20 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 44\n  #50 3039.dat colour 4 (file line: 1 4 20 -160 60 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 45\n  #51 3039.dat colour 4 (file line: 1 4 20 -160 100 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 46\n  #52 3039.dat colour 4 (file line: 1 4 20 -160 140 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 47\n  #53 3039.dat colour 4 (file line: 1 4 20 -160 180 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 48\n  #54 3039.dat colour 4 (file line: 1 4 140 -160 20 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 44\n  #55 3039.dat colour 4 (file line: 1 4 140 -160 60 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 45\n  #56 3039.dat colour 4 (file line: 1 4 140 -160 100 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 46\n  #57 3039.dat colour 4 (file line: 1 4 140 -160 140 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 47\n  #58 3039.dat colour 4 (file line: 1 4 140 -160 180 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 48\n  #59 3001.dat colour 4 (file line: 1 4 60 -160 40 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 44, 45, 65, 66\n  #60 3001.dat colour 4 (file line: 1 4 60 -160 120 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 46, 47, 67, 68\n  #61 3003.dat colour 4 (file line: 1 4 60 -160 180 1 0 0 0 1 0 0 0 1 3003.dat): interpenetrates parts 48, 69\n  #62 3001.dat colour 4 (file line: 1 4 100 -160 40 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 44, 45, 70, 71\n  #63 3001.dat colour 4 (file line: 1 4 100 -160 120 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 46, 47, 72, 73\n  #64 3003.dat colour 4 (file line: 1 4 100 -160 180 1 0 0 0 1 0 0 0 1 3003.dat): interpenetrates parts 48, 74\n  #65 3039.dat colour 4 (file line: 1 4 40 -184 20 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 59\n  #66 3039.dat colour 4 (file line: 1 4 40 -184 60 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 59\n  #67 3039.dat colour 4 (file line: 1 4 40 -184 100 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 60\n  #68 3039.dat colour 4 (file line: 1 4 40 -184 140 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 60\n  #69 3039.dat colour 4 (file line: 1 4 40 -184 180 0 0 1 0 1 0 -1 0 0 3039.dat): interpenetrates part 61\n  #70 3039.dat colour 4 (file line: 1 4 120 -184 20 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 62\n  #71 3039.dat colour 4 (file line: 1 4 120 -184 60 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 62\n  #72 3039.dat colour 4 (file line: 1 4 120 -184 100 0 0 -1 0 1 0 1 0 0 3039.dat): interpenetrates part 63\n  \u2026 and 17 more\nFix these problems and output the corrected COMPLETE file as a ```ldraw fenced block."
+  },
+  {
+   "role": "assistant",
+   "content": "```ldraw\n0 Small House with Stepped Gable Roof\n0 Name: small_house.ldr\n0 Author: LEGO Designer\n0 !LDRAW_ORG Model\n0 // Footprint 8 x 10 studs (160 x 200 LDU), walls 6 bricks tall (tan),\n0 // doorway in west long wall, window in east long wall and south wall,\n0 // white brick ceiling, red stepped 45-deg slope-brick gable roof.\n0 // Total height 216 LDU.\n\n0 // ================= WALL COURSE 1 (y = 0) =================\n1 19 10 0 40 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 10 0 160 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 0 80 0 0 1 0 1 0 -1 0 0 3008.dat\n1 19 150 0 180 0 0 1 0 1 0 -1 0 0 3004.dat\n1 19 80 0 10 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 80 0 190 1 0 0 0 1 0 0 0 1 3009.dat\n\n0 // ================= WALL COURSE 2 (y = -24) =================\n1 19 80 -24 10 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 80 -24 190 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 10 -24 50 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 10 -24 150 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 150 -24 100 0 0 1 0 1 0 -1 0 0 3008.dat\n\n0 // ================= WALL COURSE 3 (y = -48) : window openings =================\n1 19 10 -48 40 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 10 -48 160 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -48 40 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -48 160 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 40 -48 10 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 120 -48 10 1 0 0 0 1 0 0 0 1 3004.dat\n1 19 80 -48 190 1 0 0 0 1 0 0 0 1 3009.dat\n\n0 // ================= WALL COURSE 4 (y = -72) : window openings =================\n1 19 30 -72 10 1 0 0 0 1 0 0 0 1 3622.dat\n1 19 130 -72 10 1 0 0 0 1 0 0 0 1 3622.dat\n1 19 80 -72 190 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 10 -72 50 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 10 -72 150 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 150 -72 50 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 150 -72 150 0 0 1 0 1 0 -1 0 0 3622.dat\n\n0 // ================= WALL COURSE 5 (y = -96) : lintels =================\n1 19 10 -96 60 0 0 1 0 1 0 -1 0 0 3009.dat\n1 19 10 -96 160 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -96 20 0 0 1 0 1 0 -1 0 0 3004.dat\n1 19 150 -96 100 0 0 1 0 1 0 -1 0 0 3009.dat\n1 19 150 -96 180 0 0 1 0 1 0 -1 0 0 3004.dat\n1 19 80 -96 10 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 80 -96 190 1 0 0 0 1 0 0 0 1 3009.dat\n\n0 // ================= WALL COURSE 6 (y = -120) =================\n1 19 80 -120 10 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 80 -120 190 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 10 -120 60 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 10 -120 140 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -120 60 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -120 140 0 0 1 0 1 0 -1 0 0 3010.dat\n\n0 // ================= CEILING COURSE (y = -144) =================\n1 15 80 -144 10 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 30 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 50 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 70 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 90 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 110 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 130 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 150 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 170 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 190 1 0 0 0 1 0 0 0 1 3008.dat\n\n0 // ================= ROOF LEVEL 1 (y = -168) =================\n0 // west eaves (slope descends toward -X)\n1 4 20 -168 20 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 20 -168 60 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 20 -168 100 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 20 -168 140 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 20 -168 180 -1 0 0 0 1 0 0 0 -1 3039.dat\n0 // east eaves (slope descends toward +X)\n1 4 140 -168 20 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 140 -168 60 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 140 -168 100 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 140 -168 140 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 140 -168 180 1 0 0 0 1 0 0 0 1 3039.dat\n0 // flat core of level 1\n1 4 60 -168 40 0 0 1 0 1 0 -1 0 0 3001.dat\n1 4 60 -168 120 0 0 1 0 1 0 -1 0 0 3001.dat\n1 4 60 -168 180 1 0 0 0 1 0 0 0 1 3003.dat\n1 4 100 -168 20 1 0 0 0 1 0 0 0 1 3003.dat\n1 4 100 -168 80 0 0 1 0 1 0 -1 0 0 3001.dat\n1 4 100 -168 160 0 0 1 0 1 0 -1 0 0 3001.dat\n\n0 // ================= ROOF LEVEL 2 (y = -192) =================\n1 4 60 -192 20 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 60 -192 60 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 60 -192 100 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 60 -192 140 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 60 -192 180 -1 0 0 0 1 0 0 0 -1 3039.dat\n1 4 100 -192 20 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 100 -192 60 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 100 -192 100 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 100 -192 140 1 0 0 0 1 0 0 0 1 3039.dat\n1 4 100 -192 180 1 0 0 0 1 0 0 0 1 3039.dat\n```"
+  },
+  {
+   "role": "user",
+   "content": "Verifier report:\n36 invalid parts: 40 unattached, 42 collisions \u00b7 21 clusters\n  #38 3008.dat colour 15 (file line: 1 15 80 -144 10 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 48, 53\n  #39 3008.dat colour 15 (file line: 1 15 80 -144 30 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 54, 53, 48\n  #40 3008.dat colour 15 (file line: 1 15 80 -144 50 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 49, 48, 54\n  #41 3008.dat colour 15 (file line: 1 15 80 -144 70 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 55, 54, 49\n  #42 3008.dat colour 15 (file line: 1 15 80 -144 90 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 50, 49, 55\n  #43 3008.dat colour 15 (file line: 1 15 80 -144 110 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 56, 55, 50\n  #44 3008.dat colour 15 (file line: 1 15 80 -144 130 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 51, 50, 56\n  #45 3008.dat colour 15 (file line: 1 15 80 -144 150 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 57, 56, 51\n  #46 3008.dat colour 15 (file line: 1 15 80 -144 170 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 52, 51, 57\n  #47 3008.dat colour 15 (file line: 1 15 80 -144 190 1 0 0 0 1 0 0 0 1 3008.dat): interpenetrates parts 57, 52\n  #48 3039.dat colour 4 (file line: 1 4 20 -168 20 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 38, 40, 39\n  #49 3039.dat colour 4 (file line: 1 4 20 -168 60 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 40, 42, 41\n  #50 3039.dat colour 4 (file line: 1 4 20 -168 100 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 42, 44, 43\n  #51 3039.dat colour 4 (file line: 1 4 20 -168 140 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 44, 46, 45\n  #52 3039.dat colour 4 (file line: 1 4 20 -168 180 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 46, 47\n  #53 3039.dat colour 4 (file line: 1 4 140 -168 20 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 39, 38\n  #54 3039.dat colour 4 (file line: 1 4 140 -168 60 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 39, 41, 40\n  #55 3039.dat colour 4 (file line: 1 4 140 -168 100 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 41, 43, 42\n  #56 3039.dat colour 4 (file line: 1 4 140 -168 140 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 43, 45, 44\n  #57 3039.dat colour 4 (file line: 1 4 140 -168 180 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 45, 47, 46\n  #58 3001.dat colour 4 (file line: 1 4 60 -168 40 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 64, 65\n  #59 3001.dat colour 4 (file line: 1 4 60 -168 120 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 66, 67, 65\n  #60 3003.dat colour 4 (file line: 1 4 60 -168 180 1 0 0 0 1 0 0 0 1 3003.dat): interpenetrates parts 68, 67\n  #61 3003.dat colour 4 (file line: 1 4 100 -168 20 1 0 0 0 1 0 0 0 1 3003.dat): interpenetrates parts 69, 70\n  #62 3001.dat colour 4 (file line: 1 4 100 -168 80 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 71, 70, 72\n  #63 3001.dat colour 4 (file line: 1 4 100 -168 160 0 0 1 0 1 0 -1 0 0 3001.dat): interpenetrates parts 73, 72\n  #64 3039.dat colour 4 (file line: 1 4 60 -192 20 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates part 58\n  #65 3039.dat colour 4 (file line: 1 4 60 -192 60 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 58, 59\n  #66 3039.dat colour 4 (file line: 1 4 60 -192 100 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates part 59\n  #67 3039.dat colour 4 (file line: 1 4 60 -192 140 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 59, 60\n  #68 3039.dat colour 4 (file line: 1 4 60 -192 180 -1 0 0 0 1 0 0 0 -1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates part 60\n  #69 3039.dat colour 4 (file line: 1 4 100 -192 20 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates part 61\n  #70 3039.dat colour 4 (file line: 1 4 100 -192 60 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 62, 61\n  #71 3039.dat colour 4 (file line: 1 4 100 -192 100 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates part 62\n  #72 3039.dat colour 4 (file line: 1 4 100 -192 140 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates parts 63, 62\n  #73 3039.dat colour 4 (file line: 1 4 100 -192 180 1 0 0 0 1 0 0 0 1 3039.dat): no joint to any other part and not resting on the ground; interpenetrates part 63\nFix these problems and output the corrected COMPLETE file as a ```ldraw fenced block."
+  },
+  {
+   "role": "assistant",
+   "content": "```ldraw\n0 Small House with Stepped Gable Roof\n0 Name: small_house.ldr\n0 Author: LEGO Designer\n0 !LDRAW_ORG Model\n0 // Footprint: walls 8 x 10 studs (x 0..160, z 0..200), roof overhangs to x -20..180\n0 // Overall footprint 10 x 10 studs -> fits 14 x 14.\n0 // Walls tan, 6 courses tall (144 LDU) in running bond,\n0 // doorway in the west long wall, window in the east long wall,\n0 // white brick ceiling, red slope-brick gable roof.  Total height 216 LDU.\n\n0 // ================= WALL COURSE 1  (y = 0) =================\n1 19 80 0 10 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 80 0 190 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 10 0 50 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 10 0 150 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 150 0 100 0 0 1 0 1 0 -1 0 0 3008.dat\n\n0 // ================= WALL COURSE 2  (y = -24) =================\n1 19 10 -24 40 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 10 -24 160 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -24 80 0 0 1 0 1 0 -1 0 0 3008.dat\n1 19 150 -24 180 0 0 1 0 1 0 -1 0 0 3004.dat\n1 19 80 -24 10 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 80 -24 190 1 0 0 0 1 0 0 0 1 3009.dat\n\n0 // ================= WALL COURSE 3  (y = -48)  window sill level =================\n1 19 80 -48 10 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 80 -48 190 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 10 -48 50 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 10 -48 150 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 150 -48 50 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 150 -48 150 0 0 1 0 1 0 -1 0 0 3622.dat\n\n0 // ================= WALL COURSE 4  (y = -72) =================\n1 19 10 -72 40 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 10 -72 160 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -72 40 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -72 160 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 80 -72 10 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 80 -72 190 1 0 0 0 1 0 0 0 1 3009.dat\n\n0 // ================= WALL COURSE 5  (y = -96)  lintels =================\n1 19 80 -96 10 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 80 -96 190 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 10 -96 100 0 0 1 0 1 0 -1 0 0 3008.dat\n1 19 150 -96 100 0 0 1 0 1 0 -1 0 0 3008.dat\n\n0 // ================= WALL COURSE 6  (y = -120) =================\n1 19 10 -120 80 0 0 1 0 1 0 -1 0 0 3008.dat\n1 19 10 -120 180 0 0 1 0 1 0 -1 0 0 3004.dat\n1 19 150 -120 20 0 0 1 0 1 0 -1 0 0 3004.dat\n1 19 150 -120 120 0 0 1 0 1 0 -1 0 0 3008.dat\n1 19 80 -120 10 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 80 -120 190 1 0 0 0 1 0 0 0 1 3009.dat\n\n0 // ================= CEILING  (y = -144, top at -168) =================\n1 15 80 -144 10 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 30 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 50 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 70 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 90 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 110 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 130 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 150 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 170 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 190 1 0 0 0 1 0 0 0 1 3008.dat\n\n0 // ================= ROOF LEVEL 1 (y = -168) =================\n0 // west eave slopes, low edge outward (x -20..20), seated on ceiling studs at x=10\n1 4 0 -168 10 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 0 -168 30 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 0 -168 50 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 0 -168 70 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 0 -168 90 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 0 -168 110 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 0 -168 130 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 0 -168 150 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 0 -168 170 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 0 -168 190 0 0 -1 0 1 0 1 0 0 3040.dat\n0 // east eave slopes (x 140..180), seated on ceiling studs at x=150\n1 4 160 -168 10 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 160 -168 30 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 160 -168 50 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 160 -168 70 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 160 -168 90 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 160 -168 110 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 160 -168 130 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 160 -168 150 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 160 -168 170 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 160 -168 190 0 0 1 0 1 0 -1 0 0 3040.dat\n0 // level 1 core (x 40..120) carrying the second slope course\n1 4 80 -168 10 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 30 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 90 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 110 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 130 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 150 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 170 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 190 1 0 0 0 1 0 0 0 1 3010.dat\n\n0 // ================= ROOF LEVEL 2 (y = -192) =================\n0 // west slopes (x 20..60), seated on level-1 core studs at x=50\n1 4 40 -192 10 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 40 -192 30 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 40 -192 50 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 40 -192 70 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 40 -192 90 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 40 -192 110 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 40 -192 130 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 40 -192 150 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 40 -192 170 0 0 -1 0 1 0 1 0 0 3040.dat\n1 4 40 -192 190 0 0 -1 0 1 0 1 0 0 3040.dat\n0 // east slopes (x 100..140), seated on level-1 core studs at x=110\n1 4 120 -192 10 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 120 -192 30 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 120 -192 50 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 120 -192 70 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 120 -192 90 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 120 -192 110 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 120 -192 130 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 120 -192 150 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 120 -192 170 0 0 1 0 1 0 -1 0 0 3040.dat\n1 4 120 -192 190 0 0 1 0 1 0 -1 0 0 3040.dat\n0 // ridge row (x 60..100) on level-1 core studs at x=70 and x=90\n1 4 80 -192 10 1 0 0 0 1 0 0 0 1 3004.dat\n1 4 80 -192 30 1 0 0 0 1 0 0 0 1 3004.dat\n1 4 80 -192 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 4 80 -192 70 1 0 0 0 1 0 0 0 1 3004.dat\n1 4 80 -192 90 1 0 0 0 1 0 0 0 1 3004.dat\n1 4 80 -192 110 1 0 0 0 1 0 0 0 1 3004.dat\n1 4 80 -192 130 1 0 0 0 1 0 0 0 1 3004.dat\n1 4 80 -192 150 1 0 0 0 1 0 0 0 1 3004.dat\n1 4 80 -192 170 1 0 0 0 1 0 0 0 1 3004.dat\n1 4 80 -192 190 1 0 0 0 1 0 0 0 1 3004.dat\n```"
+  },
+  {
+   "role": "user",
+   "content": "Verifier report:\n40 invalid parts: 80 unattached, 0 collisions \u00b7 41 clusters\n  #43 3040.dat colour 4 (file line: 1 4 0 -168 10 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #44 3040.dat colour 4 (file line: 1 4 0 -168 30 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #45 3040.dat colour 4 (file line: 1 4 0 -168 50 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #46 3040.dat colour 4 (file line: 1 4 0 -168 70 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #47 3040.dat colour 4 (file line: 1 4 0 -168 90 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #48 3040.dat colour 4 (file line: 1 4 0 -168 110 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #49 3040.dat colour 4 (file line: 1 4 0 -168 130 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #50 3040.dat colour 4 (file line: 1 4 0 -168 150 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #51 3040.dat colour 4 (file line: 1 4 0 -168 170 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #52 3040.dat colour 4 (file line: 1 4 0 -168 190 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #53 3040.dat colour 4 (file line: 1 4 160 -168 10 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #54 3040.dat colour 4 (file line: 1 4 160 -168 30 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #55 3040.dat colour 4 (file line: 1 4 160 -168 50 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #56 3040.dat colour 4 (file line: 1 4 160 -168 70 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #57 3040.dat colour 4 (file line: 1 4 160 -168 90 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #58 3040.dat colour 4 (file line: 1 4 160 -168 110 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #59 3040.dat colour 4 (file line: 1 4 160 -168 130 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #60 3040.dat colour 4 (file line: 1 4 160 -168 150 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #61 3040.dat colour 4 (file line: 1 4 160 -168 170 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #62 3040.dat colour 4 (file line: 1 4 160 -168 190 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #73 3040.dat colour 4 (file line: 1 4 40 -192 10 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #74 3040.dat colour 4 (file line: 1 4 40 -192 30 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #75 3040.dat colour 4 (file line: 1 4 40 -192 50 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #76 3040.dat colour 4 (file line: 1 4 40 -192 70 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #77 3040.dat colour 4 (file line: 1 4 40 -192 90 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #78 3040.dat colour 4 (file line: 1 4 40 -192 110 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #79 3040.dat colour 4 (file line: 1 4 40 -192 130 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #80 3040.dat colour 4 (file line: 1 4 40 -192 150 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #81 3040.dat colour 4 (file line: 1 4 40 -192 170 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #82 3040.dat colour 4 (file line: 1 4 40 -192 190 0 0 -1 0 1 0 1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #83 3040.dat colour 4 (file line: 1 4 120 -192 10 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #84 3040.dat colour 4 (file line: 1 4 120 -192 30 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #85 3040.dat colour 4 (file line: 1 4 120 -192 50 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #86 3040.dat colour 4 (file line: 1 4 120 -192 70 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #87 3040.dat colour 4 (file line: 1 4 120 -192 90 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #88 3040.dat colour 4 (file line: 1 4 120 -192 110 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #89 3040.dat colour 4 (file line: 1 4 120 -192 130 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #90 3040.dat colour 4 (file line: 1 4 120 -192 150 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #91 3040.dat colour 4 (file line: 1 4 120 -192 170 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\n  #92 3040.dat colour 4 (file line: 1 4 120 -192 190 0 0 1 0 1 0 -1 0 0 3040.dat): no joint to any other part and not resting on the ground\nFix these problems and output the corrected COMPLETE file as a ```ldraw fenced block."
+  },
+  {
+   "role": "assistant",
+   "content": "```ldraw\n0 Small House with Stepped Gable Roof\n0 Name: small_house.ldr\n0 Author: LEGO Designer\n0 !LDRAW_ORG Model\n0 // Walls: tan (19), 8 x 10 studs footprint (x 0..160, z 0..200), 6 courses, running bond.\n0 // Doorway in the west long wall (z 80..120), window opening in the east long wall (z 60..100).\n0 // Ceiling: white (15) bricks.  Roof: red (4) 45-degree slope bricks, stepped gable.\n0 // Total height 216 LDU.\n\n0 // ============ COURSE 1  (y = 0) ============\n1 19 80 0 10 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 80 0 190 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 10 0 50 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 10 0 150 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 150 0 100 0 0 1 0 1 0 -1 0 0 3008.dat\n\n0 // ============ COURSE 2  (y = -24) ============\n1 19 80 -24 10 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 80 -24 190 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 10 -24 40 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 10 -24 160 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -24 40 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -24 120 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -24 180 0 0 1 0 1 0 -1 0 0 3004.dat\n\n0 // ============ COURSE 3  (y = -48)  window sill level ============\n1 19 80 -48 10 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 80 -48 190 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 10 -48 50 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 10 -48 150 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 150 -48 40 0 0 1 0 1 0 -1 0 0 3004.dat\n1 19 150 -48 140 0 0 1 0 1 0 -1 0 0 3010.dat\n\n0 // ============ COURSE 4  (y = -72) ============\n1 19 80 -72 10 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 80 -72 190 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 10 -72 40 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 10 -72 160 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -72 30 0 0 1 0 1 0 -1 0 0 3622.dat\n1 19 150 -72 140 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -72 190 0 0 1 0 1 0 -1 0 0 3004.dat\n\n0 // ============ COURSE 5  (y = -96)  door and window lintels ============\n1 19 80 -96 10 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 80 -96 190 1 0 0 0 1 0 0 0 1 3008.dat\n1 19 10 -96 100 0 0 1 0 1 0 -1 0 0 3008.dat\n1 19 150 -96 100 0 0 1 0 1 0 -1 0 0 3008.dat\n\n0 // ============ COURSE 6  (y = -120) ============\n1 19 80 -120 10 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 80 -120 190 1 0 0 0 1 0 0 0 1 3009.dat\n1 19 10 -120 40 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 10 -120 120 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 10 -120 180 0 0 1 0 1 0 -1 0 0 3004.dat\n1 19 150 -120 40 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -120 120 0 0 1 0 1 0 -1 0 0 3010.dat\n1 19 150 -120 180 0 0 1 0 1 0 -1 0 0 3004.dat\n\n0 // ============ CEILING  (y = -144, top at -168) ============\n1 15 80 -144 10 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 30 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 50 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 70 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 90 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 110 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 130 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 150 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 170 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -144 190 1 0 0 0 1 0 0 0 1 3008.dat\n\n0 // ============ ROOF LEVEL 1  (y = -168) ============\n0 // west eave slopes, x 0..40 (on ceiling studs x = 10 and 30)\n1 4 20 -168 10 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 20 -168 30 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 20 -168 50 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 20 -168 70 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 20 -168 90 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 20 -168 110 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 20 -168 130 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 20 -168 150 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 20 -168 170 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 20 -168 190 -1 0 0 0 1 0 0 0 -1 3040.dat\n0 // east eave slopes, x 120..160 (on ceiling studs x = 130 and 150)\n1 4 140 -168 10 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 140 -168 30 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 140 -168 50 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 140 -168 70 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 140 -168 90 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 140 -168 110 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 140 -168 130 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 140 -168 150 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 140 -168 170 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 140 -168 190 1 0 0 0 1 0 0 0 1 3040.dat\n0 // roof core, x 40..120 (1 x 4 bricks laid along X)\n1 4 80 -168 10 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 30 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 90 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 110 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 130 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 150 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 170 1 0 0 0 1 0 0 0 1 3010.dat\n1 4 80 -168 190 1 0 0 0 1 0 0 0 1 3010.dat\n\n0 // ============ ROOF LEVEL 2  (y = -192, ridge top at -216) ============\n0 // west slopes, x 40..80 (on core studs x = 50 and 70)\n1 4 60 -192 10 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 60 -192 30 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 60 -192 50 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 60 -192 70 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 60 -192 90 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 60 -192 110 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 60 -192 130 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 60 -192 150 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 60 -192 170 -1 0 0 0 1 0 0 0 -1 3040.dat\n1 4 60 -192 190 -1 0 0 0 1 0 0 0 -1 3040.dat\n0 // east slopes, x 80..120 (on core studs x = 90 and 110)\n1 4 100 -192 10 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 100 -192 30 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 100 -192 50 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 100 -192 70 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 100 -192 90 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 100 -192 110 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 100 -192 130 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 100 -192 150 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 100 -192 170 1 0 0 0 1 0 0 0 1 3040.dat\n1 4 100 -192 190 1 0 0 0 1 0 0 0 1 3040.dat\n```"
+  }
+ ]
+}

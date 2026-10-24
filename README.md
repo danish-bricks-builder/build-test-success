@@ -29,6 +29,8 @@ carved out so it runs on its own (`env/`).
 
 ## The paper's results, from the records
 
+`records/` holds the sixty-five runs behind the camera-ready table (one per task × condition, with the final `.ldr`, a thumbnail, and the grade record); `sessions/` holds the full recording of every interactive session; `records-reviewed-version/` keeps the runs behind the reviewed workshop submission, which a grader correction and the changes listed in the paper's §3.7 superseded.
+
 ```
 $ python3 report.py --paper
 task                            raw  raw+feedback           env     env+gates      env+full

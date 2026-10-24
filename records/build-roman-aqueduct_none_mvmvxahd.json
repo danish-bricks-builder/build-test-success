@@ -1,0 +1,40 @@
+{
+ "runId": "build-roman-aqueduct_none_mvmvxahd",
+ "task": "roman-aqueduct",
+ "condition": "none",
+ "model": "claude-opus-5",
+ "prompt": "Build a section of Roman aqueduct: a lower tier of at least 4 round arches (arch bricks or corbelled), a second tier of smaller arches above it, and a water channel running along the top with side walls. Straight run, about 24 studs long, 3-4 studs thick. Tan/sand scheme. 100-220 parts.",
+ "seconds": 1387,
+ "tools": {
+  "design_layout": 1,
+  "search_parts": 1,
+  "build_program": 7,
+  "render_view": 6,
+  "inspect_build": 2,
+  "find_parts": 4,
+  "place_on": 6
+ },
+ "usage": {
+  "input": 36,
+  "output": 14217,
+  "cacheRead": 442770,
+  "cacheWrite": 74743
+ },
+ "error": null,
+ "partCount": 189,
+ "heightLdu": 368,
+ "footprintStuds": [
+  26,
+  4
+ ],
+ "valid": true,
+ "verifyReport": "VALID: 189 parts · 353 joints · 1 cluster · 13 grounded · no collisions",
+ "stable": true,
+ "stabilityReport": "STABLE: 189 parts · 383 g · CoM margin 39.5 LDU inside ground footprint",
+ "post": {
+  "parts": true,
+  "height": true,
+  "footprint": true
+ },
+ "PASS": true
+}

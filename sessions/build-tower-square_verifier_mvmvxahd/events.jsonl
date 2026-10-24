@@ -1,0 +1,80 @@
+{"t":1792875750573,"turn":0,"type":"tool_typing","name":"design_layout","bytes":0}
+{"t":1792875752972,"turn":0,"type":"tool_typing","name":"design_layout","bytes":7}
+{"t":1792875753412,"turn":0,"type":"usage","input":2,"output":963,"cacheRead":0,"cacheWrite":13653}
+{"t":1792875753413,"turn":0,"type":"tool_start","name":"design_layout"}
+{"t":1792875753413,"turn":0,"type":"tool","name":"design_layout","summary":"plan clean"}
+{"t":1792875809734,"turn":0,"type":"text","delta":"Shaft first"}
+{"t":1792875809852,"turn":0,"type":"text","delta":": 6×6 "}
+{"t":1792875809937,"turn":0,"type":"text","delta":"ring, 10 courses,"}
+{"t":1792875810013,"turn":0,"type":"text","delta":" running bond, door at"}
+{"t":1792875810077,"turn":0,"type":"text","delta":" the front."}
+{"t":1792875810224,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792875811415,"turn":0,"type":"usage","input":2,"output":177,"cacheRead":13653,"cacheWrite":1273}
+{"t":1792875811416,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792875811434,"turn":0,"type":"tool","name":"build_program","summary":"placed 75"}
+{"t":1792875817275,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792875817735,"turn":0,"type":"usage","input":2,"output":72,"cacheRead":14926,"cacheWrite":214}
+{"t":1792875817736,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792875817924,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792875847262,"turn":0,"type":"tool_typing","name":"check_validity","bytes":0}
+{"t":1792875847371,"turn":0,"type":"usage","input":2,"output":89,"cacheRead":15140,"cacheWrite":644}
+{"t":1792875847372,"turn":0,"type":"tool_start","name":"check_validity"}
+{"t":1792875847483,"turn":0,"type":"tool","name":"check_validity","summary":"⚠ problems found"}
+{"t":1792875964187,"turn":0,"type":"text","delta":"Platform: two c"}
+{"t":1792875964248,"turn":0,"type":"text","delta":"ross-laminated pl"}
+{"t":1792875964315,"turn":0,"type":"text","delta":"ate layers in dark grey"}
+{"t":1792875964386,"turn":0,"type":"text","delta":", overhanging one"}
+{"t":1792875964449,"turn":0,"type":"text","delta":" stud."}
+{"t":1792875964582,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792875965613,"turn":0,"type":"usage","input":2,"output":1375,"cacheRead":15784,"cacheWrite":337}
+{"t":1792875965614,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792875965620,"turn":0,"type":"tool","name":"build_program","summary":"placed 8"}
+{"t":1792875980616,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792875981083,"turn":0,"type":"usage","input":2,"output":72,"cacheRead":16121,"cacheWrite":1412}
+{"t":1792875981084,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792875981275,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792876027461,"turn":0,"type":"text","delta":"Parapet "}
+{"t":1792876027462,"turn":0,"type":"text","delta":"ring pl"}
+{"t":1792876027497,"turn":0,"type":"text","delta":"us crenellated"}
+{"t":1792876027564,"turn":0,"type":"text","delta":" merlons."}
+{"t":1792876027698,"turn":0,"type":"tool_typing","name":"build_program","bytes":0}
+{"t":1792876029709,"turn":0,"type":"tool_typing","name":"build_program","bytes":7}
+{"t":1792876029711,"turn":0,"type":"usage","input":2,"output":1056,"cacheRead":17533,"cacheWrite":644}
+{"t":1792876029712,"turn":0,"type":"tool_start","name":"build_program"}
+{"t":1792876029722,"turn":0,"type":"tool","name":"build_program","summary":"placed 27"}
+{"t":1792876057092,"turn":0,"type":"tool_typing","name":"render_view","bytes":0}
+{"t":1792876057559,"turn":0,"type":"usage","input":2,"output":72,"cacheRead":18177,"cacheWrite":1098}
+{"t":1792876057562,"turn":0,"type":"tool_start","name":"render_view"}
+{"t":1792876057751,"turn":0,"type":"tool","name":"render_view","summary":"rendered a view"}
+{"t":1792876079354,"turn":0,"type":"tool_typing","name":"check_validity","bytes":0}
+{"t":1792876079439,"turn":0,"type":"usage","input":2,"output":95,"cacheRead":19275,"cacheWrite":644}
+{"t":1792876079439,"turn":0,"type":"tool_start","name":"check_validity"}
+{"t":1792876079585,"turn":0,"type":"tool","name":"check_validity","summary":"clean"}
+{"t":1792876122532,"turn":0,"type":"tool_typing","name":"check_stability","bytes":0}
+{"t":1792876122610,"turn":0,"type":"usage","input":2,"output":27,"cacheRead":19919,"cacheWrite":188}
+{"t":1792876122611,"turn":0,"type":"tool_start","name":"check_stability"}
+{"t":1792876122624,"turn":0,"type":"tool","name":"check_stability","summary":"stable"}
+{"t":1792876288195,"turn":0,"type":"text","delta":"Done"}
+{"t":1792876288352,"turn":0,"type":"text","delta":" — 110 parts, one"}
+{"t":1792876288410,"turn":0,"type":"text","delta":" s"}
+{"t":1792876288490,"turn":0,"type":"text","delta":"ound structure: 6×6"}
+{"t":1792876288563,"turn":0,"type":"text","delta":" light-grey shaft"}
+{"t":1792876288627,"turn":0,"type":"text","delta":" "}
+{"t":1792876288692,"turn":0,"type":"text","delta":"10 cour"}
+{"t":1792876288754,"turn":0,"type":"text","delta":"ses in"}
+{"t":1792876288825,"turn":0,"type":"text","delta":" running bond with a door and"}
+{"t":1792876288892,"turn":0,"type":"text","delta":" two up"}
+{"t":1792876288958,"turn":0,"type":"text","delta":"per windows, d"}
+{"t":1792876289027,"turn":0,"type":"text","delta":"ark-grey corbelled"}
+{"t":1792876289095,"turn":0,"type":"text","delta":" 8×8 platform,"}
+{"t":1792876289162,"turn":0,"type":"text","delta":" cr"}
+{"t":1792876289228,"turn":0,"type":"text","delta":"enellated parapet."}
+{"t":1792876289294,"turn":0,"type":"text","delta":" Height "}
+{"t":1792876289360,"turn":0,"type":"text","delta":"13"}
+{"t":1792876289429,"turn":0,"type":"text","delta":" bricks ("}
+{"t":1792876289498,"turn":0,"type":"text","delta":"312 LDU), st"}
+{"t":1792876289567,"turn":0,"type":"text","delta":"able."}
+{"t":1792876289579,"turn":0,"type":"usage","input":2,"output":91,"cacheRead":20107,"cacheWrite":74}
+{"t":1792876289770,"turn":0,"type":"tool","name":"auto_validate","summary":"PASSED — sound, jointed, collision-free, stable"}
+{"t":1792876289773,"turn":1,"type":"result","ldraw":"0 LeoCAD build\n0 Name: LeoCAD_build.ldr\n0 Author: Danish Bricks Builder\n0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt\n\n1 71 20 -24 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 -40 -24 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -40 -24 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 40 -24 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -50 -24 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 50 -24 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 0 -48 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 50 -48 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -50 -48 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -30 -48 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -50 -48 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 40 -48 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -50 -48 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 50 -48 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 20 -72 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 -40 -72 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -40 -72 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 40 -72 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -50 -72 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 50 -72 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 0 -96 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 0 -96 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 50 -96 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -50 -96 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -50 -96 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 50 -96 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -50 -96 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 50 -96 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 20 -120 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 -40 -120 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 20 -120 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 -40 -120 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -50 -120 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 50 -120 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 0 -144 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 50 -144 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -50 -144 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 0 -144 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 50 -144 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -50 -144 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -50 -144 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 50 -144 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 -10 -168 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -40 -168 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 40 -168 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 20 -168 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 -40 -168 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -50 -168 20 0 0 -1 0 1 0 1 0 0 3004.dat\n1 71 -50 -168 -30 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 50 -168 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 -20 -192 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -50 -192 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 40 -192 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 0 -192 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 50 -192 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -50 -192 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -50 -192 20 0 0 -1 0 1 0 1 0 0 3004.dat\n1 71 -50 -192 -30 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 50 -192 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 10 -216 50 1 0 0 0 1 0 0 0 1 3622.dat\n1 71 -50 -216 -10 0 0 -1 0 1 0 1 0 0 3622.dat\n1 71 -40 -216 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 50 -216 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 20 -216 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 -40 -216 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -50 -216 30 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 50 -216 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 0 -240 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 50 -240 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -50 -240 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 0 -240 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 50 -240 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -50 -240 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -50 -240 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 50 -240 0 0 0 -1 0 1 0 1 0 0 3010.dat\n1 72 0 -248 60 1 0 0 0 1 0 0 0 1 3034.dat\n1 72 0 -248 20 1 0 0 0 1 0 0 0 1 3034.dat\n1 72 0 -248 -20 1 0 0 0 1 0 0 0 1 3034.dat\n1 72 0 -248 -60 1 0 0 0 1 0 0 0 1 3034.dat\n1 72 -60 -256 0 0 0 -1 0 1 0 1 0 0 3034.dat\n1 72 -20 -256 0 0 0 -1 0 1 0 1 0 0 3034.dat\n1 72 20 -256 0 0 0 -1 0 1 0 1 0 0 3034.dat\n1 72 60 -256 0 0 0 -1 0 1 0 1 0 0 3034.dat\n1 71 20 -280 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 70 -280 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -70 -280 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -40 -280 70 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 20 -280 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 70 -280 -70 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -70 -280 -70 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -40 -280 -70 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -70 -280 20 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 -70 -280 -40 0 0 -1 0 1 0 1 0 0 3004.dat\n1 71 70 -280 20 0 0 -1 0 1 0 1 0 0 3010.dat\n1 71 70 -280 -40 0 0 -1 0 1 0 1 0 0 3004.dat\n1 71 -70 -304 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -70 -304 -70 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -30 -304 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -30 -304 -70 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 10 -304 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 10 -304 -70 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 50 -304 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 50 -304 -70 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -70 -304 30 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 70 -304 30 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -70 -304 -10 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 70 -304 -10 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 -70 -304 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 70 -304 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 71 70 -304 70 1 0 0 0 1 0 0 0 1 3005.dat\n","partCount":110}
+{"t":1792876289773,"turn":1,"type":"done"}

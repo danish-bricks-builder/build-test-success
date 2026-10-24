@@ -1,0 +1,17 @@
+{
+ "runId": "build-taj-mahal_none_mvlp0mbj",
+ "taskId": "build-taj-mahal",
+ "condition": "none",
+ "model": "claude-opus-5",
+ "createdAt": "2026-10-24T01:01:12.120Z",
+ "turns": [
+  {
+   "i": 0,
+   "userMessage": "Build a detailed Taj Mahal: a wide raised platform, a central hall with a great arched iwan on each face, a large central onion dome on a drum, four smaller domed kiosks around it, and four slender corner minarets with little domes. All white with subtle accents. 450-900 parts.",
+   "startedAt": "2026-10-24T01:01:12.120Z",
+   "toolset": "full",
+   "turnBudgetMs": 14400000,
+   "endedAt": "2026-10-24T02:43:21.746Z"
+  }
+ ]
+}

@@ -1,0 +1,477 @@
+{
+ "runId": "greek-temple_one-shot+feedback_6adceaa6",
+ "task": "greek-temple",
+ "condition": "one-shot+feedback",
+ "model": "claude-opus-5",
+ "prompt": "Build a Greek temple: a stepped stylobate base about 16x10 studs, a colonnade of at least 6 round columns per long side (freestanding, evenly spaced), an inner cella wall, an entablature beam ring resting on the columns, and a low-pitch pediment roof with triangular gable ends. Sand or white scheme. 120-260 parts.",
+ "seconds": 868,
+ "rounds": [
+  {
+   "round": 1,
+   "ldr": "greek-temple_one-shot+feedback_6adceaa6.round1.ldr",
+   "grade": {
+    "task": "greek-temple",
+    "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/greek-temple_one-shot+feedback_6adceaa6.round1.ldr",
+    "partCount": 155,
+    "heightLdu": 176,
+    "footprintStuds": [
+     18,
+     12
+    ],
+    "valid": false,
+    "verifyReport": "105 invalid parts: 63 unattached, 84 collisions \u00b7 14 clusters\n  #3 3030.dat colour 19 (file line: 1 19 -120 -8 0 0 0 1 0 1 0 -1 0 0 3030.dat): interpenetrates parts 92, 88, 90, 14\n  #4 3030.dat colour 19 (file line: 1 19 -40 -8 0 0 0 1 0 1 0 -1 0 0 3030.dat): interpenetrates parts 88, 90, 19, 49\n  #5 3030.dat colour 19 (file line: 1 19 40 -8 0 0 0 1 0 1 0 -1 0 0 3030.dat): interpenetrates parts 89, 91, 24, 54\n  #6 3030.dat colour 19 (file line: 1 19 120 -8 0 0 0 1 0 1 0 -1 0 0 3030.dat): interpenetrates parts 89, 91, 93, 94\n  #7 3028.dat colour 15 (file line: 1 15 0 -16 0 1 0 0 0 1 0 0 0 1 3028.dat): interpenetrates parts 91, 90, 88, 89\n  #8 4073.dat colour 15 (file line: 1 15 -150 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 9\n  #9 3062b.dat colour 15 (file line: 1 15 -150 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 8, 3\n  #12 3024.dat colour 15 (file line: 1 15 -150 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 123\n  #13 4073.dat colour 15 (file line: 1 15 -90 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 14\n  #14 3062b.dat colour 15 (file line: 1 15 -90 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 13, 3\n  #17 3024.dat colour 15 (file line: 1 15 -90 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 123\n  #18 4073.dat colour 15 (file line: 1 15 -30 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 19\n  #19 3062b.dat colour 15 (file line: 1 15 -30 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 18, 4\n  #22 3024.dat colour 15 (file line: 1 15 -30 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 123\n  #23 4073.dat colour 15 (file line: 1 15 30 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 24\n  #24 3062b.dat colour 15 (file line: 1 15 30 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 23, 5\n  #27 3024.dat colour 15 (file line: 1 15 30 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 124\n  #28 4073.dat colour 15 (file line: 1 15 90 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 29\n  #29 3062b.dat colour 15 (file line: 1 15 90 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 28, 6\n  #32 3024.dat colour 15 (file line: 1 15 90 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 124\n  #33 4073.dat colour 15 (file line: 1 15 150 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 34\n  #34 3062b.dat colour 15 (file line: 1 15 150 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 33, 6\n  #37 3024.dat colour 15 (file line: 1 15 150 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 124\n  #38 4073.dat colour 15 (file line: 1 15 -150 -16 90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 39\n  #39 3062b.dat colour 15 (file line: 1 15 -150 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 38, 3\n  #42 3024.dat colour 15 (file line: 1 15 -150 -96 90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 125\n  #43 4073.dat colour 15 (file line: 1 15 -90 -16 90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 44\n  #44 3062b.dat colour 15 (file line: 1 15 -90 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 43, 3\n  #47 3024.dat colour 15 (file line: 1 15 -90 -96 90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 125\n  #48 4073.dat colour 15 (file line: 1 15 -30 -16 90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 49\n  #49 3062b.dat colour 15 (file line: 1 15 -30 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 48, 4\n  #52 3024.dat colour 15 (file line: 1 15 -30 -96 90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 125\n  #53 4073.dat colour 15 (file line: 1 15 30 -16 90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 54\n  #54 3062b.dat colour 15 (file line: 1 15 30 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 53, 5\n  #57 3024.dat colour 15 (file line: 1 15 30 -96 90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 126\n  #58 4073.dat colour 15 (file line: 1 15 90 -16 90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 59\n  #59 3062b.dat colour 15 (file line: 1 15 90 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 58, 6\n  #62 3024.dat colour 15 (file line: 1 15 90 -96 90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 126\n  #63 4073.dat colour 15 (file line: 1 15 150 -16 90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 64\n  #64 3062b.dat colour 15 (file line: 1 15 150 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 63, 6\n  \u2026 and 65 more",
+    "stable": true,
+    "stabilityReport": "STABLE: 155 parts \u00b7 276 g \u00b7 CoM margin 9.5 LDU inside ground footprint",
+    "post": {
+     "parts": true,
+     "height": true,
+     "footprint": true
+    },
+    "PASS": false,
+    "faults": {
+     "unattached": [
+      12,
+      17,
+      22,
+      27,
+      32,
+      37,
+      42,
+      47,
+      52,
+      57,
+      62,
+      67,
+      72,
+      77,
+      82,
+      87,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154
+     ],
+     "colliding": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      12,
+      13,
+      14,
+      17,
+      18,
+      19,
+      22,
+      23,
+      24,
+      27,
+      28,
+      29,
+      32,
+      33,
+      34,
+      37,
+      38,
+      39,
+      42,
+      43,
+      44,
+      47,
+      48,
+      49,
+      52,
+      53,
+      54,
+      57,
+      58,
+      59,
+      62,
+      63,
+      64,
+      67,
+      68,
+      69,
+      72,
+      73,
+      74,
+      77,
+      78,
+      79,
+      82,
+      83,
+      84,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      110,
+      111,
+      112,
+      113,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154
+     ],
+     "reasons": {
+      "3": "interpenetrates parts 92, 88, 90, 14",
+      "4": "interpenetrates parts 88, 90, 19, 49",
+      "5": "interpenetrates parts 89, 91, 24, 54",
+      "6": "interpenetrates parts 89, 91, 93, 94",
+      "7": "interpenetrates parts 91, 90, 88, 89",
+      "8": "interpenetrates part 9",
+      "9": "interpenetrates parts 8, 3",
+      "12": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 123",
+      "13": "interpenetrates part 14",
+      "14": "interpenetrates parts 13, 3",
+      "17": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 123",
+      "18": "interpenetrates part 19",
+      "19": "interpenetrates parts 18, 4",
+      "22": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 123",
+      "23": "interpenetrates part 24",
+      "24": "interpenetrates parts 23, 5",
+      "27": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 124",
+      "28": "interpenetrates part 29",
+      "29": "interpenetrates parts 28, 6",
+      "32": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 124",
+      "33": "interpenetrates part 34",
+      "34": "interpenetrates parts 33, 6",
+      "37": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 124",
+      "38": "interpenetrates part 39",
+      "39": "interpenetrates parts 38, 3",
+      "42": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 125",
+      "43": "interpenetrates part 44",
+      "44": "interpenetrates parts 43, 3",
+      "47": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 125",
+      "48": "interpenetrates part 49",
+      "49": "interpenetrates parts 48, 4",
+      "52": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 125",
+      "53": "interpenetrates part 54",
+      "54": "interpenetrates parts 53, 5",
+      "57": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 126",
+      "58": "interpenetrates part 59",
+      "59": "interpenetrates parts 58, 6",
+      "62": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 126",
+      "63": "interpenetrates part 64",
+      "64": "interpenetrates parts 63, 6",
+      "67": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 126",
+      "68": "interpenetrates part 69",
+      "69": "interpenetrates parts 68, 3",
+      "72": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 127",
+      "73": "interpenetrates part 74",
+      "74": "interpenetrates parts 73, 3",
+      "77": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 127",
+      "78": "interpenetrates part 79",
+      "79": "interpenetrates parts 78, 6",
+      "82": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 128",
+      "83": "interpenetrates part 84",
+      "84": "interpenetrates parts 83, 6",
+      "87": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 128",
+      "88": "interpenetrates parts 7, 4, 3",
+      "89": "interpenetrates parts 7, 5, 6",
+      "90": "interpenetrates parts 7, 4, 3",
+      "91": "interpenetrates parts 7, 5, 6",
+      "92": "interpenetrates parts 7, 3",
+      "93": "interpenetrates parts 7, 6",
+      "94": "interpenetrates parts 7, 6",
+      "110": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 129",
+      "111": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 130",
+      "112": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 131",
+      "113": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 132",
+      "114": "joined only to parts that never reach the ground (the structure floats)",
+      "115": "joined only to parts that never reach the ground (the structure floats)",
+      "116": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 132, 131, 129, 130",
+      "117": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 123",
+      "118": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 124",
+      "119": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 125",
+      "120": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 126",
+      "121": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 127",
+      "122": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 128",
+      "123": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 117, 12, 17, 22",
+      "124": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 118, 37, 27, 32",
+      "125": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 119, 42, 47, 52",
+      "126": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 120, 67, 57, 62",
+      "127": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 121, 72, 77",
+      "128": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 122, 82, 87",
+      "129": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 110, 116",
+      "130": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 111, 116",
+      "131": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 112, 116",
+      "132": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 113, 116",
+      "133": "joined only to parts that never reach the ground (the structure floats)",
+      "134": "joined only to parts that never reach the ground (the structure floats)",
+      "135": "joined only to parts that never reach the ground (the structure floats)",
+      "136": "joined only to parts that never reach the ground (the structure floats)",
+      "137": "joined only to parts that never reach the ground (the structure floats)",
+      "138": "joined only to parts that never reach the ground (the structure floats)",
+      "139": "joined only to parts that never reach the ground (the structure floats)",
+      "140": "joined only to parts that never reach the ground (the structure floats)",
+      "141": "joined only to parts that never reach the ground (the structure floats)",
+      "142": "joined only to parts that never reach the ground (the structure floats)",
+      "143": "joined only to parts that never reach the ground (the structure floats)",
+      "144": "joined only to parts that never reach the ground (the structure floats)",
+      "145": "joined only to parts that never reach the ground (the structure floats)",
+      "146": "joined only to parts that never reach the ground (the structure floats)",
+      "147": "joined only to parts that never reach the ground (the structure floats)",
+      "148": "joined only to parts that never reach the ground (the structure floats)",
+      "149": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 153",
+      "150": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 153",
+      "151": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 154",
+      "152": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 154",
+      "153": "no joint to any other part and not resting on the ground; interpenetrates parts 149, 150",
+      "154": "no joint to any other part and not resting on the ground; interpenetrates parts 151, 152"
+     }
+    },
+    "view": {
+     "extent": {
+      "minX": -180,
+      "maxX": 180,
+      "minZ": -120,
+      "maxZ": 120,
+      "height": 176
+     },
+     "limits": {
+      "maxFootprintStuds": [
+       18,
+       12
+      ],
+      "minHeightLdu": 168,
+      "minParts": 100
+     },
+     "com": [
+      -0.7482993197278912,
+      71.05668934240363,
+      0
+     ],
+     "ground": {
+      "x0": -180,
+      "x1": 180,
+      "z0": -120,
+      "z1": 120
+     },
+     "stability": {
+      "ok": true,
+      "marginLdu": 9.5,
+      "issues": []
+     }
+    }
+   }
+  },
+  {
+   "round": 2,
+   "ldr": "greek-temple_one-shot+feedback_6adceaa6.round2.ldr",
+   "grade": {
+    "task": "greek-temple",
+    "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/greek-temple_one-shot+feedback_6adceaa6.round2.ldr",
+    "partCount": 249,
+    "heightLdu": 168,
+    "footprintStuds": [
+     18,
+     12
+    ],
+    "valid": true,
+    "verifyReport": "VALID: 249 parts \u00b7 275 joints \u00b7 1 cluster \u00b7 6 grounded \u00b7 no collisions",
+    "stable": true,
+    "stabilityReport": "STABLE: 249 parts \u00b7 341 g \u00b7 CoM margin 119.5 LDU inside ground footprint",
+    "post": {
+     "parts": true,
+     "height": true,
+     "footprint": true
+    },
+    "PASS": true,
+    "faults": {
+     "unattached": [],
+     "colliding": [],
+     "reasons": {}
+    },
+    "view": {
+     "extent": {
+      "minX": -180,
+      "maxX": 180,
+      "minZ": -120,
+      "maxZ": 120,
+      "height": 168
+     },
+     "limits": {
+      "maxFootprintStuds": [
+       18,
+       12
+      ],
+      "minHeightLdu": 168,
+      "minParts": 100
+     },
+     "com": [
+      0,
+      67.52569169960475,
+      0
+     ],
+     "ground": {
+      "x0": -180,
+      "x1": 180,
+      "z0": -120,
+      "z1": 120
+     },
+     "stability": {
+      "ok": true,
+      "marginLdu": 119.5,
+      "issues": []
+     }
+    }
+   }
+  }
+ ],
+ "usage": {
+  "input": 10032,
+  "output": 68542,
+  "cacheRead": 0,
+  "cacheWrite": 0
+ },
+ "PASS": true,
+ "final": {
+  "task": "greek-temple",
+  "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/greek-temple_one-shot+feedback_6adceaa6.round2.ldr",
+  "partCount": 249,
+  "heightLdu": 168,
+  "footprintStuds": [
+   18,
+   12
+  ],
+  "valid": true,
+  "verifyReport": "VALID: 249 parts \u00b7 275 joints \u00b7 1 cluster \u00b7 6 grounded \u00b7 no collisions",
+  "stable": true,
+  "stabilityReport": "STABLE: 249 parts \u00b7 341 g \u00b7 CoM margin 119.5 LDU inside ground footprint",
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "PASS": true,
+  "faults": {
+   "unattached": [],
+   "colliding": [],
+   "reasons": {}
+  },
+  "view": {
+   "extent": {
+    "minX": -180,
+    "maxX": 180,
+    "minZ": -120,
+    "maxZ": 120,
+    "height": 168
+   },
+   "limits": {
+    "maxFootprintStuds": [
+     18,
+     12
+    ],
+    "minHeightLdu": 168,
+    "minParts": 100
+   },
+   "com": [
+    0,
+    67.52569169960475,
+    0
+   ],
+   "ground": {
+    "x0": -180,
+    "x1": 180,
+    "z0": -120,
+    "z1": 120
+   },
+   "stability": {
+    "ok": true,
+    "marginLdu": 119.5,
+    "issues": []
+   }
+  }
+ },
+ "conversation": [
+  {
+   "role": "system",
+   "content": "You are an expert LEGO designer. You output raw LDraw model files.\nRespond with ONLY the LDraw file in a ```ldraw fenced block \u2014 no other prose.\nUse standard LDraw conventions: type-1 lines `1 <color> x y z a b c d e f g h i <part>.dat`,\n-Y is up, 1 brick height = 24 LDU, 1 plate = 8 LDU, 1 stud pitch = 20 LDU.\nUse common official part files (3001.dat, 3003.dat, 3020.dat, 3024.dat, ...).\nEvery part must be properly connected (studs seated in anti-studs) and no two parts may overlap."
+  },
+  {
+   "role": "user",
+   "content": "Build a Greek temple: a stepped stylobate base about 16x10 studs, a colonnade of at least 6 round columns per long side (freestanding, evenly spaced), an inner cella wall, an entablature beam ring resting on the columns, and a low-pitch pediment roof with triangular gable ends. Sand or white scheme. 120-260 parts.\nConstraints: footprint must fit within 18x12 studs; height at least 168 LDU (7 bricks); use at least 100 parts."
+  },
+  {
+   "role": "assistant",
+   "content": "```ldraw\n0 Greek Temple\n0 Name: greek_temple.ldr\n0 Author: LDraw Builder\n0 !LDRAW_ORG Unofficial_Model\n0 !LICENSE Redistributable under CCAL version 2.0\n\n0 // ---------------- STYLOBATE : step 1 (18 x 12) ----------------\n1 19 -120 0 0 0 0 1 0 1 0 -1 0 0 3028.dat\n1 19 0 0 0 0 0 1 0 1 0 -1 0 0 3028.dat\n1 19 120 0 0 0 0 1 0 1 0 -1 0 0 3028.dat\n\n0 // ---------------- STYLOBATE : step 2 (16 x 10) ----------------\n1 19 -120 -8 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 -40 -8 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 40 -8 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 120 -8 0 0 0 1 0 1 0 -1 0 0 3030.dat\n\n0 // ---------------- CELLA FLOOR PLATFORM (12 x 6) ----------------\n1 15 0 -16 0 1 0 0 0 1 0 0 0 1 3028.dat\n\n0 // ================ PERISTYLE : 16 ROUND COLUMNS ================\n0 // -- long side, z = -90 --\n1 15 -150 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -150 -48 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -150 -72 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -150 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat\n1 15 -90 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -90 -48 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -90 -72 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -90 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat\n1 15 -30 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -30 -48 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -30 -72 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -30 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat\n1 15 30 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 30 -48 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 30 -72 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 30 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat\n1 15 90 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 90 -48 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 90 -72 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 90 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat\n1 15 150 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 150 -48 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 150 -72 -90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 150 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat\n0 // -- long side, z = +90 --\n1 15 -150 -16 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -150 -48 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -150 -72 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -150 -96 90 1 0 0 0 1 0 0 0 1 3024.dat\n1 15 -90 -16 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -90 -48 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -90 -72 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -90 -96 90 1 0 0 0 1 0 0 0 1 3024.dat\n1 15 -30 -16 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -30 -48 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -30 -72 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -30 -96 90 1 0 0 0 1 0 0 0 1 3024.dat\n1 15 30 -16 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 30 -48 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 30 -72 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 30 -96 90 1 0 0 0 1 0 0 0 1 3024.dat\n1 15 90 -16 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 90 -48 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 90 -72 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 90 -96 90 1 0 0 0 1 0 0 0 1 3024.dat\n1 15 150 -16 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 150 -48 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 150 -72 90 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 150 -96 90 1 0 0 0 1 0 0 0 1 3024.dat\n0 // -- short side, x = -150 --\n1 15 -150 -16 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -24 -30 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -150 -48 -30 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -150 -72 -30 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -150 -96 -30 1 0 0 0 1 0 0 0 1 3024.dat\n1 15 -150 -16 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -24 30 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -150 -48 30 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -150 -72 30 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 -150 -96 30 1 0 0 0 1 0 0 0 1 3024.dat\n0 // -- short side, x = +150 --\n1 15 150 -16 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -24 -30 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 150 -48 -30 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 150 -72 -30 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 150 -96 -30 1 0 0 0 1 0 0 0 1 3024.dat\n1 15 150 -16 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -24 30 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 150 -48 30 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 150 -72 30 1 0 0 0 1 0 0 0 1 3062b.dat\n1 15 150 -96 30 1 0 0 0 1 0 0 0 1 3024.dat\n\n0 // ================ CELLA WALLS (12 x 6) ================\n0 // course A  y = -24\n1 15 -60 -24 -50 1 0 0 0 1 0 0 0 1 3009.dat\n1 15 60 -24 -50 1 0 0 0 1 0 0 0 1 3009.dat\n1 15 -60 -24 50 1 0 0 0 1 0 0 0 1 3009.dat\n1 15 60 -24 50 1 0 0 0 1 0 0 0 1 3009.dat\n1 15 -110 -24 0 0 0 1 0 1 0 -1 0 0 3010.dat\n1 15 110 -24 -30 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 110 -24 30 1 0 0 0 1 0 0 0 1 3005.dat\n0 // course B  y = -48\n1 15 -110 -48 0 0 0 1 0 1 0 -1 0 0 3009.dat\n1 15 110 -48 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 110 -48 -30 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 110 -48 30 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 110 -48 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 15 -40 -48 -50 1 0 0 0 1 0 0 0 1 3009.dat\n1 15 60 -48 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 15 -40 -48 50 1 0 0 0 1 0 0 0 1 3009.dat\n1 15 60 -48 50 1 0 0 0 1 0 0 0 1 3010.dat\n0 // course C  y = -72  (door lintel on front)\n1 15 -110 -72 0 0 0 1 0 1 0 -1 0 0 3009.dat\n1 15 110 -72 0 0 0 1 0 1 0 -1 0 0 3009.dat\n1 15 -40 -72 -50 1 0 0 0 1 0 0 0 1 3009.dat\n1 15 60 -72 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 15 -40 -72 50 1 0 0 0 1 0 0 0 1 3009.dat\n1 15 60 -72 50 1 0 0 0 1 0 0 0 1 3010.dat\n0 // wall capping plate course  y = -96\n1 15 -60 -96 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -96 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -60 -96 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -96 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -110 -96 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 110 -96 0 0 0 1 0 1 0 -1 0 0 3710.dat\n0 // cella ceiling\n1 15 0 -104 0 1 0 0 0 1 0 0 0 1 3028.dat\n\n0 // ================ ENTABLATURE RING ================\n0 // architrave plates y = -104\n1 15 -80 -104 -90 1 0 0 0 1 0 0 0 1 3460.dat\n1 15 80 -104 -90 1 0 0 0 1 0 0 0 1 3460.dat\n1 15 -80 -104 90 1 0 0 0 1 0 0 0 1 3460.dat\n1 15 80 -104 90 1 0 0 0 1 0 0 0 1 3460.dat\n1 15 -150 -104 0 0 0 1 0 1 0 -1 0 0 3460.dat\n1 15 150 -104 0 0 0 1 0 1 0 -1 0 0 3460.dat\n0 // frieze bricks y = -112\n1 15 -80 -112 -90 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -112 -90 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 -80 -112 90 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 80 -112 90 1 0 0 0 1 0 0 0 1 3008.dat\n1 15 -150 -112 0 0 0 1 0 1 0 -1 0 0 3008.dat\n1 15 150 -112 0 0 0 1 0 1 0 -1 0 0 3008.dat\n0 // inner roof bearers on cella ceiling y = -112\n1 15 -60 -112 -50 1 0 0 0 1 0 0 0 1 3009.dat\n1 15 60 -112 -50 1 0 0 0 1 0 0 0 1 3009.dat\n1 15 -60 -112 50 1 0 0 0 1 0 0 0 1 3009.dat\n1 15 60 -112 50 1 0 0 0 1 0 0 0 1 3009.dat\n\n0 // ================ CORNICE (16 x 10) y = -136 ================\n1 19 -120 -136 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 -40 -136 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 40 -136 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 120 -136 0 0 0 1 0 1 0 -1 0 0 3030.dat\n\n0 // ================ LOW-PITCH PEDIMENT ROOF ================\n0 // tier 1 : 8 studs deep  y = -144\n1 19 -120 -144 0 0 0 1 0 1 0 -1 0 0 3035.dat\n1 19 -40 -144 0 0 0 1 0 1 0 -1 0 0 3035.dat\n1 19 40 -144 0 0 0 1 0 1 0 -1 0 0 3035.dat\n1 19 120 -144 0 0 0 1 0 1 0 -1 0 0 3035.dat\n0 // tier 2 : 6 studs deep  y = -152\n1 19 -120 -152 0 0 0 1 0 1 0 -1 0 0 3032.dat\n1 19 -40 -152 0 0 0 1 0 1 0 -1 0 0 3032.dat\n1 19 40 -152 0 0 0 1 0 1 0 -1 0 0 3032.dat\n1 19 120 -152 0 0 0 1 0 1 0 -1 0 0 3032.dat\n0 // tier 3 : 4 studs deep  y = -160\n1 19 -120 -160 0 1 0 0 0 1 0 0 0 1 3031.dat\n1 19 -40 -160 0 1 0 0 0 1 0 0 0 1 3031.dat\n1 19 40 -160 0 1 0 0 0 1 0 0 0 1 3031.dat\n1 19 120 -160 0 1 0 0 0 1 0 0 0 1 3031.dat\n0 // tier 4 : 2 studs deep  y = -168\n1 19 -120 -168 0 1 0 0 0 1 0 0 0 1 3020.dat\n1 19 -40 -168 0 1 0 0 0 1 0 0 0 1 3020.dat\n1 19 40 -168 0 1 0 0 0 1 0 0 0 1 3020.dat\n1 19 120 -168 0 1 0 0 0 1 0 0 0 1 3020.dat\n0 // ridge  y = -176\n1 19 -80 -176 0 1 0 0 0 1 0 0 0 1 3460.dat\n1 19 80 -176 0 1 0 0 0 1 0 0 0 1 3460.dat\n0\n```"
+  },
+  {
+   "role": "user",
+   "content": "Verifier report:\n105 invalid parts: 63 unattached, 84 collisions \u00b7 14 clusters\n  #3 3030.dat colour 19 (file line: 1 19 -120 -8 0 0 0 1 0 1 0 -1 0 0 3030.dat): interpenetrates parts 92, 88, 90, 14\n  #4 3030.dat colour 19 (file line: 1 19 -40 -8 0 0 0 1 0 1 0 -1 0 0 3030.dat): interpenetrates parts 88, 90, 19, 49\n  #5 3030.dat colour 19 (file line: 1 19 40 -8 0 0 0 1 0 1 0 -1 0 0 3030.dat): interpenetrates parts 89, 91, 24, 54\n  #6 3030.dat colour 19 (file line: 1 19 120 -8 0 0 0 1 0 1 0 -1 0 0 3030.dat): interpenetrates parts 89, 91, 93, 94\n  #7 3028.dat colour 15 (file line: 1 15 0 -16 0 1 0 0 0 1 0 0 0 1 3028.dat): interpenetrates parts 91, 90, 88, 89\n  #8 4073.dat colour 15 (file line: 1 15 -150 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 9\n  #9 3062b.dat colour 15 (file line: 1 15 -150 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 8, 3\n  #12 3024.dat colour 15 (file line: 1 15 -150 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 123\n  #13 4073.dat colour 15 (file line: 1 15 -90 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 14\n  #14 3062b.dat colour 15 (file line: 1 15 -90 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 13, 3\n  #17 3024.dat colour 15 (file line: 1 15 -90 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 123\n  #18 4073.dat colour 15 (file line: 1 15 -30 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 19\n  #19 3062b.dat colour 15 (file line: 1 15 -30 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 18, 4\n  #22 3024.dat colour 15 (file line: 1 15 -30 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 123\n  #23 4073.dat colour 15 (file line: 1 15 30 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 24\n  #24 3062b.dat colour 15 (file line: 1 15 30 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 23, 5\n  #27 3024.dat colour 15 (file line: 1 15 30 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 124\n  #28 4073.dat colour 15 (file line: 1 15 90 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 29\n  #29 3062b.dat colour 15 (file line: 1 15 90 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 28, 6\n  #32 3024.dat colour 15 (file line: 1 15 90 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 124\n  #33 4073.dat colour 15 (file line: 1 15 150 -16 -90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 34\n  #34 3062b.dat colour 15 (file line: 1 15 150 -24 -90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 33, 6\n  #37 3024.dat colour 15 (file line: 1 15 150 -96 -90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 124\n  #38 4073.dat colour 15 (file line: 1 15 -150 -16 90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 39\n  #39 3062b.dat colour 15 (file line: 1 15 -150 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 38, 3\n  #42 3024.dat colour 15 (file line: 1 15 -150 -96 90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 125\n  #43 4073.dat colour 15 (file line: 1 15 -90 -16 90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 44\n  #44 3062b.dat colour 15 (file line: 1 15 -90 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 43, 3\n  #47 3024.dat colour 15 (file line: 1 15 -90 -96 90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 125\n  #48 4073.dat colour 15 (file line: 1 15 -30 -16 90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 49\n  #49 3062b.dat colour 15 (file line: 1 15 -30 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 48, 4\n  #52 3024.dat colour 15 (file line: 1 15 -30 -96 90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 125\n  #53 4073.dat colour 15 (file line: 1 15 30 -16 90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 54\n  #54 3062b.dat colour 15 (file line: 1 15 30 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 53, 5\n  #57 3024.dat colour 15 (file line: 1 15 30 -96 90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 126\n  #58 4073.dat colour 15 (file line: 1 15 90 -16 90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 59\n  #59 3062b.dat colour 15 (file line: 1 15 90 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 58, 6\n  #62 3024.dat colour 15 (file line: 1 15 90 -96 90 1 0 0 0 1 0 0 0 1 3024.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 126\n  #63 4073.dat colour 15 (file line: 1 15 150 -16 90 1 0 0 0 1 0 0 0 1 4073.dat): interpenetrates part 64\n  #64 3062b.dat colour 15 (file line: 1 15 150 -24 90 1 0 0 0 1 0 0 0 1 3062b.dat): interpenetrates parts 63, 6\n  \u2026 and 65 more\nFix these problems and output the corrected COMPLETE file as a ```ldraw fenced block."
+  },
+  {
+   "role": "assistant",
+   "content": "```ldraw\n0 Greek Temple\n0 Name: greek_temple.ldr\n0 Author: LDraw Builder\n0 !LDRAW_ORG Unofficial_Model\n0 !LICENSE Redistributable under CCAL version 2.0\n0 // All elements are plate-height (8 LDU) modules so every vertical\n0 // joint is a true stud/anti-stud seating.  Footprint 18 x 12 studs.\n0 // Overall height 176 LDU.\n\n0 // ================= STYLOBATE : bottom step 18 x 12 =================\n1 19 -120 0 0 0 0 1 0 1 0 -1 0 0 3028.dat\n1 19 0 0 0 0 0 1 0 1 0 -1 0 0 3028.dat\n1 19 120 0 0 0 0 1 0 1 0 -1 0 0 3028.dat\n1 19 -120 -8 0 0 0 1 0 1 0 -1 0 0 3028.dat\n1 19 0 -8 0 0 0 1 0 1 0 -1 0 0 3028.dat\n1 19 120 -8 0 0 0 1 0 1 0 -1 0 0 3028.dat\n\n0 // ================= STYLOBATE : upper step 16 x 10 =================\n1 19 -120 -16 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 -40 -16 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 40 -16 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 120 -16 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 -120 -24 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 -40 -24 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 40 -24 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 120 -24 0 0 0 1 0 1 0 -1 0 0 3030.dat\n\n0 // ================= COLONNADE : 16 round columns ===================\n0 // --- long side z = -90 : six columns ---\n1 15 -150 -32 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -40 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -48 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -56 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -64 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -72 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -80 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -88 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -96 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -32 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -40 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -48 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -56 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -64 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -72 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -80 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -88 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -96 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -32 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -40 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -48 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -56 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -64 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -72 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -80 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -88 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -96 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -32 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -40 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -48 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -56 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -64 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -72 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -80 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -88 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -96 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -32 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -40 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -48 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -56 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -64 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -72 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -80 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -88 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -96 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -32 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -40 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -48 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -56 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -64 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -72 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -80 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -88 -90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -96 -90 1 0 0 0 1 0 0 0 1 4073.dat\n0 // --- long side z = +90 : six columns ---\n1 15 -150 -32 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -40 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -48 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -56 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -64 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -72 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -80 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -88 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -96 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -32 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -40 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -48 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -56 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -64 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -72 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -80 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -88 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -90 -96 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -32 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -40 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -48 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -56 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -64 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -72 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -80 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -88 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -30 -96 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -32 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -40 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -48 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -56 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -64 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -72 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -80 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -88 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 30 -96 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -32 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -40 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -48 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -56 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -64 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -72 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -80 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -88 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 90 -96 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -32 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -40 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -48 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -56 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -64 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -72 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -80 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -88 90 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -96 90 1 0 0 0 1 0 0 0 1 4073.dat\n0 // --- short side x = -150 : two intermediate columns ---\n1 15 -150 -32 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -40 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -48 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -56 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -64 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -72 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -80 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -88 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -96 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -32 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -40 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -48 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -56 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -64 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -72 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -80 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -88 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 -150 -96 30 1 0 0 0 1 0 0 0 1 4073.dat\n0 // --- short side x = +150 : two intermediate columns ---\n1 15 150 -32 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -40 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -48 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -56 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -64 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -72 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -80 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -88 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -96 -30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -32 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -40 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -48 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -56 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -64 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -72 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -80 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -88 30 1 0 0 0 1 0 0 0 1 4073.dat\n1 15 150 -96 30 1 0 0 0 1 0 0 0 1 4073.dat\n\n0 // ================= CELLA WALL  (12 x 6 enclosure) =================\n1 15 -60 -32 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -32 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -60 -32 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -32 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -110 -32 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 110 -32 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 -60 -40 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -40 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -60 -40 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -40 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -110 -40 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 110 -40 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 -60 -48 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -48 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -60 -48 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -48 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -110 -48 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 110 -48 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 -60 -56 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -56 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -60 -56 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -56 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -110 -56 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 110 -56 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 -60 -64 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -64 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -60 -64 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -64 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -110 -64 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 110 -64 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 -60 -72 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -72 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -60 -72 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -72 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -110 -72 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 110 -72 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 -60 -80 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -80 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -60 -80 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -80 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -110 -80 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 110 -80 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 -60 -88 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -88 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -60 -88 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -88 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -110 -88 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 110 -88 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 -60 -96 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -96 -50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -60 -96 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 60 -96 50 1 0 0 0 1 0 0 0 1 3666.dat\n1 15 -110 -96 0 0 0 1 0 1 0 -1 0 0 3710.dat\n1 15 110 -96 0 0 0 1 0 1 0 -1 0 0 3710.dat\n\n0 // ============ ENTABLATURE : architrave ring on the columns ========\n1 15 -80 -104 -90 1 0 0 0 1 0 0 0 1 3460.dat\n1 15 80 -104 -90 1 0 0 0 1 0 0 0 1 3460.dat\n1 15 -80 -104 90 1 0 0 0 1 0 0 0 1 3460.dat\n1 15 80 -104 90 1 0 0 0 1 0 0 0 1 3460.dat\n1 15 -150 -104 0 0 0 1 0 1 0 -1 0 0 3460.dat\n1 15 150 -104 0 0 0 1 0 1 0 -1 0 0 3460.dat\n0 // cella ceiling slab resting on the cella wall\n1 15 0 -104 0 1 0 0 0 1 0 0 0 1 3028.dat\n\n0 // ============ ENTABLATURE : frieze ring ===========================\n1 15 -80 -112 -90 1 0 0 0 1 0 0 0 1 3460.dat\n1 15 80 -112 -90 1 0 0 0 1 0 0 0 1 3460.dat\n1 15 -80 -112 90 1 0 0 0 1 0 0 0 1 3460.dat\n1 15 80 -112 90 1 0 0 0 1 0 0 0 1 3460.dat\n1 15 -150 -112 0 0 0 1 0 1 0 -1 0 0 3460.dat\n1 15 150 -112 0 0 0 1 0 1 0 -1 0 0 3460.dat\n\n0 // ============ CORNICE  16 x 10 (two plate courses) ================\n1 19 -120 -120 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 -40 -120 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 40 -120 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 120 -120 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 -120 -128 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 -40 -128 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 40 -128 0 0 0 1 0 1 0 -1 0 0 3030.dat\n1 19 120 -128 0 0 0 1 0 1 0 -1 0 0 3030.dat\n\n0 // ============ LOW-PITCH PEDIMENT ROOF (gable ends at x = +/-160) ===\n0 // 16 x 8\n1 19 -120 -136 0 0 0 1 0 1 0 -1 0 0 3035.dat\n1 19 -40 -136 0 0 0 1 0 1 0 -1 0 0 3035.dat\n1 19 40 -136 0 0 0 1 0 1 0 -1 0 0 3035.dat\n1 19 120 -136 0 0 0 1 0 1 0 -1 0 0 3035.dat\n0 // 16 x 6\n1 19 -120 -144 0 0 0 1 0 1 0 -1 0 0 3032.dat\n1 19 -40 -144 0 0 0 1 0 1 0 -1 0 0 3032.dat\n1 19 40 -144 0 0 0 1 0 1 0 -1 0 0 3032.dat\n1 19 120 -144 0 0 0 1 0 1 0 -1 0 0 3032.dat\n0 // 16 x 4\n1 19 -120 -152 0 1 0 0 0 1 0 0 0 1 3031.dat\n1 19 -40 -152 0 1 0 0 0 1 0 0 0 1 3031.dat\n1 19 40 -152 0 1 0 0 0 1 0 0 0 1 3031.dat\n1 19 120 -152 0 1 0 0 0 1 0 0 0 1 3031.dat\n0 // 16 x 2 ridge\n1 19 -80 -160 0 1 0 0 0 1 0 0 0 1 3034.dat\n1 19 80 -160 0 1 0 0 0 1 0 0 0 1 3034.dat\n1 19 -80 -168 0 1 0 0 0 1 0 0 0 1 3034.dat\n1 19 80 -168 0 1 0 0 0 1 0 0 0 1 3034.dat\n0\n```"
+  }
+ ]
+}

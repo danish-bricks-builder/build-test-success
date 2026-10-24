@@ -1,0 +1,169 @@
+{
+ "runId": "tower-square_raw_6adbb0a7",
+ "task": "tower-square",
+ "condition": "raw",
+ "model": "claude-opus-5",
+ "prompt": "Build a square watchtower: footprint about 6x6 studs, at least 10 bricks tall, with a wider battlement platform on top (about 8x8 studs, with a parapet ring around its edge). Two colors maximum, sensible courses with overlapped seams (running bond), no floating parts. 60-120 parts.",
+ "seconds": 132,
+ "rounds": [
+  {
+   "round": 1,
+   "ldr": "tower-square_raw_6adbb0a7.round1.ldr",
+   "grade": {
+    "task": "tower-square",
+    "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/tower-square_raw_6adbb0a7.round1.ldr",
+    "partCount": 84,
+    "heightLdu": 272,
+    "footprintStuds": [
+     11,
+     8
+    ],
+    "valid": false,
+    "verifyReport": "10 invalid parts: 2 unattached, 10 collisions \u00b7 11 clusters",
+    "stable": true,
+    "stabilityReport": "STABLE: 84 parts \u00b7 117 g \u00b7 CoM margin 9.5 LDU inside ground footprint",
+    "post": {
+     "parts": true,
+     "height": true,
+     "footprint": true
+    },
+    "PASS": false
+   }
+  }
+ ],
+ "PASS": false,
+ "final": {
+  "task": "tower-square",
+  "file": "/Users/maksymb/Desktop/labs/build-test-success/runs/tower-square_raw_6adbb0a7.round1.ldr",
+  "partCount": 84,
+  "heightLdu": 272,
+  "footprintStuds": [
+   8,
+   8
+  ],
+  "valid": false,
+  "verifyReport": "24 invalid parts: 26 unattached, 10 collisions \u00b7 11 clusters\n  #60 3035.dat colour 72 (file line: 1 72 0 -240 -40 1 0 0 0 1 0 0 0 1 3035.dat): no joint to any other part and not resting on the ground; interpenetrates parts 62, 63, 66, 68\n  #61 3035.dat colour 72 (file line: 1 72 0 -240 40 1 0 0 0 1 0 0 0 1 3035.dat): no joint to any other part and not resting on the ground; interpenetrates parts 65, 64, 69, 67\n  #62 3010.dat colour 72 (file line: 1 72 -40 -248 -70 1 0 0 0 1 0 0 0 1 3010.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 60\n  #63 3010.dat colour 72 (file line: 1 72 40 -248 -70 1 0 0 0 1 0 0 0 1 3010.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 60\n  #64 3010.dat colour 72 (file line: 1 72 -40 -248 70 1 0 0 0 1 0 0 0 1 3010.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 61\n  #65 3010.dat colour 72 (file line: 1 72 40 -248 70 1 0 0 0 1 0 0 0 1 3010.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 61\n  #66 3010.dat colour 72 (file line: 1 72 -70 -248 -20 0 0 1 0 1 0 -1 0 0 3010.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates parts 60, 61\n  #67 3004.dat colour 72 (file line: 1 72 -70 -248 40 0 0 1 0 1 0 -1 0 0 3004.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 61\n  #68 3004.dat colour 72 (file line: 1 72 70 -248 -40 0 0 1 0 1 0 -1 0 0 3004.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates part 60\n  #69 3010.dat colour 72 (file line: 1 72 70 -248 20 0 0 1 0 1 0 -1 0 0 3010.dat): joined only to parts that never reach the ground (the structure floats); interpenetrates parts 61, 60\n  #70 3005.dat colour 72 (file line: 1 72 -70 -272 -70 1 0 0 0 1 0 0 0 1 3005.dat): joined only to parts that never reach the ground (the structure floats)\n  #71 3005.dat colour 72 (file line: 1 72 -30 -272 -70 1 0 0 0 1 0 0 0 1 3005.dat): joined only to parts that never reach the ground (the structure floats)\n  #72 3005.dat colour 72 (file line: 1 72 10 -272 -70 1 0 0 0 1 0 0 0 1 3005.dat): joined only to parts that never reach the ground (the structure floats)\n  #73 3005.dat colour 72 (file line: 1 72 50 -272 -70 1 0 0 0 1 0 0 0 1 3005.dat): joined only to parts that never reach the ground (the structure floats)\n  #74 3005.dat colour 72 (file line: 1 72 -50 -272 70 1 0 0 0 1 0 0 0 1 3005.dat): joined only to parts that never reach the ground (the structure floats)\n  #75 3005.dat colour 72 (file line: 1 72 -10 -272 70 1 0 0 0 1 0 0 0 1 3005.dat): joined only to parts that never reach the ground (the structure floats)\n  #76 3005.dat colour 72 (file line: 1 72 30 -272 70 1 0 0 0 1 0 0 0 1 3005.dat): joined only to parts that never reach the ground (the structure floats)\n  #77 3005.dat colour 72 (file line: 1 72 70 -272 70 1 0 0 0 1 0 0 0 1 3005.dat): joined only to parts that never reach the ground (the structure floats)\n  #78 3005.dat colour 72 (file line: 1 72 -70 -272 -30 1 0 0 0 1 0 0 0 1 3005.dat): joined only to parts that never reach the ground (the structure floats)\n  #79 3005.dat colour 72 (file line: 1 72 -70 -272 10 1 0 0 0 1 0 0 0 1 3005.dat): joined only to parts that never reach the ground (the structure floats)\n  #80 3005.dat colour 72 (file line: 1 72 -70 -272 50 1 0 0 0 1 0 0 0 1 3005.dat): joined only to parts that never reach the ground (the structure floats)\n  #81 3005.dat colour 72 (file line: 1 72 70 -272 -50 1 0 0 0 1 0 0 0 1 3005.dat): joined only to parts that never reach the ground (the structure floats)\n  #82 3005.dat colour 72 (file line: 1 72 70 -272 -10 1 0 0 0 1 0 0 0 1 3005.dat): joined only to parts that never reach the ground (the structure floats)\n  #83 3005.dat colour 72 (file line: 1 72 70 -272 30 1 0 0 0 1 0 0 0 1 3005.dat): joined only to parts that never reach the ground (the structure floats)",
+  "stable": true,
+  "stabilityReport": "STABLE: 84 parts \u00b7 117 g \u00b7 CoM margin 9.5 LDU inside ground footprint",
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "PASS": false,
+  "faults": {
+   "unattached": [
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83
+   ],
+   "colliding": [
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69
+   ],
+   "reasons": {
+    "60": "no joint to any other part and not resting on the ground; interpenetrates parts 62, 63, 66, 68",
+    "61": "no joint to any other part and not resting on the ground; interpenetrates parts 65, 64, 69, 67",
+    "62": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 60",
+    "63": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 60",
+    "64": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 61",
+    "65": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 61",
+    "66": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 60, 61",
+    "67": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 61",
+    "68": "joined only to parts that never reach the ground (the structure floats); interpenetrates part 60",
+    "69": "joined only to parts that never reach the ground (the structure floats); interpenetrates parts 61, 60",
+    "70": "joined only to parts that never reach the ground (the structure floats)",
+    "71": "joined only to parts that never reach the ground (the structure floats)",
+    "72": "joined only to parts that never reach the ground (the structure floats)",
+    "73": "joined only to parts that never reach the ground (the structure floats)",
+    "74": "joined only to parts that never reach the ground (the structure floats)",
+    "75": "joined only to parts that never reach the ground (the structure floats)",
+    "76": "joined only to parts that never reach the ground (the structure floats)",
+    "77": "joined only to parts that never reach the ground (the structure floats)",
+    "78": "joined only to parts that never reach the ground (the structure floats)",
+    "79": "joined only to parts that never reach the ground (the structure floats)",
+    "80": "joined only to parts that never reach the ground (the structure floats)",
+    "81": "joined only to parts that never reach the ground (the structure floats)",
+    "82": "joined only to parts that never reach the ground (the structure floats)",
+    "83": "joined only to parts that never reach the ground (the structure floats)"
+   }
+  },
+  "view": {
+   "extent": {
+    "minX": -80,
+    "maxX": 80,
+    "minZ": -80,
+    "maxZ": 80,
+    "height": 272
+   },
+   "limits": {
+    "maxFootprintStuds": [
+     12,
+     12
+    ],
+    "minHeightLdu": 240,
+    "minParts": 40
+   },
+   "com": [
+    0,
+    130.94683544303797,
+    0
+   ],
+   "ground": {
+    "x0": -60,
+    "x1": 60,
+    "z0": -60,
+    "z1": 60
+   },
+   "stability": {
+    "ok": true,
+    "marginLdu": 9.5,
+    "issues": []
+   }
+  }
+ },
+ "conversation": [
+  {
+   "role": "system",
+   "content": "You are an expert LEGO designer. You output raw LDraw model files.\nRespond with ONLY the LDraw file in a ```ldraw fenced block \u2014 no other prose.\nUse standard LDraw conventions: type-1 lines `1 <color> x y z a b c d e f g h i <part>.dat`,\n-Y is up, 1 brick height = 24 LDU, 1 plate = 8 LDU, 1 stud pitch = 20 LDU.\nUse common official part files (3001.dat, 3003.dat, 3020.dat, 3024.dat, ...).\nEvery part must be properly connected (studs seated in anti-studs) and no two parts may overlap."
+  },
+  {
+   "role": "user",
+   "content": "Build a square watchtower: footprint about 6x6 studs, at least 10 bricks tall, with a wider battlement platform on top (about 8x8 studs, with a parapet ring around its edge). Two colors maximum, sensible courses with overlapped seams (running bond), no floating parts. 60-120 parts.\nConstraints: footprint must fit within 12x12 studs; height at least 240 LDU (10 bricks); use at least 40 parts."
+  },
+  {
+   "role": "assistant",
+   "content": "```ldraw\n0 Square Watchtower\n0 Name: watchtower.ldr\n0 Author: LEGO Designer\n0 !LDRAW_ORG Unofficial_Model\n0 BFC CERTIFY CCW\n\n0 // ---------------------------------------------------------------\n0 // Tower shaft: 6 x 6 studs hollow, 10 brick courses (240 LDU tall)\n0 // Courses alternate A / B for running-bond seams\n0 // Colour 71 = Light Bluish Gray\n0 // ---------------------------------------------------------------\n\n0 // Course 1 (A) y = 0\n1 71 -20 0 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 40 0 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 20 0 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 -40 0 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -50 0 0 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 50 0 0 0 0 1 0 1 0 -1 0 0 3010.dat\n\n0 // Course 2 (B) y = -24\n1 71 -50 -24 -20 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 -50 -24 40 0 0 1 0 1 0 -1 0 0 3004.dat\n1 71 50 -24 20 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 50 -24 -40 0 0 1 0 1 0 -1 0 0 3004.dat\n1 71 0 -24 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 0 -24 50 1 0 0 0 1 0 0 0 1 3010.dat\n\n0 // Course 3 (A) y = -48\n1 71 -20 -48 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 40 -48 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 20 -48 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 -40 -48 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -50 -48 0 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 50 -48 0 0 0 1 0 1 0 -1 0 0 3010.dat\n\n0 // Course 4 (B) y = -72\n1 71 -50 -72 -20 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 -50 -72 40 0 0 1 0 1 0 -1 0 0 3004.dat\n1 71 50 -72 20 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 50 -72 -40 0 0 1 0 1 0 -1 0 0 3004.dat\n1 71 0 -72 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 0 -72 50 1 0 0 0 1 0 0 0 1 3010.dat\n\n0 // Course 5 (A) y = -96\n1 71 -20 -96 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 40 -96 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 20 -96 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 -40 -96 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -50 -96 0 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 50 -96 0 0 0 1 0 1 0 -1 0 0 3010.dat\n\n0 // Course 6 (B) y = -120\n1 71 -50 -120 -20 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 -50 -120 40 0 0 1 0 1 0 -1 0 0 3004.dat\n1 71 50 -120 20 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 50 -120 -40 0 0 1 0 1 0 -1 0 0 3004.dat\n1 71 0 -120 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 0 -120 50 1 0 0 0 1 0 0 0 1 3010.dat\n\n0 // Course 7 (A) y = -144\n1 71 -20 -144 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 40 -144 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 20 -144 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 -40 -144 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -50 -144 0 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 50 -144 0 0 0 1 0 1 0 -1 0 0 3010.dat\n\n0 // Course 8 (B) y = -168\n1 71 -50 -168 -20 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 -50 -168 40 0 0 1 0 1 0 -1 0 0 3004.dat\n1 71 50 -168 20 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 50 -168 -40 0 0 1 0 1 0 -1 0 0 3004.dat\n1 71 0 -168 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 0 -168 50 1 0 0 0 1 0 0 0 1 3010.dat\n\n0 // Course 9 (A) y = -192\n1 71 -20 -192 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 40 -192 -50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 20 -192 50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 -40 -192 50 1 0 0 0 1 0 0 0 1 3004.dat\n1 71 -50 -192 0 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 50 -192 0 0 0 1 0 1 0 -1 0 0 3010.dat\n\n0 // Course 10 (B) y = -216\n1 71 -50 -216 -20 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 -50 -216 40 0 0 1 0 1 0 -1 0 0 3004.dat\n1 71 50 -216 20 0 0 1 0 1 0 -1 0 0 3010.dat\n1 71 50 -216 -40 0 0 1 0 1 0 -1 0 0 3004.dat\n1 71 0 -216 -50 1 0 0 0 1 0 0 0 1 3010.dat\n1 71 0 -216 50 1 0 0 0 1 0 0 0 1 3010.dat\n\n0 // ---------------------------------------------------------------\n0 // Battlement platform: 8 x 8 studs of plate at y = -240\n0 // Colour 72 = Dark Bluish Gray\n0 // ---------------------------------------------------------------\n1 72 0 -240 -40 1 0 0 0 1 0 0 0 1 3035.dat\n1 72 0 -240 40 1 0 0 0 1 0 0 0 1 3035.dat\n\n0 // ---------------------------------------------------------------\n0 // Parapet ring (1 brick course) around the 8 x 8 platform edge\n0 // ---------------------------------------------------------------\n1 72 -40 -248 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 72 40 -248 -70 1 0 0 0 1 0 0 0 1 3010.dat\n1 72 -40 -248 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 72 40 -248 70 1 0 0 0 1 0 0 0 1 3010.dat\n1 72 -70 -248 -20 0 0 1 0 1 0 -1 0 0 3010.dat\n1 72 -70 -248 40 0 0 1 0 1 0 -1 0 0 3004.dat\n1 72 70 -248 -40 0 0 1 0 1 0 -1 0 0 3004.dat\n1 72 70 -248 20 0 0 1 0 1 0 -1 0 0 3010.dat\n\n0 // ---------------------------------------------------------------\n0 // Crenellations (merlons) on top of the parapet ring\n0 // ---------------------------------------------------------------\n1 72 -70 -272 -70 1 0 0 0 1 0 0 0 1 3005.dat\n1 72 -30 -272 -70 1 0 0 0 1 0 0 0 1 3005.dat\n1 72 10 -272 -70 1 0 0 0 1 0 0 0 1 3005.dat\n1 72 50 -272 -70 1 0 0 0 1 0 0 0 1 3005.dat\n1 72 -50 -272 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 72 -10 -272 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 72 30 -272 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 72 70 -272 70 1 0 0 0 1 0 0 0 1 3005.dat\n1 72 -70 -272 -30 1 0 0 0 1 0 0 0 1 3005.dat\n1 72 -70 -272 10 1 0 0 0 1 0 0 0 1 3005.dat\n1 72 -70 -272 50 1 0 0 0 1 0 0 0 1 3005.dat\n1 72 70 -272 -50 1 0 0 0 1 0 0 0 1 3005.dat\n1 72 70 -272 -10 1 0 0 0 1 0 0 0 1 3005.dat\n1 72 70 -272 30 1 0 0 0 1 0 0 0 1 3005.dat\n0\n```"
+  }
+ ],
+ "regraded": "footprint measure turned with the part (2026-10-24)"
+}
