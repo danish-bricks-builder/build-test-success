@@ -129,6 +129,7 @@ JOBS_LOCK = threading.Lock()
 LOG_DIR = HERE / "runs" / "_jobs"
 ENV_PORT = 8788
 ENV_SERVER: dict = {"proc": None, "key": None}
+ENV_LOCK = threading.Lock()  # parallel workers must not race to start the environment
 
 
 def stop(proc: subprocess.Popen | None) -> None:
@@ -153,12 +154,21 @@ def port_open(port: int) -> bool:
 
 def ensure_env_server(key: str) -> str | None:
     """Start env/server.ts (or restart it when the key changed). Returns an error string or None."""
+    with ENV_LOCK:
+        return _ensure_env_server(key)
+
+
+def _ensure_env_server(key: str) -> str | None:
     p = ENV_SERVER["proc"]
     if p is not None and p.poll() is None and ENV_SERVER["key"] == key:
         return None
-    stop(p)
+    if p is not None and p.poll() is None:
+        stop(p)  # ours, but with another key
     if port_open(ENV_PORT):
-        return f"something else is already listening on port {ENV_PORT}; stop it or start the environment yourself with the same key"
+        # An environment is already up that this process did not start (or lost track of): use it.
+        # It must have been started with the same key — the README says so for a manual start.
+        ENV_SERVER["proc"], ENV_SERVER["key"] = None, key
+        return None
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     log = open(LOG_DIR / "env-server.log", "ab")
     budget = str(4 * 3600 * 1000)  # no per-turn time limit for benchmark sessions (the paper's ran until done)
@@ -512,7 +522,7 @@ class Handler(SimpleHTTPRequestHandler):
         if path == "/api/jobs":
             with JOBS_LOCK:
                 views = [job_view(j) for j in JOBS.values()]
-            env_up = ENV_SERVER["proc"] is not None and ENV_SERVER["proc"].poll() is None
+            env_up = (ENV_SERVER["proc"] is not None and ENV_SERVER["proc"].poll() is None) or port_open(ENV_PORT)
             return self.send_json({"jobs": sorted(views, key=lambda j: j["startedAt"], reverse=True), "envServer": env_up, "conditions": list(CONDITIONS.values()), "models": json.loads((HERE / "conditions.json").read_text())["models"]})
         m = re.fullmatch(r"/api/jobs/([\w-]+)/log", path)
         if m:
