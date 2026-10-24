@@ -62,7 +62,7 @@ for (const f of readdirSync(FROM)) {
 }
 
 const FRAME: Record<Mark, string> = { "✓": "#2e9e4f", "×v": "#e0545b", "×s": "#e3a21a", "×f": "#e3a21a", "×r": "#e3a21a", "∅": "#d6d9de" };
-const expressible = (t: Task, key: string) => !(t.type === "edit" && key.startsWith("raw-ldraw"));
+const expressible = (_t: Task, _key: string) => true; // every task runs in every condition
 
 async function main() {
   if (!renderAvailable()) { console.error("cannot render here: needs Chrome and public/ldraw (sh fetch-data.sh --eyes)"); process.exit(2); }

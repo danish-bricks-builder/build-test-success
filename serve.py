@@ -46,8 +46,11 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ORIGIN = "https://pub-09680f02457547f9bd4034ba506c47d7.r2.dev"
-CONDITION_NAMES = {c["key"]: c["name"] for c in json.loads((HERE / "conditions.json").read_text())["conditions"]}
-CONDITION_NAMES.update({c["name"]: c["name"] for c in json.loads((HERE / "conditions.json").read_text())["conditions"]})
+_CONDS = json.loads((HERE / "conditions.json").read_text())["conditions"]
+# key, current name, or an earlier name → the current name
+CONDITION_NAMES = {c["key"]: c["name"] for c in _CONDS}
+CONDITION_NAMES.update({c["name"]: c["name"] for c in _CONDS})
+CONDITION_NAMES.update({a: c["name"] for c in _CONDS for a in c.get("aliases", [])})
 MISSING: set[str] = set()  # part-library paths the bucket does not have (so we ask once)
 
 
@@ -374,19 +377,14 @@ QUEUE_LOCK = threading.Lock()
 
 def all_cells() -> list[tuple[str, str]]:
     tasks = json.loads((HERE / "tasks.json").read_text())["tasks"]
-    cells = []
-    for c in CONDITIONS.values():
-        for t in tasks:
-            if t["type"] == "edit" and c["key"].startswith("raw-ldraw"):
-                continue
-            cells.append((t["id"], c["key"]))
-    return cells
+    return [(t["id"], c["key"]) for c in CONDITIONS.values() for t in tasks]
 
 
 def done_cells() -> set[tuple[str, str]]:
     """(task, condition key) pairs that already have a rerun record in runs/."""
     out = set()
     by_name = {c["name"]: c["key"] for c in CONDITIONS.values()}
+    by_name.update({a: c["key"] for c in CONDITIONS.values() for a in c.get("aliases", [])})
     for p in (HERE / "runs").glob("*.json"):
         try:
             r = json.loads(p.read_text())

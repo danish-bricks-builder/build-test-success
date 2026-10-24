@@ -94,6 +94,32 @@ async function main() {
   // Both checks always run, as in the paper's final grading (the feedback text sent between
   // attempts quotes stability only when the build is valid; see baseline.py).
   const verify = verifyBuild(parts, meta, conns, vox);
+  // Edit tasks graded outside the environment (--seed <official set>): the seed's pre-existing
+  // complaints are not the model's — validity means no NEW unattached parts or collisions, the
+  // same rule the environment's gates and env/run.ts apply.
+  const seedArg = process.argv.indexOf("--seed");
+  const seedFile = seedArg >= 0 ? process.argv[seedArg + 1] : null;
+  let seedParts: typeof parts | null = null;
+  if (seedFile) {
+    seedParts = fromLdr(readFileSync(seedFile, "utf8"), meta).parts;
+    await Promise.all(
+      [...new Set(seedParts.map((p) => p.part))].filter((p) => !vox.parts[p]).map(async (p) => {
+        const cached = join(DATA, "parts", "voxels", `${p}.json`);
+        if (!existsSync(cached)) {
+          const res = await fetch(`${ORIGIN}/data/parts/voxels/${encodeURIComponent(p)}.json`).catch(() => null);
+          if (!res || !res.ok) return;
+          writeFileSync(cached, await res.text());
+        }
+        vox.parts[p] = JSON.parse(readFileSync(cached, "utf8"));
+      }),
+    );
+    const seedV = verifyBuild(seedParts, meta, conns, vox);
+    const newUnattached = verify.unconnected.length - seedV.unconnected.length;
+    const newCollisions = verify.collisions.length - seedV.collisions.length;
+    out.seedBaseline = { unconnected: seedV.unconnected.length, collisions: seedV.collisions.length };
+    out.newProblems = { unconnected: Math.max(0, newUnattached), collisions: Math.max(0, newCollisions) };
+    (verify as { ok: boolean }).ok = newUnattached <= 0 && newCollisions <= 0;
+  }
   const stability = checkStability(parts, meta, validateConnections(parts, meta, conns), vox);
 
   // the task requirements, measured the way the paper's harness measured them
@@ -120,6 +146,32 @@ async function main() {
       out[`parts_${req.match}`] = n;
       post[`names(${req.match})`] = n >= req.min;
     }
+  if (seedParts && task.post.minPreserved != null) {
+    // translation-invariant preservation, as in env/run.ts: the original may be relocated as one
+    // rigid unit; find the dominant offset between original and final poses of matching
+    // part+color, then count the originals that survive under it.
+    const finalsByType = new Map<string, { x: number; y: number; z: number }[]>();
+    for (const p of parts) {
+      const key = `${p.part}/${p.color}`;
+      if (!finalsByType.has(key)) finalsByType.set(key, []);
+      finalsByType.get(key)!.push({ x: p.x, y: p.y, z: p.z });
+    }
+    const votes = new Map<string, number>();
+    for (const o of seedParts)
+      for (const f of finalsByType.get(`${o.part}/${o.color}`) ?? []) {
+        const key = `${Math.round(f.x - o.x)}/${Math.round(f.y - o.y)}/${Math.round(f.z - o.z)}`;
+        votes.set(key, (votes.get(key) ?? 0) + 1);
+      }
+    const best = [...votes.entries()].sort((a, b) => b[1] - a[1])[0];
+    const [dx, dy, dz] = best ? best[0].split("/").map(Number) : [0, 0, 0];
+    const finalPoses = new Set(parts.map((p) => `${p.part}/${p.color}/${Math.round(p.x)}/${Math.round(p.y)}/${Math.round(p.z)}`));
+    let kept = 0;
+    for (const o of seedParts) if (finalPoses.has(`${o.part}/${o.color}/${Math.round(o.x) + dx}/${Math.round(o.y) + dy}/${Math.round(o.z) + dz}`)) kept++;
+    const preserved = kept / Math.max(1, seedParts.length);
+    out.preserved = +preserved.toFixed(3);
+    out.preservedOffset = [dx, dy, dz];
+    post.preserved = preserved >= task.post.minPreserved;
+  }
   if (task.type === "inventory" && task.set) {
     const inv = JSON.parse(readFileSync(join(DATA, "inv", `${task.set}.json`), "utf8")) as { parts: { p: string; c: number; q: number; spare: boolean }[] };
     const allowed: Record<string, number> = {};

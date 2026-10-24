@@ -1,35 +1,52 @@
 {
- "_note": "Condition keys as the harness writes them into records, with the paper's names. Edit `name` to rename everywhere (report.py, serve.py, env/run.ts read this).",
+ "_note": "Condition keys as the harness writes them into records, with the paper's names (renamed 2026-10-23; `aliases` are the earlier names, still understood everywhere a record or a flag names a condition). Edit `name` to rename everywhere (report.py, serve.py, paper.py, figures.ts, the viewer read this).",
  "conditions": [
   {
    "key": "raw-ldraw-1r",
-   "name": "raw",
-   "harness": "baseline.py --condition raw",
-   "what": "one LDraw file in one shot, no environment"
+   "name": "one-shot",
+   "harness": "baseline.py --condition one-shot",
+   "what": "the model writes the whole LDraw file once, with no environment",
+   "aliases": [
+    "raw",
+    "raw-ldraw-1r"
+   ]
   },
   {
    "key": "raw-ldraw-4r",
-   "name": "raw+feedback",
-   "harness": "baseline.py --condition raw+feedback",
-   "what": "up to four files; the validator's report pasted back as text between them"
+   "name": "one-shot+feedback",
+   "harness": "baseline.py --condition one-shot+feedback",
+   "what": "up to four files; the validator's report pasted back as text between them",
+   "aliases": [
+    "raw+feedback",
+    "raw-ldraw-4r"
+   ]
   },
   {
    "key": "none",
-   "name": "env",
+   "name": "interactive",
    "harness": "env/run.ts --condition none",
-   "what": "the environment and connection language; each placement checked as it is made, the finished build never verified"
+   "what": "builds piece by piece in the environment, in the connection language; each placement is checked as it is made, the finished build never verified",
+   "aliases": [
+    "env"
+   ]
   },
   {
    "key": "bare",
-   "name": "env+gates",
+   "name": "interactive+final check",
    "harness": "env/run.ts --condition bare",
-   "what": "env, plus the validator at completion with two repair rounds per gate"
+   "what": "interactive, plus the validator when the agent declares completion, with two repair rounds per gate",
+   "aliases": [
+    "env+gates"
+   ]
   },
   {
    "key": "verifier",
-   "name": "env+full",
+   "name": "interactive+check tools",
    "harness": "env/run.ts --condition verifier",
-   "what": "env+gates, plus the validator as tools the agent may call during the build"
+   "what": "interactive+final check, plus the validator as tools the agent may call during the build",
+   "aliases": [
+    "env+full"
+   ]
   }
  ],
  "models": {

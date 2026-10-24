@@ -24,7 +24,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE
-PAPER_CONDITIONS = {c["name"]: (c["key"],) for c in json.loads((HERE / "conditions.json").read_text())["conditions"]}
+PAPER_CONDITIONS = {c["name"]: (c["key"], c["name"], *c.get("aliases", [])) for c in json.loads((HERE / "conditions.json").read_text())["conditions"]}
 
 
 def mark(g: dict | None) -> str:

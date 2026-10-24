@@ -13,7 +13,7 @@ Writes
 
 The latest record per (task, condition) counts, as in the viewer. Marks follow serve.py:
 ✓ every check passes · ×v invalid (parts collide or float) · ×s falls over · ×f too big for the
-footprint · ×r another requirement missed · ∅ no model produced · — not expressible.
+footprint · ×r another requirement missed · ∅ no model produced.
 """
 import argparse
 import json
@@ -26,6 +26,7 @@ COND_KEYS = [c["key"] for c in CONDS]
 COND_NAME = {c["key"]: c["name"] for c in CONDS}
 COND_NAME.update({c["name"]: c["name"] for c in CONDS})
 NAME_TO_KEY = {c["name"]: c["key"] for c in CONDS}
+NAME_TO_KEY.update({a: c["key"] for c in CONDS for a in c.get("aliases", [])})  # earlier names in older records
 BANDS = ["small", "medium", "monumental", "edit", "inventory"]
 
 
@@ -69,7 +70,7 @@ def load(folder: Path) -> dict[tuple[str, str], dict]:
 
 
 def expressible(task: dict, key: str) -> bool:
-    return not (task["type"] == "edit" and key.startswith("raw-ldraw"))
+    return True  # every task runs in every condition (the edit task's seed set goes into the one-shot prompt)
 
 
 def table_tex(cells) -> str:

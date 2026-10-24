@@ -3,8 +3,8 @@
 Reproduce the paper's BASELINE conditions: a frontier model writes an LDraw file directly,
 with no environment and no connection language (Sec. 3.7 of "Build, Test, Success").
 
-    raw            one shot: the task prompt in, an LDraw file out, graded offline
-    raw+feedback   up to four attempts; between attempts the validator's report is pasted
+    one-shot            the task prompt in, an LDraw file out, graded offline
+    one-shot+feedback   up to four attempts; between attempts the validator's report is pasted
                    back as plain text and the model is asked for a corrected file
 
 Both are graded by grade.ts, the same checks the paper's harness ran
@@ -16,9 +16,9 @@ Usage, from the repository root (needs `npm install` done and the part data fetc
 and an ANTHROPIC_API_KEY in the environment or in .env):
 
     pip install anthropic
-    python3 baseline.py --condition raw                  # all 12 attemptable tasks
-    python3 baseline.py --condition raw+feedback --tasks greek-temple,pyramid-giza
-    python3 baseline.py --condition raw --dry-run        # print the prompts, call nothing
+    python3 baseline.py --condition one-shot             # all 13 tasks
+    python3 baseline.py --condition one-shot+feedback --tasks greek-temple,pyramid-giza
+    python3 baseline.py --condition one-shot --dry-run   # print the prompts, call nothing
     python3 report.py                                    # the table
 
 Every run writes runs/<runId>.ldr (the final file) and <runId>.json (every
@@ -50,7 +50,9 @@ SYSTEM = "\n".join([
     "Every part must be properly connected (studs seated in anti-studs) and no two parts may overlap.",
 ])
 
-CONDITIONS = {"raw": 1, "raw+feedback": 4}  # name → number of attempts
+CONDITIONS = {"one-shot": 1, "one-shot+feedback": 4}  # name → number of attempts
+ALIASES = {"raw": "one-shot", "raw+feedback": "one-shot+feedback"}  # the names before 2026-10-23
+MAX_TOKENS = 128000  # the model's ceiling; thinking counts against it, and 32k left the big files unwritten
 
 
 def api_key() -> str:
@@ -83,7 +85,32 @@ def user_message(task: dict) -> str:
     text = f"{task['prompt']}\nConstraints: {'; '.join(constraints)}."
     if task["type"] == "inventory":
         text += inventory_text(task["set"])
+    if task["type"] == "edit":
+        text += ("\nThe set, as an LDraw file (this is the starting point; output the COMPLETE edited scene as one file, "
+                 "keeping the set's parts, colors and relative arrangement, moved as one piece if you move it):\n```ldraw\n"
+                 + seed_ldr(task["set"]) + "\n```\n")
     return text
+
+
+def seed_path(task: dict) -> Path | None:
+    """The official set an edit task starts from, flattened to plain part lines (runs/_seeds/<set>.ldr;
+    made from public/models/omr/<set>/ by flatten.ts on first use)."""
+    if task["type"] != "edit":
+        return None
+    flat = RUNS / "_seeds" / f"{task['set']}.ldr"
+    if not flat.exists():
+        index = json.loads((ROOT / "public" / "data" / "omr-index.json").read_text())
+        src = ROOT / "public" / "models" / "omr" / task["set"] / index.get(task["set"], f"{task['set']}.mpd")
+        proc = subprocess.run(["npx", "tsx", "flatten.ts", str(src)], cwd=ROOT, capture_output=True, text=True)
+        if proc.returncode != 0:
+            raise RuntimeError(f"flatten failed:\n{proc.stderr[-1000:]}")
+        flat.parent.mkdir(parents=True, exist_ok=True)
+        flat.write_text(proc.stdout)
+    return flat
+
+
+def seed_ldr(set_id: str) -> str:
+    return seed_path({"type": "edit", "set": set_id}).read_text().strip()  # type: ignore[union-attr]
 
 
 def inventory_text(set_id: str) -> str:
@@ -102,10 +129,10 @@ def extract_ldr(text: str) -> str | None:
     return "\n".join(lines) if len(lines) >= 2 else None
 
 
-def grade(ldr_path: Path, task_id: str) -> dict:
+def grade(ldr_path: Path, task_id: str, seed: Path | None = None) -> dict:
     """grade.ts: the paper's checks, one JSON object back."""
     proc = subprocess.run(
-        ["npx", "tsx", "grade.ts", str(ldr_path), "--task", task_id],
+        ["npx", "tsx", "grade.ts", str(ldr_path), "--task", task_id] + (["--seed", str(seed)] if seed else []),
         cwd=ROOT, capture_output=True, text=True,
     )
     if proc.returncode != 0:
@@ -125,7 +152,7 @@ def feedback_message(g: dict) -> str:
 
 
 def run_task(client, model: str, task: dict, attempts: int, dry_run: bool) -> dict:
-    condition = "raw" if attempts == 1 else "raw+feedback"
+    condition = "one-shot" if attempts == 1 else "one-shot+feedback"
     run_id = task["id"] if task["id"].startswith("prompt") else f"{task['id']}_{condition}_{int(time.time()):x}"
     messages = [{"role": "user", "content": user_message(task)}]
     print(f"\n== {task['id']}  [{condition}]  {run_id}")
@@ -148,7 +175,7 @@ def run_task(client, model: str, task: dict, attempts: int, dry_run: bool) -> di
             continue
         ldr_path = RUNS / f"{run_id}.round{rnd}.ldr"
         ldr_path.write_text(ldr + "\n")
-        g = grade(ldr_path, task["id"])
+        g = grade(ldr_path, task["id"], seed_path(task))
         final_ldr, final_grade = ldr, g
         rounds.append({"round": rnd, "ldr": ldr_path.name, "grade": g})
         if g.get("parseError"):
@@ -180,7 +207,7 @@ def call_model(client, model: str, messages: list[dict], usage: dict) -> str:
     last = None
     for attempt in range(1, 5):
         try:
-            with client.messages.stream(model=model, max_tokens=32000, system=SYSTEM, messages=messages) as stream:
+            with client.messages.stream(model=model, max_tokens=MAX_TOKENS, system=SYSTEM, messages=messages) as stream:
                 final = stream.get_final_message()
                 u = final.usage
                 for k, v in (("input", u.input_tokens), ("output", u.output_tokens), ("cacheRead", getattr(u, "cache_read_input_tokens", 0) or 0), ("cacheWrite", getattr(u, "cache_creation_input_tokens", 0) or 0)):
@@ -198,30 +225,29 @@ def call_model(client, model: str, messages: list[dict], usage: dict) -> str:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--condition", choices=CONDITIONS, default="raw")
-    ap.add_argument("--tasks", default="all", help="comma-separated task ids, 'all' (the 12 attemptable), or 'ablation' (the 7-task subset minus the edit task)")
+    ap.add_argument("--condition", choices=[*CONDITIONS, *ALIASES], default="one-shot")
+    ap.add_argument("--tasks", default="all", help="comma-separated task ids, 'all' (the 13 tasks), or 'ablation' (the 7-task subset)")
     ap.add_argument("--model", default="claude-opus-5", help="the paper used claude-opus-5")
     ap.add_argument("--dry-run", action="store_true", help="print the prompts and call nothing")
     ap.add_argument("--prompt", default=None, help="run this prompt instead of a task from tasks.json (graded on validity and stability only)")
     ap.add_argument("--run-id", default=None, help="record under this run id (default: <task>_<condition>_<time>)")
     a = ap.parse_args()
+    a.condition = ALIASES.get(a.condition, a.condition)
 
     tasks = load_tasks()
     if a.prompt:
         chosen = [{"id": a.run_id or f"prompt_{int(time.time()):x}", "band": "prompt", "type": "build", "prompt": a.prompt.strip(), "post": {"minParts": 1}}]
     elif a.tasks == "all":
-        chosen = [t for t in tasks if t["type"] != "edit"]  # the edit task cannot be expressed without the environment
+        chosen = list(tasks)
     elif a.tasks == "ablation":
         subset = json.loads((HERE / "tasks.json").read_text())["ablation_subset"]
-        chosen = [t for t in tasks if t["id"] in subset and t["type"] != "edit"]
+        chosen = [t for t in tasks if t["id"] in subset]
     else:
         ids = a.tasks.split(",")
         chosen = [t for t in tasks if t["id"] in ids]
         missing = set(ids) - {t["id"] for t in chosen}
         if missing:
             sys.exit(f"unknown tasks: {', '.join(sorted(missing))}")
-        if any(t["type"] == "edit" for t in chosen):
-            sys.exit("the edit task cannot run in the raw conditions (no way to load a set without the environment)")
 
     RUNS.mkdir(exist_ok=True)
     client = None

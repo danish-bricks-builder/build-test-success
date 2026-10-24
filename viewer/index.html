@@ -141,7 +141,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { LDrawLoader } from "three/addons/loaders/LDrawLoader.js";
 import { LDrawConditionalLineMaterial } from "three/addons/materials/LDrawConditionalLineMaterial.js";
 
-const CONDITIONS = ["raw", "raw+feedback", "env", "env+gates", "env+full"];
+const CONDITIONS = ["one-shot", "one-shot+feedback", "interactive", "interactive+final check", "interactive+check tools"]; // the names in conditions.json
 const tone = (m) => (m === "✓" ? "p" : m === "∅" || m === "—" ? "n" : m === "×r" ? "w" : "f");
 
 // ── the table ────────────────────────────────────────────────────────────
