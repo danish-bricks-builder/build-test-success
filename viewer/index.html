@@ -49,6 +49,7 @@
   table.req th, table.req td { text-align: left; white-space: normal; padding: 3px 10px 3px 0; vertical-align: top; }
   table.req tr.ok td:first-child { color: #1f8f4e; font-weight: 700; } table.req tr.bad td:first-child { color: #c62828; font-weight: 700; }
   details.prompt pre { white-space: pre-wrap; font-size: 11px; color: var(--muted); }
+  img.seen { display: block; max-width: 360px; width: 100%; border: 1px solid var(--line); border-radius: 4px; margin: 4px 0; background: #fff; }
   #tools { position: absolute; top: 8px; right: 10px; display: flex; gap: 4px; }
   #tools button, .tabs button { font: 12px -apple-system, sans-serif; background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 2px 8px; cursor: pointer; }
   .tabs { display: flex; gap: 4px; padding: 6px 10px; border-bottom: 1px solid var(--line); }
@@ -409,7 +410,16 @@ function render() {
       html += `<div class="band">session recording (sessions/${esc(r.id)}/)</div>`;
       for (const t of s.run.turns ?? []) html += `<div class="round"><div class="h">turn ${t.i + 1} · the agent was told</div><pre>${esc(t.userMessage)}</pre></div>`;
       html += `<div class="band">${s.calls.length} tool calls</div>`;
-      html += s.calls.map((c, i) => `<div class="round"><div class="h">${i + 1}. <b>${esc(c.name)}</b>${c.snapshot ? ` · <a href="#" data-snap="${esc(c.snapshot)}">show snapshot ${esc(c.snapshot)}</a>` : ""}</div><pre>${esc(typeof c.input === "string" ? c.input : JSON.stringify(c.input, null, 1))}</pre><pre style="color:var(--muted)">${esc(typeof c.result === "string" ? c.result : JSON.stringify(c.result, null, 1))}</pre></div>`).join("");
+      // a tool result that carries pictures (render_view, the initial view) shows them: this is what the model saw
+      const resultHtml = (res) => {
+        if (Array.isArray(res) && res.some((b) => b && b.type === "image" && b.imageRef)) {
+          return res.map((b) => b.type === "image" && b.imageRef
+            ? `<img class="seen" src="/api/blob/${encodeURIComponent(r.id)}/${encodeURIComponent(b.imageRef)}" alt="what the model saw" title="the picture returned to the model">`
+            : `<pre style="color:var(--muted)">${esc(b.text ?? JSON.stringify(b))}</pre>`).join("");
+        }
+        return `<pre style="color:var(--muted)">${esc(typeof res === "string" ? res : JSON.stringify(res, null, 1))}</pre>`;
+      };
+      html += s.calls.map((c, i) => `<div class="round"><div class="h">${i + 1}. <b>${esc(c.name)}</b>${c.snapshot ? ` · <a href="#" data-snap="${esc(c.snapshot)}">show snapshot ${esc(c.snapshot)}</a>` : ""}</div><pre>${esc(typeof c.input === "string" ? c.input : JSON.stringify(c.input, null, 1))}</pre>${resultHtml(c.result)}</div>`).join("");
     }
     // the whole exchange, as baseline.py keeps it
     if (r.conversation) {

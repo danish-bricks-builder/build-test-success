@@ -15,6 +15,7 @@ Routes:
     /api/runs          every run in records/ (the paper's) and runs/ (yours), normalized
     /api/run/<id>      one run: the grade record, the LDraw text, the conversation or session if recorded
     /api/snapshot/<id>/<file>   a model snapshot from sessions/<id>/snapshots/
+    /api/blob/<id>/<file>       a picture the agent saw, from sessions/<id>/blobs/
     /ldraw/<path>      a part-library file, cached from the bucket
     /api/jobs          GET: running and finished jobs; POST {task, condition, model, eyes, dryRun}
                        with the API key in the x-api-key header starts one (baseline.py or env/run.ts;
@@ -544,6 +545,19 @@ class Handler(SimpleHTTPRequestHandler):
                     run["session"] = session(run["id"])
                     return self.send_json(run)
             return self.send_json({"error": "no such run"}, 404)
+        m = re.fullmatch(r"/api/blob/([\w.+-]+)/([\w.+-]+)", path)
+        if m:
+            # a picture the agent was given during the session (render_view, the initial view)
+            p = HERE / "sessions" / m.group(1) / "blobs" / m.group(2)
+            if not p.exists():
+                return self.send_json({"error": "no such image"}, 404)
+            data = p.read_bytes()
+            self.send_response(200)
+            self.send_header("content-type", "image/png")
+            self.send_header("content-length", str(len(data)))
+            self.send_header("cache-control", "max-age=3600")
+            self.end_headers()
+            return self.wfile.write(data)
         m = re.fullmatch(r"/api/snapshot/([\w.+-]+)/([\w.+-]+)", path)
         if m:
             p = HERE / "sessions" / m.group(1) / "snapshots" / m.group(2)
