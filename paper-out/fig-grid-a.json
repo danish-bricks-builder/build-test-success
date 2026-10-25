@@ -1,0 +1,399 @@
+{
+ "from": "runs",
+ "cells": [
+  {
+   "id": "build-colosseum-ring_bare_mvmsxrpc",
+   "mark": "✓",
+   "parts": 236,
+   "ldr": "runs/build-colosseum-ring_bare_mvmsxrpc.ldr"
+  },
+  {
+   "id": "build-colosseum-ring_none_mvms1qjt",
+   "mark": "✓",
+   "parts": 222,
+   "ldr": "runs/build-colosseum-ring_none_mvms1qjt.ldr"
+  },
+  {
+   "id": "build-colosseum-ring_verifier_mvmwvhhl",
+   "mark": "✓",
+   "parts": 292,
+   "ldr": "runs/build-colosseum-ring_verifier_mvmwvhhl.ldr"
+  },
+  {
+   "id": "build-edit-ghost-pedestal_bare_mvmttf7x",
+   "mark": "✓",
+   "parts": 50,
+   "ldr": "runs/build-edit-ghost-pedestal_bare_mvmttf7x.ldr"
+  },
+  {
+   "id": "build-edit-ghost-pedestal_none_mvms1qjt",
+   "mark": "✓",
+   "parts": 34,
+   "ldr": "runs/build-edit-ghost-pedestal_none_mvms1qjt.ldr"
+  },
+  {
+   "id": "build-edit-ghost-pedestal_verifier_mvmxos3g",
+   "mark": "✓",
+   "parts": 48,
+   "ldr": "runs/build-edit-ghost-pedestal_verifier_mvmxos3g.ldr"
+  },
+  {
+   "id": "build-greek-temple_bare_mvmsxrpc",
+   "mark": "✓",
+   "parts": 226,
+   "ldr": "runs/build-greek-temple_bare_mvmsxrpc.ldr"
+  },
+  {
+   "id": "build-greek-temple_none_mvmu5epv",
+   "mark": "✓",
+   "parts": 215,
+   "ldr": "runs/build-greek-temple_none_mvmu5epv.ldr"
+  },
+  {
+   "id": "build-greek-temple_verifier_mvmwjhbd",
+   "mark": "✓",
+   "parts": 258,
+   "ldr": "runs/build-greek-temple_verifier_mvmwjhbd.ldr"
+  },
+  {
+   "id": "build-house-gable_bare_mvmsxrpc",
+   "mark": "✓",
+   "parts": 108,
+   "ldr": "runs/build-house-gable_bare_mvmsxrpc.ldr"
+  },
+  {
+   "id": "build-house-gable_none_mvms1qjt",
+   "mark": "✓",
+   "parts": 104,
+   "ldr": "runs/build-house-gable_none_mvms1qjt.ldr"
+  },
+  {
+   "id": "build-house-gable_verifier_mvmvxahd",
+   "mark": "✓",
+   "parts": 124,
+   "ldr": "runs/build-house-gable_verifier_mvmvxahd.ldr"
+  },
+  {
+   "id": "build-inv-dinosaur_bare_mvmua10i",
+   "mark": "✓",
+   "parts": 41,
+   "ldr": "runs/build-inv-dinosaur_bare_mvmua10i.ldr"
+  },
+  {
+   "id": "build-inv-dinosaur_none_mvlp0mbj",
+   "mark": "✓",
+   "parts": 51,
+   "ldr": "runs/build-inv-dinosaur_none_mvlp0mbj.ldr"
+  },
+  {
+   "id": "build-inv-dinosaur_verifier_mvmy76n7",
+   "mark": "✓",
+   "parts": 47,
+   "ldr": "runs/build-inv-dinosaur_verifier_mvmy76n7.ldr"
+  },
+  {
+   "id": "build-lighthouse-tall_bare_mvmmr203",
+   "mark": "✓",
+   "parts": 163,
+   "ldr": "runs/build-lighthouse-tall_bare_mvmmr203.ldr"
+  },
+  {
+   "id": "build-lighthouse-tall_none_mvmu5epv",
+   "mark": "✓",
+   "parts": 179,
+   "ldr": "runs/build-lighthouse-tall_none_mvmu5epv.ldr"
+  },
+  {
+   "id": "build-lighthouse-tall_verifier_mvmw1p9z",
+   "mark": "✓",
+   "parts": 148,
+   "ldr": "runs/build-lighthouse-tall_verifier_mvmw1p9z.ldr"
+  },
+  {
+   "id": "build-notre-dame-de-paris_bare_mvmtilin",
+   "mark": "×v",
+   "parts": 897,
+   "ldr": "runs/build-notre-dame-de-paris_bare_mvmtilin.ldr"
+  },
+  {
+   "id": "build-notre-dame-de-paris_none_mvlp0mbj",
+   "mark": "✓",
+   "parts": 736,
+   "ldr": "runs/build-notre-dame-de-paris_none_mvlp0mbj.ldr"
+  },
+  {
+   "id": "build-notre-dame-de-paris_verifier_mvmx6l9b",
+   "mark": "✓",
+   "parts": 875,
+   "ldr": "runs/build-notre-dame-de-paris_verifier_mvmx6l9b.ldr"
+  },
+  {
+   "id": "build-pyramid-giza_bare_mvmsxrpc",
+   "mark": "✓",
+   "parts": 174,
+   "ldr": "runs/build-pyramid-giza_bare_mvmsxrpc.ldr"
+  },
+  {
+   "id": "build-pyramid-giza_none_mvlp0mbj",
+   "mark": "✓",
+   "parts": 157,
+   "ldr": "runs/build-pyramid-giza_none_mvlp0mbj.ldr"
+  },
+  {
+   "id": "build-pyramid-giza_verifier_mvmwr1ct",
+   "mark": "✓",
+   "parts": 150,
+   "ldr": "runs/build-pyramid-giza_verifier_mvmwr1ct.ldr"
+  },
+  {
+   "id": "build-pyramid-steps_bare_mvmmi098",
+   "mark": "✓",
+   "parts": 120,
+   "ldr": "runs/build-pyramid-steps_bare_mvmmi098.ldr"
+  },
+  {
+   "id": "build-pyramid-steps_none_mvljy5yj",
+   "mark": "✓",
+   "parts": 104,
+   "ldr": "runs/build-pyramid-steps_none_mvljy5yj.ldr"
+  },
+  {
+   "id": "build-pyramid-steps_verifier_mvmvxahd",
+   "mark": "✓",
+   "parts": 93,
+   "ldr": "runs/build-pyramid-steps_verifier_mvmvxahd.ldr"
+  },
+  {
+   "id": "build-roman-aqueduct_bare_mvmsxrpc",
+   "mark": "✓",
+   "parts": 144,
+   "ldr": "runs/build-roman-aqueduct_bare_mvmsxrpc.ldr"
+  },
+  {
+   "id": "build-roman-aqueduct_none_mvmvxahd",
+   "mark": "✓",
+   "parts": 189,
+   "ldr": "runs/build-roman-aqueduct_none_mvmvxahd.ldr"
+  },
+  {
+   "id": "build-roman-aqueduct_verifier_mvmw93lm",
+   "mark": "✓",
+   "parts": 146,
+   "ldr": "runs/build-roman-aqueduct_verifier_mvmw93lm.ldr"
+  },
+  {
+   "id": "build-taj-mahal_bare_mvmtiou9",
+   "mark": "✓",
+   "parts": 499,
+   "ldr": "runs/build-taj-mahal_bare_mvmtiou9.ldr"
+  },
+  {
+   "id": "build-taj-mahal_none_mvlp0mbj",
+   "mark": "×v",
+   "parts": 671,
+   "ldr": "runs/build-taj-mahal_none_mvlp0mbj.ldr"
+  },
+  {
+   "id": "build-taj-mahal_verifier_mvmxnebu",
+   "mark": "✓",
+   "parts": 684,
+   "ldr": "runs/build-taj-mahal_verifier_mvmxnebu.ldr"
+  },
+  {
+   "id": "build-tower-square_bare_mvmmgrq4",
+   "mark": "✓",
+   "parts": 119,
+   "ldr": "runs/build-tower-square_bare_mvmmgrq4.ldr"
+  },
+  {
+   "id": "build-tower-square_none_mvmu5epv",
+   "mark": "✓",
+   "parts": 120,
+   "ldr": "runs/build-tower-square_none_mvmu5epv.ldr"
+  },
+  {
+   "id": "build-tower-square_verifier_mvmvxahd",
+   "mark": "✓",
+   "parts": 110,
+   "ldr": "runs/build-tower-square_verifier_mvmvxahd.ldr"
+  },
+  {
+   "id": "build-wall-doorway_bare_mvmmgrq4",
+   "mark": "✓",
+   "parts": 32,
+   "ldr": "runs/build-wall-doorway_bare_mvmmgrq4.ldr"
+  },
+  {
+   "id": "build-wall-doorway_none_mvljq83x",
+   "mark": "✓",
+   "parts": 32,
+   "ldr": "runs/build-wall-doorway_none_mvljq83x.ldr"
+  },
+  {
+   "id": "build-wall-doorway_verifier_mvmvxahd",
+   "mark": "✓",
+   "parts": 32,
+   "ldr": "runs/build-wall-doorway_verifier_mvmvxahd.ldr"
+  },
+  {
+   "id": "colosseum-ring_one-shot+feedback_6adcfcab",
+   "mark": "✓",
+   "parts": 152,
+   "ldr": "runs/colosseum-ring_one-shot+feedback_6adcfcab.ldr"
+  },
+  {
+   "id": "colosseum-ring_raw_6adbcbcb",
+   "mark": "×v",
+   "parts": 172,
+   "ldr": "runs/colosseum-ring_raw_6adbcbcb.ldr"
+  },
+  {
+   "id": "edit-ghost-pedestal_one-shot+feedback_6adcfcab",
+   "mark": "✓",
+   "parts": 47,
+   "ldr": "runs/edit-ghost-pedestal_one-shot+feedback_6adcfcab.ldr"
+  },
+  {
+   "id": "edit-ghost-pedestal_one-shot_6adc1ac9",
+   "mark": "×v",
+   "parts": 51,
+   "ldr": "runs/edit-ghost-pedestal_one-shot_6adc1ac9.ldr"
+  },
+  {
+   "id": "greek-temple_one-shot+feedback_6adceaa6",
+   "mark": "✓",
+   "parts": 249,
+   "ldr": "runs/greek-temple_one-shot+feedback_6adceaa6.ldr"
+  },
+  {
+   "id": "greek-temple_raw_6adbb565",
+   "mark": "×v",
+   "parts": 169,
+   "ldr": "runs/greek-temple_raw_6adbb565.ldr"
+  },
+  {
+   "id": "house-gable_one-shot+feedback_6adce35e",
+   "mark": "×v",
+   "parts": 97,
+   "ldr": "runs/house-gable_one-shot+feedback_6adce35e.ldr"
+  },
+  {
+   "id": "house-gable_one-shot_6adc1492",
+   "mark": "×v",
+   "parts": 81,
+   "ldr": "runs/house-gable_one-shot_6adc1492.ldr"
+  },
+  {
+   "id": "inv-dinosaur_one-shot+feedback_6adcfcab",
+   "mark": "✓",
+   "parts": 51,
+   "ldr": "runs/inv-dinosaur_one-shot+feedback_6adcfcab.ldr"
+  },
+  {
+   "id": "inv-dinosaur_one-shot_6adc1ac9",
+   "mark": "×v",
+   "parts": 57,
+   "ldr": "runs/inv-dinosaur_one-shot_6adc1ac9.ldr"
+  },
+  {
+   "id": "lighthouse-tall_one-shot+feedback_6adce609",
+   "mark": "✓",
+   "parts": 94,
+   "ldr": "runs/lighthouse-tall_one-shot+feedback_6adce609.ldr"
+  },
+  {
+   "id": "lighthouse-tall_raw_6adbb32b",
+   "mark": "×v",
+   "parts": 102,
+   "ldr": "runs/lighthouse-tall_raw_6adbb32b.ldr"
+  },
+  {
+   "id": "notre-dame-de-paris_one-shot+feedback_6adcfcab",
+   "mark": "×v",
+   "parts": 817,
+   "ldr": "runs/notre-dame-de-paris_one-shot+feedback_6adcfcab.ldr"
+  },
+  {
+   "id": "notre-dame-de-paris_one-shot_6adc1ac9",
+   "mark": "×v",
+   "parts": 545,
+   "ldr": "runs/notre-dame-de-paris_one-shot_6adc1ac9.ldr"
+  },
+  {
+   "id": "pyramid-giza_one-shot+feedback_6adcebb6",
+   "mark": "✓",
+   "parts": 140,
+   "ldr": "runs/pyramid-giza_one-shot+feedback_6adcebb6.ldr"
+  },
+  {
+   "id": "pyramid-giza_raw_6adbcb1b",
+   "mark": "×v",
+   "parts": 140,
+   "ldr": "runs/pyramid-giza_raw_6adbcb1b.ldr"
+  },
+  {
+   "id": "pyramid-steps_one-shot+feedback_6adce532",
+   "mark": "✓",
+   "parts": 62,
+   "ldr": "runs/pyramid-steps_one-shot+feedback_6adce532.ldr"
+  },
+  {
+   "id": "pyramid-steps_raw_6adbb2e8",
+   "mark": "✓",
+   "parts": 63,
+   "ldr": "runs/pyramid-steps_raw_6adbb2e8.ldr"
+  },
+  {
+   "id": "roman-aqueduct_one-shot+feedback_6adce80b",
+   "mark": "✓",
+   "parts": 116,
+   "ldr": "runs/roman-aqueduct_one-shot+feedback_6adce80b.ldr"
+  },
+  {
+   "id": "roman-aqueduct_raw_6adbb3e3",
+   "mark": "×v",
+   "parts": 182,
+   "ldr": "runs/roman-aqueduct_raw_6adbb3e3.ldr"
+  },
+  {
+   "id": "taj-mahal_one-shot+feedback_6adcdecb",
+   "mark": "×v",
+   "parts": 729,
+   "ldr": "runs/taj-mahal_one-shot+feedback_6adcdecb.ldr"
+  },
+  {
+   "id": "taj-mahal_one-shot_6adc1ac9",
+   "mark": "×v",
+   "parts": 453,
+   "ldr": "runs/taj-mahal_one-shot_6adc1ac9.ldr"
+  },
+  {
+   "id": "tower-square_one-shot+feedback_6adce324",
+   "mark": "✓",
+   "parts": 74,
+   "ldr": "runs/tower-square_one-shot+feedback_6adce324.ldr"
+  },
+  {
+   "id": "tower-square_raw_6adbb0a7",
+   "mark": "×v",
+   "parts": 84,
+   "ldr": "runs/tower-square_raw_6adbb0a7.ldr"
+  },
+  {
+   "id": "wall-doorway_one-shot+feedback_6adce324",
+   "mark": "✓",
+   "parts": 34,
+   "ldr": "runs/wall-doorway_one-shot+feedback_6adce324.ldr"
+  },
+  {
+   "id": "wall-doorway_raw_6adbb070",
+   "mark": "✓",
+   "parts": 30,
+   "ldr": "runs/wall-doorway_raw_6adbb070.ldr"
+  }
+ ],
+ "summary": {
+  "✓": 49,
+  "×v": 16
+ }
+}

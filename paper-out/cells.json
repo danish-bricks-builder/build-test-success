@@ -1,0 +1,1902 @@
+[
+ {
+  "id": "build-colosseum-ring_bare_mvmsxrpc",
+  "task": "colosseum-ring",
+  "condition": "bare",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 236,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   20,
+   16
+  ],
+  "heightLdu": 168,
+  "seconds": 975,
+  "usage": {
+   "input": 24,
+   "output": 38764,
+   "cacheRead": 506436,
+   "cacheWrite": 71291
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmsxrpc"
+ },
+ {
+  "id": "build-colosseum-ring_none_mvms1qjt",
+  "task": "colosseum-ring",
+  "condition": "none",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 222,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   20,
+   16
+  ],
+  "heightLdu": 184,
+  "seconds": 806,
+  "usage": {
+   "input": 34,
+   "output": 26341,
+   "cacheRead": 530395,
+   "cacheWrite": 46515
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvms1qjt"
+ },
+ {
+  "id": "colosseum-ring_raw_6adbcbcb",
+  "task": "colosseum-ring",
+  "condition": "raw-ldraw-1r",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 172,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   20,
+   16
+  ],
+  "heightLdu": 152,
+  "seconds": 368,
+  "usage": null,
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adbcbcb"
+ },
+ {
+  "id": "colosseum-ring_one-shot+feedback_6adcfcab",
+  "task": "colosseum-ring",
+  "condition": "raw-ldraw-4r",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 152,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   20,
+   16
+  ],
+  "heightLdu": 144,
+  "seconds": 907,
+  "usage": {
+   "input": 27424,
+   "output": 73486,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 3,
+  "stamp": "6adcfcab"
+ },
+ {
+  "id": "build-colosseum-ring_verifier_mvmwvhhl",
+  "task": "colosseum-ring",
+  "condition": "verifier",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 292,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   20,
+   16
+  ],
+  "heightLdu": 176,
+  "seconds": 2224,
+  "usage": {
+   "input": 46,
+   "output": 35214,
+   "cacheRead": 1012457,
+   "cacheWrite": 70301
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmwvhhl"
+ },
+ {
+  "id": "build-edit-ghost-pedestal_bare_mvmttf7x",
+  "task": "edit-ghost-pedestal",
+  "condition": "bare",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 50,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "preserved": true
+  },
+  "footprintStuds": [
+   8,
+   8
+  ],
+  "heightLdu": 248,
+  "seconds": 774,
+  "usage": {
+   "input": 18,
+   "output": 14277,
+   "cacheRead": 193408,
+   "cacheWrite": 31120
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmttf7x"
+ },
+ {
+  "id": "build-edit-ghost-pedestal_none_mvms1qjt",
+  "task": "edit-ghost-pedestal",
+  "condition": "none",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 34,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "preserved": true
+  },
+  "footprintStuds": [
+   8,
+   8
+  ],
+  "heightLdu": 248,
+  "seconds": 415,
+  "usage": {
+   "input": 16,
+   "output": 9878,
+   "cacheRead": 148513,
+   "cacheWrite": 26821
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvms1qjt"
+ },
+ {
+  "id": "edit-ghost-pedestal_one-shot_6adc1ac9",
+  "task": "edit-ghost-pedestal",
+  "condition": "raw-ldraw-1r",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 51,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "preserved": true
+  },
+  "footprintStuds": [
+   7,
+   6
+  ],
+  "heightLdu": 224,
+  "seconds": 100,
+  "usage": {
+   "input": 1232,
+   "output": 8023,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adc1ac9"
+ },
+ {
+  "id": "edit-ghost-pedestal_one-shot+feedback_6adcfcab",
+  "task": "edit-ghost-pedestal",
+  "condition": "raw-ldraw-4r",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 47,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "preserved": true
+  },
+  "footprintStuds": [
+   8,
+   6
+  ],
+  "heightLdu": 240,
+  "seconds": 279,
+  "usage": {
+   "input": 6525,
+   "output": 21319,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 2,
+  "stamp": "6adcfcab"
+ },
+ {
+  "id": "build-edit-ghost-pedestal_verifier_mvmxos3g",
+  "task": "edit-ghost-pedestal",
+  "condition": "verifier",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 48,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "preserved": true
+  },
+  "footprintStuds": [
+   8,
+   8
+  ],
+  "heightLdu": 248,
+  "seconds": 1320,
+  "usage": {
+   "input": 24,
+   "output": 15971,
+   "cacheRead": 252026,
+   "cacheWrite": 64832
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmxos3g"
+ },
+ {
+  "id": "build-greek-temple_bare_mvmsxrpc",
+  "task": "greek-temple",
+  "condition": "bare",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 226,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   16,
+   10
+  ],
+  "heightLdu": 200,
+  "seconds": 1476,
+  "usage": {
+   "input": 54,
+   "output": 30122,
+   "cacheRead": 1034364,
+   "cacheWrite": 53256
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmsxrpc"
+ },
+ {
+  "id": "build-greek-temple_none_mvmu5epv",
+  "task": "greek-temple",
+  "condition": "none",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 215,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   18,
+   12
+  ],
+  "heightLdu": 216,
+  "seconds": 1214,
+  "usage": {
+   "input": 24,
+   "output": 13629,
+   "cacheRead": 250466,
+   "cacheWrite": 55198
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmu5epv"
+ },
+ {
+  "id": "greek-temple_raw_6adbb565",
+  "task": "greek-temple",
+  "condition": "raw-ldraw-1r",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 169,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   18,
+   12
+  ],
+  "heightLdu": 184,
+  "seconds": 342,
+  "usage": null,
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adbb565"
+ },
+ {
+  "id": "greek-temple_one-shot+feedback_6adceaa6",
+  "task": "greek-temple",
+  "condition": "raw-ldraw-4r",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 249,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   18,
+   12
+  ],
+  "heightLdu": 168,
+  "seconds": 868,
+  "usage": {
+   "input": 10032,
+   "output": 68542,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 2,
+  "stamp": "6adceaa6"
+ },
+ {
+  "id": "build-greek-temple_verifier_mvmwjhbd",
+  "task": "greek-temple",
+  "condition": "verifier",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 258,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   18,
+   12
+  ],
+  "heightLdu": 256,
+  "seconds": 1861,
+  "usage": {
+   "input": 36,
+   "output": 26630,
+   "cacheRead": 594947,
+   "cacheWrite": 93815
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmwjhbd"
+ },
+ {
+  "id": "build-house-gable_bare_mvmsxrpc",
+  "task": "house-gable",
+  "condition": "bare",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 108,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   10,
+   8
+  ],
+  "heightLdu": 200,
+  "seconds": 3573,
+  "usage": {
+   "input": 114,
+   "output": 28928,
+   "cacheRead": 1960136,
+   "cacheWrite": 89372
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmsxrpc"
+ },
+ {
+  "id": "build-house-gable_none_mvms1qjt",
+  "task": "house-gable",
+  "condition": "none",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 104,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   10,
+   8
+  ],
+  "heightLdu": 184,
+  "seconds": 1349,
+  "usage": {
+   "input": 124,
+   "output": 44370,
+   "cacheRead": 3077576,
+   "cacheWrite": 82223
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvms1qjt"
+ },
+ {
+  "id": "house-gable_one-shot_6adc1492",
+  "task": "house-gable",
+  "condition": "raw-ldraw-1r",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 81,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   10,
+   8
+  ],
+  "heightLdu": 232,
+  "seconds": 389,
+  "usage": {
+   "input": 374,
+   "output": 28514,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adc1492"
+ },
+ {
+  "id": "house-gable_one-shot+feedback_6adce35e",
+  "task": "house-gable",
+  "condition": "raw-ldraw-4r",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 97,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   8,
+   11
+  ],
+  "heightLdu": 192,
+  "seconds": 1863,
+  "usage": {
+   "input": 40422,
+   "output": 136230,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 4,
+  "stamp": "6adce35e"
+ },
+ {
+  "id": "build-house-gable_verifier_mvmvxahd",
+  "task": "house-gable",
+  "condition": "verifier",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 124,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   12,
+   11
+  ],
+  "heightLdu": 216,
+  "seconds": 6718,
+  "usage": {
+   "input": 180,
+   "output": 97602,
+   "cacheRead": 7315421,
+   "cacheWrite": 329235
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmvxahd"
+ },
+ {
+  "id": "build-inv-dinosaur_bare_mvmua10i",
+  "task": "inv-dinosaur",
+  "condition": "bare",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 41,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "bom": true
+  },
+  "footprintStuds": [
+   22,
+   3
+  ],
+  "heightLdu": 216,
+  "seconds": 1152,
+  "usage": {
+   "input": 24,
+   "output": 24113,
+   "cacheRead": 341634,
+   "cacheWrite": 56547
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmua10i"
+ },
+ {
+  "id": "build-inv-dinosaur_none_mvlp0mbj",
+  "task": "inv-dinosaur",
+  "condition": "none",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 51,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "bom": true
+  },
+  "footprintStuds": [
+   24,
+   4
+  ],
+  "heightLdu": 328,
+  "seconds": 1395,
+  "usage": {
+   "input": 50,
+   "output": 25982,
+   "cacheRead": 877228,
+   "cacheWrite": 36209
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvlp0mbj"
+ },
+ {
+  "id": "inv-dinosaur_one-shot_6adc1ac9",
+  "task": "inv-dinosaur",
+  "condition": "raw-ldraw-1r",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 57,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "bom": true
+  },
+  "footprintStuds": [
+   16,
+   16
+  ],
+  "heightLdu": 232,
+  "seconds": 542,
+  "usage": {
+   "input": 3330,
+   "output": 38121,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adc1ac9"
+ },
+ {
+  "id": "inv-dinosaur_one-shot+feedback_6adcfcab",
+  "task": "inv-dinosaur",
+  "condition": "raw-ldraw-4r",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 51,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "bom": true
+  },
+  "footprintStuds": [
+   20,
+   2
+  ],
+  "heightLdu": 264,
+  "seconds": 1241,
+  "usage": {
+   "input": 24122,
+   "output": 88131,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 3,
+  "stamp": "6adcfcab"
+ },
+ {
+  "id": "build-inv-dinosaur_verifier_mvmy76n7",
+  "task": "inv-dinosaur",
+  "condition": "verifier",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 47,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "bom": true
+  },
+  "footprintStuds": [
+   21,
+   3
+  ],
+  "heightLdu": 232,
+  "seconds": 1619,
+  "usage": {
+   "input": 46,
+   "output": 30955,
+   "cacheRead": 883984,
+   "cacheWrite": 66160
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmy76n7"
+ },
+ {
+  "id": "build-lighthouse-tall_bare_mvmmr203",
+  "task": "lighthouse-tall",
+  "condition": "bare",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 163,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   10,
+   10
+  ],
+  "heightLdu": 536,
+  "seconds": 2476,
+  "usage": {
+   "input": 88,
+   "output": 25491,
+   "cacheRead": 1265166,
+   "cacheWrite": 54175
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmmr203"
+ },
+ {
+  "id": "build-lighthouse-tall_none_mvmu5epv",
+  "task": "lighthouse-tall",
+  "condition": "none",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 179,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   8,
+   8
+  ],
+  "heightLdu": 528,
+  "seconds": 2465,
+  "usage": {
+   "input": 84,
+   "output": 12744,
+   "cacheRead": 1040331,
+   "cacheWrite": 52760
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmu5epv"
+ },
+ {
+  "id": "lighthouse-tall_raw_6adbb32b",
+  "task": "lighthouse-tall",
+  "condition": "raw-ldraw-1r",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 102,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   8,
+   8
+  ],
+  "heightLdu": 512,
+  "seconds": 184,
+  "usage": null,
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adbb32b"
+ },
+ {
+  "id": "lighthouse-tall_one-shot+feedback_6adce609",
+  "task": "lighthouse-tall",
+  "condition": "raw-ldraw-4r",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 94,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   8,
+   8
+  ],
+  "heightLdu": 504,
+  "seconds": 512,
+  "usage": {
+   "input": 7876,
+   "output": 40197,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 2,
+  "stamp": "6adce609"
+ },
+ {
+  "id": "build-lighthouse-tall_verifier_mvmw1p9z",
+  "task": "lighthouse-tall",
+  "condition": "verifier",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 148,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   8,
+   8
+  ],
+  "heightLdu": 513,
+  "seconds": 828,
+  "usage": {
+   "input": 26,
+   "output": 4340,
+   "cacheRead": 206845,
+   "cacheWrite": 22269
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmw1p9z"
+ },
+ {
+  "id": "build-notre-dame-de-paris_bare_mvmtilin",
+  "task": "notre-dame-de-paris",
+  "condition": "bare",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 897,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": false
+  },
+  "footprintStuds": [
+   24,
+   38
+  ],
+  "heightLdu": 704,
+  "seconds": 3998,
+  "usage": {
+   "input": 180,
+   "output": 104278,
+   "cacheRead": 7222563,
+   "cacheWrite": 190244
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmtilin"
+ },
+ {
+  "id": "build-notre-dame-de-paris_none_mvlp0mbj",
+  "task": "notre-dame-de-paris",
+  "condition": "none",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 736,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   20,
+   34
+  ],
+  "heightLdu": 520,
+  "seconds": 4947,
+  "usage": {
+   "input": 116,
+   "output": 94893,
+   "cacheRead": 3767569,
+   "cacheWrite": 265839
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvlp0mbj"
+ },
+ {
+  "id": "notre-dame-de-paris_one-shot_6adc1ac9",
+  "task": "notre-dame-de-paris",
+  "condition": "raw-ldraw-1r",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 545,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   40,
+   20
+  ],
+  "heightLdu": 448,
+  "seconds": 1628,
+  "usage": {
+   "input": 418,
+   "output": 128000,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adc1ac9"
+ },
+ {
+  "id": "notre-dame-de-paris_one-shot+feedback_6adcfcab",
+  "task": "notre-dame-de-paris",
+  "condition": "raw-ldraw-4r",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 817,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   22,
+   40
+  ],
+  "heightLdu": 576,
+  "seconds": 4523,
+  "usage": {
+   "input": 217565,
+   "output": 378410,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 4,
+  "stamp": "6adcfcab"
+ },
+ {
+  "id": "build-notre-dame-de-paris_verifier_mvmx6l9b",
+  "task": "notre-dame-de-paris",
+  "condition": "verifier",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 875,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   20,
+   36
+  ],
+  "heightLdu": 632,
+  "seconds": 4616,
+  "usage": {
+   "input": 134,
+   "output": 106859,
+   "cacheRead": 5721639,
+   "cacheWrite": 210197
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmx6l9b"
+ },
+ {
+  "id": "build-pyramid-giza_bare_mvmsxrpc",
+  "task": "pyramid-giza",
+  "condition": "bare",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 174,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   16,
+   16
+  ],
+  "heightLdu": 176,
+  "seconds": 3175,
+  "usage": {
+   "input": 98,
+   "output": 38505,
+   "cacheRead": 1881768,
+   "cacheWrite": 123176
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmsxrpc"
+ },
+ {
+  "id": "build-pyramid-giza_none_mvlp0mbj",
+  "task": "pyramid-giza",
+  "condition": "none",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 157,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   14,
+   14
+  ],
+  "heightLdu": 168,
+  "seconds": 1167,
+  "usage": {
+   "input": 38,
+   "output": 27379,
+   "cacheRead": 656495,
+   "cacheWrite": 36563
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvlp0mbj"
+ },
+ {
+  "id": "pyramid-giza_raw_6adbcb1b",
+  "task": "pyramid-giza",
+  "condition": "raw-ldraw-1r",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 140,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   14,
+   14
+  ],
+  "heightLdu": 144,
+  "seconds": 173,
+  "usage": null,
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adbcb1b"
+ },
+ {
+  "id": "pyramid-giza_one-shot+feedback_6adcebb6",
+  "task": "pyramid-giza",
+  "condition": "raw-ldraw-4r",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 140,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   14,
+   14
+  ],
+  "heightLdu": 144,
+  "seconds": 149,
+  "usage": {
+   "input": 355,
+   "output": 12750,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adcebb6"
+ },
+ {
+  "id": "build-pyramid-giza_verifier_mvmwr1ct",
+  "task": "pyramid-giza",
+  "condition": "verifier",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 150,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   16,
+   16
+  ],
+  "heightLdu": 208,
+  "seconds": 1573,
+  "usage": {
+   "input": 34,
+   "output": 10389,
+   "cacheRead": 347031,
+   "cacheWrite": 48420
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmwr1ct"
+ },
+ {
+  "id": "build-pyramid-steps_bare_mvmmi098",
+  "task": "pyramid-steps",
+  "condition": "bare",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 120,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   12,
+   12
+  ],
+  "heightLdu": 192,
+  "seconds": 844,
+  "usage": {
+   "input": 42,
+   "output": 29193,
+   "cacheRead": 629029,
+   "cacheWrite": 49645
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmmi098"
+ },
+ {
+  "id": "build-pyramid-steps_none_mvljy5yj",
+  "task": "pyramid-steps",
+  "condition": "none",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 104,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   12,
+   12
+  ],
+  "heightLdu": 248,
+  "seconds": 27,
+  "usage": {
+   "input": 10,
+   "output": 1652,
+   "cacheRead": 58499,
+   "cacheWrite": 17265
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvljy5yj"
+ },
+ {
+  "id": "pyramid-steps_raw_6adbb2e8",
+  "task": "pyramid-steps",
+  "condition": "raw-ldraw-1r",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 63,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   12,
+   12
+  ],
+  "heightLdu": 120,
+  "seconds": 66,
+  "usage": null,
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adbb2e8"
+ },
+ {
+  "id": "pyramid-steps_one-shot+feedback_6adce532",
+  "task": "pyramid-steps",
+  "condition": "raw-ldraw-4r",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 62,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   12,
+   12
+  ],
+  "heightLdu": 120,
+  "seconds": 213,
+  "usage": {
+   "input": 6101,
+   "output": 17484,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 2,
+  "stamp": "6adce532"
+ },
+ {
+  "id": "build-pyramid-steps_verifier_mvmvxahd",
+  "task": "pyramid-steps",
+  "condition": "verifier",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 93,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   12,
+   12
+  ],
+  "heightLdu": 152,
+  "seconds": 2113,
+  "usage": {
+   "input": 50,
+   "output": 16654,
+   "cacheRead": 560115,
+   "cacheWrite": 108127
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmvxahd"
+ },
+ {
+  "id": "build-roman-aqueduct_bare_mvmsxrpc",
+  "task": "roman-aqueduct",
+  "condition": "bare",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 144,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   26,
+   4
+  ],
+  "heightLdu": 288,
+  "seconds": 971,
+  "usage": {
+   "input": 42,
+   "output": 15490,
+   "cacheRead": 543600,
+   "cacheWrite": 36456
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmsxrpc"
+ },
+ {
+  "id": "build-roman-aqueduct_none_mvmvxahd",
+  "task": "roman-aqueduct",
+  "condition": "none",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 189,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   26,
+   4
+  ],
+  "heightLdu": 368,
+  "seconds": 1387,
+  "usage": {
+   "input": 36,
+   "output": 14217,
+   "cacheRead": 442770,
+   "cacheWrite": 74743
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmvxahd"
+ },
+ {
+  "id": "roman-aqueduct_raw_6adbb3e3",
+  "task": "roman-aqueduct",
+  "condition": "raw-ldraw-1r",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 182,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   26,
+   4
+  ],
+  "heightLdu": 296,
+  "seconds": 385,
+  "usage": null,
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adbb3e3"
+ },
+ {
+  "id": "roman-aqueduct_one-shot+feedback_6adce80b",
+  "task": "roman-aqueduct",
+  "condition": "raw-ldraw-4r",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 116,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   24,
+   4
+  ],
+  "heightLdu": 240,
+  "seconds": 939,
+  "usage": {
+   "input": 46120,
+   "output": 72488,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 4,
+  "stamp": "6adce80b"
+ },
+ {
+  "id": "build-roman-aqueduct_verifier_mvmw93lm",
+  "task": "roman-aqueduct",
+  "condition": "verifier",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 146,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   26,
+   4
+  ],
+  "heightLdu": 296,
+  "seconds": 1043,
+  "usage": {
+   "input": 22,
+   "output": 12993,
+   "cacheRead": 246741,
+   "cacheWrite": 64507
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmw93lm"
+ },
+ {
+  "id": "build-taj-mahal_bare_mvmtiou9",
+  "task": "taj-mahal",
+  "condition": "bare",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 499,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   26,
+   26
+  ],
+  "heightLdu": 456,
+  "seconds": 2791,
+  "usage": {
+   "input": 80,
+   "output": 31904,
+   "cacheRead": 1443016,
+   "cacheWrite": 98352
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmtiou9"
+ },
+ {
+  "id": "build-taj-mahal_none_mvlp0mbj",
+  "task": "taj-mahal",
+  "condition": "none",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 671,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   33,
+   32
+  ],
+  "heightLdu": 440,
+  "seconds": 6130,
+  "usage": {
+   "input": 156,
+   "output": 53386,
+   "cacheRead": 4282127,
+   "cacheWrite": 165839
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvlp0mbj"
+ },
+ {
+  "id": "taj-mahal_one-shot_6adc1ac9",
+  "task": "taj-mahal",
+  "condition": "raw-ldraw-1r",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 453,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": false
+  },
+  "footprintStuds": [
+   43,
+   43
+  ],
+  "heightLdu": 400,
+  "seconds": 705,
+  "usage": {
+   "input": 368,
+   "output": 58401,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adc1ac9"
+ },
+ {
+  "id": "taj-mahal_one-shot+feedback_6adcdecb",
+  "task": "taj-mahal",
+  "condition": "raw-ldraw-4r",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 729,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   32,
+   32
+  ],
+  "heightLdu": 400,
+  "seconds": 2993,
+  "usage": {
+   "input": 153712,
+   "output": 253837,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 4,
+  "stamp": "6adcdecb"
+ },
+ {
+  "id": "build-taj-mahal_verifier_mvmxnebu",
+  "task": "taj-mahal",
+  "condition": "verifier",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 684,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   36,
+   36
+  ],
+  "heightLdu": 512,
+  "seconds": 3601,
+  "usage": {
+   "input": 98,
+   "output": 44938,
+   "cacheRead": 2412934,
+   "cacheWrite": 108809
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmxnebu"
+ },
+ {
+  "id": "build-tower-square_bare_mvmmgrq4",
+  "task": "tower-square",
+  "condition": "bare",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 119,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   8,
+   8
+  ],
+  "heightLdu": 328,
+  "seconds": 479,
+  "usage": {
+   "input": 32,
+   "output": 5945,
+   "cacheRead": 268848,
+   "cacheWrite": 22891
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmmgrq4"
+ },
+ {
+  "id": "build-tower-square_none_mvmu5epv",
+  "task": "tower-square",
+  "condition": "none",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 120,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   8,
+   8
+  ],
+  "heightLdu": 328,
+  "seconds": 1185,
+  "usage": {
+   "input": 22,
+   "output": 4014,
+   "cacheRead": 155976,
+   "cacheWrite": 37023
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmu5epv"
+ },
+ {
+  "id": "tower-square_raw_6adbb0a7",
+  "task": "tower-square",
+  "condition": "raw-ldraw-1r",
+  "mark": "×v",
+  "PASS": false,
+  "partCount": 84,
+  "valid": false,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   8,
+   8
+  ],
+  "heightLdu": 272,
+  "seconds": 132,
+  "usage": null,
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adbb0a7"
+ },
+ {
+  "id": "tower-square_one-shot+feedback_6adce324",
+  "task": "tower-square",
+  "condition": "raw-ldraw-4r",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 74,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   8,
+   8
+  ],
+  "heightLdu": 304,
+  "seconds": 524,
+  "usage": {
+   "input": 5716,
+   "output": 40511,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 2,
+  "stamp": "6adce324"
+ },
+ {
+  "id": "build-tower-square_verifier_mvmvxahd",
+  "task": "tower-square",
+  "condition": "verifier",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 110,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   8,
+   8
+  ],
+  "heightLdu": 304,
+  "seconds": 550,
+  "usage": {
+   "input": 22,
+   "output": 4089,
+   "cacheRead": 170635,
+   "cacheWrite": 20181
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmvxahd"
+ },
+ {
+  "id": "build-wall-doorway_bare_mvmmgrq4",
+  "task": "wall-doorway",
+  "condition": "bare",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 32,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   16,
+   1
+  ],
+  "heightLdu": 192,
+  "seconds": 57,
+  "usage": {
+   "input": 8,
+   "output": 3266,
+   "cacheRead": 46165,
+   "cacheWrite": 17450
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmmgrq4"
+ },
+ {
+  "id": "build-wall-doorway_none_mvljq83x",
+  "task": "wall-doorway",
+  "condition": "none",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 32,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   16,
+   1
+  ],
+  "heightLdu": 192,
+  "seconds": 38,
+  "usage": {
+   "input": 6,
+   "output": 2564,
+   "cacheRead": 28685,
+   "cacheWrite": 16214
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvljq83x"
+ },
+ {
+  "id": "wall-doorway_raw_6adbb070",
+  "task": "wall-doorway",
+  "condition": "raw-ldraw-1r",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 30,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   16,
+   1
+  ],
+  "heightLdu": 144,
+  "seconds": 54,
+  "usage": null,
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adbb070"
+ },
+ {
+  "id": "wall-doorway_one-shot+feedback_6adce324",
+  "task": "wall-doorway",
+  "condition": "raw-ldraw-4r",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 34,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   16,
+   1
+  ],
+  "heightLdu": 240,
+  "seconds": 57,
+  "usage": {
+   "input": 387,
+   "output": 4605,
+   "cacheRead": 0,
+   "cacheWrite": 0
+  },
+  "model": "claude-opus-5",
+  "rounds": 1,
+  "stamp": "6adce324"
+ },
+ {
+  "id": "build-wall-doorway_verifier_mvmvxahd",
+  "task": "wall-doorway",
+  "condition": "verifier",
+  "mark": "✓",
+  "PASS": true,
+  "partCount": 32,
+  "valid": true,
+  "stable": true,
+  "post": {
+   "parts": true,
+   "height": true,
+   "footprint": true
+  },
+  "footprintStuds": [
+   16,
+   1
+  ],
+  "heightLdu": 192,
+  "seconds": 205,
+  "usage": {
+   "input": 8,
+   "output": 3439,
+   "cacheRead": 48099,
+   "cacheWrite": 17764
+  },
+  "model": "claude-opus-5",
+  "rounds": 0,
+  "stamp": "mvmvxahd"
+ }
+]
