@@ -91,7 +91,7 @@ def normalize(path: Path, source: str) -> dict:
         "PASS": bool(final.get("PASS")), "mark": mark(final), "partCount": final.get("partCount"), "valid": final.get("valid"),
         "stable": final.get("stable"), "post": final.get("post"), "heightLdu": final.get("heightLdu"), "footprintStuds": final.get("footprintStuds"),
         "verifyReport": final.get("verifyReport"), "stabilityReport": final.get("stabilityReport"), "rounds": rounds,
-        "hasLdr": path.with_suffix(".ldr").exists(), "file": str(path.relative_to(HERE)),
+        "hasLdr": path.with_suffix(".ldr").exists(), "file": str(path.relative_to(ROOT)),
         "conversation": r.get("conversation"), "hasSession": session_dir(run_id) is not None,
         "prompt": r.get("prompt"), "kind": "prompt" if str(r.get("task", "")).startswith("prompt") else "task",
     }
@@ -538,7 +538,7 @@ class Handler(SimpleHTTPRequestHandler):
     def do_GET(self):
         path = self.path.split("?", 1)[0]
         if path == "/":
-            return self.send_text((ROOT / "index.html").read_text(), "text/html; charset=utf-8")
+            return self.send_text((HERE / "index.html").read_text(), "text/html; charset=utf-8")
         if path == "/api/runs":
             tasks = json.loads((ROOT / "tasks" / "tasks.json").read_text())
             return self.send_json({"tasks": [{"id": t["id"], "band": t["band"], "type": t["type"]} for t in tasks["tasks"]], "runs": all_runs()})
