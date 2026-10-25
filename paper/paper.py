@@ -75,7 +75,9 @@ def expressible(task: dict, key: str) -> bool:
 
 
 def table_tex(cells) -> str:
-    cols = [COND_NAME[k] for k in COND_KEYS]
+    # a mode's name breaks before its "+", so the table fits the text width
+    cols = [COND_NAME[k].replace("+", r"\\+") for k in COND_KEYS]
+    cols = [(r"\begin{tabular}[b]{@{}c@{}}" + c + r"\end{tabular}") if r"\\" in c else c for c in cols]
     out = [r"\begin{tabular}{l" + "c" * len(COND_KEYS) + "}", r"\toprule", "task & " + " & ".join(cols) + r" \\", r"\midrule"]
     totals = {k: [0, 0] for k in COND_KEYS}
     for band in BANDS:
