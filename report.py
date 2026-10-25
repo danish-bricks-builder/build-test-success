@@ -61,7 +61,7 @@ def paper_runs() -> dict[tuple[str, str], list[dict]]:
         r = json.loads(p.read_text())
         if r.get("condition") not in names:
             continue
-        out.setdefault((r["task"], names[r["condition"]]), []).append({"grade": r, "id": r["runId"]})
+        out.setdefault((r["task"], names[r["condition"]]), []).append({"grade": r.get("final") or r, "id": r["runId"]})  # one-shot records keep the grade under `final`
     for cell in out.values():
         cell.sort(key=lambda x: x["id"].rsplit("_", 1)[-1])
     return out
