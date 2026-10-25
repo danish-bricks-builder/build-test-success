@@ -12,7 +12,7 @@
 #                             packed part files (~12 MB), so the environment can render with Chrome.
 # See DATA-LICENSES.md for where this data comes from.
 set -e
-cd "$(dirname "$0")"
+cd "$(dirname "$0")/.."  # the repository root
 ORIGIN="${DATA_ORIGIN:-https://pub-09680f02457547f9bd4034ba506c47d7.r2.dev}"
 UA="build-test-success/1.0"
 get() { # get <bucket path> <local path>
