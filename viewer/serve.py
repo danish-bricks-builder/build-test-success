@@ -705,7 +705,8 @@ def fill(a) -> None:
                 with QUEUE_LOCK:
                     done, active, note = list(QUEUE["done"]), queue_active(), QUEUE.get("note")
                 for d in done[seen:]:
-                    print(f"  {'done' if d['code'] == 0 else f'FAILED (exit {d['code']})'}  {d['task']} · {CONDITION_NAMES.get(d['condition'], d['condition'])}  {d.get('seconds', '?')}s   runs/_jobs/{d.get('job', '?')}.log" + (f"\n      {d['error']}" if d.get('error') else ""), flush=True)
+                    status = "done" if d["code"] == 0 else "FAILED (exit %s)" % d["code"]
+                    print(f"  {status}  {d['task']} · {CONDITION_NAMES.get(d['condition'], d['condition'])}  {d.get('seconds', '?')}s   runs/_jobs/{d.get('job', '?')}.log" + (f"\n      {d['error']}" if d.get('error') else ""), flush=True)
                 seen = len(done)
                 if not active:
                     break

@@ -15,6 +15,8 @@ The latest record per (task, condition) counts, as in the viewer. Marks follow s
 ✓ every check passes · ×v invalid (parts collide or float) · ×s falls over · ×f too big for the
 footprint · ×r another requirement missed · ∅ no model produced.
 """
+from __future__ import annotations
+
 import argparse
 import json
 from pathlib import Path

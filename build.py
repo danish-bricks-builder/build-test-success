@@ -12,6 +12,8 @@ interactive+check-tools (default). The API key comes from ANTHROPIC_API_KEY or a
 The result lands in runs/ (grade record + final .ldr); interactive modes also record the whole session
 under runs/sessions/. Open the viewer to look at it: python3 viewer/serve.py
 """
+from __future__ import annotations
+
 import argparse
 import json
 import os

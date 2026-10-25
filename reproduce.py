@@ -10,6 +10,8 @@ Resumable: stop it whenever (^C), run it again and it picks up where it left off
 ANTHROPIC_API_KEY or a line in .env. Results land in runs/; the viewer (python3 viewer/serve.py) shows
 them next to the published ones as they land.
 """
+from __future__ import annotations
+
 import os
 import sys
 from pathlib import Path

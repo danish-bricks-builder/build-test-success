@@ -6,6 +6,8 @@ in place (final grade, PASS, size fields). Use after a grader fix; the model's w
     python3 grader/regrade.py            # report what would change
     python3 grader/regrade.py --write    # apply
 """
+from __future__ import annotations
+
 import json
 import subprocess
 import sys
