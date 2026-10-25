@@ -14,9 +14,5 @@
       ]
     }
   },
-  "include": [
-    "grade.ts",
-    "env/**/*.ts",
-    "lib/**/*.ts"
-  ]
+  "include": ["grader/**/*.ts", "runners/**/*.ts", "viewer/**/*.ts", "paper/**/*.ts", "lib/**/*.ts"]
 }

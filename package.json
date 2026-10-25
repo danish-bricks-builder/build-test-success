@@ -4,11 +4,11 @@
   "description": "Code for the Build, Test, Success paper: tasks, grader, baseline runner, records",
   "license": "MIT",
   "scripts": {
-    "grade": "tsx grade.ts",
+    "grade": "tsx grader/grade.ts",
     "report": "python3 report.py",
     "serve": "python3 serve.py",
-    "env": "tsx env/server.ts",
-    "run": "tsx env/run.ts"
+    "env": "tsx runners/environment/server.ts",
+    "run": "tsx runners/environment/run.ts"
   },
   "devDependencies": {
     "@types/node": "^20",

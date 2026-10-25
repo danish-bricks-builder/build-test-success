@@ -92,7 +92,7 @@
   <div id="leftcol" style="overflow:auto;border-right:1px solid var(--line)">
   <div id="tryTab" style="display:none;padding:10px 12px">
     <div class="band" style="padding-top:0">try it yourself</div>
-    <p class="n" style="font-size:12px;margin:4px 0 8px">Type what to build, pick a condition, run. The ldraw conditions show the model's attempts; the environment conditions show every tool call and the model as it grows, in 3D on the right. The result is graded the same way as the paper's runs: valid, stable.</p>
+    <p class="n" style="font-size:12px;margin:4px 0 8px">Type what to build, pick a mode, run. The one-shot modes show the model's attempts; the interactive modes show every tool call and the model as it grows, in 3D on the right. The result is graded like every run in the table: valid, stable.</p>
     <div class="form">
       <label for="tk">API key</label><input id="tk" type="password" placeholder="sk-ant-… (kept in this browser and in the server's memory only)">
       <label for="tm">model</label><select id="tm"></select>
@@ -141,7 +141,7 @@
       </div>
     </div>
     <div class="tabs"><button data-tab="grade" class="on">grade</button><button data-tab="trace">trace</button><button data-tab="ldraw">ldraw</button></div>
-    <div id="detail"><div class="empty">Every task against every condition, in the paper's notation; click a cell to see the build, its grade and its trace.</div></div>
+    <div id="detail"><div class="empty">Every task against every mode; click a cell to see the build, its grade and its trace.</div></div>
   </div>
 </main>
 
@@ -175,8 +175,8 @@ async function loadTable() {
   for (const v of byCell.values()) v.sort((a, b) => (a.id.split("_").pop() < b.id.split("_").pop() ? -1 : 1));
   const mine = data.runs.filter((r) => r.source === "mine" && r.kind !== "prompt");
   const legend = `<div class="legend">✓ every check passes · ×v parts collide or float · ×s falls over · ×f too big for the footprint · ×r another requirement missed · ∅ no model produced · — not run</div>`;
-  // the table: every task against every condition, from runs/ (the paper's own records stay in records/, not shown)
-  document.getElementById("newleft").innerHTML = `<div class="band">results (records/ and runs/ — latest run per cell)</div>${table("all", CONDITIONS)}${legend}`;
+  // the table: every task against every mode, from results/runs/ and runs/
+  document.getElementById("newleft").innerHTML = `<div class="band">results (results/runs/ and your runs/ — latest run per cell)</div>${table("all", CONDITIONS)}${legend}`;
   document.getElementById("counts").textContent = `${data.runs.filter((r) => r.source === "paper").length} published runs · ${mine.length} of yours · ${data.runs.filter((r) => r.kind === "prompt").length} prompts`;
   if (current) document.querySelector(`#left button[data-id="${current.id}"], #newleft button[data-id="${current.id}"]`)?.classList.add("on");
   const prompts = data.runs.filter((r) => r.kind === "prompt").sort((a, b) => (a.id.split("_").pop() < b.id.split("_").pop() ? 1 : -1));

@@ -3,12 +3,11 @@ public/*
 !public/render-snap/
 runs/*
 !runs/.gitkeep
-# sessions/ (the harness's recordings: run.json, toolLog.jsonl, snapshots/) is meant to be committed
+# results/ (the published runs, thumbnails and session recordings) is committed; runs/ (yours) is not
 .env
 __pycache__/
 # try-it-yourself sessions are personal, not the paper's; keep them local
-sessions/prompt_*
 # the renderer builds this with esbuild on first use
 public/render-snap/snap.js
 .venv/
-paper-out/renders/
+paper/out/renders/

@@ -9,7 +9,7 @@ stored here) is derived from other people's work and keeps their licenses:
 | `public/data/parts/index.json`, `public/data/parts/palette.json`, `public/data/inv/*.json`, `public/models/omr/*` | the [Rebrickable](https://rebrickable.com/downloads/) catalog and set inventories | CC BY |
 | `public/data/parts/connections.json` | connector annotations from the [LDCad Shadow Library](http://www.melkert.net/LDCad/tech/shadowLib) by Roland Melkert | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) — this derivative is shared under the same license |
 
-The official set under `public/models/omr/` is an LDraw OMR file (CC BY, per-file author credit inside). The models in `records/*.ldr` were produced by the experiments described in the paper and are
+The official set under `public/models/omr/` is an LDraw OMR file (CC BY, per-file author credit inside). The models in `results/runs/*.ldr` were produced by the experiments described in the paper and are
 released with the code.
 
 LEGO® is a trademark of the LEGO Group of companies, which does not sponsor, authorize or

@@ -1,142 +1,117 @@
-# Build, Test, Success: Verification in the Loop Turns LLM Agents into Brick Builders
+# Build, Test, Success
 
-Code, tasks and results for the paper (Evaluation of Interactive Agents workshop, NeurIPS 2026).
-Maksym Bondarenko, Independent Researcher.
+Can a language model build a physical structure? We gave a frontier model LEGO® bricks, in the
+machine-readable LDraw format, and asked it to build a wall, a lighthouse, a Greek temple, Notre-Dame.
+Then we checked every build the way physics would: does every part connect, does nothing overlap, does it
+stand, does it fit the brief. This repository is the whole experiment: the tasks, the grader, the
+building environment, the runs behind every number, and a viewer to look at them in 3D.
 
-The paper asks whether a language model can build a physical structure out of LEGO® bricks. Its
-finding: the same frontier model that passes almost none of thirteen construction tasks when
-writing a brick file directly passes nearly all of them inside a build-and-check loop, and an
-ablation attributes the difference to verification.
+What we found, in short: writing the file in one go, the model passes 2 of 13 tasks. Told *which*
+parts are wrong, it passes 10. Building piece by piece in an environment that refuses an invalid
+placement, 12. With the validator at hand during the build, all 13.
 
-This repository holds all five conditions of the paper — the two baselines and the three
-environment conditions — the grader, a results viewer, and the grade records behind every number
-in the paper. The environment is the copilot of [Danish Bricks Builder](https://danish-bricks-builder.vercel.app),
-carved out so it runs on its own (`env/`).
+| | one-shot | one-shot+feedback | interactive | +final check | +check tools |
+|---|:-:|:-:|:-:|:-:|:-:|
+| tasks passed | 2/13 | 10/13 | 12/13 | 12/13 | 13/13 |
 
-## What is here
+Paper: [`paper/build-test-success.pdf`](paper/build-test-success.pdf) (NeurIPS 2026, workshop on
+Evaluation of Interactive Agents). This work is part of a larger project, [Danish Bricks
+Builder](https://github.com/danish-bricks-builder), a LEGO studio where people and AI build together.
+Check it out.
 
-| | |
+## Setup
+
+Needs Node 20+ and Python 3.10+. Chrome is needed for the agent's eyes (it renders its own build) and for
+thumbnails; without Chrome, build with `--no-eyes`.
+
+```sh
+git clone https://github.com/danish-bricks-builder/build-test-success.git
+cd build-test-success
+sh scripts/setup.sh        # npm install · ~30 MB of part data · a python venv for the one-shot modes
+```
+
+Everything runs from the repository root. To build anything you need an Anthropic API key: export
+`ANTHROPIC_API_KEY`, or put `ANTHROPIC_API_KEY=…` in a file called `.env` (git ignores it), or paste it
+into the viewer, which keeps it in your browser and in the server's memory only.
+
+## 1. Look at our results, and reproduce them
+
+```sh
+python3 viewer/serve.py        # → http://localhost:8787
+```
+
+The **results** tab is the table above with a picture in every cell. Click a cell: the build in 3D, its
+grade with every check the task set (asked vs measured), the faults painted on the model (orange floats,
+red collides; tick a stage to see what each check saw), the full trace of the session — every tool call,
+every picture the model was shown, every file it wrote — and the LDraw source.
+
+The pieces behind it:
+
+- `tasks/tasks.json` — the 13 tasks: each one's prompt and machine-checked limits.
+- `tasks/conditions.json` — the five modes and what each adds.
+- `results/runs/` — one grade record and one final `.ldr` per cell; `results/sessions/` — the full
+  recording of every interactive session; `results/thumbs/` — the pictures.
+- `grader/grade.ts` — the grader: `npx tsx grader/grade.ts results/runs/<run>.ldr --task <task>`.
+- `paper/report.py` prints the table; `paper/paper.py` regenerates every number in the paper from the
+  records.
+
+To rerun everything yourself:
+
+```sh
+python3 reproduce.py                          # every cell without a record in runs/, 5 at a time; ^C and rerun to resume
+python3 reproduce.py --conditions none,bare   # only some modes (keys in tasks/conditions.json)
+```
+
+Your runs land in `runs/` and show up in the viewer next to ours. **What it costs**, from our runs with
+`claude-opus-5`: the whole table was about **$115** and **6 hours** with five cells in parallel (0.6M
+input, 2.6M output and 52M cached tokens). A cell is usually $1–2 and 5–30 minutes; the monumental tasks
+run 30–110 minutes, and the expensive cells reach $8–10. More cells in parallel shortens the wall time, not
+the bill; the API's rate limit is the ceiling. The **run cells** tab in the viewer does the same thing from
+the browser, one cell or the whole table.
+
+## 2. Build something yourself
+
+```sh
+python3 build.py "Build a small lighthouse: a square base, a tapering tower in red and white bands, a lantern on top."
+python3 build.py "a stone bridge with three arches" --mode one-shot+feedback
+python3 build.py "a Japanese pagoda, five tiers" --model claude-opus-5-5 --no-eyes
+```
+
+The default mode is `interactive+check-tools`, the one that passes everything. The result is graded like
+ours (valid, stable), and the viewer's **try it yourself** tab shows it; in the interactive modes you can
+also build from that tab and watch the model grow in 3D, tool call by tool call. One build costs a few
+cents in one-shot and $1–5 in the interactive modes, depending on size.
+
+To add a task of your own, append it to `tasks/tasks.json`: a prompt, a band, and whichever limits you
+want checked (`minParts`, `minHeightLdu`, `maxFootprintStuds`; for special tasks `minPreserved`,
+`partNames`, or a `set` inventory). Then run it with `python3 reproduce.py` or from the run tab.
+
+## The modes
+
+Each adds one thing to the one before it.
+
+| mode | what the model gets |
 |---|---|
-| `tasks.json` | the thirteen tasks, verbatim: prompt, type, the official set behind the edit and inventory tasks, and `post`, the machine-checked requirements |
-| `grade.ts` | the grader: connection validity and collision, stability, task requirements. The same engine code (`lib/`) that graded the paper's runs |
-| `baseline.py` | the baseline runner: `raw` (one shot) and `raw+feedback` (four attempts with the validator's report pasted back as text), with the paper's exact prompts |
-| `report.py` | the results table in the paper's notation, for your runs and for the paper's records |
-| `env/` | the environment: `server.ts` serves the copilot route on plain Node; `run.ts` drives one session per task and condition |
-| `conditions.json` | the five conditions: harness key, paper name, what each one is |
-| `records/` | the paper's grade records, one JSON per run (55 runs over the five conditions), with the final `.ldr` model beside most of them |
-| `sessions/` | the harness's recording of each session, `run.json` + `toolLog.jsonl` + `snapshots/` — the paper's are being restored from the machine that ran them and will land here |
-| `lib/` | the engine: connector library and mate detection, voxel collision, statics, LDraw parsing |
+| `one-shot` | the prompt; it writes the whole LDraw file in one reply |
+| `one-shot+feedback` | up to four replies; between them, the grader's report naming every faulty part and why |
+| `interactive` | builds piece by piece in the environment; each placement is checked as it is made; nothing checks the finished build |
+| `interactive+final check` | …and when it declares the build done, the validator runs and it gets two repair rounds per failing check |
+| `interactive+check tools` | …and the validator is also a tool it can call at any point |
 
-## The paper's results, from the records
-
-`records/` holds the sixty-five runs behind the camera-ready table (one per task × condition, with the final `.ldr`, a thumbnail, and the grade record); `sessions/` holds the full recording of every interactive session; `records-reviewed-version/` keeps the runs behind the reviewed workshop submission, which a grader correction and the changes listed in the paper's §3.7 superseded.
+## Layout
 
 ```
-$ python3 report.py --paper
-task                            raw  raw+feedback           env     env+gates      env+full
-wall-doorway                      ✓             —             —             —             ✓
-tower-square                     ×v             —             —             ✓             ✓
-house-gable                      ×v             —             —             —             ✓
-pyramid-steps                     ✓             —             —             —             ✓
-lighthouse-tall                  ×v            ×v            ×f             ✓             ✓
-roman-aqueduct                   ×v             ✓            ×f             ✓             ✓
-greek-temple                     ×v            ×v             ∅             ✓             ✓
-pyramid-giza                     ×s             ✓            ×s             ✓             ✓
-colosseum-ring                    ∅            ×v            ×f             ✓             ✓
-notre-dame-de-paris               ∅             —             —             —            ×f
-taj-mahal                         ∅             —             —             —             ✓
-edit-ghost-pedestal               —             —             ∅             ✓             ✓
-inv-dinosaur                     ×v            ×v             ✓             ✓             ✓
-pass                           2/12           2/6           1/7           8/8         12/13
+build.py · reproduce.py      the two entry points above
+tasks/                       tasks.json, conditions.json
+grader/                      grade.ts (the grader), regrade.py, flatten.ts
+runners/                     oneshot.py (the one-shot modes) · environment/ (the building environment: server.ts, route.ts, run.ts)
+viewer/                      serve.py (results server and run queue) · index.html · thumb.ts
+results/                     runs/ · sessions/ · thumbs/ — the published runs
+paper/                       the PDF · paper.py (table and numbers) · figures.ts (the appendix grid) · out/
+lib/                         the engine: connections, collisions, stability, rendering, the agent's tools
+scripts/                     setup.sh, fetch-data.sh
+runs/                        your own runs (not committed)
 ```
-
-`✓` every check passes · `×v` parts collide or float · `×s` falls over · `×f` too big for the
-footprint · `∅` no model produced · `—` not run or not expressible. Conditions as in Sec. 3.7:
-`raw` writes an LDraw file in one shot; `raw+feedback` gets the validator's report back as text
-for up to four attempts; `env` is the interactive environment with no verification;
-`env+gates` verifies when the agent declares completion, with bounded repair; `env+full` adds
-the checks as tools the agent may call. The five-condition ablation ran on the seven-task subset.
-
-## Reproducing the baseline
-
-Needs Node 20+, Python 3.10+, and an Anthropic API key.
-
-```sh
-npm install
-sh fetch-data.sh                      # ~28 MB of part data, see DATA-LICENSES.md
-python3 -m venv .venv && .venv/bin/pip install anthropic   # serve.py uses .venv when it exists
-export ANTHROPIC_API_KEY=…            # or put it in .env
-
-python3 baseline.py --condition raw                          # the 12 attemptable tasks
-python3 baseline.py --condition raw+feedback --tasks ablation
-python3 baseline.py --condition raw --tasks wall-doorway,pyramid-steps
-python3 baseline.py --dry-run --tasks greek-temple           # print the prompt, call nothing
-python3 report.py                                            # your table
-```
-
-Each run writes `runs/<runId>.json` (every attempt's file, report and grade) and
-`runs/<runId>.ldr` (the final model). The model is `claude-opus-5` as in the paper, one session
-per task: a rerun can differ from the paper's single run, which measures the existence of the
-effect rather than its variance. The edit task cannot run without the environment, which is why
-the paper reports it as not expressible in the raw conditions.
-
-Grade any LDraw file against a task:
-
-```sh
-npx tsx grade.ts some-model.ldr --task greek-temple
-```
-
-## Reproducing the environment conditions
-
-The three env conditions run the agent inside the environment. Two terminals:
-
-```sh
-sh fetch-data.sh --eyes               # part data, the edit task's set, and what render_view needs
-export ANTHROPIC_API_KEY=…
-npx tsx env/server.ts                 # terminal 1: the environment, http://localhost:8788
-
-npx tsx env/run.ts --task=greek-temple --condition=verifier    # terminal 2: env+full
-npx tsx env/run.ts --task=greek-temple --condition=bare        # env+gates
-npx tsx env/run.ts --task=greek-temple --condition=none        # env
-```
-
-`verifier` offers the validator as tools and gates completion; `bare` gates only; `none` neither,
-though every placement is still checked as it is made. Each session is recorded under
-`sessions/<runId>/` and graded into `runs/<runId>.json`. The agent's "eyes" (`render_view`) need
-Chrome on the machine (`CHROME_PATH` or a standard install) and the packed part files from
-`fetch-data.sh --eyes`; pass `--eyes=off` to run blind, which the paper did not. The paper's runs
-used `claude-opus-5` with up to 90 tool-loop iterations; a session takes minutes and the
-monumental tasks tens of minutes.
-
-## Looking at the runs, and trying it yourself
-
-```sh
-python3 serve.py            # http://localhost:8787
-```
-
-Four tabs. **Paper results**: the paper's runs, every task against every condition, a picture
-of each final build. **New results**: the same page filled from your own reruns (`runs/`),
-latest run per cell. **Run cells**: paste your API key (it stays in this browser and in the
-server's memory, never on disk), pick a model, and run one task in one condition or press *run
-every missing cell*; the server then works through every task × condition that has no record
-yet, one session at a time, and each result lands in new results as it finishes. The same pass
-from the terminal, with no page open:
-
-```sh
-ANTHROPIC_API_KEY=… python3 serve.py --fill            # every missing cell, then exit; ^C stops, run again to resume
-python3 serve.py --fill --conditions raw-ldraw-1r,raw-ldraw-4r --eyes off
-```
-
-The full table is 63 cells (the edit task cannot run in the two ldraw conditions); the three
-environment conditions start the environment server for you on port 8788. **Try it yourself**:
-type any prompt, pick a condition, press run, and watch it happen — for the environment
-conditions every tool call streams into the page and the model grows in 3D as the agent places
-parts; at the end the build is graded like the paper's runs and listed under "your prompts".
-Click a cell: the
-model in 3D (orbit, zoom, x-ray), its grade with the validator's and the stability reports, the
-attempt-by-attempt trace where the record has one (your own runs keep the whole conversation;
-a session folder shows every tool call with its snapshot), and the LDraw source. Standard library only;
-part geometry is fetched from the data bucket as needed and cached under `data/ldraw/`.
 
 ## Citing
 
@@ -149,5 +124,5 @@ part geometry is fetched from the data bucket as needed and cached under `data/l
 }
 ```
 
-Code is MIT; the part data keeps its sources' licenses (see `DATA-LICENSES.md`). LEGO® is a
-trademark of the LEGO Group, which does not sponsor, authorize or endorse this work.
+Code is MIT (`LICENSE`); the part data has its own licenses (`DATA-LICENSES.md`). LEGO® is a trademark
+of the LEGO Group, which does not sponsor, authorize or endorse this work.

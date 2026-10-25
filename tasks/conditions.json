@@ -1,0 +1,66 @@
+{
+ "_note": "The five modes. `key` is what the runners write into a record; `name` is what everything shows; `aliases` are earlier names still understood. Edit `name` to rename a mode everywhere.",
+ "conditions": [
+  {
+   "key": "raw-ldraw-1r",
+   "name": "one-shot",
+   "harness": "baseline.py --condition one-shot",
+   "what": "the model writes the whole LDraw file once, with no environment",
+   "aliases": [
+    "raw",
+    "raw-ldraw-1r"
+   ]
+  },
+  {
+   "key": "raw-ldraw-4r",
+   "name": "one-shot+feedback",
+   "harness": "baseline.py --condition one-shot+feedback",
+   "what": "up to four files; the validator's report pasted back as text between them",
+   "aliases": [
+    "raw+feedback",
+    "raw-ldraw-4r"
+   ]
+  },
+  {
+   "key": "none",
+   "name": "interactive",
+   "harness": "env/run.ts --condition none",
+   "what": "builds piece by piece in the environment, in the connection language; each placement is checked as it is made, the finished build never verified",
+   "aliases": [
+    "env"
+   ]
+  },
+  {
+   "key": "bare",
+   "name": "interactive+final check",
+   "harness": "env/run.ts --condition bare",
+   "what": "interactive, plus the validator when the agent declares completion, with two repair rounds per gate",
+   "aliases": [
+    "env+gates"
+   ]
+  },
+  {
+   "key": "verifier",
+   "name": "interactive+check tools",
+   "harness": "env/run.ts --condition verifier",
+   "what": "interactive+final check, plus the validator as tools the agent may call during the build",
+   "aliases": [
+    "env+full"
+   ]
+  }
+ ],
+ "models": {
+  "_note": "The model ids the environment accepts (lib/copilot/types.ts COPILOT_MODELS); any other id silently falls back to claude-sonnet-5 there. The paper used claude-opus-5. The ldraw conditions call the Anthropic API directly, so the gemini id does not apply to them.",
+  "default": "claude-opus-5",
+  "ids": [
+   "claude-opus-5",
+   "claude-opus-5-5",
+   "claude-fable-5-1",
+   "claude-fable-5",
+   "claude-opus-4-8",
+   "claude-sonnet-5",
+   "claude-haiku-4-5",
+   "gemini-3.8-flash"
+  ]
+ }
+}
